@@ -47,7 +47,7 @@ class AttributeController extends Controller
 
             return  redirect()->route('admin.Attribute');
         }
-        //hiii
+        //hiii2400
 
 
         return view('admin.Attribute.edit', compact('attribute'));
