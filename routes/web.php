@@ -40,6 +40,8 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
 
     Route::match(['get', 'post'], 'cart', 'CartController@Cart')->name('cart');
     Route::match(['get', 'post'], 'cartcount', 'CartController@Cartcount')->name('cartcount');
+    Route::match(['get', 'post'], 'cartdetail', 'CartController@Cartdetail')->name('cartdetail');
+    
 });
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 'verified', 'is_admin'])->group(function () {

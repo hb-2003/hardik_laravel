@@ -18,6 +18,9 @@
 <!-- swiper js -->
 <script src="{{asset('assets/libs/swiper/swiper-bundle.min.js ') }} "></script>
 
-<script src="{{asset('assets/js/pages/dashboard.init.js ') }} "></script>
+
 
 <script src="{{asset('assets/js/app.js ') }} "></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<!-- or -->
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
