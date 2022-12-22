@@ -34,6 +34,7 @@ class AddressController extends Controller
         // $states =  State::all();
 
         if ($request->isMethod('POST')) {
+        
             Addresse::create([
                 'user_id'=>auth::user()->id,
                  'first_name'=> $request->first_name,

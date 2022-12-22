@@ -51,12 +51,25 @@
                     </div><!-- end col -->
                     <!-- end col -->
                 </div>
+                <div class="row">
+                   
+
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <label class="form-label" for="formrow-postcode-input">postcode</label>
+                            <input type="number" value="{{$address->postcode }}" name="postcode" class="form-control" id="formrow-postcode-input" placeholder="Enter Password" require>
+                        </div>
+                    </div><!-- end col -->
+                    <!-- end col -->
+              
+
+                </div>
 
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-password-input">city</label>
-                            <input type="text" name="city" class="form-control" id="formrow-city-input" placeholder="Enter city" require>
+                            <input type="text"value="{{$address->city }}" name="city" class="form-control" id="formrow-city-input" placeholder="Enter city" require>
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -65,7 +78,7 @@
 
                             <select class="form-select" name="state" require>
                                 <option>Select</option>
-                                <option>gujrat</option>
+                                <option value="gujrat">gujrat</option>
 
                             </select>
                         </div>
@@ -78,10 +91,10 @@
                         <div class="mb-3">
                             <label class="form-label" for="formrow-password-input">Countery</label>
 
-                            <select class="form-select" name="contery" require>
+                            <select class="form-select" name="country" require>
                                 <option>Select</option>
 
-                                <option> guujrat</option>
+                                <option value="gujrat">gujrat</option>
 
                             </select>
                         </div>

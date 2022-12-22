@@ -45,8 +45,21 @@
 
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label class="form-label" for="formrow-password-input">suburb</label>
-                            <input type="text" name="suburb" class="form-control" id="formrow-password-input" placeholder="Enter Password" require>
+                            <label class="form-label" for="formrow-suburb-input">suburb</label>
+                            <input type="text" name="suburb" class="form-control" id="formrow-suburb-input" placeholder="Enter suburb" require>
+                        </div>
+                    </div><!-- end col -->
+                    <!-- end col -->
+              
+
+                </div>
+                <div class="row">
+                   
+
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <label class="form-label" for="formrow-postcode-input">postcode</label>
+                            <input type="number" name="postcode" class="form-control" id="formrow-postcode-input" placeholder="Enter Password" require>
                         </div>
                     </div><!-- end col -->
                     <!-- end col -->
@@ -66,7 +79,7 @@
 
                             <select class="form-select" name="state" require>
                                 <option>Select</option>
-                                <option>gujrat</option>
+                                <option value="gujrat">gujrat</option>
 
                             </select>
                         </div>
@@ -79,10 +92,10 @@
                         <div class="mb-3">
                             <label class="form-label" for="formrow-password-input">Countery</label>
 
-                            <select class="form-select" name="contery" require>
+                            <select class="form-select" name="country" require>
                                 <option>Select</option>
 
-                                <option> guujrat</option>
+                                <option value="gujrat">gujrat</option>
 
                             </select>
                         </div>
@@ -93,8 +106,8 @@
 
                             <select class="form-select" name="type" require>
                                 <option>Select</option>
-                                <option value="0">home</option>
-                                <option value="1">work</option>
+                                <option value="home">home</option>
+                                <option value="work">work</option>
 
                             </select>
                         </div>
