@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -16,11 +17,12 @@ use Str;
 class DashboardController extends Controller
 {
     public function index(Request $request)
-    {
+    { $products = Product::with('productimage')->paginate(12);
+       
         $users = User::count();
         $user = auth()->user();
         $referralUrl = URL::to('/').'/register?referralcode='.$user->referralcode;
-        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl],compact('users'));
+        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl],compact('users','products'));
     }
 
     public function profile(Request $request)

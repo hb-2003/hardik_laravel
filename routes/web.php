@@ -33,9 +33,12 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     Route::match(['get', 'post'], 'addressedit\{id}', 'AddressController@addressedit')->name('addressedit');
     Route::match(['get', 'post'], 'addressdelete\{id}', 'AddressController@addressdelete')->name('addressdelete');
 
-    // Cart
+   
+// productdetail
+    Route::match(['get', 'post'], 'productdetail\{id}', 'ProductController@productdetail')->name('productdetail');
+ // Cart
 
-    Route::match(['get', 'post'], 'Cart', 'CartController@Cart')->name('Cart');
+    Route::match(['get', 'post'], 'cart', 'ProductController@Cart')->name('cart');
 });
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 'verified', 'is_admin'])->group(function () {
