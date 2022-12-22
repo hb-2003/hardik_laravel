@@ -62,7 +62,7 @@
                                         <div class="row text-center mt-3">
                                             <div class="col-sm-6">
                                                 <div class="d-grid">
-                                                    <button type="button" id="btnPost" onclick="yourFunction(document.getElementById('productId_{{$product->id}}').value,document.getElementById('quantitytId_{{$product->id}}').value )" class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                    <button type="button" id="btnPost" onclick="yourFunction(document.getElementById('productId_{{$product->id}}').value,document.getElementById('quantitytId_{{$product->id}}').value ,document.getElementById('priceID_{{$product->products_price}}').value)" class="btn btn-primary waves-effect waves-light mt-2 me-1">
                                                         <i class="bx bx-cart-alt me-2"></i> Add to cart
                                                     </button>
                                                 </div>
@@ -94,6 +94,7 @@
 
                                         <p class="mt-4 text-muted">{{$product->is_current}}</p>
 
+                                        <input type="hidden" class="price" id="priceID_{{$product->products_price}}" value="{{ $product->products_price }}" readonly>
                                         <div>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -449,28 +450,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
 <script type="text/javascript">
-    function yourFunction(intValue,quantity) {
-        alert(quantity);
+    function yourFunction(product_id, quantity, price) {
+       
         $.ajax({
-            url: "",
+            url: "{{route('user.cart')}}",
             type: "POST",
             data: {
                 "_token": "{{ csrf_token() }}",
                 product_id: product_id,
                 quantity: quantity,
-                
+                price: price,
+
+
             },
             success: function(responseData) {
 
                 console.log(responseData);
+                $('#cartcount').html(responseData['cartscount']);
 
             }
 
         });
     }
+    
+   
 
     $("document").ready(() => {
-        
+
         //Assign Click event to Button.
         // $(".btnPost").click(function() {
         //     var product_id = document.getElementsByClassName("product_id")[0].value
