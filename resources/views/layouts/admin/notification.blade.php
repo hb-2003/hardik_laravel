@@ -1,3 +1,4 @@
+<script src="{{ asset('admin/js/notify/bootstrap-notify.min.js') }}"></script>
 <script>
     @if(Session::has('success'))
         $.notify({

@@ -20,7 +20,11 @@ class UnitController extends Controller
     public function Unitadd(Request $request)
     {
         if ($request->isMethod('POST')) {
+            $request->validate([
+                'units_name' => 'required ',
+                'status' => 'required',
 
+            ]);
             Unit::create([
                 'units_name' => $request['units_name'],
                 'status' => $request['status'],
@@ -37,7 +41,11 @@ class UnitController extends Controller
         $unit  =  Unit::find($id);
 
         if ($request->isMethod('POST')) {
+            $request->validate([
+                'units_name' => 'required ',
+                'status' => 'required',
 
+            ]);
             $unit->update([
                 'units_name' => $request->units_name,
                 'status' => $request->status,

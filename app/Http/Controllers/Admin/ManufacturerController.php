@@ -20,7 +20,12 @@ class ManufacturerController extends Controller
     public function Manufactureradd(Request $request)
     {
         if ($request->isMethod('POST')) {
+            $request->validate([
+                'manufacturer_name' => 'required | string',
+                'manufacturer_image' => 'required',
+                'status' => 'required',
 
+            ]);
 
             $file = $request->file('manufacturer_image');
 
@@ -51,7 +56,11 @@ class ManufacturerController extends Controller
     {
         $manufacturer  =  Manufacturer::find($id);
         if ($request->isMethod('POST')) {
+            $request->validate([
+                'manufacturer_name' => 'required | string',
+                'status' => 'required',
 
+            ]);
 
             if (!empty($request->file('manufacturer_image'))) {
 

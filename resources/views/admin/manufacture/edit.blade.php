@@ -1,4 +1,3 @@
-
 @extends('layouts.admin.app')
 
 @section('title', 'content')
@@ -17,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>General Form</h1>
+                    <h1>Edit Manufacturer</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -38,7 +37,7 @@
                     <!-- general form elements -->
                     <div class="card card-rgb(52,58,64)">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h3 class="card-title">Edit Detail</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -68,12 +67,12 @@
 
                                 <div class="form-group">
                                     <label>status</label>
-                                    <select class="form-control" name="status">
+                                    <select class="form-control" name="status" required>
                                         <option value=""> select plasea</option>
-                                        <option value="1" <?php "1" == $manufacturer->status ? "selected" : "" ?>>Active</option>
-                                        <option value="0" <?php "0" == $manufacturer->status ? "selected" : "" ?>>Inactive</option>
+                                        <option value="1" <?php  echo $manufacturer->status == 1 ? "selected" : "" ?>>Active</option>
+                                        <option value="0" <?php  echo  $manufacturer->status == 0 ? "selected" : "" ?>>Inactive</option>
                                     </select>
-
+                                    ($product['products_status']=="1"
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -85,6 +84,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Manufacturer')}}"> back</a>
                             </div>
                         </form>
                     </div>
@@ -100,5 +100,3 @@
 </div>
 
 @endsection
-
-

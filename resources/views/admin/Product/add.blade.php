@@ -16,37 +16,33 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>General Form</h1>
+                    <h1>Product Add</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">General Form</li>
+                        <li class="breadcrumb-item">Product</a></li>
+                        <li class="breadcrumb-item active">Add</li>
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <!-- left column -->
                 <div class="col-md-9">
-                    <!-- general form elements -->
                     <div class="card card-rgb(52,58,64)">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h3 class="card-title">Add Detai</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
                         <form accept="{{route('admin.Productadd')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label>status</label>
-                                    <select class="form-control" id="manufacturers_id" name="manufacturers_id">
+                                    <label>Manufacturer</label>
+                                    <select class="form-control" id="manufacturers_id" name="manufacturers_id" require>
                                         <option value=""> select plasea</option>
                                         @foreach($manufacturers as $manufacturer)
                                         <option value=" {{$manufacturer ->manufacturer_name}}"> {{$manufacturer ->manufacturer_name}}</option>
@@ -58,8 +54,8 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label>status</label>
-                                    <select class="form-control" name="products_type">
+                                    <label>Categorie</label>
+                                    <select class="form-control" name="products_type" require>
                                         <option value=""> select plasea</option>
                                         @foreach($categories as $categorie)
                                         <option value=" {{$categorie ->categorie_name}}"> {{$categorie ->categorie_name}}</option>
@@ -70,36 +66,36 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">name</label>
-                                    <input type="text" name="products_name" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input type="text" name="products_name" class="form-control" id="exampleInputEmail1" placeholder="Enter name" require>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
+                                    <label for="exampleInputFile">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" value="" multiple="multiple"name="products_image[]" id="exampleInputFile" class=" form-control">
+                                            <input type="file" multiple="multiple" name="products_image[]" id="exampleInputFile" class=" form-control" require>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">quantity</label>
-                                    <input type="number" name="products_quantity" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input type="number" name="products_quantity" class="form-control" id="exampleInputEmail1" placeholder="Enter Quantity" require>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">price</label>
-                                    <input type="number" name="products_price" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Price</label>
+                                    <input type="number" name="products_price" class="form-control" id="exampleInputEmail1" placeholder="Enter price" require>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">weight</label>
-                                    <input type="number" name="products_weight" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Weight</label>
+                                    <input type="number" name="products_weight" class="form-control" id="exampleInputEmail1" placeholder="Enter Wight" require>
                                 </div>
 
                                 <div class="form-group">
-                                    <label></label>
-                                    <select class="form-control" name="attributes_id">
+                                    <label> Attribute</label>
+                                    <select class="form-control" name="attributes_id" require>
                                         <option value=""> select plasea</option>
                                         @foreach($attributes as $attribute)
                                         <option value=" {{$attribute ->name}}"> {{$attribute ->name}}</option>
@@ -110,7 +106,7 @@
 
                                 <div class="form-group">
                                     <label>Attributesvalue</label>
-                                    <select class="form-control" name="attributes_set">
+                                    <select class="form-control" name="attributes_set" require>
                                         <option value=""> select plasea</option>
                                         @foreach($attributesvalues as $attributesvalue)
                                         <option value=" {{$attributesvalue ->name}}"> {{$attributesvalue ->name}}</option>
@@ -120,8 +116,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>status</label>
-                                    <select class="form-control" name="products_weight_unit">
+                                    <label>Unit</label>
+                                    <select class="form-control" name="products_weight_unit" require>
                                         <option value=""> select plasea</option>
                                         @foreach($units as $unit)
                                         <option value=" {{$unit->units_name}}"> {{$unit ->units_name}}</option>
@@ -134,48 +130,42 @@
                                     <label for="exampleInputFile">description</label>
 
 
-                                    <textarea name="is_current" id="" class=" form-control"></textarea>
+                                    <textarea name="is_current" id="" class=" form-control" require></textarea>
 
 
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">min order</label>
-                                    <input type="number" name="products_min_order" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Min order</label>
+                                    <input type="number" name="products_min_order" class="form-control" id="exampleInputEmail1" placeholder="Enter Min Order" require>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">max order</label>
-                                    <input type="number" name="products_max_stock" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Max Order</label>
+                                    <input type="number" name="products_max_stock" class="form-control" id="exampleInputEmail1" placeholder="Enter Max order" require>
                                 </div>
                                 <div class="form-group">
-                                    <label>status</label>
-                                    <select class="form-control" name="products_status">
+                                    <label>Status</label>
+                                    <select class="form-control" name="products_status" require>
                                         <option value=""> select plasea</option>
-                                        
+
                                         <option value="0"> Active</option>
                                         <option value="1"> Inactive</option>
 
-                                       
+
                                     </select>
                                 </div>
                             </div>
-                            <!-- /.card-body -->
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> back</a>
                             </div>
                         </form>
                     </div>
-                    <!-- /.card -->
-
-
-                    <!--/.col (right) -->
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
     </section>
-    <!-- /.content -->
 </div>
 
 @endsection

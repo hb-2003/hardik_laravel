@@ -15,14 +15,20 @@ class CategorieController extends Controller
         $categories  =  Categorie::all();
         $Manufacturers  =  Manufacturer::all();
 
-        return view('admin.Categorie.index', compact('categories','Manufacturers'));
+        return view('admin.Categorie.index', compact('categories', 'Manufacturers'));
     }
 
     public function Categorieadd(Request $request)
     {
         $manufacturers  =  Manufacturer::all();
         if ($request->isMethod('POST')) {
+            $request->validate([
+                'manufacturers_id' => 'required ',
+                'categorie_name' => 'required',
+                'categorie_image' => 'required',
+                'status' => 'required',
 
+            ]);
 
             $file = $request->file('categorie_image');
 
@@ -48,7 +54,7 @@ class CategorieController extends Controller
 
             return  redirect()->route('admin.Categorie');
         }
-        return view('admin.Categorie.add',compact('manufacturers'));
+        return view('admin.Categorie.add', compact('manufacturers'));
     }
 
     public function Categorieedit(Request $request, $id)
@@ -57,7 +63,12 @@ class CategorieController extends Controller
         $Manufacturers  =  Manufacturer::all();
 
         if ($request->isMethod('POST')) {
+            $request->validate([
+                'manufacturers_id' => 'required ',
+                'categorie_name' => 'required',
+                'status' => 'required',
 
+            ]);
 
             if (!empty($request->file('categorie_image'))) {
 
@@ -65,7 +76,7 @@ class CategorieController extends Controller
                 if (Categorie::exists($image_path)) {
 
                     //File::delete($image_path);
-                  //  unlink($image_path);
+                    //  unlink($image_path);
                 }
 
                 $file = $request->file('categorie_image');
@@ -88,7 +99,7 @@ class CategorieController extends Controller
         }
 
         return view('admin.Categorie.edit', compact('categorie', 'Manufacturers'));
-    //    / return view('admin.Categorie.edit',compact('categorie','Manufacturers'));
+        //    / return view('admin.Categorie.edit',compact('categorie','Manufacturers'));
     }
 
     public function Categoriedelete(Request $request, $id)

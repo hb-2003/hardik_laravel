@@ -20,13 +20,16 @@ class AttributeController extends Controller
     {
         if ($request->isMethod('POST')) {
 
+            $request->validate([
+                'name' => 'required ',
+                'status' => 'required',
 
+            ]);
             $Manufacturer = Attribute::create([
                 'name' => $request['name'],
-                
                 'status' => $request['status'],
             ]);
-        
+
 
             return  redirect()->route('admin.Attribute');
         }
@@ -36,10 +39,13 @@ class AttributeController extends Controller
     public function Attributeedit(Request $request, $id)
     {
         $attribute  =  Attribute::find($id);
+
         if ($request->isMethod('POST')) {
+            $request->validate([
+                'name' => 'required ',
+                'status' => 'required',
+            ]);
 
-
-          
             $attribute->update([
                 'name' => $request->name,
                 'status' => $request->status,
@@ -47,18 +53,13 @@ class AttributeController extends Controller
 
             return  redirect()->route('admin.Attribute');
         }
-        //hiii2400
-
 
         return view('admin.Attribute.edit', compact('attribute'));
     }
 
-    public function Attributedelete (Request $request, $id)
+    public function Attributedelete(Request $request, $id)
     {
         Attribute::find($id)->delete();
         return  redirect()->route('admin.Attribute');
     }
-    
-
-
 }

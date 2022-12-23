@@ -16,12 +16,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>General Form</h1>
+                    <h1>Add Manufacturer</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">General Form</li>
+                        <li class="breadcrumb-item active">Add</li>
                     </ol>
                 </div>
             </div>
@@ -33,24 +33,24 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-rgb(52,58,64)">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h3 class="card-title">Add Detail</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form accept="{{route('admin.Manufactureradd')}}" method="POST" enctype="multipart/form-data"  >
+                        <form accept="{{route('admin.Manufactureradd')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">name</label>
-                                    <input type="text" name="manufacturer_name" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="text" name="manufacturer_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Manufacuturer Name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
+                                    <label for="exampleInputFile">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" name="manufacturer_image" id="exampleInputFile" class=" form-control">
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>status</label>
+                                    <label>Status</label>
                                     <select class="form-control" name="status">
                                         <option value=""> select plasea</option>
                                         <option value="1">Active</option>
@@ -67,13 +67,14 @@
                                     </select>
 
                                 </div>
-                               
+
 
                             </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary form-groupS">Submit</button>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Manufacturer')}}"> back</a>
                             </div>
                         </form>
                     </div>

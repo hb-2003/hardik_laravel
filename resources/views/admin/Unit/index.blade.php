@@ -21,45 +21,40 @@
 
 @section('content')
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DataTables</h1>
+                    <h1>Unit </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
+                        <li class="breadcrumb-item active">Unit</li>
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                            <h3 class="card-title">All Unit</h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Unitadd') }}">add </a>
                         </div>
 
-
-
-                        <div class="card">
-                            <!-- /.card-header -->
+                        <div class="card m-3">
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>id</th>
                                             <th>Name</th>
-                                            
                                             <th>status</th>
                                             <th>Action</th>
 
@@ -68,45 +63,34 @@
                                     <tbody>
                                         @foreach($units as $key => $unit)
                                         <tr>
-                                        <td>{{$key + 1}}</td>
+                                            <td>{{$key + 1}}</td>
                                             <td>{{$unit ->units_name}}</td>
-                                           
+
                                             <td> @if ($unit ->status = 1 )
                                                 <span class="right badge badge-success">Active</span>
                                                 @else
                                                 <span class="right badge badge-danger">Inactive</span>
-                                                @endif</td>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        Action
-                                                    </button>
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Action</button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a class="dropdown-item" href="{{ route('admin.Unitedit',$unit->id) }}">edit</a></li>
                                                         <li><a class="dropdown-item" href="{{route('admin.Unitdelete',$unit->id)}}">delete</a></li>
-
                                                     </ul>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         @endforeach
-
                                     </tbody>
-                                
                                 </table>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
 
 @endsection
