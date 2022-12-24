@@ -465,7 +465,7 @@
             },
             success: function(responseData) {
 
-                console.log(responseData);
+                
                 $('#cartcount').html(responseData['cartscount']);
 
             }
