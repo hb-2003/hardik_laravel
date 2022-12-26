@@ -52,7 +52,7 @@
                     <!-- end col -->
                 </div>
                 <div class="row">
-                   
+
 
                     <div class="col-md-5">
                         <div class="mb-3">
@@ -61,7 +61,7 @@
                         </div>
                     </div><!-- end col -->
                     <!-- end col -->
-              
+
 
                 </div>
 
@@ -69,7 +69,7 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-password-input">city</label>
-                            <input type="text"value="{{$address->city }}" name="city" class="form-control" id="formrow-city-input" placeholder="Enter city" require>
+                            <input type="text" value="{{$address->city }}" name="city" class="form-control" id="formrow-city-input" placeholder="Enter city" require>
                         </div>
                     </div>
                     <div class="col-md-5">

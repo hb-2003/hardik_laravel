@@ -75,7 +75,7 @@ class AddressController extends Controller
                     'type'=> $request->type,
                
             ]);
-            return redirect()->route('user.address');
+            return redirect()->back();
         }
         return view('user.address.edit', compact('address'));
     }

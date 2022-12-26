@@ -14,7 +14,7 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     <div id="addproduct-accordion" class="custom-accordion">
                         <form action="{{route('user.checkout')}}" method="POST" class="needs-validation">
                             <div class="card">
@@ -78,68 +78,10 @@
                                                     @enderror
                                                 </div>
                                             </div>
-
-                                            <div class="mb-3">
-                                                <label class="form-label" for="billing-address">Address</label>
-                                                <textarea class="form-control" id="billing_suburb" rows="3" placeholder="Enter full address" name="delivery_street_address">
-                                                </textarea>
-
-                                            </div>
-                                            @error('delivery_street_address')
-                                            <div class="alert alert-danger">The address is required.</div>
-                                            @enderror
-
-
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="mb-4 mb-lg-0">
-                                                        <label class="form-label" for="billing-address">suburb</label>
-                                                        <input type="text" class="form-control" id="billing-phone" placeholder="Enter suburb" name="billing_suburb">
-                                                    </div>
-                                                    @error('billing_suburb')
-                                                    <div class="alert alert-danger">The suburb is required.</div>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="col-lg-4">
-                                                    <div class="mb-4 mb-lg-0">
-                                                        <label class="form-label" for="billing-city">City</label>
-                                                        <input type="text" class="form-control" id="billing-city" placeholder="Enter City" name="billing_city">
-                                                    </div>
-                                                    @error('billing_city')
-                                                    <div class="alert alert-danger">The city is required.</div>
-                                                    @enderror
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-0">
-                                                        <label class="form-label" for="zip-code">Zip / Postal code</label>
-                                                        <input type="text" class="form-control" id="zip-code" placeholder="Enter Postal code" name="billing_postcode">
-                                                    </div>
-                                                    @error('billing_postcode')
-                                                    <div class="alert alert-danger">The postcode is required.</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
+            
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="mb-4 mb-lg-0">
-                                                    <label class="form-label">Country</label>
-                                                    <select class="form-control form-select" title="Country" name="billing_country">
-                                                        <option value="0">Select Country</option>
-                                                        @foreach($conteries as $conterie)
-                                                        <option value="{{$conterie ->name}}">{{$conterie ->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                @error('billing_country')
-                                                <div class="alert alert-danger">The country is required.</div>
-                                                @enderror
-                                            </div>
-
-
-                                        </div>
+                                        
                                         <div class="row p-3">
                                             <div class="col">
                                                 <div class="text-end mt-2 mt-sm-0">
@@ -187,7 +129,7 @@
                                             <div class="col-lg-4 col-sm-6">
                                                 <div data-bs-toggle="collapse">
                                                     <label class="card-radio-label mb-0">
-                                                        <input type="radio" name="billing_address_format_id" id="info-address1" class="card-radio-input">
+                                                        <input type="radio" value="{{$addres->id}}" name="billing_address_format_id" id="info-address1" class="card-radio-input">
                                                         <span class="card-radio text-truncate p-3">
                                                             <span class="fs-14 mb-4 d-block">Address 1</span>
                                                             <span class="fs-14 mb-2 d-block"></span>
@@ -326,7 +268,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-xl-4">
+                <div class="col-xl-4">
                     <div class="card checkout-order-summary">
                         <div class="card-body">
                             <div class="p-3 bg-light mb-2">
@@ -393,7 +335,7 @@
                                                 <h5 class="font-size-16 m-0">Total:</h5>
                                             </td>
                                             <td>
-                                                $ 745.2
+                                                $ {{$carttotal}}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -402,7 +344,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
             <!-- end row -->
         </div> <!-- container-fluid -->

@@ -4,17 +4,22 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\Addresse;
 use App\Models\Cart;
 use App\Models\Countrie;
-use App\Models\State;
+use App\Models\Order;
+use App\Models\Product;
+use Carbon\Carbon;
+use App\Models\Order_product;
 use Faker\Provider\ar_JO\Address;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\auth;
+use phpDocumentor\Reflection\Types\Null_;
 use Reflector;
-use Str;
+use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
@@ -22,56 +27,102 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request)
     {
+
         $address = Addresse::where('user_id', auth::user()->id)->get();
         $carttotal = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('total');
         $conteries = Countrie::all();
-        // echo $address;
-        // die;
         $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
+
+
         if ($request->isMethod('POST')) {
+
+
             $request->validate([
                 'billing_name' => 'required',
                 'email' => 'required',
                 'customers_telephone' => 'required',
-                'delivery_street_address' => 'required',
-                'billing_suburb' => 'required',
-                'billing_city' => 'required',
-                'billing_postcode' => 'required',
-                'billing_country' => 'required',
                 'billing_address_format_id' => 'required',
                 'payment_method' => 'required',
-                
-            ]);
-            
-
-            return redirect()->route('user.address');
-        }
-        return view('user.checkout.index', compact('address', 'cartdetails','conteries','carttotal'));
-    }
-
-    public function addressedit(Request $request, $id)
-    {
-        $address = Addresse::where('id', $id)->first();
-
-
-        if ($request->isMethod('POST')) {
-
-
-            $address->update([
-                'user_id',
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'address' => $request->address,
-                'suburb' => $request->suburb,
-                'postcode' => $request->postcode,
-                'city' => $request->city,
-                'state' => $request->state,
-                'country' => $request->country,
-                'type' => $request->type,
 
             ]);
-            return redirect()->route('user.address');
+
+            $addres = Addresse::where('id', $request->billing_address_format_id)->first();
+
+            $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
+            // echo  "<pre>";
+            // print_r($addres);
+            // die;
+
+            $dt = Carbon::now();
+
+            $order = Order::create([
+                'total_tax' => 0,
+                'customers_id' => auth::user()->id,
+                'customers_name' => $request->billing_name,
+                'customers_telephone' => $request->customers_telephone,
+                'email' => $request->billing_address_format_id,
+                'delivery_name' => $addres->first_name,
+                'billing_name' => $request->billing_name,
+                'billing_street_address' => $addres->address,
+                'billing_suburb' => $addres->suburb,
+                'billing_city' => $addres->city,
+                'billing_postcode' => $addres->postcode,
+                'billing_state' => $addres->state,
+                'billing_country' => $addres->country,
+                'billing_address_format_id' => $request->billing_address_format_id,
+                'payment_method' => $request->payment_method,
+                'date_purchased' => $dt->addDay(1),
+                'orders_date_finished' => $dt->addDay(1),
+                'currency' => "INR",
+                'order_price' => $carttotal,
+                'shipping_cost' => 0,
+                'shipping_method' => Null,
+                'shipping_duration' => "7 day",
+                'order_information' => Null,
+                'is_seen' => 0,
+                'coupon_code' => Null,
+                'coupon_amount' => Null,
+                'free_shipping' => 1,
+                'product_ids' => Null,
+                'delivery_phone	' => NUll,
+                'pyment_type' => $request->payment_method,
+                'transaction_id ' => NUll,
+                'status' => 0,
+
+            ]);
+            //    echo $order->id;
+            //    die;
+
+
+            foreach ($cartdetails as $cartdetail) {
+                echo "hii";
+
+
+                Order_product::create([
+                    'orders_id' => $order->id,
+                    'products_id' => $cartdetail->product[0]->id,
+                    'products_name' => $cartdetail->product[0]->products_name,
+                    'products_price' => $cartdetail->product_price,
+                    'products_image' => $cartdetail->productimage[0]->name,
+                    'final_price' => $cartdetail->product_price,
+                    'products_tax' => 0,
+                    'products_quantity' => $cartdetail->quantity,
+
+                ]);
+                $Product  = Product::where('id', $cartdetail->product[0]->id)->first();
+                $quantity = $Product->products_quantity - $cartdetail->quantity;
+
+                $Product->update([
+                    'products_quantity' => $quantity,
+                    'products_max_stock' => $quantity,
+                ]);
+            }
+
+
+            return redirect()->route('user.dashboard');
         }
-        return view('user.address.edit', compact('address'));
+        return view('user.checkout.index', compact('address', 'cartdetails', 'conteries', 'carttotal'));
     }
+
+   
 }

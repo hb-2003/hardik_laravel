@@ -9,6 +9,7 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
+        
         'total_tax',
         'customers_id ',
         'customers_name',
@@ -59,9 +60,9 @@ class Order extends Model
         'product_categories',
         'free_shipping',
         'product_ids',
-        'delivery_phone	',
+        'delivery_phone',
         'pyment_type',
-        'transaction_id ',
+        'transaction_id',
         'status',
         
     ];
