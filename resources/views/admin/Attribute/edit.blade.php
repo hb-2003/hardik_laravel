@@ -46,6 +46,9 @@
                                     <label for="exampleInputEmail1">name</label>
                                     <input type="text" name="name" value="{{$attribute->name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" require>
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">The name is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label>status</label>
@@ -55,17 +58,17 @@
                                         <option value="0" <?php echo  $attribute->status == "0" ? "selected" : "" ?>>Inactive</option>
                                     </select>
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">The name is required.</div>
+                                @enderror
 
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
+                                
 
                             </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a  class="btn btn-danger float-right" href="{{route('admin.Attribute')}}"> back</a>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Attribute')}}"> back</a>
                             </div>
                         </form>
                     </div>

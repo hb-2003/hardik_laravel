@@ -49,11 +49,17 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @error('attribute_id')
+                                <div class="alert alert-danger">The attribute is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">name</label>
                                     <input type="text" name="name" value="{{$attributesvalue->name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" require>
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">The name is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label>status</label>
@@ -63,6 +69,9 @@
                                         <option value="0" <?php echo $attributesvalue->status == "0" ? "selected" : "" ?>>Inactive</option>
                                     </select>
                                 </div>
+                                @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
 
                             </div>
 

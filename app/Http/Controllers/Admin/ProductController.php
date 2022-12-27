@@ -33,8 +33,7 @@ class ProductController extends Controller
         if ($request->isMethod('POST')) {
 
             $request->validate([
-                'units_name' => 'required ',
-                'status' => 'required',
+              
                 'attributes_id' => 'required',
                 'attributes_set' => 'required',
                 'products_name' => 'required',
@@ -84,7 +83,7 @@ class ProductController extends Controller
             }
 
 
-
+            session()->put('success', 'product add.');
             return  redirect()->route('admin.Product');
         }
 
@@ -104,8 +103,7 @@ class ProductController extends Controller
         if ($request->isMethod('POST')) {
 
             $request->validate([
-                'units_name' => 'required ',
-                'status' => 'required',
+                
                 'attributes_id' => 'required',
                 'attributes_set' => 'required',
                 'products_image' => 'required',
@@ -154,7 +152,7 @@ class ProductController extends Controller
                 'products_min_order' => $request->products_min_order,
                 'products_max_stock' => $request->products_min_order,
             ]);
-
+            session()->put('success', 'ediy product success complete.');
             return  redirect()->route('admin.Product');
         }
         return view('admin.product.edit', compact('Product', 'manufacturers', 'categories', 'attributes', 'attributesvalues', 'units'));

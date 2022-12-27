@@ -43,6 +43,9 @@
                                     <label for="exampleInputEmail1">name</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">The name is required.</div>
+                                @enderror
                                 <div class="form-group">
                                     <label>status</label>
                                     <select class="form-control" name="status" required>
@@ -51,6 +54,9 @@
                                         <option value="0">Inactive</option>
                                     </select>
                                 </div>
+                                @error('status')
+                                <div class="alert alert-danger">The select status is required.</div>
+                                @enderror
                             </div>
                             <!-- /.card-body -->
 

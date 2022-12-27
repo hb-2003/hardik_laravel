@@ -3,7 +3,7 @@
 use App\Models\Cart;
 use Illuminate\Support\Facades\auth;
 
-$cartscount = Cart::where('user_id', auth::user()->id)->sum('quantity');
+$cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('quantity');
 
 
 ?>
@@ -101,14 +101,14 @@ $cartscount = Cart::where('user_id', auth::user()->id)->sum('quantity');
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
                         <img src="{{asset('assets/images/flags/russia.jpg')}}" alt="user-image" class="me-2" height="12"> <span class="align-middle">Russian</span>
-                    </a>
+                    </a>    
                 </div>
             </div>
 
             <div class="dropdown d-inline-block">
                 <a href="{{route('user.cartdetail')}}" class="btn header-item noti-icon  pt-4.5" style="padding-top: 2rem;">
                     <iconify-icon icon="material-symbols:garden-cart-outline"></iconify-icon>
-                    <span id="cartcount" class="noti-dot bg-danger rounded-pill">{{$cartscount }}</span>
+                    <span id="cartcount" class="noti-dot bg-danger rounded-pill">{{$cartscount}}</span>
                 </a>
 
 

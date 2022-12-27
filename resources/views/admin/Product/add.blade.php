@@ -51,8 +51,11 @@
 
 
                                     </select>
-
                                 </div>
+                                @error('manufacturers_id')
+                                <div class="alert alert-danger">The Manufacturer Is Required.</div>
+                                @enderror
+
                                 <div class="form-group">
                                     <label>Categorie</label>
                                     <select class="form-control" name="products_type" require>
@@ -63,11 +66,17 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @error('products_type')
+                                <div class="alert alert-danger">The Categorie Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">name</label>
+                                    <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="products_name" class="form-control" id="exampleInputEmail1" placeholder="Enter name" require>
                                 </div>
+                                @error('products_name')
+                                <div class="alert alert-danger">The Porduct Name Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Image</label>
@@ -77,21 +86,46 @@
                                         </div>
                                     </div>
                                 </div>
+                                @error('products_image')
+                                <div class="alert alert-danger">The Image Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">quantity</label>
                                     <input type="number" name="products_quantity" class="form-control" id="exampleInputEmail1" placeholder="Enter Quantity" require>
                                 </div>
+                                @error('products_quantity')
+                                <div class="alert alert-danger">The quantity Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Price</label>
                                     <input type="number" name="products_price" class="form-control" id="exampleInputEmail1" placeholder="Enter price" require>
                                 </div>
+                                @error('products_price')
+                                <div class="alert alert-danger">The Price Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Weight</label>
                                     <input type="number" name="products_weight" class="form-control" id="exampleInputEmail1" placeholder="Enter Wight" require>
                                 </div>
+                                @error('products_weight')
+                                <div class="alert alert-danger">The Weight Is Required.</div>
+                                @enderror
+                                <div class="form-group">
+                                    <label>Unit</label>
+                                    <select class="form-control" name="products_weight_unit" require>
+                                        <option value=""> select plasea</option>
+                                        @foreach($units as $unit)
+                                        <option value=" {{$unit->units_name}}"> {{$unit ->units_name}}</option>
+
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('products_weight_unit')
+                                <div class="alert alert-danger">The Units Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label> Attribute</label>
@@ -103,6 +137,9 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @error('attributes_id')
+                                <div class="alert alert-danger">The Attribute Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label>Attributesvalue</label>
@@ -114,36 +151,35 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @error('attributes_set')
+                                <div class="alert alert-danger">The Attribute Value Is Required.</div>
+                                @enderror
 
-                                <div class="form-group">
-                                    <label>Unit</label>
-                                    <select class="form-control" name="products_weight_unit" require>
-                                        <option value=""> select plasea</option>
-                                        @foreach($units as $unit)
-                                        <option value=" {{$unit->units_name}}"> {{$unit ->units_name}}</option>
 
-                                        @endforeach
-                                    </select>
-                                </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">description</label>
-
-
                                     <textarea name="is_current" id="" class=" form-control" require></textarea>
-
-
                                 </div>
+                                @error('is_current')
+                                <div class="alert alert-danger">The Product Detail Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Min order</label>
                                     <input type="number" name="products_min_order" class="form-control" id="exampleInputEmail1" placeholder="Enter Min Order" require>
                                 </div>
+                                @error('products_min_order')
+                                <div class="alert alert-danger">The Min order Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Max Order</label>
                                     <input type="number" name="products_max_stock" class="form-control" id="exampleInputEmail1" placeholder="Enter Max order" require>
                                 </div>
+                                @error('products_max_stock')
+                                <div class="alert alert-danger">The Max Stack Is Required.</div>
+                                @enderror
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control" name="products_status" require>
@@ -156,6 +192,9 @@
                                     </select>
                                 </div>
                             </div>
+                            @error('status')
+                            <div class="alert alert-danger">The Status Is Required.</div>
+                            @enderror
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>

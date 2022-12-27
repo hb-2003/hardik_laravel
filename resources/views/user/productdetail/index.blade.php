@@ -2,6 +2,8 @@
 @section('title', 'content')
 
 @section('css')
+<link rel="stylesheet" href="{{asset('assets/libs/swiper/swiper-bundle.min.css')}}">
+
 @endsection
 
 @section('style')
@@ -22,22 +24,22 @@
                                 <div class="col-xl-4">
                                     <div class="product-detail">
                                         <div class="product-wishlist">
-                                            <a href="#">
-                                                <i class="mdi mdi-heart-outline"></i>
+                                            <a href="#" class="btn btn-primary">
+                                                <i class="bx bx-heart"></i>
                                             </a>
                                         </div>
                                         <div class="swiper product-thumbnail-slider rounded border overflow-hidden position-relative">
                                             <input type="hidden" class="product_id" id="productId_{{$product->id}}" value="{{ $product->id }}" readonly>
                                             <div class="swiper-wrapper">
                                                 @foreach($product->productimage as $image)
-                                                <div class="swiper-slide"><img src="{{asset('images/product/'.$image->name) }}" alt="" class="img-fluid d-block" /></div>
+                                                <div class="swiper-slide"><img src="{{asset('images/product/'.$image->name) }}" alt="" class="img-fluid d-block" style="width: 500px ;" /></div>
                                                 @endforeach
 
                                             </div>
 
                                             <div class="d-none d-md-block">
-                                                <div class="swiper-button-next"><i class="mdi mdi-arrow-right"></i></div>
-                                                <div class="swiper-button-prev"><i class="mdi mdi-arrow-left"></i></div>
+                                                <div class="swiper-button-next"><i class='bx bx-right-arrow-alt'></i></div>
+                                                <div class="swiper-button-prev"><i class='bx bx-left-arrow-alt'></i></div>
                                             </div>
                                         </div>
 
@@ -52,7 +54,6 @@
                                                     @foreach($product->productimage as $image)
                                                     <div class="swiper-slide">
                                                         <div class="nav-slide-item"><img src="{{asset('images/product/'.$image->name) }}" alt="" class="img-fluid d-block" /></div>
-
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -69,8 +70,10 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="d-grid">
-                                                    <button type="button" class="btn btn-light waves-effect  mt-2 waves-light">
-                                                        <i class="bx bx-shopping-bag me-2"></i>Buy now
+                                                    <!-- <a href="{{route('user.buyproduct',$product->id)}}" class="btn btn-light waves-effect  mt-2 waves-light"><i class="bx bx-shopping-bag me-2"></i>Buy now </a> -->
+
+                                                    <button type="button" id="buyproduct" onclick="butproduct(document.getElementById('productId_{{$product->id}}').value,document.getElementById('quantitytId_{{$product->id}}').value ,document.getElementById('priceID_{{$product->products_price}}').value)" class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                        <i class="bx bx-cart-alt me-2"></i> Add to cart
                                                     </button>
                                                 </div>
                                             </div>
@@ -80,7 +83,7 @@
                                 <div class="col-xl-8">
                                     <div class="mt-4 mt-xl-3 ps-xl-4">
                                         <h5 class="font-size-14"><a href="#" class="text-muted">{{$product->products_type}}
-                                                /a>
+                                            </a>
                                         </h5>
                                         <h5 class="mt-1">
                                             <a href="#" class="text-dark lh-base">{{$product->products_name}}</a>
@@ -174,20 +177,21 @@
                                                     </div>
                                                 </div>
 
+
                                                 <div class="col-lg-5 col-sm-4">
                                                     <div class="mt-3">
                                                         <h5 class="font-size-14 mb-3">Select Sizes :</h5>
 
                                                         <div class="d-inline-flex">
-                                                            <select class="form-select w-sm" id="quantitytId_{{$product->id}}" value="{{ $product->id }}">
-                                                                <option value="1">3</option>
-                                                                <option value="2">4</option>
-                                                                <option value="3">5</option>
-                                                                <option value="4">6</option>
-                                                                <option value="5" selected>7</option>
-                                                                <option value="6">8</option>
-                                                                <option value="7">9</option>
-                                                                <option value="8">10</option>
+                                                            <select class="form-select w-sm" name="quantity" id="quantitytId_{{$product->id}}" value="  ">
+                                                                <option value="">select</option>
+                                                                @for ($i = 0; $i < $product->products_quantity; $i++)
+                                                                    @if (10 >= $i)
+                                                                    <option value="{{$i}}">{{$i}}</option>
+                                                                    @endif
+                                                                    @endfor
+
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -451,29 +455,59 @@
 
 <script type="text/javascript">
     function yourFunction(product_id, quantity, price) {
-       
-        $.ajax({
-            url: "{{route('user.cart')}}",
-            type: "POST",
-            data: {
-                "_token": "{{ csrf_token() }}",
-                product_id: product_id,
-                quantity: quantity,
-                price: price,
+        if (quantity.length > 0) {
+            $.ajax({
+                url: "{{route('user.cart')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    product_id: product_id,
+                    quantity: quantity,
+                    price: price,
 
 
-            },
-            success: function(responseData) {
+                },
+                success: function(responseData) {
 
-                
-                $('#cartcount').html(responseData['cartscount']);
 
-            }
+                    $('#cartcount').html(responseData['cartscount']);
 
-        });
+                }
+
+            });
+        } else {
+            alert("please select quantity");
+        }
     }
-    
-   
+
+    function butproduct(product_id, quantity, price) {
+        if (quantity.length > 0) {
+            $.ajax({
+                url: "{{route('user.buyproduct')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    product_id: product_id,
+                    quantity: quantity,
+                    price: price,
+
+
+                },
+                success: function(responseData) {
+                    window.location(route('user.buyproduct'));
+                    
+                   
+                }
+
+            });
+        } else {
+
+            alert("please select quantity");
+        }
+
+    }
+
+
 
     $("document").ready(() => {
 
@@ -508,11 +542,6 @@
 <script src="{{ asset('assets/js/pages/rating.init.js') }}"></script>
 <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
 
-<!-- JAVASCRIPT -->
-<script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{asset('assets/libs/metismenujs/metismenujs.min.js') }}"></script>
-<script src="{{asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-<script src="{{asset('assets/libs/feather-icons/feather.min.js') }}"></script>
 
 <!-- swiper js -->
 <script src="{{asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>

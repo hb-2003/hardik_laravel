@@ -50,13 +50,13 @@
 
                             <div>
                                 <div class="row align-items-end">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="mt-3">
                                             <p class="text-muted mb-2">Price</p>
                                             <h5 class="font-size-16 mb-0">{{$cartdetail->product_price}}</h5>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="mt-3">
                                             <p class="text-muted mb-2">Quantity</p>
                                             <div class="d-inline-flex">
@@ -64,10 +64,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="mt-3">
                                             <p class="text-muted mb-2">Total</p>
                                             <h5 class="font-size-16 mb-0">{{$cartdetail->quantity *$cartdetail->product_price  }} </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mt-3">
+                                        <a href="{{route('user.cartdelete',$cartdetail->id)}}" class="btn btn-danger">
+                                <i class="bx bx-arrow-left me-1"></i> delete </a>
                                         </div>
                                     </div>
                                 </div>

@@ -48,6 +48,9 @@
                                     <label for="exampleInputEmail1">name</label>
                                     <input type="text" name="manufacturer_name" value="{{$manufacturer->manufacturer_name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                                 </div>
+                                @error('manufacturer_name')
+                                <div class="alert alert-danger">The Name  is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
@@ -78,6 +81,9 @@
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                 </div>
+                                @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
 
                             </div>
                             <!-- /.card-body -->

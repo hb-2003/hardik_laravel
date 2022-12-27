@@ -57,10 +57,17 @@
                                     </select>
 
                                 </div>
+                                @error('manufacturers_id')
+                                <div class="alert alert-danger">The manufacturers  is required.</div>
+                                @enderror
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">name</label>
                                     <input type="text" name="categorie_name" value="{{$categorie->categorie_name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">The name is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
@@ -85,12 +92,12 @@
                                         <option value="1" <?php echo  $categorie->status == "1" ? "selected" : "" ?>>Active</option>
                                         <option value="0" <?php echo  $categorie->status == "0" ? "selected" : "" ?>>Inactive</option>
                                     </select>
+                                </div>
+                                @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
 
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
+                                
 
                             </div>
                             <!-- /.card-body -->

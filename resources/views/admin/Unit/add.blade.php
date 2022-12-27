@@ -41,14 +41,17 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">name</label>
+                                    <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="units_name" class="form-control" id="exampleInputEmail1" placeholder="Enter unit name" require>
                                 </div>
+                                @error('units_name')
+                                <div class="alert alert-danger">The Name Is Required.</div>
+                                @enderror
 
 
 
                                 <div class="form-group">
-                                    <label>status</label>
+                                    <label>Status</label>
                                     <select class="form-control" name="status" require>
                                         <option value=""> select plasea</option>
                                         <option value="1">Active</option>
@@ -56,6 +59,9 @@
                                     </select>
 
                                 </div>
+                                @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
 
 
                             </div>

@@ -54,12 +54,18 @@
                                         <option value="{{$manufacturer->id}}"> {{$manufacturer->manufacturer_name}}</option>
                                         @endforeach
                                     </select>
-
                                 </div>
+                                @error('manufacturers_id')
+                                <div class="alert alert-danger">The manufacturers  is required.</div>
+                                @enderror
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1"> CategorieName</label>
                                     <input type="text" name="categorie_name" class="form-control" id="name" placeholder="Enter categorie name" required>
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">The name is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Image</label>
@@ -70,6 +76,10 @@
                                     </div>
                                 </div>
 
+                                @error('categorie_image')
+                                <div class="alert alert-danger">The image is required.</div>
+                                @enderror
+
                                 <div class="form-group">
                                     <label>status</label>
                                     <select class="form-control" name="status" required>
@@ -79,6 +89,9 @@
                                     </select>
 
                                 </div>
+                                @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
 
 
                             </div>
@@ -86,7 +99,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a  class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> back</a>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> back</a>
                             </div>
                         </form>
                     </div>

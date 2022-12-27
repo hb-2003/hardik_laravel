@@ -109,6 +109,9 @@ class CheckoutController extends Controller
                     'products_quantity' => $cartdetail->quantity,
 
                 ]);
+
+
+                
                 $Product  = Product::where('id', $cartdetail->product[0]->id)->first();
                 $quantity = $Product->products_quantity - $cartdetail->quantity;
 
@@ -116,13 +119,23 @@ class CheckoutController extends Controller
                     'products_quantity' => $quantity,
                     'products_max_stock' => $quantity,
                 ]);
+
+                Cart::where('id', $cartdetail->id)->update(['status' => 1]);
+                
+
+                
+
+             
+                
+
+                
+                
             }
 
+            session()->put('success', 'order complete.');
 
             return redirect()->route('user.dashboard');
         }
         return view('user.checkout.index', compact('address', 'cartdetails', 'conteries', 'carttotal'));
     }
-
-   
 }

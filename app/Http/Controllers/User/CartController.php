@@ -22,11 +22,18 @@ class CartController extends Controller
     public function Cart(Request $request)
     {
         if ($request->isMethod('POST')) {
-
-
-            $countproduct = Cart::where('product_id', $request->product_id)->count();
-            if ($countproduct == 1) {
-                $product =  Cart::where('product_id', $request->product_id)->first();
+            
+            $countproduct = Cart::where('product_id', $request->product_id)->where('user_id', auth::user()->id)->where('status', 0)->count();
+            if ($countproduct == 1  ) {
+                
+                $product =  Cart::where('product_id', $request->product_id)->where('user_id', auth::user()->id)->where('status', 0)->first();
+                
+                // if($product->quantity  <= $request->quantity )
+                // {
+             
+                //     $cartscount = Cart::where('user_id', auth::user()->id)->sum('quantity');
+                //     return response()->json(['cartscount' => $cartscount]);
+                // }
                 $totalquantity = $request->quantity + $product->quantity;
                 $totalprice  = $totalquantity * $request->price;
 
@@ -50,10 +57,8 @@ class CartController extends Controller
                     'total' => $total
                 ]);
             }
-
-
-
-            $cartscount = Cart::where('user_id', auth::user()->id)->sum('quantity');
+            
+            $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('quantity');
             return response()->json(['cartscount' => $cartscount]);
         }
     }
@@ -62,12 +67,17 @@ class CartController extends Controller
     {
 
 
-        $cartscount = Cart::where('user_id', auth::user()->id)->count();
+        $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->count();
+        
         return response()->json(['cartscount' => $cartscount]);
     }
     public function Cartdetail(Request $request)
     {
-
+        $count =  Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->count();
+        if($count  ==  0){
+            session()->put('success', 'cart in not preo complete.');
+            return redirect()->route('user.dashboard');
+        }
 
         $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
         $total = Cart::where('user_id', auth::user()->id)->sum('total');
@@ -77,4 +87,11 @@ class CartController extends Controller
         // die;
         return    view('user.cart.index', compact('cartdetails','total'));
     }
+    
+     public function Cartdelete(Request $request,$id )
+     {
+        Cart::where('id',$id)->where('user_id', auth::user()->id)->where('status', 0)->delete();
+        $count =  Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->count();
+        return    redirect()->route('user.cartdetail');
+     }
 }

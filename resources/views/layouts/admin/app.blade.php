@@ -19,6 +19,7 @@
         <img class="animation__wobble" src="{{asset('admin/dist/img/AdminLTELogo.png')}}"" alt="AdminLTELogo" height="60" width="60">
     </div>
     @include('layouts.admin.header')
+    @include('layouts.admin.notification')
     <!-- Page Header Ends                              -->
     <!-- Page Body Start-->
 
@@ -34,7 +35,7 @@
 </div>
     <!-- Scripts js Start -->
     @include('layouts.admin.script')
-    @include('layouts.admin.notification')
+    
     <!-- Scripts js End -->
 </body>
 

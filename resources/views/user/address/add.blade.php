@@ -22,14 +22,20 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-email-input">First Name</label>
-                            <input type="text" name="first_name" class="form-control" value="" id="formrow-email-input" placeholder="Enter E-mail" require>
+                            <input type="text" name="first_name" class="form-control" value="{{ old('first_name') }}" id="formrow-email-input" placeholder="Enter E-mail" require>
                         </div>
+                        @error('first_name')
+                        <div class="alert alert-danger">The first name is required.</div>
+                        @enderror
                     </div><!-- end col -->
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-password-input">Last Name</label>
-                            <input type="text" name="last_name" class="form-control" value="" id="formrow-password-input" placeholder="Enter  last name" require>
+                            <input type="text" name="last_name" class="form-control" value="{{ old('last_name') }}" id="formrow-password-input" placeholder="Enter  last name" require>
                         </div>
+                        @error('last_name')
+                        <div class="alert alert-danger">The lasty name is required.</div>
+                        @enderror
                     </div><!-- end col -->
                 </div><!-- e<!-- end row -->
 
@@ -38,67 +44,59 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-email-input">address</label>
-                            <textarea name="address" class="form-control" id="" cols="" rows="" placeholder="Enter addres " require></textarea>
+                            <textarea name="address" class="form-control" id="" cols="" value="{{ old('email') }}"  rows="" placeholder="Enter addres " require></textarea>
 
                         </div>
+                        @error('address')
+                        <div class="alert alert-danger">The address is required.</div>
+                        @enderror
                     </div>
 
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-suburb-input">suburb</label>
-                            <input type="text" name="suburb" class="form-control" id="formrow-suburb-input" placeholder="Enter suburb" require>
+                            <input type="text" name="suburb" value="{{ old('suburb') }}" class="form-control" id="formrow-suburb-input" placeholder="Enter suburb" require>
                         </div>
+                        @error('suburb')
+                        <div class="alert alert-danger">The subrub is required.</div>
+                        @enderror
                     </div><!-- end col -->
                     <!-- end col -->
-              
+
 
                 </div>
                 <div class="row">
-                   
+
 
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-postcode-input">postcode</label>
-                            <input type="number" name="postcode" class="form-control" id="formrow-postcode-input" placeholder="Enter Password" require>
+                            <input type="number" name="postcode"  value="{{ old('postcode') }}" class="form-control" id="formrow-postcode-input" placeholder="Enter Password" require>
                         </div>
+                        @error('postcode')
+                        <div class="alert alert-danger">The postcode method is required.</div>
+                        @enderror
                     </div><!-- end col -->
                     <!-- end col -->
-              
+
 
                 </div>
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-password-input">city</label>
-                            <input type="text" name="city" class="form-control" id="formrow-city-input" placeholder="Enter city" require>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="mb-3">
-                            <label class="form-label" for="formrow-email-input">State </label>
-
-                            <select class="form-select" name="state" require>
+                            
+                            <select class="form-select" name="city" require>
                                 <option>Select</option>
-                                <option value="gujrat">gujrat</option>
-
+                                @foreach($cities AS $citie )
+                                <option value="{{$citie ->name}}">{{$citie->name}}</option>
+                                
+                                @endforeach
                             </select>
                         </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- end col -->
-                    <div class="col-md-5">
-                        <div class="mb-3">
-                            <label class="form-label" for="formrow-password-input">Countery</label>
-
-                            <select class="form-select" name="country" require>
-                                <option>Select</option>
-
-                                <option value="gujrat">gujrat</option>
-
-                            </select>
-                        </div>
+                        @error('city')
+                        <div class="alert alert-danger">The select city is required.</div>
+                        @enderror
                     </div>
                     <div class="col-md-5">
                         <div class="mb-3">
@@ -111,9 +109,12 @@
 
                             </select>
                         </div>
-                    </div><!-- end col -->
-                </div>
+                        @error('payment_method')
+                        <div class="alert alert-danger">The select pyment method is required.</div>
+                        @enderror
+                    </div>
 
+                </div>
 
                 <div class="row -content-end">
                     <div class="col-sm-9">
@@ -130,7 +131,6 @@
         </div>
     </div><!-- end card -->
 </div>
-
 
 @endsection
 

@@ -48,6 +48,9 @@
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="manufacturer_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Manufacuturer Name">
                                 </div>
+                                @error('manufacturer_name')
+                                <div class="alert alert-danger">The Name  is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Image</label>
@@ -57,6 +60,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                @error('manufacturer_image')
+                                <div class="alert alert-danger">The Image is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label>Status</label>
@@ -67,6 +73,10 @@
                                     </select>
 
                                 </div>
+                                @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
+
 
 
                             </div>

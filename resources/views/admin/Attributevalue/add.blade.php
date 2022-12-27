@@ -47,14 +47,20 @@
                                         <option value=""> select plasea</option require>
                                         @foreach($attributes as $attribute)
                                         <option value="{{$attribute->id}}"> {{$attribute->name}}</option>
-                                        @endforeach
+                                        @endforeachs
                                     </select>
                                 </div>
+                                @error('attribute_id')
+                                <div class="alert alert-danger">The attribute is required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">name</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter categorie  name" require>
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">The name is required.</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -66,6 +72,9 @@
                                 </select>
 
                             </div>
+                            @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
 
 
                     </div>

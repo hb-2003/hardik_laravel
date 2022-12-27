@@ -1,4 +1,3 @@
-
 @extends('layouts.admin.app')
 
 @section('title', 'content')
@@ -29,7 +28,7 @@
         </div>
     </section>
 
- 
+
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -45,6 +44,9 @@
                                     <label for="exampleInputEmail1">name</label>
                                     <input type="text" name="units_name" value="{{$unit->units_name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter unit name" require>
                                 </div>
+                                @error('units_name')
+                                <div class="alert alert-danger">The Name Is Required.</div>
+                                @enderror
 
                                 <div class="form-group">
                                     <label>status</label>
@@ -53,24 +55,22 @@
                                         <option value="1" <?php echo $unit->status == "1" ? "selected" : "" ?>>Active</option>
                                         <option value="0" <?php echo $unit->status == "0" ? "selected" : "" ?>>Inactive</option>
                                     </select>
-
                                 </div>
-                               
+                                @error('status')
+                                <div class="alert alert-danger">The Status Is Required.</div>
+                                @enderror
 
                             </div>
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a  class="btn btn-danger" href="{{route('admin.Unit')}}"> back</a>
+                                <a class="btn btn-danger" href="{{route('admin.Unit')}}"> back</a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
     </section>
-   
+
 </div>
 
 @endsection
-
-
