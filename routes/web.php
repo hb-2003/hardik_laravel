@@ -25,6 +25,9 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     Route::match(['get', 'post'], 'email', 'DashboardController@email')->name('email');
     Route::match(['get', 'post'], 'notification', 'DashboardController@notification')->name('notification');
     Route::match(['get', 'post'], 'change_pass', 'DashboardController@change_pass')->name('change_pass');
+// order
+Route::match(['get', 'post'], 'order', 'DashboardController@order')->name('order');
+Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('account');
 
 
     // address 
@@ -37,11 +40,11 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     
     Route::match(['get', 'post'], 'cities', 'AddressController@cities')->name('cities');
 
-
+    
     // productdetail
 
     Route::match(['get', 'post'], 'productdetail\{id}', 'ProductController@productdetail')->name('productdetail');
-    Route::match(['get', 'post'], 'buyproduct', 'ProductController@buyproduct')->name('buyproduct');
+    Route::match(['get', 'post'], 'buyproduct\{id}', 'ProductController@buyproduct')->name('buyproduct');
     
     // Cart
 
@@ -54,6 +57,7 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
    
     // checkout
     Route::match(['get', 'post'], 'checkout', 'CheckoutController@checkout')->name('checkout');
+    Route::match(['get', 'post'], 'buycheckout', 'CheckoutController@buycheckout')->name('buycheckout');
 });
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 'verified', 'is_admin'])->group(function () {

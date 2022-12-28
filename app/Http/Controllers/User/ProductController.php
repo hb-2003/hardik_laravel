@@ -29,23 +29,26 @@ class ProductController extends Controller
         return view('user.productdetail.index', compact('product'));
     }
 
-    public function buyproduct(Request $request)
+    public function buyproduct(Request $request,$id)
     {
-        // echo "<pre>";
-        // print_r($request->all());
-        // die;
 
+        $request->validate([
+            'quantity' => 'required|min:1',
+            'price' => 'required',
+            
+        ]);
+      
         
         $total = $request->quantity * $request->price;
         $cart = Cart::create([
             'user_id' => auth::user()->id,
-            'product_id' => $request->product_id,
+            'product_id' => $id,
             'quantity' => $request->quantity,
             'product_price' => $request->price,
             'status' => 0,
             'total' => $total
         ]);
+      return redirect()->route('user.buycheckout');
 
-        return Response()->json();
     }
 }

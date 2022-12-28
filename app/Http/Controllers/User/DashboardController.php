@@ -57,6 +57,21 @@ class DashboardController extends Controller
         return view('user.dashboard.social');
     }
 
+    
+    public function order(Request $request)
+    {
+        // //  echo "<pre>";
+        // // print_r('request');
+        // // die;
+        // return view('user.dashboard.social');
+    }
+    public function account(Request $request)
+    {
+        
+        // return view('user.dashboard.social');
+    }
+
+
     public function email(Request $request)
     {
          // echo "<pre>";        
