@@ -1,66 +1,41 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from themesdesign.in/vuesy/layouts/error-404-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Nov 2022 13:31:42 GMT -->
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" href="{{ asset('user/images/fav.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('user/images/fav.png') }}" type="image/x-icon">
-    <title>{{ config('app.name', 'Tournament') }} - @yield('title')</title>
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/fontawesome.css') }}">
-    <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/icofont.css') }}">
-    <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/themify.css') }}">
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/flag-icon.css') }}">
-    <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/feather-icon.css') }}">
-    <!-- Plugins css start-->
-    <!-- Plugins css Ends-->
-    <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/bootstrap.css') }}">
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/style.css') }}">
-    <link id="color" rel="stylesheet" href="{{ asset('admin/css/color-1.css') }}" media="screen">
-    <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/responsive.css') }}">
+    <meta charset="utf-8" />
+    <title>404 Error Cover | Vuesy - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
 </head>
 
-<body>
-    <!-- tap on top starts-->
-    <div class="tap-top">
-        <i data-feather="chevrons-up"></i>
-    </div>
-    <!-- tap on tap ends-->
-    <!-- page-wrapper Start-->
-    <div class="page-wrapper compact-wrapper" id="pageWrapper">
-        <!-- error start-->
-        @yield('content')
-        <!-- error end-->
-    </div>
-    <!-- latest jquery-->
-    <script src="{{ asset('admin/js/jquery-3.5.1.min.js') }}"></script>
-    <!-- Bootstrap js-->
-    <script src="{{ asset('admin/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <!-- feather icon js-->
-    <script src="{{ asset('admin/js/icons/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('admin/js/icons/feather-icon/feather-icon.js') }}"></script>
-    <!-- scrollbar js-->
-    <!-- Sidebar jquery-->
-    <script src="{{ asset('admin/js/config.js') }}"></script>
-    <!-- Plugins JS start-->
-    <!-- Plugins JS Ends-->
-    <!-- Theme js-->
-    <script src="{{ asset('admin/js/script.js') }}"></script>
-    <!-- login js-->
-    <!-- Plugin used-->
+<body class="bg-white">
+    <!-- error start-->
+    @yield('content')
+    <!-- error end-->
+    <!-- JAVASCRIPT -->
+    <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/libs/metismenujs/metismenujs.min.js')}}"></script>
+    <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{asset('assets/libs/feather-icons/feather.min.js')}}"></script>
+
 </body>
+
+
+<!-- Mirrored from themesdesign.in/vuesy/layouts/error-404-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Nov 2022 13:31:42 GMT -->
 
 </html>
