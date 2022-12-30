@@ -67,14 +67,14 @@
                                                         <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5>
 
                                                         <div class="font-size-16 mt-2">
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star text-warning"></i>
-                                                            <i class="mdi mdi-star-half-full text-warning"></i>
+                                                            <i class="bx bx-star text-warning"></i>
+                                                            <i class="bx bx-star text-warning"></i>
+                                                            <i class="bx bx-star text-warning"></i>
+                                                            <i class="bx bx-star-half-full text-warning"></i>
                                                         </div>
 
                                                         <div class="mt-4">
-                                                            <a href="#" class="btn btn-primary btn-sm w-lg"><i class="mdi mdi-cart me-1 align-middle"></i> Buy
+                                                            <a href="#" class="btn btn-primary btn-sm w-lg"><i class="bx bx-cart me-1 align-middle"></i> Buy
                                                                 Now</a>
                                                         </div>
                                                     </div>
@@ -89,6 +89,7 @@
                                                         <div class="card-body">
                                                             <div class="pricing-badge">
                                                                 <span class="badge bg-success">Active</span>
+                                                                
                                                             </div>
                                                             <div class="dash-product-img">
                                                                 <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
@@ -101,14 +102,14 @@
                                                             <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5>
 
                                                             <div class="font-size-16 mt-2">
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star-half-full text-warning"></i>
+                                                                <i class="bx bx-star text-warning"></i>
+                                                                <i class="bx bx-star text-warning"></i>
+                                                                <i class="bx bx-star text-warning"></i>
+                                                                <i class="bx bx-star-half-full text-warning"></i>
                                                             </div>
 
                                                             <div class="mt-4">
-                                                                <a href="#" class="btn btn-primary btn-sm w-lg"><i class="mdi mdi-cart me-1 align-middle"></i> Buy
+                                                                <a href="#" class="btn btn-primary btn-sm w-lg"><i class="bx bx-cart me-1 align-middle"></i> Buy
                                                                     Now</a>
                                                             </div>
                                                         </div>

@@ -54,6 +54,7 @@ class DashboardController extends Controller
         //  echo "<pre>";
         // print_r('request');
         // die;
+        
         return view('user.dashboard.social');
     }
 
@@ -63,12 +64,12 @@ class DashboardController extends Controller
         // //  echo "<pre>";
         // // print_r('request');
         // // die;
-        // return view('user.dashboard.social');
+        return view('user.order.index');
     }
     public function account(Request $request)
     {
         
-        // return view('user.dashboard.social');
+         return view('user.dashboard.youraccount    ');
     }
 
 

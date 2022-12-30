@@ -97,7 +97,7 @@
                                             </h5>
 
                                             <div class="text-muted">
-                                                <span class="badge bg-success font-size-14 me-1"><i class="mdi mdi-star"></i> 4.2</span> 234 Reviews
+                                                <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> 4.2</span> 234 Reviews
                                             </div>
 
                                             <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2"><?php echo (round($product->products_price * 110 / 100))  ?></del>{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
@@ -112,10 +112,10 @@
 
                                                             <h5 class="font-size-14">Specification :</h5>
                                                             <ul class="list-unstyled product-desc-list text-muted">
-                                                                <li><i class="mdi mdi-circle-medium me-1 align-middle"></i> High Quality</li>
-                                                                <li><i class="mdi mdi-circle-medium me-1 align-middle"></i> Leather</li>
-                                                                <li><i class="mdi mdi-circle-medium me-1 align-middle"></i> All Sizes available</li>
-                                                                <li><i class="mdi mdi-circle-medium me-1 align-middle"></i> 4 Different Color</li>
+                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> High Quality</li>
+                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> Leather</li>
+                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> All Sizes available</li>
+                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> 4 Different Color</li>
                                                             </ul>
 
                                                         </div>
@@ -305,9 +305,9 @@
 
                                                                     <div>
                                                                         <ul class="list-unstyled product-desc-list text-muted mb-0">
-                                                                            <li><i class="mdi mdi-circle-medium me-1 align-middle"></i> Sed ut perspiciatis omnis iste</li>
-                                                                            <li><i class="mdi mdi-circle-medium me-1 align-middle"></i> Neque porro quisquam est</li>
-                                                                            <li><i class="mdi mdi-circle-medium me-1 align-middle"></i> Quis autem vel eum iure</li>
+                                                                            <li><i class="bx bx-circle-medium me-1 align-middle"></i> Sed ut perspiciatis omnis iste</li>
+                                                                            <li><i class="bx bx-circle-medium me-1 align-middle"></i> Neque porro quisquam est</li>
+                                                                            <li><i class="bx bx-circle-medium me-1 align-middle"></i> Quis autem vel eum iure</li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

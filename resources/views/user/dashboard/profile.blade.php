@@ -8,7 +8,7 @@
 @endsection
 
 @section('dashboard')
-<div class="col-xl-9">
+<div class="col-xl-12">
     <div class="card">
         <div class="card-header justify-content-between d-flex align-items-center">
             <h4 class="card-title">Profile info</h4>
@@ -79,12 +79,10 @@
 
                 <div class="row -content-end">
                     <div class="col-sm-9">
-                        <div class="form-check mb-4">
-                            <input type="checkbox" class="form-check-input" id="horizontal-customCheck">
-                            <label class="form-check-label" for="horizontal-customCheck">Remember me</label>
-                        </div>
+                      
                         <div>
                             <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            <a href="{{route('user.account')}}" class="btn btn-danger"> Back</a>
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
