@@ -35,6 +35,9 @@ Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('a
     Route::match(['get', 'post'], 'addressadd', 'AddressController@addressadd')->name('addressadd');
     Route::match(['get', 'post'], 'addressedit\{id}', 'AddressController@addressedit')->name('addressedit');
     Route::match(['get', 'post'], 'addressdelete\{id}', 'AddressController@addressdelete')->name('addressdelete');
+  
+    // review 
+    Route::match(['get', 'post'], 'review', 'ReviewController@review')->name('review');
 
     //cities
     

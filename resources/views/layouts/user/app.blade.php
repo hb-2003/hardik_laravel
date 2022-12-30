@@ -24,9 +24,10 @@
         @include('layouts.user.footer')
         <!-- Footer End -->
     </div>
-    @include('layouts.user.notification')
+   
     <!-- Scripts js Start -->
     @include('layouts.user.script')
+    @include('layouts.user.notification')
    
     <!-- Scripts js End -->
 

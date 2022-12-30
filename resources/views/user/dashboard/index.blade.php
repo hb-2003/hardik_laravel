@@ -54,7 +54,7 @@
                                                 <div class="card dash-product-box shadow-none border text-center">
                                                     <div class="card-body">
                                                         <div class="pricing-badge">
-                                                            <span class="badge bg-danger">Sale</span>
+                                                            <span class="badge bg-danger">InActive</span>
                                                         </div>
                                                         <div class="dash-product-img">
                                                             <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
@@ -88,7 +88,7 @@
                                                     <a href="{{route('user.productdetail',$product->id)}}">
                                                         <div class="card-body">
                                                             <div class="pricing-badge">
-                                                                <span class="badge bg-success">Sale</span>
+                                                                <span class="badge bg-success">Active</span>
                                                             </div>
                                                             <div class="dash-product-img">
                                                                 <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">

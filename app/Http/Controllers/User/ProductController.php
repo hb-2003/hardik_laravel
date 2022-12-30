@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
-use App\Models\Conterie;
+use App\Models\Review;
 use App\Models\State;
 use Facade\FlareClient\Http\Response;
 use Faker\Provider\ar_JO\Address;
@@ -24,9 +24,12 @@ class ProductController extends Controller
     {
 
         $product = Product::with('productimage')->where('id', $id)->first();
+        $productreviews =  Review::where('product_id', $id)->get();
+        $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $id)->first();
+        $userproductcount = Review::where('user_id', auth::user()->id)->where('product_id', $id)->count();
+       
 
-
-        return view('user.productdetail.index', compact('product'));
+        return view('user.productdetail.index', compact('product','productreviews','userproductreview','userproductcount'));
     }
 
     public function buyproduct(Request $request,$id)

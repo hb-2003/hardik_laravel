@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="user-profile-img">
-                                <img src="assets/images/pattern-bg.jpg" class="profile-img profile-foreground-img rounded-top" style="height: 120px;" alt="">
+                                <img src="{{asset('assets/images/pattern-bg.jpg')}}" class="profile-img profile-foreground-img rounded-top" style="height: 120px;" alt="">
                                 <div class="overlay-content rounded-top">
                                     <div>
                                         <div class="user-nav p-3">
@@ -38,10 +38,10 @@
 
                             <div class="mt-n5 position-relative">
                                 <div class="text-center">
-                                    <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <img src="{{asset('assets/images/users/avatar-3.jpg')}}" alt="" class="avatar-xl rounded-circle img-thumbnail">
 
                                     <div class="mt-3">
-                                        <h5 class="mb-1">{{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} ({{ ucfirst(Auth::user()->user_name) }})</h5>
+                                        <h5 class="mb-1">{{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} </h5>
                                         
 
                                         

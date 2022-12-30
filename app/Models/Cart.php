@@ -19,6 +19,6 @@ class Cart extends Model
     function productimage()
     {
         // return $this->hasOne(ProductImage::class);
-        return $this->hasMany(Products_images::class, 'product_id', 'id');
+        return $this->hasMany(Products_images::class, 'product_id', 'product_id');
     }
 }

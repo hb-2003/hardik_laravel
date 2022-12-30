@@ -21,6 +21,3 @@
 
 <script src="{{asset('assets/js/app.js') }} "></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-<!-- or -->
-<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
