@@ -532,60 +532,7 @@
 
 
                     },
-                    success: function(responseData) {
-//                         let data = responseData['productreviews'];
-//                         let html = "";
-//                         data.forEach((productreview) => {
-//                                 html += `
-//                                                     <div class="border-bottom pb-3">
-//                                                         <p class="float-sm-end text-muted font-size-13">{{$productreview->date}}</p>
-//                                                         <div class="badge bg-success mb-2"><i>${productreview['reting']}
-// </i> 
-//                                                             `
-//                                 forEach(range(1, 5) as $i) {`
-//                                     `
-//                                                                 `<span class="fa-stack" style="width:1em">
-//                                                                 <i class="far fa-star fa-stack-1x"></i>`
-
-//                                     if (productreview['reting'] > 0) {
-//                                         if (productreview['reting'] > 0.5) `
-//                                                                 <i class="fas fa-star fa-stack-1x"></i>`
-//                                         else `
-//                                                                 <i class="fas fa-star-half fa-stack-1x"></i>`
-//                         }
-                            
-
-//                                         <?php $productreview['reting'];
-//                                         ?>
-//                                     };
-
-//                                     `</span>
-//                                                                  
-//                                                         </div>
-//                                                         <p class="text-muted mb-4">{{$productreview->detail}}</p>
-//                                                         <div class="d-flex align-items-start">
-//                                                             <div class="flex-grow-1">
-//                                                                 <h5 class="font-size-15 mb-0">{{$productreview->user_name}}</h5>
-//                                                             </div>
-
-//                                                             <div class="flex-shrink-0">
-//                                                                 <ul class="list-inline product-review-link mb-0">
-//                                                                     <li class="list-inline-item">
-//                                                                         <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Like"><i class="bx bx-like"></i></a>
-//                                                                     </li>
-//                                                                     <li class="list-inline-item">
-//                                                                         <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Comment"><i class="bx bx-comment-dots"></i></a>
-//                                                                     </li>
-//                                                                 </ul>
-//                                                             </div>
-//                                                         </div>
-
-//                                                     </div>`
-
-//                                 });
-
-
-//                             $('#review').html(html);
+                    success: function(responseData) {                       
                             location.reload();
 
                         }

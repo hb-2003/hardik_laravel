@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 
 use Illuminate\Support\Facades\Hash;
@@ -60,16 +61,27 @@ class DashboardController extends Controller
 
     
     public function order(Request $request)
+    
     {
-        // //  echo "<pre>";
-        // // print_r('request');
-        // // die;
-        return view('user.order.index');
+        $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->get();
+        // foreach($userorders as $userorder)
+        // {
+        //     foreach($userorder->order_product as $product)
+        //     {
+        //         echo $product->id;
+        //     }
+            
+        // }
+        //  echo "<pre>";
+        // print_r($userorders->order);
+        // die;
+    
+        return view('user.order.index',compact('userorders'));
     }
     public function account(Request $request)
     {
         
-         return view('user.dashboard.youraccount    ');
+         return view('user.dashboard.youraccount');
     }
 
 

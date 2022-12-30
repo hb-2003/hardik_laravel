@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
-        
+
         'total_tax',
-        'customers_id ',
+        'customers_id',
         'customers_name',
         'customers_company',
         'customers_company',
@@ -64,6 +65,13 @@ class Order extends Model
         'pyment_type',
         'transaction_id',
         'status',
-        
+        'order_status',
+
     ];
+
+    function order_product()
+    {
+        // return $this->hasOne(ProductImage::class);
+        return $this->hasMany(order_product::class,'orders_id','id');
+    }
 }

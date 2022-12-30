@@ -167,6 +167,7 @@ class CheckoutController extends Controller
 
             $dt = Carbon::now();
 
+
             $order = Order::create([
                 'total_tax' => 0,
                 'customers_id' => auth::user()->id,

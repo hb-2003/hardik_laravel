@@ -40,6 +40,7 @@ class ProductController extends Controller
             'price' => 'required',
             
         ]);
+        
       
         
         $total = $request->quantity * $request->price;
