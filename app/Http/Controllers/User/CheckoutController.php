@@ -200,7 +200,7 @@ class CheckoutController extends Controller
                 'delivery_phone	' => NUll,
                 'pyment_type' => $request->payment_method,
                 'transaction_id ' => NUll,
-                'status' => 0,
+                'status' => 1,
 
             ]);
             //    echo $order->id;

@@ -39,7 +39,7 @@
                         </p>
                     </a>
 
-                </li>F
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
@@ -90,6 +90,18 @@
 
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.order')}}" class="nav-link">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            order
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">6</span>
+                        </p>
+                    </a>
+                  
+                </li>
+                
 
                 <li class="nav-item menu-open">
                     <form method="POST" action="{{ route('logout') }}">

@@ -18,19 +18,20 @@ use Str;
 class DashboardController extends Controller
 {
     public function index(Request $request)
-    { $products = Product::with('productimage')->paginate(12);
-       
+    {
+        $products = Product::with('productimage')->paginate(12);
+
         $users = User::count();
         $user = auth()->user();
-        $referralUrl = URL::to('/').'/register?referralcode='.$user->referralcode;
-        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl],compact('users','products'));
+        $referralUrl = URL::to('/') . '/register?referralcode=' . $user->referralcode;
+        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl], compact('users', 'products'));
     }
 
     public function profile(Request $request)
     {
         if ($request->isMethod('POST')) {
-            
-          
+
+
             $user = auth()->user();
             $user = user::find(auth::user()->id);
             $user->first_name = $request['first_name'];
@@ -41,7 +42,7 @@ class DashboardController extends Controller
             $user->telephone = $request['telephone'];
             $user->email     = $request['email'];
             $user->update();
-     
+
             session()->put('success', 'Your profile image data has been updated.');
             return redirect()->route('user.profile');
         }
@@ -55,41 +56,43 @@ class DashboardController extends Controller
         //  echo "<pre>";
         // print_r('request');
         // die;
-        
+
         return view('user.dashboard.social');
     }
 
-    
+
+   
     public function order(Request $request)
-    
+
     {
         $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->get();
         // foreach($userorders as $userorder)
         // {
         //     foreach($userorder->order_product as $product)
         //     {
-        //         echo $product->id;
+        //         echo $product->products_image;
         //     }
-            
+        //     echo "hiii";
+
         // }
         //  echo "<pre>";
-        // print_r($userorders->order);
+        
         // die;
-    
-        return view('user.order.index',compact('userorders'));
+
+        return view('user.order.index', compact('userorders'));
     }
     public function account(Request $request)
     {
-        
-         return view('user.dashboard.youraccount');
+
+        return view('user.dashboard.youraccount');
     }
 
 
     public function email(Request $request)
     {
-         // echo "<pre>";        
-         // print_r($request->all());        
-         // die; 
+        // echo "<pre>";        
+        // print_r($request->all());        
+        // die; 
         if ($request->isMethod('POST')) {
             $user = auth()->user();
             $data = $request->validate([
@@ -121,7 +124,7 @@ class DashboardController extends Controller
                 'old_password' => 'required|min:8|max:15',
                 'password' => 'required|min:8|max:15|confirmed',
             ]);
-           
+
             $user = auth()->user();
             if (Hash::check($data['old_password'], $user->password)) {
                 $user->password = Hash::make($data['password']);

@@ -50,7 +50,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($userorders as $userorder)
+                                    @foreach($userorders as $key => $userorder)
                                     <tr>
                                         <!-- <td>
                                             <div class="form-check font-size-16">
@@ -67,7 +67,14 @@
                                             {{$userorder->order_price}}
                                         </td>
                                         <td>
-                                            <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
+                                        @if($userorder->status == "0")
+                                        <span class="badge badge-pill badge-soft-success font-size-12">padding</span>
+                                            @elseif($userorder->status   == "1")
+                                            <span class="badge badge-pill badge-soft-primary font-size-12">success</span>
+                                            @else
+                                            <span class="badge badge-pill badge-soft-danger font-size-12">Failed</span>
+                                            @endif
+                                           
                                         </td>
                                         <td>
                                             @if($userorder->pyment_type == "pay")
@@ -81,10 +88,10 @@
                                         </td>
                                         <td>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target=".orderdetailsModal">
+                                            <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target=".{{$key + 1}}">
                                                 View Details
                                             </button>
-                                            <div class="modal fade orderdetailsModal" tabindex="-1" role="dialog" aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
+                                            <div class="modal fade {{$key + 1}}" id="{{$key + 1}}" tabindex="-1" role="dialog" aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -126,7 +133,7 @@
                                                                                 <h6 class="m-0 text-right">Sub Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                                $ {{$userorder->products_price}}
+                                                                                $ {{$userorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -153,6 +160,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
+
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
@@ -160,10 +168,29 @@
                                             </div>
                                         </td>
                                         <td>
+                                            @if($userorder->order_status == 0)
                                             <div class="d-flex gap-3">
-                                                <a href="javascript:void(0);" class="text-success"><i class="bx bx-pencil font-size-18"></i></a>
-                                                <a href="javascript:void(0);" class="text-danger"><i class="bx bx-delete font-size-18"></i></a>
+                                                <a href="javascript:void(0);" class="text-success"><i class="bx bxs-pencil font-size-18"></i></a>
+                                                <a href="{{ route('user.cansal',$userorder->id)}}" class="text-danger"><i class="bx bxs-trash   font-size-18"></i></a>
                                             </div>
+                                            @elseif($userorder->order_status == 1)
+                                            <div class="d-flex gap-3">
+
+                                              `  <!-- <a href="{{ route('user.orderreorder',$userorder->id)}}" class="btn btn-primary">Reorder</a>` -->
+                                                <a href="{{ route('user.orderreturn',$userorder->id)}}" class="btn btn-danger">return</a>
+                                            </div>
+                                            @elseif($userorder->order_status == 2)
+                                            <div class="d-flex gap-3">
+
+                                                <a href="{{ route('user.cansalorderreorder',$userorder->id)}}" class="btn btn-success">Reorder</a>
+                                            </div>
+
+                                            @else
+                                            <div class="d-flex gap-3">
+
+                                                <h6>conform return</h6>
+                                            </div>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
