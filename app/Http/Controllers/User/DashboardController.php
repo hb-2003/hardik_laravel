@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Categorie;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -19,12 +20,21 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        
+
+        $productssliders = Product::with('productimage')->get();
+
+       
         $products = Product::with('productimage')->paginate(12);
+
+      
+
+        $categories = Categorie::all();
 
         $users = User::count();
         $user = auth()->user();
         $referralUrl = URL::to('/') . '/register?referralcode=' . $user->referralcode;
-        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl], compact('users', 'products'));
+        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl], compact('users', 'products', 'categories', 'productssliders',));
     }
 
     public function profile(Request $request)
@@ -61,7 +71,7 @@ class DashboardController extends Controller
     }
 
 
-   
+
     public function order(Request $request)
 
     {
@@ -76,7 +86,7 @@ class DashboardController extends Controller
 
         // }
         //  echo "<pre>";
-        
+
         // die;
 
         return view('user.order.index', compact('userorders'));

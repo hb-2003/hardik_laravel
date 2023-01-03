@@ -49,7 +49,7 @@
 
                                 <div class="form-group">
                                     <label>manufacture</label>
-                                    <select class="form-control" name="status" required>
+                                    <select class="form-control" name="manufacturers_id" required>
                                         <option value=""> select plasea</option>
                                         @foreach($Manufacturers as $Manufacturer)
                                         <option value=" <?php echo $Manufacturer->id ?> " <?php echo  $Manufacturer->id == $categorie->manufacturers_id ? "selected" : "" ?>> {{$Manufacturer->manufacturer_name}}</option>

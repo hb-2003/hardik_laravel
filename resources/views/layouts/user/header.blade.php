@@ -21,7 +21,7 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                     </span>
                 </a>
 
-                <a href="index-2.html" class="logo logo-light">
+                <a href="{{route('user.dashboard')}}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
