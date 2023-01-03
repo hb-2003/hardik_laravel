@@ -48,6 +48,7 @@
 
                                         <div>
                                             <button type="submit" class="btn btn-primary w-md">Update</button>
+                                            <a href="{{route('user.account')}}" class="btn btn-danger"> Back</a>
                                         </div>
                                     </div><!-- end col -->
                                 </div><!-- end row -->

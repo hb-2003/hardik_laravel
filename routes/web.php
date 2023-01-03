@@ -25,13 +25,13 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     Route::match(['get', 'post'], 'email', 'DashboardController@email')->name('email');
     Route::match(['get', 'post'], 'notification', 'DashboardController@notification')->name('notification');
     Route::match(['get', 'post'], 'change_pass', 'DashboardController@change_pass')->name('change_pass');
-// order
-Route::match(['get', 'post'], 'order', 'DashboardController@order')->name('order');
-Route::match(['get', 'post'], 'cansal\{id}', 'OrderController@cansal')->name('cansal');
-Route::match(['get', 'post'], 'cansalorderreorder\{id}', 'OrderController@cansalorderreorder')->name('cansalorderreorder');
-Route::match(['get', 'post'], 'orderreturn\{id}', 'OrderController@orderreturn')->name('orderreturn');
-Route::match(['get', 'post'], 'orderreorder\{id}', 'OrderController@orderreorder')->name('orderreorder');
-Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('account');
+    // order
+    Route::match(['get', 'post'], 'order', 'DashboardController@order')->name('order');
+    Route::match(['get', 'post'], 'cansal\{id}', 'OrderController@cansal')->name('cansal');
+    Route::match(['get', 'post'], 'cansalorderreorder\{id}', 'OrderController@cansalorderreorder')->name('cansalorderreorder');
+    Route::match(['get', 'post'], 'orderreturn\{id}', 'OrderController@orderreturn')->name('orderreturn');
+    Route::match(['get', 'post'], 'orderreorder\{id}', 'OrderController@orderreorder')->name('orderreorder');
+    Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('account');
 
 
     // address 
@@ -39,20 +39,20 @@ Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('a
     Route::match(['get', 'post'], 'addressadd', 'AddressController@addressadd')->name('addressadd');
     Route::match(['get', 'post'], 'addressedit\{id}', 'AddressController@addressedit')->name('addressedit');
     Route::match(['get', 'post'], 'addressdelete\{id}', 'AddressController@addressdelete')->name('addressdelete');
-  
+
     // review 
     Route::match(['get', 'post'], 'review', 'ReviewController@review')->name('review');
 
     //cities
-    
+
     Route::match(['get', 'post'], 'cities', 'AddressController@cities')->name('cities');
 
-    
+
     // productdetail
 
     Route::match(['get', 'post'], 'productdetail\{id}', 'ProductController@productdetail')->name('productdetail');
     Route::match(['get', 'post'], 'buyproduct\{id}', 'ProductController@buyproduct')->name('buyproduct');
-    
+
     // Cart
 
     Route::match(['get', 'post'], 'cart', 'CartController@Cart')->name('cart');
@@ -61,7 +61,7 @@ Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('a
     Route::match(['get', 'post'], 'cartdelete\{id}', 'CartController@Cartdelete')->name('cartdelete');
     // byu peoduct 
 
-   
+
     // checkout
     Route::match(['get', 'post'], 'checkout', 'CheckoutController@checkout')->name('checkout');
     Route::match(['get', 'post'], 'buycheckout', 'CheckoutController@buycheckout')->name('buycheckout');
@@ -108,5 +108,18 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
 
     // order
     Route::match(['get', 'post'], 'order', 'OrderController@order')->name('order');
+    Route::match(['get', 'post'], 'pending', 'OrderController@pending')->name('pending');
+    Route::match(['get', 'post'], 'confirmorder\{id}', 'OrderController@confirmorder')->name('confirmorder');
+
+    Route::match(['get', 'post'], 'cansal', 'OrderController@cansal')->name('cansal');
+    Route::match(['get', 'post'], 'cansalorder\{id}', 'OrderController@cansalorder')->name('cansalorder');
+
+    Route::match(['get', 'post'], 'return', 'OrderController@return')->name('return');
+
+    Route::match(['get', 'post'], 'delivered', 'OrderController@delivered')->name('delivered');
+    Route::match(['get', 'post'], 'deliveredconform\{id}', 'OrderController@deliveredconform')->name('deliveredconform');
+
+    Route::match(['get', 'post'], 'return_pending', 'OrderController@return_pending')->name('return_pending');
+    Route::match(['get', 'post'], 'confirmreturn\{id}', 'OrderController@confirmreturn')->name('confirmreturn');
 });
 require __DIR__ . '/auth.php';

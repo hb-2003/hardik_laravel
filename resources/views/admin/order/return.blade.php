@@ -26,13 +26,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>All order </h1>
+                    <h1>return</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-
-                        <li class="breadcrumb-item active">all order</li>
+                        <li class="breadcrumb-item active">return</li>
                     </ol>
                 </div>
             </div>
@@ -42,12 +41,11 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class=" card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -60,25 +58,26 @@
                                         <th>Payment Status</th>
                                         <th>Payment Method</th>
                                         <th>View Details</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($userorders as $key => $userorder)
+                                    @foreach($refundorders as $key => $refundorder)
                                     <tr>
 
-                                        <td><a href="javascript: void(0);" class="text-body fw-bold">{{$userorder->id}}</a> </td>
-                                        <td>{{$userorder->customers_id}}</td>
-                                        <td>{{$userorder->customers_name}}</td>
+                                        <td><a href="javascript: void(0);" class="text-body fw-bold">{{$refundorder->id}}</a> </td>
+                                        <td>{{$refundorder->customers_id}}</td>
+                                        <td>{{$refundorder->customers_name}}</td>
                                         <td>
-                                            {{$userorder->created_at}}
+                                            {{$refundorder->created_at}}
                                         </td>
                                         <td>
-                                            {{$userorder->order_price}}
+                                            {{$refundorder->order_price}}
                                         </td>
                                         <td>
-                                            @if($userorder->status == "0")
+                                            @if($refundorder->status == "0")
                                             <span class="badge badge-info bg-primary">padding</span>
-                                            @elseif($userorder->status == "1")
+                                            @elseif($refundorder->status == "1")
                                             <span class="badge badge-info bg-success">success</span>
                                             @else
                                             <span class="badge badge-info bg-danger">refund</span>
@@ -86,9 +85,9 @@
 
                                         </td>
                                         <td>
-                                            @if($userorder->pyment_type == "pay")
+                                            @if($refundorder->pyment_type == "pay")
                                             <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                            @elseif($userorder->pyment_type == "cas")
+                                            @elseif($refundorder->pyment_type == "cas")
                                             <i class="fas fa-money-bill-alt me-1"></i> COD
                                             @else
                                             <i class="fab fa-cc-visa me-1"></i> Visa
@@ -108,7 +107,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p class="mb-2">Product id: <span class="text-primary">{{$userorder->id}}</span></p>
+                                                            <p class="mb-2">Product id: <span class="text-primary">{{$refundorder->id}}</span></p>
                                                             <p class="mb-4">Billing Name: <span class="text-primary">Marie N.</span></p>
 
                                                             <div class="table-responsive">
@@ -121,7 +120,7 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        @foreach($userorder->order_product as $product)
+                                                                        @foreach($refundorder->order_product as $product)
                                                                         <tr>
                                                                             <th scope="row">
                                                                                 <div>
@@ -142,14 +141,14 @@
                                                                                 <h6 class="m-0 text-right">Sub Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                                $ {{$userorder->order_price}}
+                                                                                $ {{$refundorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td colspan="2">
                                                                                 <h6 class="m-0 text-right">Shipping:</h6>
                                                                             </td>
-                                                                            <td>@if($userorder->shipping_method == 0)
+                                                                            <td>@if($refundorder->shipping_method == 0)
                                                                                 Free
                                                                                 @else
                                                                                 $50
@@ -161,7 +160,7 @@
                                                                                 <h6 class="m-0 text-right">Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                                ${{$userorder->order_price}}
+                                                                                ${{$refundorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -176,34 +175,26 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        <td>
+                                            <h6>hiii</h6>
 
                                     </tr>
                                     @endforeach
+
+
                                 </tbody>
+
                             </table>
                         </div>
 
-
-
+                        <!-- /.col -->
                     </div>
-                    <!-- end card -->
                 </div>
+                <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
-
-@endsection
-@section ('js')
-
-<script src="{{asset('assets/libs/isotope-layout/isotope.pkgd.min.js')}}"></script>
-
-<script src="{{asset('assets/js/pages/gallery.init.js')}}"></script>
-
-<script src="{{asset('assets/js/app.js')}}"></script>
-<script>
-    document.getElementById('order').click();
-</script>
 
 @endsection

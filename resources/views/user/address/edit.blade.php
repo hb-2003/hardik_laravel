@@ -10,7 +10,7 @@
 @section('dashboard')
 
 
-<div class="col-xl-9">
+<div class="col-xl-12">
     <div class="card">
         <div class="card-header justify-content-between d-flex align-items-center">
             <h4 class="card-title">Profile info</h4>

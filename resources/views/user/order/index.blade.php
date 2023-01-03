@@ -88,10 +88,10 @@
                                         </td>
                                         <td>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target=".{{$key + 1}}">
+                                            <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#order_{{$key + 1}}">
                                                 View Details
                                             </button>
-                                            <div class="modal fade {{$key + 1}}" id="{{$key + 1}}" tabindex="-1" role="dialog" aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
+                                            <div class="modal fade {{$key + 1}}" id="order_{{$key + 1}}" tabindex="-1" role="dialog" aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -184,11 +184,22 @@
 
                                                 <a href="{{ route('user.cansalorderreorder',$userorder->id)}}" class="btn btn-success">Reorder</a>
                                             </div>
+                                            @elseif($userorder->order_status == 3)
+                                            <div class="d-flex gap-3">
+
+                                                <h6> return pendding</h6>
+                                            </div>
+
+                                            @elseif($userorder->order_status == 5)
+                                            <div class="d-flex gap-3">
+
+                                                <h6>return  complite </h6>
+                                            </div>
 
                                             @else
                                             <div class="d-flex gap-3">
 
-                                                <h6>conform return</h6>
+                                                <h6>conform  your order</h6>
                                             </div>
                                             @endif
                                         </td>
@@ -289,6 +300,4 @@
         });
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 @endsection

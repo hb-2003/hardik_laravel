@@ -1,5 +1,5 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -91,7 +91,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.order')}}" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
                             order
@@ -99,9 +99,49 @@
                             <span class="badge badge-info right">6</span>
                         </p>
                     </a>
-                  
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.order')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>all order</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.pending')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>pending order</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('admin.cansal')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>cansal order</p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="{{route('admin.return')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>return order </p>
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a href="{{route('admin.delivered')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>delivered order </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.return_pending')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>return pending </p>
+                            </a>
+                        </li>
+
+                    </ul>
+
                 </li>
-                
+
 
                 <li class="nav-item menu-open">
                     <form method="POST" action="{{ route('logout') }}">
