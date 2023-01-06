@@ -32,6 +32,8 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     Route::match(['get', 'post'], 'orderreturn\{id}', 'OrderController@orderreturn')->name('orderreturn');
     Route::match(['get', 'post'], 'orderreorder\{id}', 'OrderController@orderreorder')->name('orderreorder');
     Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('account');
+    Route::match(['get', 'post'], 'product\categorie\{id}', 'DashboardController@categorie')->name('categorie');
+
 
 
     // address 

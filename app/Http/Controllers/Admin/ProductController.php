@@ -101,12 +101,13 @@ class ProductController extends Controller
         $Product  = Product::where('id', $id)->first();
 
         if ($request->isMethod('POST')) {
+        
 
             $request->validate([
                 
                 'attributes_id' => 'required',
                 'attributes_set' => 'required',
-                'products_image' => 'required',
+               
                 'products_name' => 'required',
                 'products_quantity' => 'required',
                 'products_price' => 'required',

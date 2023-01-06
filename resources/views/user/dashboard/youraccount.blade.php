@@ -20,7 +20,7 @@
 
                     <div class="row">
                         <div class="col-lg-4">
-                            <a href="#">
+                            <a href="{{route('user.order')}}">
                                 <div class="card card-body">
                                     <div class="row">
                                         <div class="col-4">

@@ -22,8 +22,8 @@ class DashboardController extends Controller
     {
         
 
-        $productssliders = Product::with('productimage')->get();
-
+        $productssliders = Product::with('productimage')->latest()->take(5)->get();
+      
        
         $products = Product::with('productimage')->paginate(12);
 
@@ -148,5 +148,23 @@ class DashboardController extends Controller
         if ($request->isMethod('GET')) {
             return view('user.dashboard.change_pass');
         }
+    }
+
+    public function categorie(Request $request ,$id)
+    {
+
+       
+        $count = Product::with('productimage')->where('products_type',$id)->count();
+        if($count == 0)
+        {
+            return redirect()->back();
+        }
+        $products = Product::with('productimage')->where('products_type',$id)->paginate(12);
+      
+        //  echo "<pre>";
+        // print_r('request');
+        // die;
+
+        return view('user.productdetail.categorie',compact('products'));
     }
 }

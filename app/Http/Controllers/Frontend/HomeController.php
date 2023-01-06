@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use File;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Image;
 
@@ -11,9 +14,17 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $productssliders = Product::with('productimage')->latest()->take(5)->get();
+      
+       
+        $products = Product::with('productimage')->paginate(12);
+
+      
+
+        $categories = Categorie::all();
         // session()->put('success','success!');
         // session()->put('error','error!');
-        return view('frontend.home.index');
+        return view('frontend.home.index' , compact( 'products', 'categories', 'productssliders'));
     }
 
     public function file($url, $url1 = '', $name = '', Request $request)

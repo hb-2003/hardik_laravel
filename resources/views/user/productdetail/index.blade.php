@@ -58,7 +58,9 @@
                                             </div>
 
 
+                                            @if($product->products_quantity && $product->products_status=="0")
                                             <div class="row text-center mt-3">
+
                                                 <div class="col-sm-6">
                                                     <div class="d-grid">
                                                         <button type="button" id="btnPost" onclick="yourFunction(document.getElementById('productId_{{$product->id}}').value,document.getElementById('quantitytId_{{$product->id}}').value ,document.getElementById('priceID_{{$product->products_price}}').value)" class="btn btn-primary waves-effect waves-light mt-2 me-1">
@@ -82,7 +84,11 @@
                                                 </div>
 
                                             </div>
+                                        
+                                            
+                                            @else
 
+                                            @endif
                                         </div>
 
                                     </div>
@@ -107,19 +113,7 @@
                                             <input type="hidden" class="price" name="price" id="priceID_{{$product->products_price}}" value="{{ $product->products_price }}" readonly>
                                             <div>
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="mt-3">
-
-                                                            <h5 class="font-size-14">Specification :</h5>
-                                                            <ul class="list-unstyled product-desc-list text-muted">
-                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> High Quality</li>
-                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> Leather</li>
-                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> All Sizes available</li>
-                                                                <li><i class="bx bx-circle-medium me-1 align-middle"></i> 4 Different Color</li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
+                                                    
 
                                                     <div class="col-md-6">
                                                         <div class="mt-3">
@@ -149,7 +143,7 @@
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-lg-7 col-sm-8">
+                                                    <!-- <div class="col-lg-7 col-sm-8">
                                                         <div class="product-desc-color mt-3">
                                                             <h5 class="font-size-14">Colors :</h5>
                                                             <ul class="list-inline">
@@ -182,9 +176,10 @@
                                                             </ul>
 
                                                         </div>
-                                                    </div>
+                                                    </div> -->
 
 
+                                                    @if($product->products_quantity || $product['products_status']=="1")
                                                     <div class="col-lg-5 col-sm-4">
                                                         <div class="mt-3">
                                                             <h5 class="font-size-14 mb-3">Select Quantity :</h5>
@@ -206,6 +201,9 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    @else
+
+                                                    @endif
 
                                                 </div>
                                             </div>
@@ -295,21 +293,16 @@
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <div>
-                                                                    <img src="{{asset('assets/images/product/img-6.png')}}" alt="" class="img-fluid mx-auto d-block">
+                                                                    @foreach($product->productimage as $image)
+                                                                    <div><img src="{{asset('images/product/'.$image->name) }}" alt="" class="img-fluid d-block" style="width: 500px ;" /></div>
+                                                                    @break
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-9">
                                                                 <div class="text-muted">
-                                                                    <p>If several languages coalesce, the grammar of the resulting language is more simple and regular</p>
-                                                                    <p>It will be as simple as occidental in fact.</p>
-
-                                                                    <div>
-                                                                        <ul class="list-unstyled product-desc-list text-muted mb-0">
-                                                                            <li><i class="bx bx-circle-medium me-1 align-middle"></i> Sed ut perspiciatis omnis iste</li>
-                                                                            <li><i class="bx bx-circle-medium me-1 align-middle"></i> Neque porro quisquam est</li>
-                                                                            <li><i class="bx bx-circle-medium me-1 align-middle"></i> Quis autem vel eum iure</li>
-                                                                        </ul>
-                                                                    </div>
+                                                                    <p>{{$product->is_current}}</p>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -441,7 +434,7 @@
                                 @if($userproductcount == 1)
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Reting
-                                        name</label>
+                                        number</label>
 
                                     <input type="number" id="reting" value="{{$userproductreview->reting}}" class="form-control" name="reting" placeholder="Enter product reting" max="5">
                                 </div>
@@ -454,7 +447,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label" for="formrow-firstname-input">Reting
-                                        name</label>
+                                        number</label>
 
                                     <input type="number" id="reting" value="" class="form-control" name="reting" placeholder="Enter product reting" max="5">
                                 </div>
@@ -522,27 +515,26 @@
 
         if (detail.length > 0) {
             $.ajax({
-                    url: "{{route('user.review')}}",
-                    type: "POST",
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        product_id: product_id,
-                        reting: reting,
-                        detail: detail,
+                url: "{{route('user.review')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    product_id: product_id,
+                    reting: reting,
+                    detail: detail,
 
 
-                    },
-                    success: function(responseData) {                       
-                            location.reload();
+                },
+                success: function(responseData) {
+                    location.reload();
 
-                        }
+                }
 
-                    });
-            }
-            else {
-                alert("please fill detail");
-            }
+            });
+        } else {
+            alert("please fill detail");
         }
+    }
 </script>
 <script src="{{ asset('assets/js/pages/rating.init.js') }}"></script>
 <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>

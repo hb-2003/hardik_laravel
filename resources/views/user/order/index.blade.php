@@ -249,6 +249,7 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
+                    <a href="{{route('user.account')}}" class="btn btn-danger"> Back</a>
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->

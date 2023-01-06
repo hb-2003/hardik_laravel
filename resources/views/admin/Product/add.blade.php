@@ -32,7 +32,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="card card-rgb(52,58,64)">
                         <div class="card-header">
                             <h3 class="card-title">Add Detai</h3>
