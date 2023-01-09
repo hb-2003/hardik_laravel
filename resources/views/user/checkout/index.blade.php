@@ -9,6 +9,7 @@
 
 @section('content')
 
+
 <div class="main-content">
 
     <div class="page-content">
@@ -16,7 +17,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div id="addproduct-accordion" class="custom-accordion">
-                        <form action="{{route('user.checkout')}}" method="POST" class="needs-validation">
+                        <form method="POST" action="{{route('user.checkout')}}" class="needs-validation" id="orderform" >
                             <div class="card">
                                 <a href="#addproduct-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="addproduct-billinginfo-collapse">
                                     <div class="p-4">
@@ -78,10 +79,10 @@
                                                     @enderror
                                                 </div>
                                             </div>
-            
+
                                         </div>
 
-                                        
+
                                         <div class="row p-3">
                                             <div class="col">
                                                 <div class="text-end mt-2 mt-sm-0">
@@ -196,18 +197,7 @@
                                         <div>
                                             <h5 class="font-size-14 mb-3">Payment method :</h5>
                                             <div class="row">
-                                                <div class="col-lg-3 col-sm-6">
-                                                    <div data-bs-toggle="collapse">
-                                                        <label class="card-radio-label">
-                                                            <input type="radio" value="credit" name="payment_method" id="pay-methodoption1" class="card-radio-input">
-                                                            <span class="card-radio py-3 text-center text-truncate">
-                                                                <i class="bx bx-credit-card d-block h2 mb-3"></i>
-                                                                Credit / Debit Card
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                </div>
+                                               
 
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div>
@@ -309,7 +299,7 @@
                                                 <h5 class="font-size-14 m-0">Discount :</h5>
                                             </td>
                                             <td>
-                                            $ 0
+                                                $ 0
                                             </td>
                                         </tr>
 
@@ -354,6 +344,60 @@
 @endsection
 
 @section('js')
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script type="text/javascript">
+//    alert("order placed");
+    const MakeOrder = async (e) => {
+        // e.preventDefault();
+        // e.preventDefault();
+        alert("order placed");
+
+        var options = {
+            key: "rzp_test_GLXthtWILx5Hk8", // Enter the Key ID generated from the Dashboard
+            amount: "{{$carttotal}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            currency: "INR",
+            name: "Shivay India",
+            description: "Checkout Online Payment",
+            image: "https://res.cloudinary.com/dexratgkq/image/upload/v1663236169/loader_2_v13pju.png",
+            // order_id: "6394309440c7d50b8ee5d22f", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            handler: function(response) {
+                // set the payment information
+
+                //   orderData["payment_information"]["payment_id"] =
+                //     response.razorpay_payment_id;
+                //   orderData["payment_information"]["status"] = "success";
+
+                //   dispatch(CreateOrder(orderData));
+                alert("placed order success")
+            },
+            prefill: {
+                name: "balar",
+                email: "balardarshan40@gmail.com",
+                contact: 7623919269,
+            },
+            notes: {
+                address: "moatavarachha"
+            },
+            theme: {
+                color: "#B61854",
+            },
+        };
+
+        const payMentObject = new window.Razorpay(options);
+        payMentObject.open();
+        payMentObject.on("payment.failed", function(response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
+    }
+</script>
+
 
 
 @endsection

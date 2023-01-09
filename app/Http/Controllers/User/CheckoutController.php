@@ -31,6 +31,7 @@ class CheckoutController extends Controller
 
         $address = Addresse::where('user_id', auth::user()->id)->get();
         $carttotal = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('total');
+        
         $conteries = Countrie::all();
         $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
 
@@ -96,7 +97,7 @@ class CheckoutController extends Controller
 
 
             foreach ($cartdetails as $cartdetail) {
-                echo "hii";
+                
 
 
                 Order_product::create([
@@ -110,6 +111,7 @@ class CheckoutController extends Controller
                     'products_quantity' => $cartdetail->quantity,
 
                 ]);
+                
 
 
 
@@ -123,7 +125,12 @@ class CheckoutController extends Controller
 
                 Cart::where('id', $cartdetail->id)->update(['status' => 1]);
             }
-
+           
+            if ($request->payment_method == "pay")
+            {
+                $orderid = $order->id;
+                return view('user.rezolpay.index',compact('carttotal','orderid'));
+            }
             session()->put('success', 'order complete.');
 
             return redirect()->route('user.dashboard');
@@ -249,5 +256,15 @@ class CheckoutController extends Controller
             return redirect()->route('user.dashboard');
         }
         return view('user.buycheckout.index', compact('address', 'cartdetails', 'conteries', 'carttotal', 'images'));
+    }
+
+    public function rezolpay(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            print_r($request->all());
+
+            return response()->json(['request' => $request]);
+        }
+
     }
 }

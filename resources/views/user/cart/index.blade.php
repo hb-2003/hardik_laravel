@@ -13,7 +13,7 @@
 
     <div class="page-content">
         <div class="container-fluid">
-            @if($count > 1)
+            @if($count = "1")
 
             <div class="row">
                 <div class="col-xl-9">

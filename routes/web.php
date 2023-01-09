@@ -68,6 +68,9 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     Route::match(['get', 'post'], 'checkout', 'CheckoutController@checkout')->name('checkout');
     Route::match(['get', 'post'], 'buycheckout', 'CheckoutController@buycheckout')->name('buycheckout');
     Route::match(['get', 'post'], 'contectus', 'ContectUsController@contectus')->name('contectus');
+    Route::match(['get', 'post'], 'rezolpay', 'CheckoutController@rezolpay')->name('rezolpay');
+    
+
 });
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 'verified', 'is_admin'])->group(function () {

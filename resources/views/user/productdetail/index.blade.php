@@ -58,7 +58,7 @@
                                             </div>
 
 
-                                            @if($product->products_quantity && $product->products_status=="0")
+                                            @if($product->products_quantity && $product->products_status=="1")
                                             <div class="row text-center mt-3">
 
                                                 <div class="col-sm-6">
@@ -179,21 +179,20 @@
                                                     </div> -->
 
 
-                                                    @if($product->products_quantity || $product['products_status']=="1")
-                                                    <div class="col-lg-5 col-sm-4">
+                                                    @if($product->products_quantity && $product['products_status']=="1")
+                                                            <!-- <h3 class="card">OUt OF Stock</h3> -->
+                                                            <div class="col-lg-5 col-sm-4">
                                                         <div class="mt-3">
                                                             <h5 class="font-size-14 mb-3">Select Quantity :</h5>
 
                                                             <div class="d-inline-flex">
                                                                 <select class="form-select w-sm" name="quantity" id="quantitytId_{{$product->id}}" value="">
                                                                     <option value="">select</option>
-                                                                    @for ($i = 0; $i < $product->products_quantity; $i++)
+                                                                    @for ($i = 1; $i <= $product->products_quantity; $i++)
                                                                         @if (10 >= $i)
                                                                         <option value="{{$i}}">{{$i}}</option>
                                                                         @endif
                                                                         @endfor
-
-
                                                                 </select>
                                                             </div>
                                                             @error('quantity')
@@ -201,8 +200,9 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    @else
 
+                                                    @else
+                                                        <h1>out of stock</h1>
                                                     @endif
 
                                                 </div>
