@@ -14,8 +14,8 @@
     <div class="page-content">
         <div class="container-fluid">
 
-           
-           <div class="row">
+
+            <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-body">
@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
 
-                              
+
                                 <div class="tab-content p-3 text-muted">
                                     <div class="tab-pane active" id="produt" role="tabpanel">
                                         <div class="row">
@@ -119,7 +119,7 @@
 
                                             @endforeach
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="row">
@@ -135,23 +135,24 @@
                         </div>
                     </div>
                 </div>
-            </div> 
-       
-            
+            </div>
+
+
         </div>
     </div>
+</div>
 
 
 
 
 
 
-    @endsection
-    @section('js')
+@endsection
+@section('js')
 
-    <!-- swiper js -->
-    <script src=" {{asset('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
+<!-- swiper js -->
+<script src=" {{asset('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
 
-    <!-- notification init -->
-    <script src=" {{asset('assets/js/pages/swiper-slider.init.js')}}"></script>
-    @endsection
+<!-- notification init -->
+<script src=" {{asset('assets/js/pages/swiper-slider.init.js')}}"></script>
+@endsection

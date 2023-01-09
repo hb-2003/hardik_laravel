@@ -1,4 +1,4 @@
-<hr style="border: 1px;">
+
 <div class="card">
     <div class="card-body">
         <div class="container">

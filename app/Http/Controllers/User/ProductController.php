@@ -10,6 +10,7 @@ use App\Models\Review;
 use App\Models\State;
 use Facade\FlareClient\Http\Response;
 use Faker\Provider\ar_JO\Address;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\URL;
@@ -54,5 +55,11 @@ class ProductController extends Controller
         ]);
       return redirect()->route('user.buycheckout');
 
+    }
+     
+    public function allproduct()
+    {
+        $products = Product::paginate(12);
+        return view('user.products.newproduct',compact('products'));
     }
 }

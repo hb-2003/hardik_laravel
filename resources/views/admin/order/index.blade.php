@@ -78,11 +78,11 @@
                                         </td>
                                         <td>
                                             @if($userorder->status == "0")
-                                            <span class="badge badge-info bg-primary">padding</span>
+                                            <span class="badge badge-warning">padding</span>
                                             @elseif($userorder->status == "1")
-                                            <span class="badge badge-info bg-success">success</span>
+                                            <span class="badge badge-success">Confirm</span>
                                             @else
-                                            <span class="badge badge-info bg-danger">refund</span>
+                                            <span class="badge badge-danger">refund</span>
                                             @endif
 
                                         </td>

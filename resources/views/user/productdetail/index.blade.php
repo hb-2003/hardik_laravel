@@ -35,8 +35,8 @@
                                                 </div>
 
                                                 <div class="d-none d-md-block">
-                                                    <div class="swiper-button-next"><i class='bx bx-right-arrow-alt'></i></div>
-                                                    <div class="swiper-button-prev"><i class='bx bx-left-arrow-alt'></i></div>
+                                                    <div class="swiper-button-next"><i class='fas fa-arrow-right'></i></div>
+                                                    <div class="swiper-button-prev"><i class='fas fa-arrow-left '></i></div>
                                                 </div>
                                             </div>
 
@@ -84,8 +84,8 @@
                                                 </div>
 
                                             </div>
-                                        
-                                            
+
+
                                             @else
 
                                             @endif
@@ -113,7 +113,7 @@
                                             <input type="hidden" class="price" name="price" id="priceID_{{$product->products_price}}" value="{{ $product->products_price }}" readonly>
                                             <div>
                                                 <div class="row">
-                                                    
+
 
                                                     <div class="col-md-6">
                                                         <div class="mt-3">
@@ -302,7 +302,7 @@
                                                             <div class="col-md-9">
                                                                 <div class="text-muted">
                                                                     <p>{{$product->is_current}}</p>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -475,9 +475,7 @@
     </div> <!-- end cardbody -->
     <!-- end card -->
 </div>
-</div>
 
-</div>
 @endsection
 
 @section('js')

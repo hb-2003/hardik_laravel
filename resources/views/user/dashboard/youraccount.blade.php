@@ -11,13 +11,11 @@
 
 
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
             <h2>Your Account</h2>
             <div class="row">
                 <div class="col-12">
-
                     <div class="row">
                         <div class="col-lg-4">
                             <a href="{{route('user.order')}}">

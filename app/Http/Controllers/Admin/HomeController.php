@@ -23,11 +23,12 @@ class HomeController extends Controller
         $totalweekOrder = Order::where('created_at', '>', Carbon::now()->subWeek(1))->count();
         $totalpenddingOrder = Order::where('order_status',0)->count();
         $totalorerOrder = Order::where('order_status',3 )->where('status',3)->count();
-        
+        $Products  =  Product::with('productimage')->latest()->take(5)->get();
+       
         // session()->put('success','success!');
         // session()->put('error','error!');
          
-        return view('admin.home',compact('totalusers','totalanverifyuser','last24users','lastweekusers','totalOrder','total24Order','totalweekOrder','totalpenddingOrder','totalorerOrder','totalproduct'));
+        return view('admin.home',compact('totalusers','totalanverifyuser','last24users','lastweekusers','totalOrder','total24Order','totalweekOrder','totalpenddingOrder','totalorerOrder','totalproduct','Products'));
     }
 
 

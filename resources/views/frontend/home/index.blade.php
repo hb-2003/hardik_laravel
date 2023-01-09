@@ -178,7 +178,8 @@
                     </div>
 
 
-
+                    @auth
+                        @else
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item noti-icon">
                             <a href="{{ route('login') }}" class="add-event" style="color: white;">Login /</a>
@@ -186,6 +187,39 @@
                         </button>
 
                     </div>
+                    @endauth
+                    @auth
+                    <!-- <div class="account order-1 dropdown">
+                        <a href="{{route('user.dashboard')}}" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
+                            <div class="user-dp">
+                                <img src="{{ Auth::user()->image() }}?w=35&h=35" alt="{{ Auth::user()->user_name }}">
+                            </div>
+                            <span>{{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}</span>
+                            <i class="fas fa-angle-down"></i>
+                        </a>
+                        
+                    </div> -->
+                    <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} {{ ucfirst(Auth::user()->user_name) }}
+                </button>
+                <div class="dropdown-menu dropdown-menu-end pt-0">
+                    <h6 class="dropdown-header">Welcome {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} ({{ ucfirst(Auth::user()->user_name) }})</h6>
+                    <a class="dropdown-item" href="{{route('user.account')}}"></i> <span class="align-middle">your account</span></a>
+                    <a class="dropdown-item" href="{{route('user.order')}}"> <span class="align-middle">your ordere</span></a>
+                    <!-- <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
+                    <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
+                    <a class="dropdown-item" href="auth-lockscreen-cover.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a> -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"> sign out</a>
+                    </form>
+
+                </div>
+            </div>
+                    @endauth
                 </div>
             </div>
         </header>

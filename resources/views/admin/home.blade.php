@@ -50,7 +50,7 @@
                     <!-- small box -->
                     <div class="small-box bg-" style="background-color: #343a40; color:white;">
                         <div class="inner">
-                            <h3>{{$totalusers - $totalanverifyuser}}  </h3>
+                            <h3>{{$totalusers - $totalanverifyuser}} </h3>
 
                             <p> verify user</p>
                         </div>
@@ -88,10 +88,10 @@
 
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
-                
+
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-" style="background-color: #343a40; color:white;">
@@ -148,10 +148,10 @@
 
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
-               
+
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-" style="background-color: #343a40; color:white;">
@@ -197,9 +197,57 @@
 
 
 
+            </div>
 
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Recently Added Products</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                              
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <ul class="products-list product-list-in-card pl-2 pr-2">
+                                @foreach($Products as $Product)
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="{{asset('images/product/'.$Product->productimage[0]->name)}}" alt="Product Image" class="img-size-50">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">{{$Product ->products_name }}
+                                            <span class="badge badge-warning float-right">{{$Product ->products_price }}</span></a>
+                                        <span class="product-description">
+                                            {{$Product ->is_current }}
+                                        </span>
+                                    </div>
+                                </li>
+                                @endforeach
+
+
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer text-center">
+                            <a href="{{route('admin.Product')}}" class="uppercase">View All Products</a>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+                </div>
+            </div>
         </div><!-- /.container-fluid -->
     </section>
 </div>
 
+@endsection
+
+@section('js')
+<!-- <script src="{{asset('admin/dist/js/pages/dashboard3.js') }}"></script>
+<script src="{{asset('admin/plugins/chart.js/Chart.min.js') }}"></script> -->
 @endsection

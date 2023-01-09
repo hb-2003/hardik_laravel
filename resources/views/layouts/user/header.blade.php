@@ -46,16 +46,11 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                                     <span data-key="t-dashboard">Dashboard</span>
                                 </a>
                             </li>
-
-
-
                         </ul>
                     </div>
                 </nav>
             </div>
-
         </div>
-
         <div class="d-flex">
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,20 +68,12 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                 </div>
             </div>
 
-        
-
             <div class="dropdown d-inline-block">
                 <a href="{{route('user.cartdetail')}}" class="btn header-item noti-icon  pt-4.5" style="padding-top: 2rem;">
                     <iconify-icon icon="material-symbols:garden-cart-outline"></iconify-icon>
                     <span id="cartcount" class="noti-dot bg-danger rounded-pill">{{$cartscount}}</span>
-                </a>
-
-
-
-                
+                </a>     
             </div>
-
-            
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -110,20 +97,5 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
             </div>
         </div>
     </div>
-
-
-
-
-    <!-- end dash troggle-icon -->
-
 </header>
-
 <div class="hori-overlay"></div>
-
-
-
-<!-- ============================================================== -->
-<!-- Start right Content here -->
-<!-- ============================================================== -->
-
-<!-- end main content-->
