@@ -58,7 +58,7 @@
                                             </div>
 
 
-                                            @if($product->products_quantity && $product->products_status=="1")
+                                            @if($product->products_quantity > 0 && $product->products_status=="0")
                                             <div class="row text-center mt-3">
 
                                                 <div class="col-sm-6">
@@ -103,10 +103,20 @@
                                             </h5>
 
                                             <div class="text-muted">
-                                                <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> 4.2</span> 234 Reviews
+
+                                                <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> {{ $avreagereview }}</span> {{$userproductcount}} Reviews   
+                                            </div>
+                                            @if($product->products_quantity > 0 && $product->products_status=="0")
+                                            <div class="mt-3">
+                                                <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2"><?php echo (round($product->products_price * 110 / 100))  ?></del>{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
                                             </div>
 
-                                            <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2"><?php echo (round($product->products_price * 110 / 100))  ?></del>{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
+
+                                            @else
+                                            <h6 class="" style="color: red;">out of stock</h6>
+                                            @endif
+
+
 
                                             <p class="mt-4 text-muted">{{$product->is_current}}</p>
 
@@ -179,9 +189,9 @@
                                                     </div> -->
 
 
-                                                    @if($product->products_quantity && $product['products_status']=="1")
-                                                            <!-- <h3 class="card">OUt OF Stock</h3> -->
-                                                            <div class="col-lg-5 col-sm-4">
+                                                    @if($product->products_quantity > 0 && $product->products_status=="0")
+                                                    <!-- <h3 class="card">OUt OF Stock</h3> -->
+                                                    <div class="col-lg-5 col-sm-4">
                                                         <div class="mt-3">
                                                             <h5 class="font-size-14 mb-3">Select Quantity :</h5>
 
@@ -202,7 +212,7 @@
                                                     </div>
 
                                                     @else
-                                                        <h1>out of stock</h1>
+
                                                     @endif
 
                                                 </div>
@@ -217,7 +227,7 @@
                                         <div class="mt-4 pt-3">
                                             <h5 class="font-size-14 mb-3">Reviews : </h5>
                                             <div class="text-muted mb-3">
-                                                <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> 4.2</span> 234 Reviews
+                                                <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> {{ $avreagereview }}</span> {{$userproductcount}} Reviews
                                             </div>
                                             <div class="border py-4 rounded">
 

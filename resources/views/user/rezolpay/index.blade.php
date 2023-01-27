@@ -13,9 +13,6 @@
 
     <div class="page-content">
         <div class="container-fluid">
-
-
-        {{$orderid}}
         </div>
     </div>
 </div>
@@ -30,13 +27,13 @@
    
         // e.preventDefault();
         // e.preventDefault();
-        alert("order placed");
+      
 
         var options = {
             key: "rzp_test_GLXthtWILx5Hk8", // Enter the Key ID generated from the Dashboard
             amount: "{{$carttotal}}" * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: "INR",
-            name: "Shivay India",
+            name: " {{$request->billing_name}}",
             description: "Checkout Online Payment",
             image: "https://res.cloudinary.com/dexratgkq/image/upload/v1663236169/loader_2_v13pju.png",
             // order_id: "6394309440c7d50b8ee5d22f", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -58,22 +55,23 @@
                 xml.open("POST","{{route('user.rezolpay')}}");
                 
                 xml.onload = () => {
-                    console.log(   xml.responseText);
+                
+                     window.location.href=`/user/order`;
                 }
 
                 xml.send(formData);
                
             },
             prefill: {
-                name: "balar",
-                email: "balardarshan40@gmail.com",
-                contact: 7623919269,
+                name: " {{$request->billing_name}}",
+                email: " {{ $request->email}}",
+                contact: "{{ $request->customers_telephone}}",
             },
             notes: {
-                address: "moatavarachha"
+                address: "{{ $request->countery}}"
             },
             theme: {
-                color: "#B61854",
+                color: "#3c1d56",
             },
         };
 

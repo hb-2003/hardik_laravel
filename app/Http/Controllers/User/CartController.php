@@ -75,6 +75,8 @@ class CartController extends Controller
     {
         $count =  Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->count();
 
+        // echo $count;
+        // die;
         // if ($count  ==  0) {
         //     session()->put('success', 'cart in not preo complete.');
         //     return redirect()->route('user.dashboard');

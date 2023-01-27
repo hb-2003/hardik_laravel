@@ -13,8 +13,33 @@
 
     <div class="page-content">
         <div class="container-fluid">
-            @if($count = "1")
+          
+            @if($count == 0)
+            <div class="row">
+                <div class="col-xl-12">
 
+
+                    <div class="card card-body">
+                        <h1 class="mb-1">Your Vusey Cart is empty.</h1>
+                        <p class="card-text">Your shopping cart is waiting. Give it purpose – fill it with household supplies,.
+                            Continue shopping on the <a href="{{route('user.dashboard')}}" class="link">Vusey.com.homepage</a> learn about today's deals, or visit your Wish List.</p>
+
+
+                    </div>
+                </div>
+                <div class="row my-6">
+                        <div class="col-sm-6">
+                            <a href="{{route('user.dashboard')}}" class="link">
+                                <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
+                        </div> <!-- end col -->
+                       <!-- end col -->
+                    </div> <!-- end row-->
+
+               
+            </div>
+
+            
+            @else
             <div class="row">
                 <div class="col-xl-9">
 
@@ -90,7 +115,7 @@
 
                     <!-- end card -->
 
-                    <div class="row my-">
+                    <div class="row my-6">
                         <div class="col-sm-6">
                             <a href="{{route('user.dashboard')}}" class="link">
                                 <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
@@ -141,35 +166,6 @@
                                 </div>
                                 <!-- end table-responsive -->
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @else
-            <div class="row">
-                <div class="col-xl-12">
-
-
-                    <div class="card card-body">
-                        <h1 class="mb-1">Your Vusey Cart is empty.</h1>
-                        <p class="card-text">Your shopping cart is waiting. Give it purpose – fill it with household supplies,.
-                            Continue shopping on the <a href="{{route('user.dashboard')}}" class="link">Vusey.com.homepage</a> learn about today's deals, or visit your Wish List.</p>
-
-
-                    </div>
-
-                    <!-- end card -->
-
-
-                    <!-- end card -->
-
-                    <!-- end row-->
-                </div>
-
-                <div class="col-xl-4">
-                    <div class="mt-5 mt-lg-0">
-                        <div class="card border shadow-none">
-
                         </div>
                     </div>
                 </div>

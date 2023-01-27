@@ -52,10 +52,9 @@
 
                                             <div class="col-xl-4 col-sm-6">
                                                 <div class="card dash-product-box shadow-none border text-center">
+                                                <a href="{{route('user.productdetail',$product->id)}}">
                                                     <div class="card-body">
-                                                        <div class="pricing-badge">
-                                                            <span class="badge bg-danger">InActive</span>
-                                                        </div>
+                                                      
                                                         <div class="dash-product-img">
                                                             <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
                                                         </div>
@@ -64,7 +63,7 @@
                                                             <a href="#" class="text-dark lh-base">Stylish Cricket &amp; Walking Light Weight Shoes</a>
                                                         </h5>
 
-                                                        <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5>
+                                                        <!-- <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5> -->
 
                                                         <div class="font-size-16 mt-2">
                                                             <i class="bx bx-star text-warning"></i>
@@ -78,6 +77,7 @@
                                                                 Now</a>
                                                         </div>
                                                     </div>
+                                                </a>
                                                 </div>
                                             </div>
 
@@ -87,9 +87,7 @@
                                                 <div class="card dash-product-box shadow-none border text-center">
                                                     <a href="{{route('user.productdetail',$product->id)}}">
                                                         <div class="card-body">
-                                                            <div class="pricing-badge">
-                                                                <span class="badge bg-success">Active</span>
-                                                            </div>
+                                                           
                                                             <div class="dash-product-img">
                                                                 <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
                                                             </div>

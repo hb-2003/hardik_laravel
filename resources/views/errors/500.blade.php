@@ -41,7 +41,7 @@
                                 <h4 class="text-uppercase text-white"></h4>
                                 <p class="font-size-15 mx-auto text-white-50 w-75 mt-4">   {{ __('Server Error') }}</p>
                                 <div class="mt-5 text-center">
-                                    <a class="btn btn-primary waves-effect waves-light" href="{{ app('router')->has('home') ? route('home') : url('/') }}"> BACK TO HOME PAGE</a>
+                                    <a class="btn btn-primary waves-effect waves-light" href="{{ app('router')->has('home') ? route('home') :  route('home') }}"> BACK TO HOME PAGE</a>
                                 </div>
                                 <div class="mt-5 pt-4 px-5">
                                     <img src="{{asset('assets/images/error-img.png')}}" alt="" class="img-fluid">

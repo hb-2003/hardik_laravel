@@ -41,7 +41,7 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                     <div class="collapse navbar-collapse" id="topnav-menu-content">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link dropdown-toggle arrow-none" href="index-2.html" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.dashboard')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-home-circle icon"></i>
                                     <span data-key="t-dashboard">Dashboard</span>
                                 </a>
@@ -57,10 +57,12 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                     <i class="bx bx-search icon-sm"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-                    <form class="p-2">
+                 
+                    <form  class="p-2" method="POST" action="{{ route('user.search') }}" enctype="multipart/form-data">
+                    @csrf
                         <div class="search-box">
                             <div class="position-relative">
-                                <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
+                                <input type="text" class="form-control rounded bg-light border-0" name="search" placeholder="Search...">
                                 <i class="bx bx-search search-icon"></i>
                             </div>
                         </div>

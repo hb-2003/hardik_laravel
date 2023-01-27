@@ -20,14 +20,14 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        
+
 
         $productssliders = Product::with('productimage')->latest()->take(5)->get();
-      
-       
+
+
         $products = Product::with('productimage')->paginate(12);
 
-      
+
 
         $categories = Categorie::all();
 
@@ -150,22 +150,31 @@ class DashboardController extends Controller
         }
     }
 
-    public function categorie(Request $request ,$id)
+    public function categorie(Request $request, $id)
     {
 
-       
-        $count = Product::with('productimage')->where('products_type',$id)->count();
-        if($count == 0)
-        {
+
+        $count = Product::with('productimage')->where('products_type', $id)->count();
+        if ($count == 0) {
             session()->put('success', 'Your email address has been changed successfully.');
             return redirect()->back();
         }
-        $products = Product::with('productimage')->where('products_type',$id)->paginate(12);
-      
+        $products = Product::with('productimage')->where('products_type', $id)->paginate(12);
+
         //  echo "<pre>";
         // print_r('request');
         // die;
 
-        return view('user.productdetail.categorie',compact('products'));
+        return view('user.productdetail.categorie', compact('products'));
+    }
+    public function search(Request $request)
+    {
+
+
+        $search = $request->input('search');
+        $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->latest()->paginate();
+
+
+        return view('user.search.index', compact('products'));
     }
 }

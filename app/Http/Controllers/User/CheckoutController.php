@@ -39,6 +39,13 @@ class CheckoutController extends Controller
         if ($request->isMethod('POST')) {
 
 
+            $ip = '$_SERVER["HTTP_CF_CONNECTING_IP"]';
+
+            // Use JSON encoded string and converts
+            // it into a PHP variable
+            $ipdat = @json_decode(file_get_contents(
+                "http://www.geoplugin.net/json.gp?ip=" . $ip
+            ));
             $request->validate([
                 'billing_name' => 'required',
                 'email' => 'required',
@@ -47,7 +54,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'required',
 
             ]);
-
+             $countery = $ipdat->geoplugin_countryName;
             $addres = Addresse::where('id', $request->billing_address_format_id)->first();
 
             $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
@@ -62,7 +69,7 @@ class CheckoutController extends Controller
                 'customers_id' => auth::user()->id,
                 'customers_name' => $request->billing_name,
                 'customers_telephone' => $request->customers_telephone,
-                'email' => $request->billing_address_format_id,
+                'email' => $request->email,
                 'delivery_name' => $addres->first_name,
                 'billing_name' => $request->billing_name,
                 'billing_street_address' => $addres->address,
@@ -92,6 +99,11 @@ class CheckoutController extends Controller
                 'status' => 0,
 
             ]);
+            if ($request->payment_method == "pay")
+            {
+                $orderid = $order->id;
+                return view('user.rezolpay.index',compact('carttotal','orderid','request','order','countery'));
+            }
             //    echo $order->id;
             //    die;
 
@@ -126,11 +138,7 @@ class CheckoutController extends Controller
                 Cart::where('id', $cartdetail->id)->update(['status' => 1]);
             }
            
-            if ($request->payment_method == "pay")
-            {
-                $orderid = $order->id;
-                return view('user.rezolpay.index',compact('carttotal','orderid'));
-            }
+            
             session()->put('success', 'order complete.');
 
             return redirect()->route('user.dashboard');
@@ -154,7 +162,13 @@ class CheckoutController extends Controller
 
         if ($request->isMethod('POST')) {
 
+            $ip = '$_SERVER["HTTP_CF_CONNECTING_IP"]';
 
+            // Use JSON encoded string and converts
+            // it into a PHP variable
+            $ipdat = @json_decode(file_get_contents(
+                "http://www.geoplugin.net/json.gp?ip=" . $ip
+            ));
             $request->validate([
                 'billing_name' => 'required',
                 'email' => 'required',
@@ -180,7 +194,7 @@ class CheckoutController extends Controller
                 'customers_id' => auth::user()->id,
                 'customers_name' => $request->billing_name,
                 'customers_telephone' => $request->customers_telephone,
-                'email' => $request->billing_address_format_id,
+                'email' => $request->email,
                 'delivery_name' => $addres->first_name,
                 'billing_name' => $request->billing_name,
                 'billing_street_address' => $addres->address,
@@ -207,49 +221,43 @@ class CheckoutController extends Controller
                 'delivery_phone	' => NUll,
                 'pyment_type' => $request->payment_method,
                 'transaction_id ' => NUll,
-                'status' => 1,
+                'status' => 0   ,
 
             ]);
             //    echo $order->id;
             //    die;
 
+            $countery = $ipdat->geoplugin_countryName;
+            if ($request->payment_method == "pay")
+            {
+                $orderid = $order->id;
+                return view('user.rezolpay.index',compact('carttotal','orderid','request','order','countery'));
+            }
+
+                Order_product::create([
+                    'orders_id' => $order->id,
+                    'products_id' => $cartdetails->product[0]->id,
+                    'products_name' =>  $cartdetails->product[0]->products_name,
+                    'products_price' =>  $cartdetails->product[0]->products_price,
+                    'products_image' => $images->name,
+                    'final_price' => $cartdetails->product_price,
+                    'products_tax' => 0,
+                    'products_quantity' => $cartdetails->quantity,
+
+                ]);
 
 
 
-            Order_product::create([
-                'orders_id' => $order->id,
-                'products_id' => $cartdetails->product[0]->id,
-                'products_name' =>  $cartdetails->product[0]->products_name,
-                'products_price' =>  $cartdetails->product[0]->products_price,
-                'products_image' => $images->name,
-                'final_price' => $cartdetails->product_price,
-                'products_tax' => 0,
-                'products_quantity' => $cartdetails->quantity,
+                $Product  = Product::where('id', $cartdetails->product[0]->id)->first();
 
-            ]);
+                $quantity = $Product->products_quantity - $cartdetails->quantity;
 
+                $Product->update([
+                    'products_quantity' => $quantity,
+                    'products_max_stock' => $quantity,
+                ]);
 
-
-            $Product  = Product::where('id', $cartdetails->product[0]->id)->first();
-
-            $quantity = $Product->products_quantity - $cartdetails->quantity;
-
-            $Product->update([
-                'products_quantity' => $quantity,
-                'products_max_stock' => $quantity,
-            ]);
-
-            Cart::where('id', $cartdetails->id)->update(['status' => 1]);
-
-
-
-
-
-
-
-
-
-
+                Cart::where('id', $cartdetails->id)->update(['status' => 1]);
 
             session()->put('success', 'order complete.');
 
@@ -261,8 +269,31 @@ class CheckoutController extends Controller
     public function rezolpay(Request $request)
     {
         if ($request->isMethod('POST')) {
-            print_r($request->all());
 
+            Order::where('id', $request->orderid)->update(['transaction_id' => $request->id]);
+            $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
+            foreach ($cartdetails as $cartdetail) {
+                Order_product::create([
+                    'orders_id' => $request->orderid,
+                    'products_id' => $cartdetail->product[0]->id,
+                    'products_name' => $cartdetail->product[0]->products_name,
+                    'products_price' => $cartdetail->product_price,
+                    'products_image' => $cartdetail->productimage[0]->name,
+                    'final_price' => $cartdetail->product_price,
+                    'products_tax' => 0,
+                    'products_quantity' => $cartdetail->quantity,
+                ]);
+            
+                $Product  = Product::where('id', $cartdetail->product[0]->id)->first();
+                $quantity = $Product->products_quantity - $cartdetail->quantity;
+                $Product->update([
+                    'products_quantity' => $quantity,
+                    'products_max_stock' => $quantity,
+                ]);
+
+                Cart::where('id', $cartdetail->id)->update(['status' => 1]);
+            }
+            
             return response()->json(['request' => $request]);
         }
 

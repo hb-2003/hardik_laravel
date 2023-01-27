@@ -181,8 +181,8 @@
                                             </div>
                                             @elseif($userorder->order_status == 2)
                                             <div class="d-flex gap-3">
-
-                                                <a href="{{ route('user.cansalorderreorder',$userorder->id)}}" class="btn btn-success">Reorder</a>
+                                            <h6> cansal order</h6>
+                                                <!-- <a href="{{ route('user.cansalorderreorder',$userorder->id)}}" class="btn btn-success">Reorder</a> -->
                                             </div>
                                             @elseif($userorder->order_status == 3)
                                             <div class="d-flex gap-3">

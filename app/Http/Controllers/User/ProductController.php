@@ -28,9 +28,13 @@ class ProductController extends Controller
         $productreviews =  Review::where('product_id', $id)->get();
         $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $id)->first();
         $userproductcount = Review::where('user_id', auth::user()->id)->where('product_id', $id)->count();
-       
+        $userproductretingsum = Review::where('user_id', auth::user()->id)->where('product_id', $id)->sum('reting');
+      
+       $avreagereview =  $userproductretingsum / $userproductcount;
+      
+        
 
-        return view('user.productdetail.index', compact('product','productreviews','userproductreview','userproductcount'));
+        return view('user.productdetail.index', compact('product','productreviews','userproductreview','userproductcount','avreagereview'));
     }
 
     public function buyproduct(Request $request,$id)
