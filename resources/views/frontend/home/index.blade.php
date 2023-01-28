@@ -1,3 +1,10 @@
+
+<?php
+use App\Http\Requests\Auth\LoginRequest;
+
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 
@@ -189,16 +196,7 @@
                     </div>
                     @endauth
                     @auth
-                    <!-- <div class="account order-1 dropdown">
-                        <a href="{{route('user.dashboard')}}" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                            <div class="user-dp">
-                                <img src="{{ Auth::user()->image() }}?w=35&h=35" alt="{{ Auth::user()->user_name }}">
-                            </div>
-                            <span>{{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}</span>
-                            <i class="fas fa-angle-down"></i>
-                        </a>
-                        
-                    </div> -->
+                  
                     <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} {{ ucfirst(Auth::user()->user_name) }}
@@ -445,7 +443,7 @@
                                 @foreach($productssliders as $productsslider)
                                 
                                 <div class="col-lg-2" align-items-center>
-                                    <a href="{{route('user.productdetail',$productsslider->id)}}">
+                                    <a href="{{route('productdetail',$productsslider->id)}}">
                                         <img src="{{asset('images/product/'.$productsslider->productimage[0]->name) }}" class="img-fluid mx-auto d-block" alt>
                                         <p class="mt-2 mb-lg-0 mr-5">{{$productsslider->products_name}}</p>
 

@@ -32,12 +32,6 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
          
 
-        // $data=['name'=>$request['smit'],'data'=>""];
-        //    $user['to']=$request['email'];
-        //    Mail::send('mail',$data,function($messages) use ($user){
-        //    $messages->to($user['to']);
-        //    $messages->subject('Login');
-        //  });
 
         $request->session()->regenerate();
 

@@ -17,6 +17,7 @@ use Alcaitiff\LaravelUrlEncode\Routing\Router;
 Route::namespace('Frontend')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('file/{url}/{url1?}/{name?}', 'HomeController@file')->name('file');
+    Route::match(['get', 'post'], 'productdetail/{id}', 'HomeController@productdetail')->name('productdetail');
 });
 
 Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 'verified', 'is_user'])->group(function () {
@@ -78,6 +79,8 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 'verified', 'is_admin'])->group(function () {
     Route::get('home', 'HomeController@home')->name('home');
+    //user
+    Route::match(['get', 'post'], 'User', 'UserController@user')->name('User');
 
     // Manufacturer
     Route::match(['get', 'post'], 'Manufacturer', 'ManufacturerController@Manufacturer')->name('Manufacturer');

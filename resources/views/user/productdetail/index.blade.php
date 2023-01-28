@@ -508,7 +508,7 @@
                 success: function(responseData) {
 
 
-                    $('#cartcount').html(responseData['cartscount']);
+                    window.location.href=`/user/cartdetail`;
 
                 }
 
@@ -534,7 +534,7 @@
 
                 },
                 success: function(responseData) {
-                    location.reload();
+                   
 
                 }
 

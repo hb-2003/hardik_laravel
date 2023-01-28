@@ -13,7 +13,7 @@
 
     <div class="page-content">
         <div class="container-fluid">
-          
+
             @if($count == 0)
             <div class="row">
                 <div class="col-xl-12">
@@ -28,17 +28,17 @@
                     </div>
                 </div>
                 <div class="row my-6">
-                        <div class="col-sm-6">
-                            <a href="{{route('user.dashboard')}}" class="link">
-                                <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
-                        </div> <!-- end col -->
-                       <!-- end col -->
-                    </div> <!-- end row-->
+                    <div class="col-sm-6">
+                        <a href="javascript:history.back()" class="link">
+                            <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
+                    </div> <!-- end col -->
+                    <!-- end col -->
+                </div> <!-- end row-->
 
-               
+
             </div>
 
-            
+
             @else
             <div class="row">
                 <div class="col-xl-9">
@@ -117,7 +117,7 @@
 
                     <div class="row my-6">
                         <div class="col-sm-6">
-                            <a href="{{route('user.dashboard')}}" class="link">
+                            <a href="javascript:history.back()" class="link">
                                 <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
                         </div> <!-- end col -->
                         <div class="col-sm-6">

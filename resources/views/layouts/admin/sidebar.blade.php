@@ -1,4 +1,16 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+<?php
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Order;
+$usercount =User::all()->count();
+$productcount =Product::all()->count();
+$paddingorders =  Order::with('order_product')->where('status', 1)->where('order_status', 0)->count();
+$cansalorders =  Order::with('order_product')->where('status', 2)->where('order_status', 0)->count();
+$ordercount = $paddingorders - $cansalorders;
+?>
+
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
 
     <!-- Sidebar -->
@@ -41,12 +53,23 @@
 
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.User')}}" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                        Users
+                           
+                            <span class="badge badge-info right"><?php  echo $usercount; ?></span>
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Catalog
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            <span class="badge badge-info right"><?php  echo $productcount; ?></span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -96,7 +119,7 @@
                         <p>
                             order
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            <span class="badge badge-info right"><?php  echo $ordercount; ?></span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -143,7 +166,7 @@
                 </li>
 
 
-                <li class="nav-item menu-open">
+                <li class="nav-item ">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>Logout</a>
