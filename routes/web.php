@@ -18,6 +18,7 @@ Route::namespace('Frontend')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('file/{url}/{url1?}/{name?}', 'HomeController@file')->name('file');
     Route::match(['get', 'post'], 'productdetail/{id}', 'HomeController@productdetail')->name('productdetail');
+    Route::match(['get', 'post'], 'cart', 'HomeController@Cart')->name('cart');
 });
 
 Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 'verified', 'is_user'])->group(function () {

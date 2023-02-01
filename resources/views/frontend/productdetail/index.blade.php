@@ -189,16 +189,7 @@
                     </div>
                     @endauth
                     @auth
-                    <!-- <div class="account order-1 dropdown">
-                        <a href="{{route('user.dashboard')}}" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                            <div class="user-dp">
-                                <img src="{{ Auth::user()->image() }}?w=35&h=35" alt="{{ Auth::user()->user_name }}">
-                            </div>
-                            <span>{{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}</span>
-                            <i class="fas fa-angle-down"></i>
-                        </a>
-                        
-                    </div> -->
+                   
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} {{ ucfirst(Auth::user()->user_name) }}
@@ -785,7 +776,7 @@
         function yourFunction(product_id, quantity, price) {
             if (quantity.length > 0) {
                 $.ajax({
-                    url: "{{route('user.cart')}}",
+                    url: "{{route('cart')}}",
                     type: "POST",
                     data: {
                         "_token": "{{ csrf_token() }}",
@@ -798,7 +789,7 @@
                     success: function(responseData) {
 
 
-                        window.location.href = `/user/cartdetail`;
+                        window.location.href = `/login`;
 
                     }
 
@@ -824,7 +815,7 @@
 
                     },
                     success: function(responseData) {
-
+                        location.reload();
 
                     }
 

@@ -35,6 +35,8 @@ class ReviewController extends Controller
             
             if ($count == 1) {
                 $productreview =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->first();
+                echo $userproductreview;
+                
                 $productreview->update([
 
                     'product_id' => $request->product_id,
@@ -53,10 +55,9 @@ class ReviewController extends Controller
                     'date' => Carbon::now(),
                 ]);
             }
-            $productreviews =  Review::where('product_id', $request->product_id)->get();
-            return response(compact('userproductreview', 'productreviews'));
+           return redirect()->back();
         }
-        return response(compact('userproductreview', 'productreviews'));
+        return redirect()->back();
     }
     // public function productdetail($id)
     // {

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\auth;
+use phpDocumentor\Reflection\Types\Null_;
 use Reflector;
 use Str;
 
@@ -23,6 +24,10 @@ class CartController extends Controller
     {
         if ($request->isMethod('POST')) {
 
+            if( auth::user()->id == NUll)
+            {
+                return redirect()->route('login');
+            }
             $countproduct = Cart::where('product_id', $request->product_id)->where('user_id', auth::user()->id)->where('status', 0)->count();
             if ($countproduct == 1) {
 
