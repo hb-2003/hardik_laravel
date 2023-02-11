@@ -205,11 +205,6 @@ use App\Http\Requests\Auth\LoginRequest;
                     <h6 class="dropdown-header">Welcome {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} ({{ ucfirst(Auth::user()->user_name) }})</h6>
                     <a class="dropdown-item" href="{{route('user.account')}}"></i> <span class="align-middle">your account</span></a>
                     <a class="dropdown-item" href="{{route('user.order')}}"> <span class="align-middle">your ordere</span></a>
-                    <!-- <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
-                    <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
-                    <a class="dropdown-item" href="auth-lockscreen-cover.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a> -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"> sign out</a>
@@ -230,9 +225,7 @@ use App\Http\Requests\Auth\LoginRequest;
             <div class="row">
                 <div class="col-xl-12 ">
                     <div class="" style="width: 100%;">
-                        <!-- <div class="card-header justify-content-between d-flex align-items-center">
-                            <h4 class="card-title">Default Swiper</h4>
-                        </div>end card header -->
+                      
                         <div class="card-body ">
                             <div class="swiper-container keyboard-control" dir="ltr">
 
@@ -241,157 +234,12 @@ use App\Http\Requests\Auth\LoginRequest;
                             </div>
 
 
-                            <!-- <div class="swiper-slide">
-
-                                        <img src="{{ asset('images\home\tabel.jpg')}}" class="img-fluid mx-auto d-block" alt>
-
-
-                                    </div>
-                                    <div class="swiper-slide">
-
-                                        <img src="{{ asset('images\home\chear.jpg')}}" class="img-fluid mx-auto d-block" alt>
-
-
-                                    </div>
-                                    <div class="swiper-slide">
-
-                                        <img src="{{ asset('images\home\bad.jpg')}}" class="img-fluid mx-auto d-block" alt>
-
-
-                                    </div> -->
-
-                        </div><!-- end card body -->
-                    </div>
-                </div>
-                <!-- <div class="col-xl-4">
-                    <div class="card" style="width: 108%;">
-                        <div class="card-body ">
-                            <img src="{{asset('images/home/empty-modern-room-with-furniture.jpg') }}" class="img-fluid  d-block" alt>
                         </div>
                     </div>
-                </div> -->
+                </div>
+               
             </div>
-            <!-- <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div>
-                                            <h5>Showing result for </h5>
-                                            <ol class="breadcrumb p-0 bg-transparent mb-2">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                                <li class="breadcrumb-item active"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-inline float-md-end">
-                                            <div class="search-box ms-2">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control bg-light border-light rounded" placeholder="Search...">
-                                                    <i class="bx bx-search search-icon"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                              
-                                <div class="tab-content p-3 text-muted">
-                                    <div class="tab-pane active" id="produt" role="tabpanel">
-                                        <div class="row">
-                                            @foreach($products as $product)
-                                            @if($product['products_status']=="1")
-
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card dash-product-box shadow-none border text-center">
-                                                    <div class="card-body">
-                                                        <div class="pricing-badge">
-                                                            <span class="badge bg-danger">InActive</span>
-                                                        </div>
-                                                        <div class="dash-product-img">
-                                                            <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
-                                                        </div>
-
-                                                        <h5 class="font-size-17 mt-1">
-                                                            <a href="#" class="text-dark lh-base">Stylish Cricket &amp; Walking Light Weight Shoes</a>
-                                                        </h5>
-
-                                                        <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5>
-
-                                                        <div class="font-size-16 mt-2">
-                                                            <i class="bx bx-star text-warning"></i>
-                                                            <i class="bx bx-star text-warning"></i>
-                                                            <i class="bx bx-star text-warning"></i>
-                                                            <i class="bx bx-star-half-full text-warning"></i>
-                                                        </div>
-
-                                                        <div class="mt-4">
-                                                            <a href="#" class="btn btn-primary btn-sm w-lg"><i class="bx bx-cart me-1 align-middle"></i> Buy
-                                                                Now</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            @elseif($product['products_status']=="0")
-
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card dash-product-box shadow-none border text-center">
-                                                    <a href="{{route('user.productdetail',$product->id)}}">
-                                                        <div class="card-body">
-                                                            <div class="pricing-badge">
-                                                                <span class="badge bg-success">Active</span>
-                                                            </div>
-                                                            <div class="dash-product-img">
-                                                                <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
-                                                            </div>
-
-                                                            <h5 class="font-size-17 mt-1">
-                                                                <a href="#" class="text-dark lh-base">Stylish Cricket &amp; Walking Light Weight Shoes</a>
-                                                            </h5>
-
-                                                            <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5>
-
-                                                            <div class="font-size-16 mt-2">
-                                                                <i class="bx bx-star text-warning"></i>
-                                                                <i class="bx bx-star text-warning"></i>
-                                                                <i class="bx bx-star text-warning"></i>
-                                                                <i class="bx bx-star-half-full text-warning"></i>
-                                                            </div>
-
-                                                            <div class="mt-4">
-                                                                <a href="#" class="btn btn-primary btn-sm w-lg"><i class="bx bx-cart me-1 align-middle"></i> Buy
-                                                                    Now</a>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            @endif
-
-                                            @endforeach
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-sm-7">
-                                        <div class="float-sm-end">
-                                            {{ $products->onEachSide(5)->links() }}
-                                            <p></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+         
             <div>
                 <h5 class="pt-3" style="text-align: center;"> Top Picks For You
                 </h5>
@@ -408,7 +256,7 @@ use App\Http\Requests\Auth\LoginRequest;
                     <div class="card">
                         <div class="card-header justify-content-between d-flex align-items-center">
                             <h4 class="card-title">Categorie</h4>
-                            <a href="" class="d-flex">view all</a>
+                            <!-- <a href="" class="d-flex">view all</a> -->
                         </div>
                         <div class="card-body">
 
@@ -416,7 +264,7 @@ use App\Http\Requests\Auth\LoginRequest;
                                 @foreach($categories as $categorie)
 
                                 <div class="col-lg-2">
-                                    <a href="{{route('user.categorie',$categorie->categorie_name)}}">
+                                    <a href="{{route('categorie',$categorie->categorie_name)}}">
                                         <img src="{{asset('images/categorie/'.$categorie->categorie_image) }}" class="" width="150px" alt cl> </a>
                                     <p class="p-2">{{$categorie ->categorie_name}}</p>
                                 </div><!-- end swiper-slide -->
@@ -513,21 +361,7 @@ use App\Http\Requests\Auth\LoginRequest;
                                 </form>
                             </div>
                         </div>
-                        <!-- 
-                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                    <p>&copy; 2022 Company, Inc. All rights reserved.</p>
-                    <ul class="list-unstyled d-flex">
-                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                                    <use xlink:href="#twitter" />
-                                </svg></a></li>
-                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                                    <use xlink:href="#instagram" />
-                                </svg></a></li>
-                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                                    <use xlink:href="#facebook" />
-                                </svg></a></li>
-                    </ul>
-                </div> -->
+                        
                     </footer>
                 </div>
             </div>
@@ -535,9 +369,6 @@ use App\Http\Requests\Auth\LoginRequest;
         <!-- Footer End -->
     </div>
 
-    <!-- Scripts js Start -->
-
-    <!-- JAVASCRIPT -->
     <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js ') }} "></script>
     <script src="{{asset('assets/libs/metismenujs/metismenujs.min.js ') }} "></script>
     <script src="{{asset('assets/libs/simplebar/simplebar.min.js ') }} "></script>
@@ -552,57 +383,3 @@ use App\Http\Requests\Auth\LoginRequest;
 </body>
 
 </html>
-<!-- <!doctype html>
-
-<html lang="en" data-layout="twocolumn" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
-
-<head>
-
-    <meta charset="utf-8" />
-    <title>Login Register Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-
-    <title>{{ config('app.name', 'Tournament') }} - @yield('title')</title>
-
-
-
-</head>
-
-<body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-dark1 justify-content-sm-start">
-
-
-                        @auth
-                        @else
-                        <a href="{{ route('login') }}" class="add-event">Login</a>
-                        <a href="{{ route('register') }}" class="add-event">Register</a>
-                        @endauth
-                </div>
-                @auth
-                <div class="account order-1 dropdown">
-                    <a href="#" class="account-link dropdown-toggle-no-caret" role="button" data-toggle="dropdown">
-                        <div class="user-dp">
-
-                        </div>
-                        <span>{{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}</span>
-                        <i class="fas fa-angle-down"></i>
-                    </a>
-
-                </div>
-                @endauth
-                </nav>
-                <div class="overlay"></div>
-            </div>
-        </div>
-        </div>
-    </header>
-
-</body>
-
-</html> -->

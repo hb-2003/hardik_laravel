@@ -313,7 +313,7 @@
                                                     </div>
                                                     @if($product->products_quantity > 0 && $product->products_status=="0")
                                                     <div class="mt-3">
-                                                        <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2"><?php echo (round($product->products_price * 110 / 100))  ?></del>{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
+                                                        <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2"><?php echo (round($product->products_price * 110 / 100))  ?></del> ₹{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
                                                     </div>
 
 

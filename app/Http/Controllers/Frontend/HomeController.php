@@ -129,4 +129,22 @@ class HomeController extends Controller
             return response()->json();
         }
     }
+    public function categorie(Request $request, $id)
+    {
+
+     
+
+        $count = Product::with('productimage')->where('products_type', $id)->count();
+        if ($count == 0) {
+            session()->put('success', 'Your email address has been changed successfully.');
+            return redirect()->back();
+        }
+        $products = Product::with('productimage')->where('products_type', $id)->paginate(12);
+
+        //  echo "<pre>";
+        // print_r($products);
+        // die;
+
+        return view('frontend.productdetail.categorie', compact('products'));
+    }
 }

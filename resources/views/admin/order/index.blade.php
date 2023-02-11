@@ -135,7 +135,7 @@
                                                                                     <p class="text-muted mb-0">$ {{$product->products_price}} * {{$product ->products_quantity}}</p>
                                                                                 </div>
                                                                             </td>
-                                                                            <td>$ {{$product->products_price}}</td>
+                                                                            <td>₹ {{$product->products_price}}</td>
                                                                         </tr>
                                                                         @endforeach
                                                                         <tr>
@@ -143,7 +143,7 @@
                                                                                 <h6 class="m-0 text-right">Sub Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                                $ {{$userorder->order_price}}
+                                                                            ₹ {{$userorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -153,7 +153,7 @@
                                                                             <td>@if($userorder->shipping_method == 0)
                                                                                 Free
                                                                                 @else
-                                                                                $50
+                                                                                ₹50
                                                                                 @endif
                                                                             </td>
                                                                         </tr>
@@ -162,7 +162,7 @@
                                                                                 <h6 class="m-0 text-right">Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                                ${{$userorder->order_price}}
+                                                                            ₹{{$userorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>

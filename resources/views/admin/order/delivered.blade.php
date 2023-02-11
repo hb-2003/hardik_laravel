@@ -129,10 +129,10 @@
                                                                             <td>
                                                                                 <div>
                                                                                     <h5 class="text-truncate font-size-16">{{$product->products_name}}</h5>
-                                                                                    <p class="text-muted mb-0">$ {{$product->products_price}} * {{$product ->products_quantity}}</p>
+                                                                                    <p class="text-muted mb-0">₹ {{$product->products_price}} * {{$product ->products_quantity}}</p>
                                                                                 </div>
                                                                             </td>
-                                                                            <td>$ {{$product->products_price}}</td>
+                                                                            <td>₹ {{$product->products_price}}</td>
                                                                         </tr>
                                                                         @endforeach
                                                                         <tr>
@@ -140,7 +140,7 @@
                                                                                 <h6 class="m-0 text-right">Sub Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                                $ {{$delivaryorder->order_price}}
+                                                                            ₹ {{$delivaryorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -150,7 +150,7 @@
                                                                             <td>@if($delivaryorder->shipping_method == 0)
                                                                                 Free
                                                                                 @else
-                                                                                $50
+                                                                                ₹50
                                                                                 @endif
                                                                             </td>
                                                                         </tr>
@@ -159,7 +159,7 @@
                                                                                 <h6 class="m-0 text-right">Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                                ${{$delivaryorder->order_price}}
+                                                                            ₹{{$delivaryorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
