@@ -145,7 +145,7 @@
                             <div class="collapse navbar-collapse" id="topnav-menu-content">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-toggle arrow-none" href="index-2.html" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle arrow-none" href="{{route('home')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="bx bx-home-circle icon"></i>
                                             <span data-key="t-dashboard">Dashboard</span>
                                         </a>
@@ -189,7 +189,7 @@
                     </div>
                     @endauth
                     @auth
-                   
+
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} {{ ucfirst(Auth::user()->user_name) }}
@@ -198,11 +198,7 @@
                             <h6 class="dropdown-header">Welcome {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} ({{ ucfirst(Auth::user()->user_name) }})</h6>
                             <a class="dropdown-item" href="{{route('user.account')}}"></i> <span class="align-middle">your account</span></a>
                             <a class="dropdown-item" href="{{route('user.order')}}"> <span class="align-middle">your ordere</span></a>
-                            <!-- <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
-                    <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
-                    <a class="dropdown-item" href="auth-lockscreen-cover.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a> -->
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"> sign out</a>
@@ -358,44 +354,11 @@
                                                         </div>
 
                                                         <div class="row">
-                                                            <!-- <div class="col-lg-7 col-sm-8">
-                                                        <div class="product-desc-color mt-3">
-                                                            <h5 class="font-size-14">Colors :</h5>
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" class="active" data-bs-toggle="tooltip" data-bs-placement="top" title="Gray">
-                                                                        <div class="product-color-item">
-                                                                            <img src="{{asset('assets/images/product/img-1.png')}}" alt="" class="avatar-md">
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Dark">
-                                                                        <div class="product-color-item">
-                                                                            <img src="{{asset('assets/images/product/img-2.png')}}" alt="" class="avatar-md">
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Purple">
-                                                                        <div class="product-color-item">
-                                                                            <img src="{{asset('assets/images/product/img-3.png')}}" alt="" class="avatar-md">
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" class="text-primary border-0 p-1" data-bs-toggle="modal" data-bs-target="#color-img">
-                                                                        2 + Colors
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
 
-                                                        </div>
-                                                    </div> -->
 
 
                                                             @if($product->products_quantity > 0 && $product->products_status=="0")
-                                                            <!-- <h3 class="card">OUt OF Stock</h3> -->
+
                                                             <div class="col-lg-5 col-sm-4">
                                                                 <div class="mt-3">
                                                                     <h5 class="font-size-14 mb-3">Select Quantity :</h5>
@@ -842,4 +805,3 @@
 </body>
 
 </html>
-

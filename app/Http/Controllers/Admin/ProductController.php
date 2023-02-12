@@ -24,11 +24,11 @@ class ProductController extends Controller
 
     public function Productadd(Request $request)
     {
-        $manufacturers = Manufacturer::all();
-        $categories = Categorie::all();
-        $attributes = Attribute::all();
-        $attributesvalues = Attributesvalue::all();
-        $units = Unit::all();
+        $manufacturers = Manufacturer::where('status',1)->get();
+        $categories = Categorie::where('status',1)->get();
+        $attributes = Attribute::where('status',1)->get();
+        $attributesvalues = Attributesvalue::where('status',1)->get();
+        $units = Unit::where('status',1)->get();
 
         if ($request->isMethod('POST')) {
 
@@ -93,11 +93,11 @@ class ProductController extends Controller
     public function Productedit(Request $request, $id)
     {
 
-        $manufacturers = Manufacturer::all();
-        $categories = Categorie::all();
-        $attributes = Attribute::all();
-        $attributesvalues = Attributesvalue::all();
-        $units = Unit::all();
+        $manufacturers = Manufacturer::where('status',1)->get();
+        $categories = Categorie::where('status',1)->get();
+        $attributes = Attribute::where('status',1)->get();
+        $attributesvalues = Attributesvalue::where('status',1)->get();
+        $units = Unit::where('status',1)->get();
         $Product  = Product::where('id', $id)->first();
 
         if ($request->isMethod('POST')) {

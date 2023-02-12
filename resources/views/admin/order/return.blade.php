@@ -51,7 +51,7 @@
                                     <tr>
 
                                         <th>Order ID</th>
-                                        <th>id</th>
+                                        <th>User Id</th>
                                         <th>Billing Name</th>
                                         <th>Date</th>
                                         <th>Total</th>
@@ -94,9 +94,10 @@
                                             @endif
 
                                         </td>
-                                        <td>
+                                        
+                                        <td><a href="{{route('admin.orderdetail',$userorder->id)}}">view detail</a></td>
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#order_{{$key +1}}">
+                                            <!-- <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#order_{{$key +1}}">
                                                 View Details
                                             </button>
                                             <div class="modal fade orderdetailsModal" id="order_{{$key +1}}" tabindex="-1" role="dialog" aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
@@ -173,10 +174,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </td>
-                                        <td>
-                                            <h6>hiii</h6>
+                                        <td>hii</td>
+                                        
+                                           
 
                                     </tr>
                                     @endforeach

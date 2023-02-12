@@ -6,15 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attribute;
 use App\Models\Attributesvalue;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class AttributevlaueController extends Controller
 {
     public function Attributevlaue()
     {
         $attributesvalues  =  attributesvalue::all();
+        $attributes  =  Attribute::all();
 
 
-        return view('admin.Attributevalue.index', compact('attributesvalues'));
+
+        return view('admin.Attributevalue.index', compact('attributesvalues','attributes'));
     }
 
     public function Attributevlaueadd(Request $request)

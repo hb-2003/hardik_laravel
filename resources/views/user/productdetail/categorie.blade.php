@@ -31,16 +31,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-inline float-md-end">
-                                            <div class="search-box ms-2">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control bg-light border-light rounded" placeholder="Search...">
-                                                    <i class="bx bx-search search-icon"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
 

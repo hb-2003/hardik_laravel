@@ -156,7 +156,7 @@ class DashboardController extends Controller
 
         $count = Product::with('productimage')->where('products_type', $id)->count();
         if ($count == 0) {
-            session()->put('success', 'Your email address has been changed successfully.');
+            session()->put('success', 'This categorie is not avalebale.');
             return redirect()->back();
         }
         $products = Product::with('productimage')->where('products_type', $id)->paginate(12);
@@ -172,6 +172,11 @@ class DashboardController extends Controller
 
 
         $search = $request->input('search');
+        $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
+        if ($productscount == 0) {
+            session()->put('success', 'This categorie is not avalebale.');
+            return redirect()->back();
+        }
         $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->latest()->paginate();
 
 

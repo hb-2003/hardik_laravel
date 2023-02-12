@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Attribute</h1>
+                    <h1>Attributes</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -45,7 +45,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Attribute All</h3>
+                            <h3 class="card-title">Attributes</h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Attributeadd') }}">add </a>
                         </div>
 
@@ -57,9 +57,9 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            <th>Id</th>
                                             <th>Name</th>
-                                            <th>status</th>
+                                            <th>Status</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -71,7 +71,7 @@
                                             <td>{{$attribute ->name}}</td>
                                           
                                             <td>
-                                                @if ($attribute ->status = 1 )
+                                                @if ($attribute ->status == 1 )
                                                 <span class="right badge badge-success">Active</span>
                                                 @else
                                                 <span class="right badge badge-danger">Inactive</span>
@@ -83,8 +83,8 @@
                                                         Action
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <li><a class="dropdown-item" href="{{ route('admin.Attributeedit',$attribute->id) }}">edit</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.Attributedelete',$attribute->id)}}">delete</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('admin.Attributeedit',$attribute->id) }}">Edit</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('admin.Attributedelete',$attribute->id)}}">Delete</a></li>
 
                                                     </ul>
                                                 </div>

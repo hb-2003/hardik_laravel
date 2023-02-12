@@ -31,7 +31,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">delivered order</li>
+                        <li class="breadcrumb-item active">order</li>
                     </ol>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                                     <tr>
 
                                         <th>Order ID</th>
-                                        <th>id</th>
+                                        <th>User Id</th>
                                         <th>Billing Name</th>
                                         <th>Date</th>
                                         <th>Total</th>
@@ -94,8 +94,9 @@
 
                                         </td>
                                         <td>
+                                              <a href="{{route('admin.orderdetail',$delivaryorder->id)}}">view detail</a>   
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#order_{{$key +1}}">
+                                            <!-- <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#order_{{$key +1}}">
                                                 View Details
                                             </button>
                                             <div class="modal fade orderdetailsModal" id="order_{{$key +1}}" tabindex="-1" role="dialog" aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
@@ -172,7 +173,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </td>
                                         <td>
                                         <form action="{{ route('admin.deliveredconform',$delivaryorder->id)}}" method="post">

@@ -26,12 +26,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Categorie</h1>
+                    <h1>Categories </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Categorie</li>
+                        <li class="breadcrumb-item active">categories</li>
                     </ol>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Categorie All</h3>
+                            <h3 class="card-title">Categories All</h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Categorieadd') }}">add </a>
                         </div>
 
@@ -57,10 +57,11 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            <th>Id</th>
+                                            <th>Manufacture</th>
                                             <th>Name</th>
-                                            <th>image</th>
-                                            <th>status</th>
+                                            <th>Image</th>
+                                            <th>Status</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -68,10 +69,17 @@
                                     <tbody>
                                         @foreach($categories as $key => $categorie)
                                         <tr>
-                                             <td>{{$key + 1}}</td>
+                                            <td>{{$key + 1}}</td>
+                                            <td>
+                                                @foreach($Manufacturers as $Manufacturer)
+                                                    @if($categorie ->manufacturers_id ==$Manufacturer->id )
+                                                    {{$Manufacturer->manufacturer_name}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
                                             <td>{{$categorie ->categorie_name}}</td>
                                             <td> <img src="{{asset('images/categorie/'.$categorie->categorie_image)}}" width="10%" height="10%" alt="..."></td>
-                                            <td> @if ($categorie ->status = 1 )
+                                            <td> @if ($categorie ->status == 1 )
                                                 <span class="right badge badge-success">Active</span>
                                                 @else
                                                 <span class="right badge badge-danger">Inactive</span>
@@ -83,8 +91,8 @@
                                                         Action
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <li><a class="dropdown-item" href="{{ route('admin.Categorieedit',$categorie->id) }}">edit</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.Categoriedelete',$categorie->id)}}">delete</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('admin.Categorieedit',$categorie->id) }}">Edit</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('admin.Categoriedelete',$categorie->id)}}">Delete</a></li>
 
                                                     </ul>
                                                 </div>

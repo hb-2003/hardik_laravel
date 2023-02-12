@@ -5,7 +5,9 @@ use App\Models\Product;
 use App\Models\Order;
 $usercount =User::all()->count();
 $productcount =Product::all()->count();
-$paddingorders =  Order::with('order_product')->where('status', 1)->where('order_status', 0)->count();
+$paddingorders0 =  Order::with('order_product')->where('status', 0)->where('order_status', 0)->count();
+$paddingorders1 =  Order::with('order_product')->where('status', 1)->where('order_status', 0)->count();
+$paddingorders = $paddingorders0 + $paddingorders1;
 $cansalorders =  Order::with('order_product')->where('status', 2)->where('order_status', 0)->count();
 $ordercount = $paddingorders - $cansalorders;
 ?>
@@ -21,7 +23,7 @@ $ordercount = $paddingorders - $cansalorders;
                 <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class=" img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">admin</a>
+                <a href="{{route('admin.home')}}" class="d-block">admin</a>
             </div>
         </div>
 
@@ -42,12 +44,12 @@ $ordercount = $paddingorders - $cansalorders;
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item ">
+                    <a href="{{route('admin.home')}}" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-                            <i class="right fas fa-angle-left"></i>
+                          
                         </p>
                     </a>
 

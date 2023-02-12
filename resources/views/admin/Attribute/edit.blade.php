@@ -17,12 +17,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Attribute Edit</h1>
+                    <h1>Attribute</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Attribute Edit</li>
+                        <li class="breadcrumb-item active">Attribute</li>
                     </ol>
                 </div>
             </div>
@@ -43,7 +43,7 @@
 
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">name</label>
+                                    <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="name" value="{{$attribute->name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" require>
                                 </div>
                                 @error('name')
@@ -51,15 +51,15 @@
                                 @enderror
 
                                 <div class="form-group">
-                                    <label>status</label>
+                                    <label>Status</label>
                                     <select class="form-control" name="status" require>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         <option value="1" <?php echo  $attribute->status == "1" ? "selected" : "" ?>>Active</option>
                                         <option value="0" <?php echo  $attribute->status == "0" ? "selected" : "" ?>>Inactive</option>
                                     </select>
                                 </div>
-                                @error('name')
-                                <div class="alert alert-danger">The name is required.</div>
+                                @error('status')
+                                <div class="alert alert-danger">The status is required.</div>
                                 @enderror
 
                                 
@@ -68,7 +68,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a class="btn btn-danger float-right" href="{{route('admin.Attribute')}}"> back</a>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Attribute')}}"> Back</a>
                             </div>
                         </form>
                     </div>

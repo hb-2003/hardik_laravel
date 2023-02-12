@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Manufacturer</h1>
+                    <h1>Manufacturer</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -67,7 +67,7 @@
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control" name="status">
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
@@ -84,7 +84,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary form-groupS">Submit</button>
-                                <a class="btn btn-danger float-right" href="{{route('admin.Manufacturer')}}"> back</a>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Manufacturer')}}"> Bsack</a>
                             </div>
                         </form>
                     </div>

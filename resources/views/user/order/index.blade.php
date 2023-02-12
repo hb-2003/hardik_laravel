@@ -72,7 +72,7 @@
                                             @elseif($userorder->status   == "1")
                                             <span class="badge badge-pill badge-soft-primary font-size-12">success</span>
                                             @else
-                                            <span class="badge badge-pill badge-soft-danger font-size-12">Failed</span>
+                                            <span class="badge badge-pill badge-soft-danger font-size-12">refund</span>
                                             @endif
                                            
                                         </td>

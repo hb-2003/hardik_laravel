@@ -16,12 +16,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Product Edit</h1>
+                    <h1>Product </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item active">Product</li>
                     </ol>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <label>Manufacturer</label>
                                     <select class="form-control" id="manufacturers_id" name="manufacturers_id" require>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         @foreach($manufacturers as $manufacturer)
                                         <option value=" {{$manufacturer ->manufacturer_name}}" <?php echo  $Product->manufacturers_id == $manufacturer->manufacturer_name ? "selected" : "" ?>> {{$manufacturer ->manufacturer_name}}</option>
                                         @endforeach
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label>Categorie</label>
                                     <select class="form-control" name="products_type" require>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         @foreach($categories as $categorie)
                                         <option value=" {{$categorie ->categorie_name}}" <?php echo  $Product->products_type == $categorie->categorie_name ? "selected" : "" ?>>
                                             {{$categorie ->categorie_name}}
@@ -116,7 +116,7 @@
                                 <div class="form-group">
                                     <label>Unit</label>
                                     <select class="form-control" name="products_weight_unit" require>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         @foreach($units as $unit)
                                         <option value=" {{$unit->units_name}}" <?php echo  $Product->products_weight_unit == $unit->units_name ? "selected" : "" ?>> {{$unit ->units_name}}</option>
                                         @endforeach
@@ -129,7 +129,7 @@
                                 <div class="form-group">
                                     <label> Attribute</label>
                                     <select class="form-control" name="attributes_id" require>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         @foreach($attributes as $attribute)
                                         <option value=" {{$attribute ->name}}" <?php echo  $Product->attributes_id == $attribute->name ? "selected" : "" ?>> {{$attribute ->name}}</option>
                                         @endforeach
@@ -142,7 +142,7 @@
                                 <div class="form-group">
                                     <label>Attributesvalue</label>
                                     <select class="form-control" name="attributes_set" require>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         @foreach($attributesvalues as $attributesvalue)
                                         <option value=" {{$attributesvalue ->name}}" <?php echo  $Product->attributes_set == $attributesvalue->name ? "selected" : "" ?>> {{$attributesvalue ->name}}</option>
                                         @endforeach
@@ -179,7 +179,7 @@
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control" name="products_status" require>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
 
                                         <option value="0" <?php echo  $Product->products_status == "0" ? "selected" : "" ?>> Active</option>
                                         <option value="1" <?php echo  $Product->products_status == "1" ? "selected" : "" ?>> Inactive</option>
@@ -193,7 +193,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> back</a>
+                                <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> Back</a>
                             </div>
                         </form>
                     </div>

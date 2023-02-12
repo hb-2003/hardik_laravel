@@ -21,7 +21,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
+                        <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -66,7 +66,7 @@
                         <div class="inner">
                             <h3>{{$totalanverifyuser}}</h3>
 
-                            <p>Anverify user </p>
+                            <p>unverify user </p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -200,7 +200,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Recently Added Products</h3>
@@ -209,7 +209,7 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
-                              
+
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -240,8 +240,48 @@
                         <!-- /.card-footer -->
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Recently get orders</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <ul class="products-list product-list-in-card pl-2 pr-2">
+                                @foreach($userorders as $userorder)
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="{{asset('images/product/'.$Product->productimage[0]->name)}}" alt="Product Image" class="img-size-50">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">{{$userorder ->customers_name }}{{$userorder ->customers_name }}
+                                            <span class="badge badge-warning float-right">{{$userorder ->order_price }}</span></a>
+                                        <span class="product-description">
+                                            {{$Product ->pyment_type }}
+                                        </span>
+                                    </div>
+                                </li>
+                                @endforeach
+
+
+                            </ul>
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <a href="{{route('admin.order')}}" class="uppercase">View All Products</a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 </div>
 

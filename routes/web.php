@@ -83,6 +83,8 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::get('home', 'HomeController@home')->name('home');
     //user
     Route::match(['get', 'post'], 'User', 'UserController@user')->name('User');
+    Route::match(['get', 'post'], 'userinactive/{id}', 'UserController@userinactive')->name('userinactive');
+
 
     // Manufacturer
     Route::match(['get', 'post'], 'Manufacturer', 'ManufacturerController@Manufacturer')->name('Manufacturer');
@@ -124,6 +126,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::match(['get', 'post'], 'order', 'OrderController@order')->name('order');
     Route::match(['get', 'post'], 'pending', 'OrderController@pending')->name('pending');
     Route::match(['get', 'post'], 'confirmorder/{id}', 'OrderController@confirmorder')->name('confirmorder');
+    Route::match(['get', 'post'], 'orderdetail/{id}', 'OrderController@orderdetail')->name('orderdetail');
 
     Route::match(['get', 'post'], 'cansal', 'OrderController@cansal')->name('cansal');
     Route::match(['get', 'post'], 'cansalorder/{id}', 'OrderController@cansalorder')->name('cansalorder');
@@ -135,5 +138,6 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
 
     Route::match(['get', 'post'], 'return_pending', 'OrderController@return_pending')->name('return_pending');
     Route::match(['get', 'post'], 'confirmreturn/{id}', 'OrderController@confirmreturn')->name('confirmreturn');
+    Route::match(['get', 'post'], 'notificationorder/{id}', 'OrderController@notificationorder')->name('notificationorder');
 });
 require __DIR__ . '/auth.php';

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attribute;
 use App\Models\Order;
+use App\Models\Notification;
 
 class OrderController extends Controller
 
@@ -22,15 +23,17 @@ class OrderController extends Controller
     public function pending(Request $request)
     {
 
-        $paddingorders =  Order::with('order_product')->where('status', 1)->where('order_status', 0)->get();
+        $paddingorders =  Order::with('order_product')->where('order_status', 0)->get();
 
+        // echo $paddingorders;
+        // die;
         return view('admin.order.pending', compact('paddingorders'));
     }
 
     public function cansal(Request $request)
     {
 
-        $cansalorders =  Order::with('order_product')->where('status', 1)->where('order_status', 2)->get();
+        $cansalorders =  Order::with('order_product')->where('order_status', 2)->get();
 
 
         return view('admin.order.cansal', compact('cansalorders'));
@@ -40,17 +43,17 @@ class OrderController extends Controller
     {
 
 
-        $refundorders =  Order::with('order_product')->where('status', 1)->where('order_status', 3)->get();
+        $refundorders =  Order::with('order_product')->where('order_status', 3)->get();
 
         return view('admin.order.return', compact('refundorders'));
     }
 
     public function delivered(Request $request)
     {
-        $deliveredcount =  Order::with('order_product')->where('status', 1)->where('order_status', 4)->count();
+        $deliveredcount =  Order::with('order_product')->where('order_status', 4)->count();
 
 
-        $delivaryorders =  Order::with('order_product')->where('status', 1)->where('order_status', 4)->get();
+        $delivaryorders =  Order::with('order_product')->where('order_status', 4)->get();
 
         return view('admin.order.delivered', compact('delivaryorders', 'deliveredcount'));
     }
@@ -67,7 +70,7 @@ class OrderController extends Controller
                 'order_status' => 4,
 
             ]);
-            return redirect()->route('admin.padding');
+            return redirect()->back();
         }
     }
 
@@ -92,6 +95,7 @@ class OrderController extends Controller
         $delivereds =  Order::with('order_product')->where('id', $id)->first();
         $delivereds->update([
             'order_status' => 1,
+            'status'=>1
 
         ]);
         return redirect()->route('admin.delivered');
@@ -108,10 +112,26 @@ class OrderController extends Controller
     {
         $delivereds =  Order::with('order_product')->where('id', $id)->first();
         $delivereds->update([
-            'status'=>3,
+            'status' => 3,
             'order_status' => 5,
 
         ]);
         return redirect()->route('admin.return_pending');
+    }
+
+    public function orderdetail(Request $request, $id)
+    {
+        $orderdetails =  Order::with('order_product')->where('id', $id)->first();
+        return view('admin.orderdetail.index', compact('orderdetails'));
+    }
+    public function notificationorder(Request $request, $id)
+    {
+        $notificationorder = Notification ::where('id', $id)->first();
+        $notificationorder->update([
+            'read_at' => 1,
+        
+        ]);
+      
+        return redirect()->route('admin.orderdetail',$notificationorder->order_id);
     }
 }

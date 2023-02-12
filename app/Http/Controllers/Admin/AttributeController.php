@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attribute;
-
+use App\Models\Attributesvalue;
 class AttributeController extends Controller
 
 {
@@ -39,17 +39,30 @@ class AttributeController extends Controller
     public function Attributeedit(Request $request, $id)
     {
         $attribute  =  Attribute::find($id);
+        $attributesvalue  =  Attributesvalue::where('attribute_id',$id)->get();
+        
 
         if ($request->isMethod('POST')) {
             $request->validate([
                 'name' => 'required ',
                 'status' => 'required',
             ]);
+            $attributesvalues  =  Attributesvalue::where('attribute_id',$id)->get();
+         
 
             $attribute->update([
                 'name' => $request->name,
                 'status' => $request->status,
             ]);
+            
+            foreach($attributesvalues as $attributesvalue)
+            {
+                $attributesvalue->update([
+                    'status' => $request->status,
+                   
+                ]);
+            }
+            
 
             return  redirect()->route('admin.Attribute');
         }

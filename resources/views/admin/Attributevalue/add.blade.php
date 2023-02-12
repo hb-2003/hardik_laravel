@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Attributevlaue add</h1>
+                    <h1>Attributevlaue</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -35,52 +35,54 @@
                 <div class="col-md-12">
                     <div class="card card-rgb(52,58,64)">
                         <div class="card-header">
-                            <h3 class="card-title">Attributevlaue add</h3>
+                            <h3 class="card-title">Add Detail</h3>
                         </div>
                         <form accept="{{route('admin.Attributevlaueadd')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label>manufacture</label>
+                                    <label>Attribute</label>
                                     <select class="form-control" name="attribute_id">
-                                        <option value=""> select plasea</option require>
+                                        <option value=""> Select please</option require>
                                         @foreach($attributes as $attribute)
                                         <option value="{{$attribute->id}}"> {{$attribute->name}}</option>
-                                        @endforeachs
+                                        @endforeach
                                     </select>
                                 </div>
                                 @error('attribute_id')
-                                <div class="alert alert-danger">The attribute is required.</div>
+                                <div class="alert alert-danger">The Attribute is required.</div>
                                 @enderror
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">name</label>
+                                    <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter categorie  name" require>
                                 </div>
                                 @error('name')
-                                <div class="alert alert-danger">The name is required.</div>
+                                <div class="alert alert-danger">The Name is required.</div>
                                 @enderror
-                            </div>
-
-                            <div class="form-group">
+                                
+                                <div class="form-group">
                                 <label>status</label>
                                 <select class="form-control" name="status" require>
-                                    <option value=""> select plasea</option>
+                                    <option value=""> Select please</option>
                                     <option value="1">Active</option>
                                     <option value="0">Inactive</option>
                                 </select>
 
                             </div>
                             @error('status')
-                                <div class="alert alert-danger">The Status Is Required.</div>
-                                @enderror
+                            <div class="alert alert-danger">The Status is required.</div>
+                            @enderror
 
+                            </div>
+
+                           
 
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a class="btn btn-danger float-right" href="{{route('admin.Attributevalue')}}"> back</a>
+                        <a class="btn btn-danger float-right" href="{{route('admin.Attributevlaue')}}"> Back</a>
                     </div>
 
                     </form>

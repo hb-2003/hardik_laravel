@@ -31,7 +31,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        
+
                         <li class="breadcrumb-item active">Product</li>
                     </ol>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Product All</h3>
+                            <h3 class="card-title">Product </h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Productadd') }}">add </a>
                         </div>
 
@@ -58,11 +58,11 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <td>id</td>
+                                            <td>Id</td>
                                             <th>Name</th>
-                                            <th>image</th>
-                                            <th>categorie</th>
-                                            <th>status</th>
+                                            <th>Image</th>
+                                            <th>Categorie</th>
+                                            <th>Status</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -74,9 +74,9 @@
                                             <td>{{$Product ->products_name}}</td>
 
                                             <td>
-                                               
+
                                                 <img src="{{asset('images/product/'.$Product->productimage[0]->name)}}" width="100" height="100" alt="...">
-                                             
+
                                             </td>
                                             <td>{{$Product -> products_type}}</td>
                                             <td> @if($Product ->products_status == 1 )
@@ -91,8 +91,8 @@
                                                         Action
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <li><a class="dropdown-item" href="{{ route('admin.Productedit',$Product->id) }}">edit</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.Productdelete',$Product->id)}}">delete</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('admin.Productedit',$Product->id) }}">Edit</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('admin.Productdelete',$Product->id)}}">Delete</a></li>
 
                                                     </ul>
                                                 </div>

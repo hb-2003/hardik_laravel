@@ -26,12 +26,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Attribute</h1>
+                    <h1>User</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Attribute</li>
+                        <li class="breadcrumb-item active">User</li>
                     </ol>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Attribute All</h3>
-                            <a class=" float-right btn btn-primary" href="{{ route('admin.Attributeadd') }}">add </a>
+                            <h3 class="card-title">All user</h3>
+                          
                         </div>
 
 
@@ -62,30 +62,34 @@
                                             <th>Last Name </th>
                                             <th>Email</th>
                                             <th>status</th>
+                                            <th>Action</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($users as $key =>$user)
                                         <tr>
-                                             <td>{{$key + 1}}</td>
+                                            <td>{{$key + 1}}</td>
                                             <td>{{$user ->first_name}}</td>
                                             <td>{{$user ->last_name}}</td>
                                             <td>{{$user ->email}}</td>
-                                          
+
                                             <td>
-                                                @if ($user ->status = 1 )
+                                                @if ($user ->status ==1 )
                                                 <span class="right badge badge-success">Verify</span>
                                                 @else
                                                 <span class="right badge badge-danger">unverify</span>
                                                 @endif
                                             </td>
-                                          
+                                            <td>
+<a href="{{ route('admin.userinactive',$user ->id) }}">edit</a>
+                                            </td>
+
                                         </tr>
                                         @endforeach
 
                                     </tbody>
-                                
+
                                 </table>
                             </div>
                             <!-- /.card-body -->

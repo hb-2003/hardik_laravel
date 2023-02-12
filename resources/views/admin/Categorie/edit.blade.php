@@ -17,12 +17,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Categorie Edit</h1>
+                    <h1>Categorie</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item active"> Categorie</li>
                     </ol>
                 </div>
             </div>
@@ -48,9 +48,9 @@
 
 
                                 <div class="form-group">
-                                    <label>manufacture</label>
+                                    <label>Manufacture</label>
                                     <select class="form-control" name="manufacturers_id" required>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> Select please</option>
                                         @foreach($Manufacturers as $Manufacturer)
                                         <option value=" <?php echo $Manufacturer->id ?> " <?php echo  $Manufacturer->id == $categorie->manufacturers_id ? "selected" : "" ?>> {{$Manufacturer->manufacturer_name}}</option>
                                         @endforeach
@@ -58,19 +58,19 @@
 
                                 </div>
                                 @error('manufacturers_id')
-                                <div class="alert alert-danger">The manufacturers  is required.</div>
+                                <div class="alert alert-danger">The Manufacturers  is required.</div>
                                 @enderror
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">name</label>
+                                    <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="categorie_name" value="{{$categorie->categorie_name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
                                 </div>
                                 @error('name')
-                                <div class="alert alert-danger">The name is required.</div>
+                                <div class="alert alert-danger">The Name is required.</div>
                                 @enderror
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
+                                    <label for="exampleInputFile">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" name="categorie_image" id="exampleInputFile" class="custom-file-input" value="{{$categorie->categorie_image}}" required>
@@ -81,14 +81,14 @@
 
                                     </div>
                                     <div>
-                                        <img src="{{ asset('images/categorie/'.$categorie->categorie_image ) }}" width="10%" alt="...">
+                                        <img style="margin-top:1rem;" src="{{ asset('images/categorie/'.$categorie->categorie_image ) }}" width="7%" alt="...">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>status</label>
+                                    <label>Status</label>
                                     <select class="form-control" name="status" required>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> select please</option>
                                         <option value="1" <?php echo  $categorie->status == "1" ? "selected" : "" ?>>Active</option>
                                         <option value="0" <?php echo  $categorie->status == "0" ? "selected" : "" ?>>Inactive</option>
                                     </select>
@@ -104,7 +104,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a  class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> back</a>
+                                <a  class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> Back</a>
                             </div>
                         </form>
                     </div>

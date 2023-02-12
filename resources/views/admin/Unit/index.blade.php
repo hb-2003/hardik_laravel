@@ -44,7 +44,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">All Unit</h3>
+                            <h3 class="card-title">Unit</h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Unitadd') }}">add </a>
                         </div>
 
@@ -53,9 +53,9 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            <th>Id</th>
                                             <th>Name</th>
-                                            <th>status</th>
+                                            <th>Status</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -76,8 +76,8 @@
                                                 <div class="dropdown">
                                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Action</button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <li><a class="dropdown-item" href="{{ route('admin.Unitedit',$unit->id) }}">edit</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.Unitdelete',$unit->id)}}">delete</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('admin.Unitedit',$unit->id) }}">Edit</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('admin.Unitdelete',$unit->id)}}">Delete</a></li>
                                                     </ul>
                                                 </div>
                                             </td>

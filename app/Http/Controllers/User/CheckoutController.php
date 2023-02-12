@@ -15,7 +15,7 @@ use App\Models\Order_product;
 use App\Models\Products_images;
 use Faker\Provider\ar_JO\Address;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Notification;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\auth;
 use phpDocumentor\Reflection\Types\Null_;
@@ -31,7 +31,7 @@ class CheckoutController extends Controller
 
         $address = Addresse::where('user_id', auth::user()->id)->get();
         $carttotal = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('total');
-        
+
         $conteries = Countrie::all();
         $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
 
@@ -54,7 +54,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'required',
 
             ]);
-             $countery = $ipdat->geoplugin_countryName;
+            $countery = $ipdat->geoplugin_countryName;
             $addres = Addresse::where('id', $request->billing_address_format_id)->first();
 
             $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
@@ -99,17 +99,16 @@ class CheckoutController extends Controller
                 'status' => 0,
 
             ]);
-            if ($request->payment_method == "pay")
-            {
+            if ($request->payment_method == "pay") {
                 $orderid = $order->id;
-                return view('user.rezolpay.index',compact('carttotal','orderid','request','order','countery'));
+                return view('user.rezolpay.index', compact('carttotal', 'orderid', 'request', 'order', 'countery'));
             }
             //    echo $order->id;
             //    die;
 
 
             foreach ($cartdetails as $cartdetail) {
-                
+
 
 
                 Order_product::create([
@@ -123,7 +122,14 @@ class CheckoutController extends Controller
                     'products_quantity' => $cartdetail->quantity,
 
                 ]);
-                
+                Notification::create([
+                    'user_id' => auth::user()->id,
+                    'product_id' => $cartdetail->product[0]->id,
+                    'order_id' =>  $order->id,
+                    'product_name' => $cartdetail->product[0]->products_name,
+
+                ]);
+
 
 
 
@@ -137,11 +143,11 @@ class CheckoutController extends Controller
 
                 Cart::where('id', $cartdetail->id)->update(['status' => 1]);
             }
-           
-            
+
+
             session()->put('success', 'order complete.');
 
-            return redirect()->route('user.dashboard');
+            return redirect()->route('user.order');
         }
         return view('user.checkout.index', compact('address', 'cartdetails', 'conteries', 'carttotal'));
     }
@@ -221,43 +227,50 @@ class CheckoutController extends Controller
                 'delivery_phone	' => NUll,
                 'pyment_type' => $request->payment_method,
                 'transaction_id ' => NUll,
-                'status' => 0   ,
+                'status' => 0,
 
             ]);
             //    echo $order->id;
             //    die;
 
             $countery = $ipdat->geoplugin_countryName;
-            if ($request->payment_method == "pay")
-            {
+            if ($request->payment_method == "pay") {
                 $orderid = $order->id;
-                return view('user.rezolpay.index',compact('carttotal','orderid','request','order','countery'));
+                return view('user.rezolpay.index', compact('carttotal', 'orderid', 'request', 'order', 'countery'));
             }
 
-                Order_product::create([
-                    'orders_id' => $order->id,
-                    'products_id' => $cartdetails->product[0]->id,
-                    'products_name' =>  $cartdetails->product[0]->products_name,
-                    'products_price' =>  $cartdetails->product[0]->products_price,
-                    'products_image' => $images->name,
-                    'final_price' => $cartdetails->product_price,
-                    'products_tax' => 0,
-                    'products_quantity' => $cartdetails->quantity,
+            Order_product::create([
+                'orders_id' => $order->id,
+                'products_id' => $cartdetails->product[0]->id,
+                'products_name' =>  $cartdetails->product[0]->products_name,
+                'products_price' =>  $cartdetails->product[0]->products_price,
+                'products_image' => $images->name,
+                'final_price' => $cartdetails->product_price,
+                'products_tax' => 0,
+                'products_quantity' => $cartdetails->quantity,
 
-                ]);
+            ]);
+
+            Notification::create([
+                'user_id' => auth::user()->id,
+                'product_id' => $cartdetails->product[0]->id,
+                'order_id' =>  $order->id,
+                'product_name' =>  $cartdetails->product[0]->products_name,
+
+            ]);
 
 
 
-                $Product  = Product::where('id', $cartdetails->product[0]->id)->first();
+            $Product  = Product::where('id', $cartdetails->product[0]->id)->first();
 
-                $quantity = $Product->products_quantity - $cartdetails->quantity;
+            $quantity = $Product->products_quantity - $cartdetails->quantity;
 
-                $Product->update([
-                    'products_quantity' => $quantity,
-                    'products_max_stock' => $quantity,
-                ]);
+            $Product->update([
+                'products_quantity' => $quantity,
+                'products_max_stock' => $quantity,
+            ]);
 
-                Cart::where('id', $cartdetails->id)->update(['status' => 1]);
+            Cart::where('id', $cartdetails->id)->update(['status' => 1]);
 
             session()->put('success', 'order complete.');
 
@@ -270,7 +283,7 @@ class CheckoutController extends Controller
     {
         if ($request->isMethod('POST')) {
 
-            Order::where('id', $request->orderid)->update(['transaction_id' => $request->id]);
+            Order::where('id', $request->orderid)->update(['transaction_id' => $request->id], ['status' => 1]);
             $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
             foreach ($cartdetails as $cartdetail) {
                 Order_product::create([
@@ -283,7 +296,15 @@ class CheckoutController extends Controller
                     'products_tax' => 0,
                     'products_quantity' => $cartdetail->quantity,
                 ]);
-            
+
+                Notification::create([
+                    'user_id' => auth::user()->id,
+                    'product_id' => $cartdetail->product[0]->id,
+                    'order_id' =>  $request->orderid,
+                    'product_name' => $cartdetail->product[0]->products_name,
+
+                ]);
+
                 $Product  = Product::where('id', $cartdetail->product[0]->id)->first();
                 $quantity = $Product->products_quantity - $cartdetail->quantity;
                 $Product->update([
@@ -293,9 +314,9 @@ class CheckoutController extends Controller
 
                 Cart::where('id', $cartdetail->id)->update(['status' => 1]);
             }
-            
+
+
             return response()->json(['request' => $request]);
         }
-
     }
 }

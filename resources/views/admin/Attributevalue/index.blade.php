@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Attributevlaue </h1>
+                    <h1>Attribute vlaues </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -44,7 +44,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Attributevlaue All</h3>
+                            <h3 class="card-title">Attributevlaues </h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Attributevlaueadd') }}">add </a>
                         </div>
 
@@ -53,9 +53,10 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            <th>Id</th>
+                                            <th>Attribute</th>
                                             <th>Name</th>
-                                            <th>status</th>
+                                            <th>Status</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -64,10 +65,16 @@
                                         @foreach($attributesvalues as $key => $attributesvalue)
                                         <tr>
                                             <td>{{$key + 1}}</td>
+                                            <td> @foreach($attributes as $attribute)
+                                                    @if($attributesvalue ->attribute_id == $attribute->id )
+                                                    {{$attribute->name}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
                                             <td>{{$attributesvalue ->name}}</td>
 
 
-                                            <td> @if ($attributesvalue ->status = 1 )
+                                            <td> @if ($attributesvalue ->status == 1 )
                                                 <span class="right badge badge-success">Active</span>
                                                 @else
                                                 <span class="right badge badge-danger">Inactive</span>
@@ -77,8 +84,8 @@
                                                 <div class="dropdown">
                                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Action</button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <li><a class="dropdown-item" href="{{ route('admin.Attributevlaueedit',$attributesvalue->id) }}">edit</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.Attributevlauedelete',$attributesvalue->id)}}">delete</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('admin.Attributevlaueedit',$attributesvalue->id) }}">Edit</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('admin.Attributevlauedelete',$attributesvalue->id)}}">Delete</a></li>
 
                                                     </ul>
                                                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Manufacturer;
+use App\Models\Categorie;
 use PharIo\Manifest\Manifest;
 
 class ManufacturerController extends Controller
@@ -55,6 +56,7 @@ class ManufacturerController extends Controller
     public function Manufactureredit(Request $request, $id)
     {
         $manufacturer  =  Manufacturer::find($id);
+        $categories =  Categorie::where('manufacturers_id',$id)->get();
         if ($request->isMethod('POST')) {
             $request->validate([
                 'manufacturer_name' => 'required | string',
@@ -85,6 +87,13 @@ class ManufacturerController extends Controller
                 'manufacturer_name' => $request->manufacturer_name,
                 'status' => $request->status,
             ]);
+            foreach($categories as $categorie)
+            {
+                $categorie->update([
+                    'status' => $request->status,
+                   
+                ]);
+            }
 
             return  redirect()->route('admin.Manufacturer');
         }

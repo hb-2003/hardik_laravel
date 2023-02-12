@@ -57,10 +57,10 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            <th>Id</th>
                                             <th>Name</th>
-                                            <th>image</th>
-                                            <th>status</th>
+                                            <th>Image</th>
+                                            <th>Status</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -68,22 +68,23 @@
                                     <tbody>
                                         @foreach($manufacturers as $key => $manufacturer)
                                         <tr>
-                                             <td>{{$key + 1}}</td>
+                                            <td>{{$key + 1}}</td>
                                             <td>{{$manufacturer ->manufacturer_name}}</td>
                                             <td> <img src="{{asset('images/manufacturer/'.$manufacturer->manufacturer_image)}}" width="10%" alt="..."></td>
-                                            <td> @if ($manufacturer ->status = 1 )
+                                            <td> @if ($manufacturer ->status == 1 )
                                                 <span class="right badge badge-success">Active</span>
                                                 @else
                                                 <span class="right badge badge-danger">Inactive</span>
-                                                @endif</td>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Action
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <li><a class="dropdown-item" href="{{ route('admin.Manufactureredit',$manufacturer->id) }}">edit</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.Manufacturerdelete',$manufacturer->id)}}">delete</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('admin.Manufactureredit',$manufacturer->id) }}">Edit</a></li>
+                                                        <li><a class="dropdown-item" href="{{route('admin.Manufacturerdelete',$manufacturer->id)}}">Delete</a></li>
 
                                                     </ul>
                                                 </div>
@@ -93,7 +94,7 @@
                                         @endforeach
 
                                     </tbody>
-                                
+
                                 </table>
                             </div>
                             <!-- /.card-body -->

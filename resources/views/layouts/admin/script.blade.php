@@ -5,7 +5,7 @@
     <!-- jQuery -->
     <script src="{{asset('admin/plugins/jquery/jquery.min.js  ') }} "></script>
     <!-- Bootstrap -->
-    <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js  ') }} "></script>
+   
     <!-- overlayScrollbars -->
     <script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js  ') }} "></script>
     <!-- AdminLTE App -->
@@ -19,7 +19,7 @@
     <script src="{{asset('admin/plugins/jquery-mapael/maps/usa_states.min.js  ') }} "></script>
     <!-- ChartJS -->
     <script src="{{asset('admin/plugins/chart.js/Chart.min.js  ') }} "></script>
-
+   
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('admin/dist/js/demo.js  ') }} "></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -42,7 +42,7 @@
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>
     $(function() {
         $("#example1").DataTable({
@@ -62,7 +62,5 @@
         });
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
+<script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js  ') }} "></script>
 

@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>General Form</h1>
+                    <h1>Categorie </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -46,9 +46,9 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label>manufacture</label>
+                                    <label>Manufacture</label>
                                     <select class="form-control" name="manufacturers_id" required>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> select please</option>
 
                                         @foreach($manufacturers as $manufacturer)
                                         <option value="{{$manufacturer->id}}"> {{$manufacturer->manufacturer_name}}</option>
@@ -56,15 +56,15 @@
                                     </select>
                                 </div>
                                 @error('manufacturers_id')
-                                <div class="alert alert-danger">The manufacturers  is required.</div>
+                                <div class="alert alert-danger">The Manufacturers  is required.</div>
                                 @enderror
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1"> CategorieName</label>
+                                    <label for="exampleInputEmail1"> Name</label>
                                     <input type="text" name="categorie_name" class="form-control" id="name" placeholder="Enter categorie name" required>
                                 </div>
                                 @error('name')
-                                <div class="alert alert-danger">The name is required.</div>
+                                <div class="alert alert-danger">The Name is required.</div>
                                 @enderror
 
                                 <div class="form-group">
@@ -77,13 +77,13 @@
                                 </div>
 
                                 @error('categorie_image')
-                                <div class="alert alert-danger">The image is required.</div>
+                                <div class="alert alert-danger">The Image is required.</div>
                                 @enderror
 
                                 <div class="form-group">
-                                    <label>status</label>
+                                    <label>Status</label>
                                     <select class="form-control" name="status" required>
-                                        <option value=""> select plasea</option>
+                                        <option value=""> select please</option>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
@@ -99,7 +99,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> back</a>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> Back</a>
                             </div>
                         </form>
                     </div>
