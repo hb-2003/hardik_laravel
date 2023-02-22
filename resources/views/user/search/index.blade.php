@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div>
-                                            <h5>Showing result for </h5>
+                                            <h5>{{$productscount}} Result for "{{$search}}"</h5>
                                             <ol class="breadcrumb p-0 bg-transparent mb-2">
                                                 <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
                                                 <li class="breadcrumb-item active"></li>
@@ -85,7 +85,7 @@
                                                                 <a href="#" class="text-dark lh-base">Stylish Cricket &amp; Walking Light Weight Shoes</a>
                                                             </h5>
 
-                                                            <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5>
+                                                            <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$ {{$product->products_price*110/100}}</del> ${{$product->products_price}}0</h5>
 
                                                             <div class="font-size-16 mt-2">
                                                                 <i class="bx bx-star text-warning"></i>

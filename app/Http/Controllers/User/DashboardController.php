@@ -180,6 +180,13 @@ class DashboardController extends Controller
         $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->latest()->paginate();
 
 
-        return view('user.search.index', compact('products'));
+        return view('user.search.index', compact('products', 'productscount', 'search'));
+    }
+    public function product()
+    {
+        $products = Product::with('productimage')->paginate(12);
+
+
+        return view('user.products.index', compact('products'));
     }
 }

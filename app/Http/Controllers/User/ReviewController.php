@@ -17,7 +17,6 @@ class ReviewController extends Controller
 {
 
     public function review(Request $request)
-
     {
         $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $request->productid)->first();
         $productreview =  Review::where('product_id', $request->product_id)->get();
@@ -32,11 +31,9 @@ class ReviewController extends Controller
 
             ]);
             $count =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->count();
-            
+        
             if ($count == 1) {
-                $productreview =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->first();
-                echo $userproductreview;
-                
+                $productreview =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->first(); 
                 $productreview->update([
 
                     'product_id' => $request->product_id,
@@ -59,35 +56,4 @@ class ReviewController extends Controller
         }
         return redirect()->back();
     }
-    // public function productdetail($id)
-    // {
-
-    //     $product = Product::with('productimage')->where('id', $id)->first();
-
-
-    //     return view('user.productdetail.index', compact('product'));
-    // }
-
-    // public function buyproduct(Request $request,$id)
-    // {
-
-    //     $request->validate([
-    //         'quantity' => 'required|min:1',
-    //         'price' => 'required',
-
-    //     ]);
-
-
-    //     $total = $request->quantity * $request->price;
-    //     $cart = Cart::create([
-    //         'user_id' => auth::user()->id,
-    //         'product_id' => $id,
-    //         'quantity' => $request->quantity,
-    //         'product_price' => $request->price,
-    //         'status' => 0,
-    //         'total' => $total
-    //     ]);
-    //   return redirect()->route('user.buycheckout');
-
-    // }
 }

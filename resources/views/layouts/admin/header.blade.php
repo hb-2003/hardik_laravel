@@ -28,7 +28,18 @@ $notificationcount  = Notification::where('read_at', 0)->count();
   <ul class="navbar-nav ml-auto">
 
     @if($notificationcount == 0)
+    <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="far fa-bell"></i>
+        <span class="badge badge-danger navbar-badge">{{$notificationcount}}</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+      <h6  class="text-center p-3"> No order found!</h6>
+        <div class="dropdown-divider"></div>
 
+        <a href="{{route('admin.order')}}" class="dropdown-item dropdown-footer">See All Messages</a>
+      </div>
+    </li>
     @else
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">

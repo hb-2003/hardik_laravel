@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use File;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Models\Review;
-use App\Models\User;
-use App\Models\Cart;
+use App\Models\Contectus;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\auth;
@@ -118,21 +117,20 @@ class HomeController extends Controller
 
         return view('frontend.productdetail.index', compact('product', 'productreviews', 'userproductreview', 'userproductcount', 'avreagereview'));
     }
-
     public function Cart(Request $request)
     {
         if ($request->isMethod('POST')) {
 
 
-        
-           
+
+
             return response()->json();
         }
     }
     public function categorie(Request $request, $id)
     {
 
-     
+
 
         $count = Product::with('productimage')->where('products_type', $id)->count();
         if ($count == 0) {
@@ -146,5 +144,60 @@ class HomeController extends Controller
         // die;
 
         return view('frontend.productdetail.categorie', compact('products'));
+    }
+    public function contectus(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+
+
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'subject' => 'required',
+                'message' => 'required',
+
+            ]);
+
+            $cart = Contectus::create([
+                'user_id' => auth::user()->id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'subject' => $request->subject,
+                'message' => $request->message,
+
+            ]);
+            $data = ['name' => $request['name'], 'data' => $request['message']];
+            $user['to'] = 'hardikbhanderi9898@gmail.com';
+            $user['subject'] = $request['subject'];
+            Mail::send('mail', $data, function ($messages) use ($user) {
+                $messages->to($user['to']);
+                $messages->subject($user['subject']);
+            });
+            return  redirect()->route('user.dashboard');
+        }
+        return  view('frontend.contectus.index');
+    }
+    public function product()
+    {
+        $products = Product::with('productimage')->paginate(12);
+
+
+        return view('frontend.products.index', compact('products'));
+    }
+    public function search(Request $request)
+    {
+
+
+
+        $search = $request->input('search');
+        $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
+        if ($productscount == 0) {
+            session()->put('success', 'This categorie is not avalebale.');
+            return redirect()->back();
+        }
+        $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->latest()->paginate();
+
+
+        return view('Frontend.search.index', compact('products', 'productscount', 'search'));
     }
 }

@@ -1,12 +1,3 @@
-<?php
-
-use App\Models\Cart;
-use Illuminate\Support\Facades\auth;
-
-$cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('quantity');
-
-
-?>
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
@@ -41,20 +32,20 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                     <div class="collapse navbar-collapse" id="topnav-menu-content">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.dashboard')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('home')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-home-circle icon"></i>
                                     <span data-key="t-dashboard">Dashboard</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.product')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
-                                    <span data-key="t-dashboard">Product</span>
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('product')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                    <span data-key="t-dashboard">Products</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.contectus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('contectus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                                     <span data-key="t-dashboard">Contect Us</span>
                                 </a>
                             </li>
@@ -62,19 +53,20 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                     </div>
                 </nav>
             </div>
+
         </div>
+
         <div class="d-flex">
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-search icon-sm"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-                 
-                    <form  class="p-2" method="POST" action="{{ route('user.search') }}" enctype="multipart/form-data">
-                    @csrf
+                    <form class="p-2" method="POST" action="{{ route('search') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="search-box">
                             <div class="position-relative">
-                                <input type="text" class="form-control rounded bg-light border-0" name="search" placeholder="Search...">
+                                <input type="text" name="search" class="form-control rounded bg-light border-0" placeholder="Search...">
                                 <i class="bx bx-search search-icon"></i>
                             </div>
                         </div>
@@ -82,26 +74,27 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                 </div>
             </div>
 
+
+            @auth
+            @else
             <div class="dropdown d-inline-block">
-                <a href="{{route('user.cartdetail')}}" class="btn header-item noti-icon  pt-4.5" style="padding-top: 2rem;">
-                    <iconify-icon icon="material-symbols:garden-cart-outline"></iconify-icon>
-                    <span id="cartcount" class="noti-dot bg-danger rounded-pill">{{$cartscount}}</span>
-                </a>     
+                <button type="button" class="btn header-item noti-icon">
+                    <a href="{{ route('login') }}" class="add-event" style="color: white;">Login /</a>
+                    <a href="{{ route('register') }}" class="add-event " style="color: white;">Register</a>
+                </button>
+
             </div>
+            @endauth
+            @auth
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} {{ ucfirst(Auth::user()->user_name) }}
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
-                    <h6 class="dropdown-header">Welcome {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}</h6>
+                    <h6 class="dropdown-header">Welcome {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }} ({{ ucfirst(Auth::user()->user_name) }})</h6>
                     <a class="dropdown-item" href="{{route('user.account')}}"></i> <span class="align-middle">your account</span></a>
                     <a class="dropdown-item" href="{{route('user.order')}}"> <span class="align-middle">your ordere</span></a>
-                    <!-- <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
-                    <a class="dropdown-item d-flex align-items-center" href="contacts-settings.html"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
-                    <a class="dropdown-item" href="auth-lockscreen-cover.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a> -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"> sign out</a>
@@ -109,7 +102,7 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
 
                 </div>
             </div>
+            @endauth
         </div>
     </div>
 </header>
-<div class="hori-overlay"></div>

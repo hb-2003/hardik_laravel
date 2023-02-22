@@ -62,5 +62,5 @@
         });
     });
 </script>
-<script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js  ') }} "></script>
+
 

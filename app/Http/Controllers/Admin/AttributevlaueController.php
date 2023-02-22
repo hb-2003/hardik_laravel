@@ -76,4 +76,5 @@ class AttributevlaueController extends Controller
         Attributesvalue::find($id)->delete();
         return  redirect()->route('admin.Attributevlaue');
     }
+    
 }

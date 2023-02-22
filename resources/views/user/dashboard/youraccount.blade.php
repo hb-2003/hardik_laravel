@@ -80,7 +80,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
-                            <a href="{{route('user.profile')}}">
+                            <a href="{{route('user.contectus')}}">
                                 <div class="card card-body">
                                     <div class="row">
                                         <div class="col-4">

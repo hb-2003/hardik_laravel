@@ -20,10 +20,16 @@ Route::namespace('Frontend')->group(function () {
     Route::match(['get', 'post'], 'productdetail/{id}', 'HomeController@productdetail')->name('productdetail');
     Route::match(['get', 'post'], 'cart', 'HomeController@Cart')->name('cart');
     Route::match(['get', 'post'], 'product/categorie/{id}', 'HomeController@categorie')->name('categorie');
+    Route::match(['get', 'post'], 'contectus', 'HomeController@contectus')->name('contectus');
+    Route::match(['get', 'post'], 'product', 'HomeController@product')->name('product');
+    Route::match(['get', 'post'], 'aboutus', 'HomeController@product')->name('aboutus');
+    // serch 
+    Route::match(['get', 'post'], 'search', 'HomeController@search')->name('search');
 });
 
 Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 'verified', 'is_user'])->group(function () {
     Route::match(['get', 'post'], 'dashboard', 'DashboardController@index')->name('dashboard');
+    Route::match(['get', 'post'], 'product', 'DashboardController@product')->name('product');
     Route::match(['get', 'post'], 'profile', 'DashboardController@profile')->name('profile');
     Route::match(['get', 'post'], 'social', 'DashboardController@social')->name('social');
     Route::match(['get', 'post'], 'email', 'DashboardController@email')->name('email');
@@ -97,6 +103,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::match(['get', 'post'], 'Categorieadd', 'CategorieController@Categorieadd')->name('Categorieadd');
     Route::match(['get', 'post'], 'Categorieedit/{id}', 'CategorieController@Categorieedit')->name('Categorieedit');
     Route::match(['get', 'post'], 'Categoriedelete/{id}', 'CategorieController@Categoriedelete')->name('Categoriedelete');
+
     // Attribute
     Route::match(['get', 'post'], 'Attribute', 'AttributeController@Attribute')->name('Attribute');
     Route::match(['get', 'post'], 'Attributeadd', 'AttributeController@Attributeadd')->name('Attributeadd');
@@ -108,6 +115,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::match(['get', 'post'], 'Attributevlaueadd', 'AttributevlaueController@Attributevlaueadd')->name('Attributevlaueadd');
     Route::match(['get', 'post'], 'Attributevlaueedit/{id}', 'AttributevlaueController@Attributevlaueedit')->name('Attributevlaueedit');
     Route::match(['get', 'post'], 'Attributevlauedelete/{id}', 'AttributevlaueController@Attributevlauedelete')->name('Attributevlauedelete');
+
 
     // Unit
     Route::match(['get', 'post'], 'Unit', 'UnitController@Unit')->name('Unit');
@@ -121,6 +129,8 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::match(['get', 'post'], 'Productadd', 'ProductController@Productadd')->name('Productadd');
     Route::match(['get', 'post'], 'Productedit/{id}', 'ProductController@Productedit')->name('Productedit');
     Route::match(['get', 'post'], 'Productdelete/{id}', 'ProductController@Productdelete')->name('Productdelete');
+    Route::match(['get', 'post'], 'attributegetdata', 'ProductController@attributegetdata')->name('attributegetdata');
+    Route::match(['get', 'post'], 'categorie', 'ProductController@categorie')->name('categorie');
 
     // order
     Route::match(['get', 'post'], 'order', 'OrderController@order')->name('order');

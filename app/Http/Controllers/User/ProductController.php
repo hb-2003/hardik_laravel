@@ -25,10 +25,12 @@ class ProductController extends Controller
   {
 
     $product = Product::with('productimage')->where('id', $id)->first();
+
     $productreviews =  Review::where('product_id', $id)->get();
     $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $id)->first();
     $userproductcount = Review::where('user_id', auth::user()->id)->where('product_id', $id)->count();
-
+    $products = Product::with('productimage')->where('products_type',$product->products_type)->paginate(12);
+    
     $userproductretingsum = Review::where('user_id', auth::user()->id)->where('product_id', $id)->sum('reting');
     if ($userproductcount == 0) {
       $avreagereview = "0";
@@ -39,7 +41,7 @@ class ProductController extends Controller
 
 
 
-    return view('user.productdetail.index', compact('product', 'productreviews', 'userproductreview', 'userproductcount', 'avreagereview'));
+    return view('user.productdetail.index', compact('product', 'productreviews', 'userproductreview', 'userproductcount', 'avreagereview','products'));
   }
 
   public function buyproduct(Request $request, $id)

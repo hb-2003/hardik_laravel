@@ -24,16 +24,16 @@ class ProductController extends Controller
 
     public function Productadd(Request $request)
     {
-        $manufacturers = Manufacturer::where('status',1)->get();
-        $categories = Categorie::where('status',1)->get();
-        $attributes = Attribute::where('status',1)->get();
-        $attributesvalues = Attributesvalue::where('status',1)->get();
-        $units = Unit::where('status',1)->get();
+        $manufacturers = Manufacturer::where('status', 1)->get();
+        $categories = Categorie::where('status', 1)->get();
+        $attributes = Attribute::where('status', 1)->get();
+        $attributesvalues = Attributesvalue::where('status', 1)->get();
+        $units = Unit::where('status', 1)->get();
 
         if ($request->isMethod('POST')) {
 
             $request->validate([
-              
+
                 'attributes_id' => 'required',
                 'attributes_set' => 'required',
                 'products_name' => 'required',
@@ -92,22 +92,24 @@ class ProductController extends Controller
 
     public function Productedit(Request $request, $id)
     {
-
-        $manufacturers = Manufacturer::where('status',1)->get();
-        $categories = Categorie::where('status',1)->get();
-        $attributes = Attribute::where('status',1)->get();
-        $attributesvalues = Attributesvalue::where('status',1)->get();
-        $units = Unit::where('status',1)->get();
         $Product  = Product::where('id', $id)->first();
+        $manufacturers = Manufacturer::where('status', 1)->get();
+        $manufacture = Manufacturer::where('manufacturer_name', $Product->manufacturers_id)->first();
+        $categories = Categorie::where('manufacturers_id', $manufacture->id)->where('status', 1)->get();
+        $attributes = Attribute::where('status', 1)->get();
+        $attribute = Attribute::where('name', $Product->attributes_id)->first();
+        $attributesvalues = Attributesvalue::where('attribute_id', $attribute->id)->where('status', 1)->get();
+        $units = Unit::where('status', 1)->get();
+
 
         if ($request->isMethod('POST')) {
-        
+
 
             $request->validate([
-                
+
                 'attributes_id' => 'required',
                 'attributes_set' => 'required',
-               
+
                 'products_name' => 'required',
                 'products_quantity' => 'required',
                 'products_price' => 'required',
@@ -166,5 +168,29 @@ class ProductController extends Controller
 
         Product::with('productimages')->where('id', $id)->delete();
         return  redirect()->route('admin.Product');
+    }
+    public function attributegetdata(Request $request)
+
+    {
+        if ($request->isMethod('POST')) {
+            $attribute = Attribute::where('name', $request->name)->first();
+            $attributesvalue = Attributesvalue::where('attribute_id', $attribute->id)->where('status', 1)->get();
+
+
+            return response()->json($attributesvalue);
+        }
+    }
+    public function categorie(Request $request)
+
+    {
+        if ($request->isMethod('POST')) {
+
+
+            $manufacture = Manufacturer::where('manufacturer_name', $request->id)->first();
+            $categories = Categorie::where('manufacturers_id', $manufacture->id)->where('status', 1)->get();
+
+
+            return response()->json($categories);
+        }
     }
 }

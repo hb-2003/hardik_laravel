@@ -41,7 +41,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Manufacturer</label>
-                                    <select class="form-control" id="manufacturers_id" name="manufacturers_id" require>
+                                    <select class="form-control" id="manufacture" name="manufacturers_id" require>
                                         <option value=""> Select please</option>
                                         @foreach($manufacturers as $manufacturer)
                                         <option value=" {{$manufacturer ->manufacturer_name}}" <?php echo  $Product->manufacturers_id == $manufacturer->manufacturer_name ? "selected" : "" ?>> {{$manufacturer ->manufacturer_name}}</option>
@@ -54,13 +54,8 @@
 
                                 <div class="form-group">
                                     <label>Categorie</label>
-                                    <select class="form-control" name="products_type" require>
-                                        <option value=""> Select please</option>
-                                        @foreach($categories as $categorie)
-                                        <option value=" {{$categorie ->categorie_name}}" <?php echo  $Product->products_type == $categorie->categorie_name ? "selected" : "" ?>>
-                                            {{$categorie ->categorie_name}}
-                                        </option>
-                                        @endforeach
+                                    <select class="form-control" name="products_type" id="categorie" require>
+                                        <option value=" $Product->products_type"> {{ $Product->products_type}}</option>FF
                                     </select>
                                 </div>
                                 @error('products_type')
@@ -83,11 +78,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div>
                                     <img src="{{asset('images/product/'.$Product->productimage[0]->name)}}" width="10%" alt="...">
                                 </div>
-
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Quantity</label>
                                     <input type="number" value="{{$Product->products_quantity}}" name="products_quantity" class="form-control" id="exampleInputEmail1" placeholder="Enter email" require>
@@ -128,7 +121,7 @@
 
                                 <div class="form-group">
                                     <label> Attribute</label>
-                                    <select class="form-control" name="attributes_id" require>
+                                    <select class="form-control" id="attribute" name="attributes_id" require>
                                         <option value=""> Select please</option>
                                         @foreach($attributes as $attribute)
                                         <option value=" {{$attribute ->name}}" <?php echo  $Product->attributes_id == $attribute->name ? "selected" : "" ?>> {{$attribute ->name}}</option>
@@ -141,17 +134,13 @@
 
                                 <div class="form-group">
                                     <label>Attributesvalue</label>
-                                    <select class="form-control" name="attributes_set" require>
-                                        <option value=""> Select please</option>
-                                        @foreach($attributesvalues as $attributesvalue)
-                                        <option value=" {{$attributesvalue ->name}}" <?php echo  $Product->attributes_set == $attributesvalue->name ? "selected" : "" ?>> {{$attributesvalue ->name}}</option>
-                                        @endforeach
+                                    <select class="form-control" id="attributevalue" name="attributes_set" require>
+                                        <option value="$Product->attributes_set"> {{$Product->attributes_set}}</option>
                                     </select>
                                 </div>
                                 @error('attributes_id')
                                 <div class="alert alert-danger">The Attribute Value Is Required.</div>
                                 @enderror
-
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Description</label>
@@ -188,9 +177,7 @@
                                 @error('status')
                                 <div class="alert alert-danger">The Status Is Required.</div>
                                 @enderror
-
                             </div>
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> Back</a>
@@ -202,5 +189,55 @@
             </div>
     </section>
 </div>
+
+@endsection
+
+@section('js')
+<script src="{{asset('admin/plugins/jquery/jquery.min.js  ') }} "></script>
+<script>
+    $(document).ready(function() {
+        $('#manufacture').on('change', function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var id = this.value;
+            $.ajax({
+                url: "{{ route('admin.categorie') }}",
+                type: "POST",
+                data: {
+                    _token: CSRF_TOKEN,
+                    id: id,
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    $('#categorie').html('<option value="">Select please</option>');
+                    $.each(result, function(key, value) {
+                        $("#categorie").append('<option value="' + value.id + '">' + value.categorie_name + '</option>');
+                    });
+                }
+            });
+        });
+        $('#attribute').on('change', function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var name = this.value;
+            console.log(name);
+            $.ajax({
+                url: "{{ route('admin.attributegetdata') }}",
+                type: "POST",
+                data: {
+                    _token: CSRF_TOKEN,
+                    name: name,
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    $('#attributevalue').html('<option value="">Select please</option>');
+                    $.each(result, function(key, value) {
+                        $("#attributevalue").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 @endsection

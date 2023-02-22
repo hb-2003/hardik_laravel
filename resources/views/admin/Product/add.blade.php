@@ -34,14 +34,14 @@
                 <div class="col-md-12">
                     <div class="card card-rgb(52,58,64)">
                         <div class="card-header">
-                            <h3 class="card-title">Add Detai</h3>
+                            <h3 class="card-title">Add Detail</h3>
                         </div>
                         <form accept="{{route('admin.Productadd')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Manufacturer</label>
-                                    <select class="form-control" id="manufacturers_id" name="manufacturers_id" require>
+                                    <select class="form-control" id="manufacture" name="manufacturers_id" require>
                                         <option value=""> Select please</option>
                                         @foreach($manufacturers as $manufacturer)
                                         <option value=" {{$manufacturer ->manufacturer_name}}"> {{$manufacturer ->manufacturer_name}}</option>
@@ -57,12 +57,8 @@
 
                                 <div class="form-group">
                                     <label>Categorie</label>
-                                    <select class="form-control" name="products_type" require>
-                                        <option value=""> Select please</option>
-                                        @foreach($categories as $categorie)
-                                        <option value=" {{$categorie ->categorie_name}}"> {{$categorie ->categorie_name}}</option>
 
-                                        @endforeach
+                                    <select class="form-control" name="products_type" id="categorie">
                                     </select>
                                 </div>
                                 @error('products_type')
@@ -128,7 +124,7 @@
 
                                 <div class="form-group">
                                     <label> Attribute</label>
-                                    <select class="form-control" name="attributes_id" require>
+                                    <select class="form-control" id="attribute" name="attributes_id" require>
                                         <option value=""> Select please</option>
                                         @foreach($attributes as $attribute)
                                         <option value=" {{$attribute ->name}}"> {{$attribute ->name}}</option>
@@ -142,12 +138,8 @@
 
                                 <div class="form-group">
                                     <label>Attributesvalue</label>
-                                    <select class="form-control" name="attributes_set" require>
-                                        <option value=""> Select please</option>
-                                        @foreach($attributesvalues as $attributesvalue)
-                                        <option value=" {{$attributesvalue ->name}}"> {{$attributesvalue ->name}}</option>
+                                    <select class="form-control" id="attributevalue" name="attributes_set" require>
 
-                                        @endforeach
                                     </select>
                                 </div>
                                 @error('attributes_set')
@@ -157,7 +149,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">description</label>
+                                    <label for="exampleInputFile">Description</label>
                                     <textarea name="is_current" id="" class=" form-control" require></textarea>
                                 </div>
                                 @error('is_current')
@@ -205,5 +197,59 @@
             </div>
     </section>
 </div>
+
+@endsection
+@section('js')
+<script src="{{asset('admin/plugins/jquery/jquery.min.js  ') }} "></script>
+<script>
+    $(document).ready(function() {
+        $('#manufacture').on('change', function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var id = this.value;
+
+            $.ajax({
+                url: "categorie",
+                type: "POST",
+                data: {
+                    _token: CSRF_TOKEN,
+                    id: id,
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+
+                    $('#categorie').html('<option value="">Select please</option>');
+                    $.each(result, function(key, value) {
+                        $("#categorie").append('<option value="' + value.id + '">' + value.categorie_name + '</option>');
+                    });
+
+                }
+            });
+        });
+        $('#attribute').on('change', function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var name = this.value;
+            console.log(name);
+            $.ajax({
+                url: "attributegetdata",
+                type: "POST",
+                data: {
+                    _token: CSRF_TOKEN,
+                    name: name,
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+
+
+                    $('#attributevalue').html('<option value="">Select please</option>');
+                    $.each(result, function(key, value) {
+                        $("#attributevalue").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 @endsection
