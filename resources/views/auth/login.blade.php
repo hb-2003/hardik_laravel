@@ -12,7 +12,7 @@
                         <div class="pb-3">
                             <a href="#">
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                    <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Vuesy Furniture</span>
                                 </span>
                             </a>
                             <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">User Experience & Interface Design Strategy Saas Solution</p>
@@ -28,7 +28,7 @@
                     <div class="mt-4 mt-md-5 text-center">
                         <p class="mb-0">© <script>
                                 document.write(new Date().getFullYear())
-                            </script> Vuesy. Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="https://1.envato.market/themesdesign" target="_blank">Themesdesign</a></p>
+                            </script> Vuesy Furniture. Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="https://1.envato.market/themesdesign" target="_blank">Themesdesign</a></p>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                                     <div class="px-3 py-3">
                                         <div class="text-center">
                                             <h5 class="mb-0">Welcome Back !</h5>
-                                            <p class="text-muted mt-2">Sign in to continue to Vuesy.</p>
+                                            <p class="text-muted mt-2">Sign in to continue to Vuesy Furniture.</p>
                                         </div>
                                         <form class="mt-4 pt-2" method="POST" id="login" action="{{ route('login') }}">
                                             @csrf

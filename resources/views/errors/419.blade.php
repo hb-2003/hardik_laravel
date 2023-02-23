@@ -12,7 +12,7 @@
                         <div class="pb-3">
                             <a href="index-2.html">
                                 <span class="logo-lg">
-                                    <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy</span>
+                                    <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="24"> <span class="logo-txt">Vuesy Furniture</span>
                                 </span>
                             </a>
                             <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">User Experience & Interface Design Strategy Saas Solution</p>
