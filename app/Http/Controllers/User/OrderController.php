@@ -24,6 +24,7 @@ class OrderController extends Controller
         $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->where('id', $id)->first();
         $userorders;
         $userorders->update([
+            'status'=>3,
             'order_status' => 2,
 
         ]);
@@ -38,9 +39,10 @@ class OrderController extends Controller
 
     {
         $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->where('id', $id)->first();
-        $userorders;
+        
         $userorders->update([
-            'order_status' => 0,
+            
+            'order_status' => 3,
 
         ]);
 

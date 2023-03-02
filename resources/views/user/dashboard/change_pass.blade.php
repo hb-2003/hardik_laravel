@@ -19,7 +19,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header justify-content-between d-flex align-items-center">
-                            <h4 class="card-title">Use the form below to change the password for your Vusey account</h4>
+                            <h4 class="card-title">Use the form below to change the password for your Vusey Furniture </h4>
                         </div><!-- end card header -->
                         <div class="card-body">
                             <form method="POST" action="{{ route('user.change_pass') }}">

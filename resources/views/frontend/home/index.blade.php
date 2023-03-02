@@ -96,7 +96,8 @@
                             </div><!-- end swiper container -->
                         </div><!-- end card body -->
                     </div><!-- end card -->
-                </div><!-- end col -->
+                </div>
+               
             </div><!-- end row -->
         </div>
     </div>

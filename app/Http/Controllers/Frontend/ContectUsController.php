@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use COM;
 use Illuminate\Support\Facades\auth;
+use phpDocumentor\Reflection\Types\Null_;
 use Reflector;
 use Str;
 use Whoops\Run;
@@ -21,6 +22,8 @@ class ContectUsController extends Controller
         if ($request->isMethod('POST')) {
 
 
+            if(auth::user()->id ==  Null)
+           
             $request->validate([
                 'name' => 'required',
                 'email' => 'required',
@@ -46,16 +49,16 @@ class ContectUsController extends Controller
             });
             return  redirect()->route('user.dashboard');
         }
-        return  view('user.contectus.index');
+        return  view('Frontend.contectus.index');
     }
     public function aboutus(Request $request)
     {
         
-        return  view('user.about us.index');
+        return  view('Frontend.about us.index');
     }
     public function faqs(Request $request)
     {
         
-        return  view('user.faqs.index');
+        return  view('Frontend.faqs.index');
     }
 }

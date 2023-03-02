@@ -10,6 +10,7 @@ use App\Models\Manufacturer;
 use App\Models\Categorie;
 use App\Models\Attribute;
 use App\Models\Attributesvalue;
+use App\Models\Review;
 use App\Models\Unit;
 
 
@@ -185,12 +186,27 @@ class ProductController extends Controller
     {
         if ($request->isMethod('POST')) {
 
-
             $manufacture = Manufacturer::where('manufacturer_name', $request->id)->first();
             $categories = Categorie::where('manufacturers_id', $manufacture->id)->where('status', 1)->get();
-
-
             return response()->json($categories);
         }
+    }
+    public function productreview(Request $request, $id)
+    {
+
+        $productsreviewcount =  Review::where('product_id', $id)->count();
+        $productsreviews  =  Review::where('product_id', $id)->get();
+
+        if ($productsreviewcount == '0') {
+            return  redirect()->route('admin.Product');
+        }
+
+        $Products  =  Product::with('productimage')->first();
+        return  view('admin.product.review', compact('productsreviews', 'productsreviewcount'));
+    }
+    public function reviewdelete(Request $request, $id)
+    {
+        $productsreviews  =  Review::where('id', $id)->delete();
+        return  redirect()->back();
     }
 }

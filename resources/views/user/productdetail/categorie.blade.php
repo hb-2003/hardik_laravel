@@ -22,10 +22,7 @@
                                     <div class="col-md-6">
                                         <div>
                                             <h5>All categories</h5>
-                                            <ol class="breadcrumb p-0 bg-transparent mb-2">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                                <li class="breadcrumb-item active"></li>
-                                            </ol>
+                                           
                                         </div>
                                     </div>
                                 </div>

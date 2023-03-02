@@ -16,7 +16,7 @@
                                     <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Vuesy Furniture</span>
                                 </span>
                             </a>
-                            <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">User Experience & Interface Design Strategy Saas Solution</p>
+                            <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0"></p>
                         </div>
                     </div>
 
@@ -26,11 +26,6 @@
                         </div>
                     </div>
 
-                    <div class="mt-4 mt-md-5 text-center">
-                        <p class="mb-0">© <script>
-                                document.write(new Date().getFullYear())
-                            </script> Vuesy Furniture. Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="https://1.envato.market/themesdesign" target="_blank">Themesdesign</a></p>
-                    </div>
                 </div>
 
                 <!-- end auth full page content -->
@@ -59,9 +54,7 @@
                                                     <i class="uil uil-padlock"></i>
                                                 </div>
                                             </div>
-
                                             
-
                                             <div class="mt-4">
                                                 <button class="btn btn-primary w-100" type="submit">Reset</button>
                                             </div>

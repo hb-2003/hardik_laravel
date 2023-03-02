@@ -75,7 +75,7 @@ class DashboardController extends Controller
     public function order(Request $request)
 
     {
-        $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->get();
+        $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->orderBy('id', 'ASC')->get();
         // foreach($userorders as $userorder)
         // {
         //     foreach($userorder->order_product as $product)

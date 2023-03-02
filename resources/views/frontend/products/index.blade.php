@@ -23,10 +23,7 @@
                                     <div class="col-md-6">
                                         <div>
                                             <h5>Showing result for </h5>
-                                            <ol class="breadcrumb p-0 bg-transparent mb-2">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                                                <li class="breadcrumb-item active"></li>
-                                            </ol>
+                                           
                                         </div>
                                     </div>
 
@@ -38,7 +35,7 @@
                                     <div class="tab-pane active" id="produt" role="tabpanel">
                                         <div class="row">
                                             @foreach($products as $product)
-                                            <div class="col-xl-4 col-sm-6">
+                                            <div class="col-xl-3 col-sm-4">
                                                 <div class="card dash-product-box shadow-none border text-center">
                                                     <a href="{{route('productdetail',$product->id)}}">
                                                         <div class="card-body">
@@ -49,13 +46,8 @@
                                                             <h5 class="font-size-17 mt-1">
                                                                 <a href="#" class="text-dark lh-base">{{$product->products_name}}</a>
                                                             </h5>
-                                                            <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1"> {{$product->products_price*110/100}}</del> {{$product->products_price}}</h5>
-                                                            <div class="font-size-16 mt-2">
-                                                                <i class="bx bx-star text-warning"></i>
-                                                                <i class="bx bx-star text-warning"></i>
-                                                                <i class="bx bx-star text-warning"></i>
-                                                                <i class="bx bx-star-half-full text-warning"></i>
-                                                            </div>
+                                                            <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">₹{{$product->products_price*110/100}}</del> ₹{{$product->products_price}}</h5>
+                                                            <h6 class="p-3">FREE Delivery by Vuesy Furniture</h6>
                                                         </div>
                                                     </a>
                                                 </div>

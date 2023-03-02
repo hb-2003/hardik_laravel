@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="{{ asset('user/images/fav.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('user/images/fav.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/logo-sm.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo-sm.svg') }}" type="image/x-icon">
     <title>{{ config('app.name', 'Tournament') }} - @yield('title')</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -59,9 +59,9 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <img src="{{ asset('admin/images/cuba-logo1.png') }}" alt="logo">
+                                                    <img src="{{ asset('assets/images/logo-sm.svg') }}" alt="logo">
                                                 </td>
-                                                <td style="text-align: right; color:#999"><span>{{ config('app.name', 'Tournament') }}</span></td>
+                                                <td style="text-align: right; color:#999"><span>{{ config('app.name', 'Vuesy Furniture') }}</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -79,7 +79,7 @@
                                     @yield('content')
                                     <p style="margin-bottom: 0">
                                         Regards,<br>
-                                        {{ config('app.name', 'Tournament') }}
+                                        {{ config('app.name', ' Vuesy Furniture') }}
                                     </p>
                                 </td>
                             </tr>
@@ -90,7 +90,7 @@
                             <tr style="text-align: center">
                                 <td>
                                     <p style="color: #999; margin-bottom: 0">333 Woodland Rd. Baldwinsville, NY 13027</p>
-                                    <p style="color: #999; margin-bottom: 0">Powered By <a href="{{ route('home') }}">{{ config('app.name', 'Tournament') }}</a>.</p>
+                                    <p style="color: #999; margin-bottom: 0">Powered By <a href="{{ route('home') }}">{{ config('app.name', 'Vuesy Furniture') }}</a>.</p>
                                 </td>
                             </tr>
                         </tbody>

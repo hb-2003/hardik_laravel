@@ -46,12 +46,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Product </h3>
-                            <a class=" float-right btn btn-primary" href="{{ route('admin.Productadd') }}">add </a>
+                            <h3 class="card-title">Product review</h3>
                         </div>
-
-
-
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -59,45 +55,45 @@
                                     <thead>
                                         <tr>
                                             <td>Id</td>
-                                            <th>Name</th>
-                                            <th>Image</th>
-                                            <th>Categorie</th>
-                                            <th>Status</th>
+                                            <th>User Name</th>
+                                            <th>Reting</th>
+                                            <th>Detail</th>
                                             <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Products as $key => $Product)
+                                        @foreach($productsreviews as $key => $productsreview)
                                         <tr>
                                             <td>{{$key + 1}}</td>
-                                            <td>{{$Product ->products_name}}</td>
-
+                                            <td>{{$productsreview ->user_name}}</td>
                                             <td>
+                                                @php $rating = $productsreview->reting; @endphp
+                                                @foreach(range(1,5) as $i)
+                                                <span class="fa-stack" style="width:1em">
+                                                    <i class="far fa-star fa-stack-1x"></i>
 
-                                                <img src="{{asset('images/product/'.$Product->productimage[0]->name)}}" width="100" height="100" alt="...">
-
+                                                    @if($rating >0)
+                                                    @if($rating >0.5)
+                                                    <i class="fas fa-star fa-stack-1x"></i>
+                                                    @else
+                                                    <i class="fas fa-star-half fa-stack-1x"></i>
+                                                    @endif
+                                                    @endif
+                                                    @php $rating--; @endphp
+                                                </span>
+                                                     @endforeach
                                             </td>
-                                            <td>{{$Product -> products_type}}</td>
-                                            <td> @if($Product ->products_status == 1 )
-                                                <span class="right badge badge-danger"> Inactive </span>
-                                                @else
-                                                <span class="right badge badge-success">Active</span>
-                                                @endif
-                                            </td>
+                                            <td>{{$productsreview -> detail}}</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                         Action
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <li><a class="dropdown-item" href="{{ route('admin.Productedit',$Product->id) }}">Edit</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.Productdelete',$Product->id)}}">Delete</a></li>
-                                                        <li><a class="dropdown-item" href="{{route('admin.productreview',$Product->id)}}">Review</a></li>
 
+                                                        <li><a class="dropdown-item" href="{{route('admin.reviewdelete',$productsreview ->id) }}">Delete</a></li>
                                                     </ul>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         @endforeach
@@ -105,6 +101,10 @@
                                     </tbody>
 
                                 </table>
+                            </div>
+                            <div class="card-footer">
+                             
+                                <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> Back</a>
                             </div>
                             <!-- /.card-body -->
                         </div>

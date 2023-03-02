@@ -25,6 +25,9 @@ Route::namespace('Frontend')->group(function () {
     Route::match(['get', 'post'], 'aboutus', 'HomeController@product')->name('aboutus');
     // serch 
     Route::match(['get', 'post'], 'search', 'HomeController@search')->name('search');
+    Route::match(['get', 'post'], 'contectus', 'HomeController@contectus')->name('contectus');
+    Route::match(['get', 'post'], 'aboutus', 'HomeController@aboutus')->name('aboutus');
+    Route::match(['get', 'post'], 'faqs', 'HomeController@faqs')->name('faqs');
 });
 
 Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 'verified', 'is_user'])->group(function () {
@@ -81,8 +84,12 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     // checkout
     Route::match(['get', 'post'], 'checkout', 'CheckoutController@checkout')->name('checkout');
     Route::match(['get', 'post'], 'buycheckout', 'CheckoutController@buycheckout')->name('buycheckout');
-    Route::match(['get', 'post'], 'contectus', 'ContectUsController@contectus')->name('contectus');
     Route::match(['get', 'post'], 'rezolpay', 'CheckoutController@rezolpay')->name('rezolpay');
+
+
+    Route::match(['get', 'post'], 'contectus', 'ContectUsController@contectus')->name('contectus');
+    Route::match(['get', 'post'], 'aboutus', 'ContectUsController@aboutus')->name('aboutus');
+    Route::match(['get', 'post'], 'faqs', 'ContectUsController@faqs')->name('faqs');
 });
 
 Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 'verified', 'is_admin'])->group(function () {
@@ -131,6 +138,8 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::match(['get', 'post'], 'Productdelete/{id}', 'ProductController@Productdelete')->name('Productdelete');
     Route::match(['get', 'post'], 'attributegetdata', 'ProductController@attributegetdata')->name('attributegetdata');
     Route::match(['get', 'post'], 'categorie', 'ProductController@categorie')->name('categorie');
+    Route::match(['get', 'post'], 'productreview/{id}', 'ProductController@productreview')->name('productreview');
+    Route::match(['get', 'post'], 'reviewdelete/{id}', 'ProductController@reviewdelete')->name('reviewdelete');
 
     // order
     Route::match(['get', 'post'], 'order', 'OrderController@order')->name('order');

@@ -110,8 +110,12 @@ class HomeController extends Controller
         $userproductreview = Review::where('product_id', $id)->first();
         $userproductcount = Review::where('product_id', $id)->count();
         $userproductretingsum = Review::where('product_id', $id)->sum('reting');
-
-        $avreagereview =  $userproductretingsum / $userproductcount;
+        if ($userproductcount == 0) {
+            $avreagereview = "0";
+          } else {
+            $avreagereview =  $userproductretingsum / $userproductcount;
+          }
+       
 
 
 
@@ -199,5 +203,16 @@ class HomeController extends Controller
 
 
         return view('Frontend.search.index', compact('products', 'productscount', 'search'));
+    }
+
+    public function aboutus(Request $request)
+    {
+
+        return  view('Frontend.about us.index');
+    }
+    public function faqs(Request $request)
+    {
+
+        return  view('Frontend.faqs.index');
     }
 }

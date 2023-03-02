@@ -49,6 +49,11 @@
                                     <span data-key="t-dashboard">Contect Us</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link dropdown-toggle arrow-none" href="{{route('aboutus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span data-key="t-dashboard">About Us</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

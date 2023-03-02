@@ -127,6 +127,8 @@ class CheckoutController extends Controller
                     'product_id' => $cartdetail->product[0]->id,
                     'order_id' =>  $order->id,
                     'product_name' => $cartdetail->product[0]->products_name,
+                    'quantity' => $cartdetail->quantity,
+                    'price'=>$cartdetail->product_price,
 
                 ]);
 
@@ -256,7 +258,8 @@ class CheckoutController extends Controller
                 'product_id' => $cartdetails->product[0]->id,
                 'order_id' =>  $order->id,
                 'product_name' =>  $cartdetails->product[0]->products_name,
-
+                'quantity' => $cartdetails->quantity,
+                'price'=>$cartdetails->product_price,
             ]);
 
 
@@ -302,6 +305,8 @@ class CheckoutController extends Controller
                     'product_id' => $cartdetail->product[0]->id,
                     'order_id' =>  $request->orderid,
                     'product_name' => $cartdetail->product[0]->products_name,
+                    'quantity' => $cartdetails->quantity,
+                    'price'=>$cartdetails->product_price,
 
                 ]);
 
@@ -315,6 +320,7 @@ class CheckoutController extends Controller
                 Cart::where('id', $cartdetail->id)->update(['status' => 1]);
             }
 
+            session()->put('success', 'order complete.');
 
             return response()->json(['request' => $request]);
         }
