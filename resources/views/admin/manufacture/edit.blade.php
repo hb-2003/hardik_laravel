@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-rgb(52,58,64)">
                         <div class="card-header">
@@ -75,7 +75,7 @@
                                         <option value="1" <?php  echo $manufacturer->status == 1 ? "selected" : "" ?>>Active</option>
                                         <option value="0" <?php  echo  $manufacturer->status == 0 ? "selected" : "" ?>>Inactive</option>
                                     </select>
-                                    ($product['products_status']=="1"
+                                 
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

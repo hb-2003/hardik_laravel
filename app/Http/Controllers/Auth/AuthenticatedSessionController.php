@@ -33,12 +33,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->count();
 
-        if ($user->status == "0") {
-            echo 'hiii';
-            return redirect()->route('login');
+        if ($user == '0') {
+            session()->put('error', 'Your email is not valid');
+            return redirect()->back();
         }
 
         $request->authenticate();

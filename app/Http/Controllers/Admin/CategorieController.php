@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Manufacturer;
 use App\Models\Categorie;
+use App\Models\Product;
+
 
 class CategorieController extends Controller
 {
@@ -94,6 +96,16 @@ class CategorieController extends Controller
                 'categorie_name' => $request->categorie_name,
                 'status' => $request->status,
             ]);
+            
+            $manufacturer  =  Manufacturer::find($request->manufacturers_id);
+            $products =  Product::where('manufacturers_id', $manufacturer->manufacturer_name)->where('products_type', $categorie->categorie_name)->get();
+            foreach ($products as $product) {
+                $product->update([
+                    'products_status' => $request->status,
+                    'products_type' => $request->categorie_name,
+
+                ]);
+            }
 
             return  redirect()->route('admin.Categorie');
         }

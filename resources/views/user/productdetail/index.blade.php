@@ -58,7 +58,7 @@
                                             </div>
 
 
-                                            @if($product->products_quantity > 0 && $product->products_status=="0")
+                                            @if($product->products_quantity > 0 && $product->products_status=="1")
                                             <div class="row text-center mt-3">
 
                                                 <div class="col-sm-6">
@@ -106,7 +106,7 @@
 
                                                 <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> {{ $avreagereview }}</span> {{$userproductcount}} Reviews
                                             </div>
-                                            @if($product->products_quantity > 0 && $product->products_status=="0")
+                                            @if($product->products_quantity > 0 && $product->products_status=="1")
                                             <div class="mt-3">
                                                 <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2">₹<?php echo (round($product->products_price * 110 / 100))  ?></del>₹{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
                                             </div>
@@ -189,7 +189,7 @@
                                                     </div> -->
 
 
-                                                    @if($product->products_quantity > 0 && $product->products_status=="0")
+                                                    @if($product->products_quantity > 0 && $product->products_status=="1")
                                                     <!-- <h3 class="card">OUt OF Stock</h3> -->
                                                     <div class="col-lg-5 col-sm-4">
                                                         <div class="mt-3">
@@ -200,14 +200,12 @@
                                                                     <option value="">select</option>
                                                                     @for ($i = 1; $i <= $product->products_quantity; $i++)
                                                                         @if (10 >= $i)
-                                                                        <option value="{{$i}}">{{$i}}</option>
+                                                                        <option  value="<?php echo $i ?> " <?php echo $i == "1" ? "selected" : "" ?>">{{$i}}</option>
                                                                         @endif
                                                                         @endfor
                                                                 </select>
                                                             </div>
-                                                            @error('quantity')
-                                                            <div class="alert alert-danger">The select quantity .</div>
-                                                            @enderror
+                                                           
                                                         </div>
                                                     </div>
 
@@ -371,7 +369,7 @@
                                     <div class="tab-pane active" id="produt" role="tabpanel">
                                         <div class="row">
                                             @foreach($products as $product)
-                                            @if($product['products_status']=="1")
+                                            @if($product['products_status']=="0")
 
                                             <div class="col-xl-4 col-sm-6">
                                                 <div class="card dash-product-box shadow-none border text-center">
@@ -392,7 +390,7 @@
                                                 </div>
                                             </div>
 
-                                            @elseif($product['products_status']=="0")
+                                            @elseif($product['products_status']=="1")
 
                                             <div class="col-xl-3 col-sm-4">
                                                 <div class="card dash-product-box shadow-none border text-center">
@@ -587,7 +585,7 @@
 @endsection
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
 
 <script type="text/javascript">
     function yourFunction(product_id, quantity, price) {

@@ -11,7 +11,6 @@
     <!-- AdminLTE App -->
     <script src="{{asset('admin/dist/js/adminlte.js  ') }} "></script>
 
-    <!-- PAGE PLUGINS -->
     <!-- jQuery Mapael -->
     <script src="{{asset('admin/plugins/jquery-mousewheel/jquery.mousewheel.js  ') }} "></script>
     <script src="{{asset('admin/plugins/raphael/raphael.min.js  ') }} "></script>
@@ -42,7 +41,7 @@
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <script>
     $(function() {
         $("#example1").DataTable({

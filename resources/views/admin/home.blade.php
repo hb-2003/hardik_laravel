@@ -170,6 +170,34 @@
                     <!-- small box -->
                     <div class="small-box bg-" style="background-color: #343a40; color:white;">
                         <div class="inner">
+                            <h3>{{$totalmonthOrder}}</h3>
+
+                            <p>last month order</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-" style="background-color: #343a40; color:white;">
+                        <div class="inner">
+                            <h3>{{$confirmorder}}</h3>
+
+                            <p>Confirm order</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-" style="background-color: #343a40; color:white;">
+                        <div class="inner">
                             <h3>{{$totalpenddingOrder}}</h3>
 
                             <p>pendding order</p>
@@ -180,7 +208,14 @@
 
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                
+
+
+
+
+            </div>
+            <div class="row">
+            <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-" style="background-color: #343a40; color:white;">
                         <div class="inner">
@@ -194,10 +229,34 @@
 
                     </div>
                 </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-" style="background-color: #343a40; color:white;">
+                        <div class="inner">
+                            <h3>{{$totalcalsalorder}}</h3>
 
+                            <p>cansal order</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-" style="background-color: #343a40; color:white;">
+                        <div class="inner">
+                            <h3>{{$totaldelivaryorder}}</h3>
 
-
+                            <p>Delivary order</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
+
 
             <div class="row">
                 <div class="col-md-6">
@@ -281,6 +340,60 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-grow-1">
+                                    <h5 class="card-title mb-2">Order Stats</h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle text-muted" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Monthly<i class="mdi mdi-chevron-down ms-1"></i>
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a class="dropdown-item" href="#">Yearly</a>
+                                            <a class="dropdown-item" href="#">Monthly</a>
+                                            <a class="dropdown-item" href="#">Weekly</a>
+                                            <a class="dropdown-item" href="#">Today</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="chart-donut" data-colors='["--bs-primary", "--bs-success","--bs-danger"]' class="apex-charts" dir="ltr"></div>
+
+                            <div class="mt-1 px-2">
+                                <div class="order-wid-list d-flex justify-content-between border-bottom">
+                                    <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-primary me-2"></i>Order Completed</p>
+                                    <div>
+                                        <span class="pe-5">56,236</span>
+                                        <span class="badge bg-primary"> + 0.2% </span>
+                                    </div>
+                                </div>
+                                <div class="order-wid-list d-flex justify-content-between border-bottom">
+                                    <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-success me-2"></i>Order Processing</p>
+                                    <div>
+                                        <span class="pe-5">12,596</span>
+                                        <span class="badge bg-success"> - 0.7% </span>
+                                    </div>
+                                </div>
+                                <div class="order-wid-list d-flex justify-content-between">
+                                    <p class="mb-0"><i class="mdi mdi-square-rounded font-size-10 text-danger me-2"></i>Order Cancel</p>
+                                    <div>
+                                        <span class="pe-5">1,568</span>
+                                        <span class="badge bg-danger"> + 0.4% </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>
@@ -288,6 +401,6 @@
 @endsection
 
 @section('js')
-<!-- <script src="{{asset('admin/dist/js/pages/dashboard3.js') }}"></script>
-<script src="{{asset('admin/plugins/chart.js/Chart.min.js') }}"></script> -->
+<script src="{{asset('admin/dist/js/pages/dashboard2.js') }}"></script>
+<script src="{{asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
 @endsection

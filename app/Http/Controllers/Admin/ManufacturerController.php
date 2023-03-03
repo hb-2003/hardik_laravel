@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Manufacturer;
 use App\Models\Categorie;
+use App\Models\Product;
 use PharIo\Manifest\Manifest;
 
 class ManufacturerController extends Controller
@@ -94,7 +95,15 @@ class ManufacturerController extends Controller
                    
                 ]);
             }
-
+            $products =  Product::where('manufacturers_id',$manufacturer->manufacturer_name)->get();
+          
+            foreach($products as $product)
+            {
+                $product->update([
+                    'products_status' => $request->status,
+                   
+                ]);
+            }
             return  redirect()->route('admin.Manufacturer');
         }
 

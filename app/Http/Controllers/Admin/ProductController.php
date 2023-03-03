@@ -96,7 +96,10 @@ class ProductController extends Controller
         $Product  = Product::where('id', $id)->first();
         $manufacturers = Manufacturer::where('status', 1)->get();
         $manufacture = Manufacturer::where('manufacturer_name', $Product->manufacturers_id)->first();
+       
         $categories = Categorie::where('manufacturers_id', $manufacture->id)->where('status', 1)->get();
+        $categorie = Categorie::where('categorie_name', $Product->products_type)->first();
+       
         $attributes = Attribute::where('status', 1)->get();
         $attribute = Attribute::where('name', $Product->attributes_id)->first();
         $attributesvalues = Attributesvalue::where('attribute_id', $attribute->id)->where('status', 1)->get();
@@ -159,7 +162,7 @@ class ProductController extends Controller
             session()->put('success', 'ediy product success complete.');
             return  redirect()->route('admin.Product');
         }
-        return view('admin.product.edit', compact('Product', 'manufacturers', 'categories', 'attributes', 'attributesvalues', 'units'));
+        return view('admin.product.edit', compact('Product', 'manufacturers', 'categories', 'attributes','categorie','manufacture', 'attributesvalues', 'units'));
     }
 
     public function Productdelete(Request $request, $id)

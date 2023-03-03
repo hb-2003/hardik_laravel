@@ -20,6 +20,9 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+        // return view('pages.maintenance');
+        //return view('pages.comingsoon');
         $productssliders = Product::with('productimage')->latest()->take(5)->get();
 
 
@@ -112,10 +115,10 @@ class HomeController extends Controller
         $userproductretingsum = Review::where('product_id', $id)->sum('reting');
         if ($userproductcount == 0) {
             $avreagereview = "0";
-          } else {
+        } else {
             $avreagereview =  $userproductretingsum / $userproductcount;
-          }
-       
+        }
+
 
 
 

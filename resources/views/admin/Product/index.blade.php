@@ -79,7 +79,7 @@
 
                                             </td>
                                             <td>{{$Product -> products_type}}</td>
-                                            <td> @if($Product ->products_status == 1 )
+                                            <td> @if($Product ->products_status == 0 )
                                                 <span class="right badge badge-danger"> Inactive </span>
                                                 @else
                                                 <span class="right badge badge-success">Active</span>

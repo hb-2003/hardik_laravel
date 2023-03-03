@@ -30,7 +30,7 @@
                                     <div class="tab-pane active" id="produt" role="tabpanel">
                                         <div class="row">
                                             @foreach($products as $product)
-                                            @if($product['products_status']=="1")
+                                            @if($product['products_status']=="0")
                                             <div class="col-xl-4 col-sm-6">
                                                 <div class="card dash-product-box shadow-none border text-center">
                                                     <a href="{{route('user.productdetail',$product->id)}}">
@@ -49,7 +49,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            @elseif($product['products_status']=="0")
+                                            @elseif($product['products_status']=="1")
                                             <div class="col-xl-4 col-sm-6">
                                                 <div class="card dash-product-box shadow-none border text-center">
                                                     <a href="{{route('user.productdetail',$product->id)}}">
