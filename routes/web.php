@@ -28,6 +28,8 @@ Route::namespace('Frontend')->group(function () {
     Route::match(['get', 'post'], 'contectus', 'HomeController@contectus')->name('contectus');
     Route::match(['get', 'post'], 'aboutus', 'HomeController@aboutus')->name('aboutus');
     Route::match(['get', 'post'], 'faqs', 'HomeController@faqs')->name('faqs');
+    Route::match(['get', 'post'], 'subscribe', 'HomeController@subscribe')->name('subscribe');
+
 });
 
 Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 'verified', 'is_user'])->group(function () {

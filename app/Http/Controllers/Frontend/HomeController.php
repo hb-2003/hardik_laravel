@@ -11,6 +11,7 @@ use App\Models\Review;
 use App\Models\Contectus;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Subscribe;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\auth;
 use Image;
@@ -217,5 +218,27 @@ class HomeController extends Controller
     {
 
         return  view('Frontend.faqs.index');
+    }
+    public function subscribe(Request $request)
+    {
+
+        if ($request->isMethod('POST')) {
+
+           
+            $request->validate([
+                'email' => 'required|email',
+            ]);
+            $email = $request->email;
+            
+            $subscribecount =  Subscribe::where('email', $email)->count();
+            if ($subscribecount == 1) {
+                session()->put('error', 'Email is a already exits!');
+                return redirect()->back();
+            }
+            Subscribe::create(['email' => $email]);
+            session()->put('success', 'Thank for Subsciber');
+       
+            return redirect()->route('home');
+        }
     }
 }

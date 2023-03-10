@@ -170,7 +170,7 @@
                                         <td>
                                             @if($userorder->order_status == 0)
                                             <div class="d-flex gap-3">
-                                                <a href="javascript:void(0);" class="text-success"><i class="bx bxs-pencil font-size-18"></i></a>
+                                          
                                                 <a href="{{ route('user.cansal',$userorder->id)}}" class="text-danger"><i class="bx bxs-trash   font-size-18"></i></a>
                                             </div>
                                             @elseif($userorder->order_status == 1)
@@ -181,25 +181,25 @@
                                             </div>
                                             @elseif($userorder->order_status == 2)
                                             <div class="d-flex gap-3">
-                                            <h6> cansal order</h6>
+                                            <h6>Censal Order</h6>
                                                 <!-- <a href="{{ route('user.cansalorderreorder',$userorder->id)}}" class="btn btn-success">Reorder</a> -->
                                             </div>
                                             @elseif($userorder->order_status == 3)
                                             <div class="d-flex gap-3">
 
-                                                <h6> return pendding</h6>
+                                                <h6> Return Pendding</h6>
                                             </div>
 
                                             @elseif($userorder->order_status == 5)
                                             <div class="d-flex gap-3">
 
-                                                <h6>return  complite </h6>
+                                                <h6>Return Complite </h6>
                                             </div>
 
                                             @else
                                             <div class="d-flex gap-3">
 
-                                                <h6>conform  your order</h6>
+                                                <h6>Confirm your order</h6>
                                             </div>
                                             @endif
                                         </td>

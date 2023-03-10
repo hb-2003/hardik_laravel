@@ -47,7 +47,7 @@
                                                                 <a href="#" class="text-dark lh-base">{{$product->products_name}}</a>
                                                             </h5>
                                                             <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">₹{{$product->products_price*110/100}}</del> ₹{{$product->products_price}}</h5>
-                                                            <h6 class="p-3">FREE Delivery by Vuesy Furniture</h6>
+                                                            <h6 class="p-3">FREE Delivery by Vuesy Funichar.</h6>
                                                         </div>
                                                     </a>
                                                 </div>

@@ -14,6 +14,29 @@
     <div class="page-content">
         <div class="page-content">
             <div class="container-fluid">
+                <div class="row" >
+                    <div class="col-xl-12">
+                        <div class="card">
+
+                            <div class="card-body">
+
+                                <div class="row">
+                                    @foreach($categories as $categorie)
+
+                                    <div class="col-lg-3">
+                                        <a href="{{route('categorie',$categorie->categorie_name)}}">
+                                            <img src="{{asset('images/categorie/'.$categorie->categorie_image) }}" class="" width="100px" alt cl> </a>
+                                        <!-- <p class="p">{{$categorie ->categorie_name}}</p> -->
+                                    </div><!-- end swiper-slide -->
+
+                                    @endforeach
+
+                                </div><!-- end swiper wrapper -->
+
+                            </div><!-- end card body -->
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-xl-12 ">
@@ -44,32 +67,7 @@
 
                 </div>
 
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header justify-content-between d-flex align-items-center">
-                                <h4 class="card-title">Categorie</h4>
-                                <!-- <a href="" class="d-flex">view all</a> -->
-                            </div>
-                            <div class="card-body">
 
-                                <div class="row ">
-                                    @foreach($categories as $categorie)
-
-                                    <div class="col-lg-2">
-                                        <a href="{{route('categorie',$categorie->categorie_name)}}">
-                                            <img src="{{asset('images/categorie/'.$categorie->categorie_image) }}" class="" width="150px" alt cl> </a>
-                                        <p class="p-2">{{$categorie ->categorie_name}}</p>
-                                    </div><!-- end swiper-slide -->
-
-                                    @endforeach
-
-                                </div><!-- end swiper wrapper -->
-
-                            </div><!-- end card body -->
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-xl-12">
@@ -97,7 +95,7 @@
                         </div><!-- end card body -->
                     </div><!-- end card -->
                 </div>
-               
+
             </div><!-- end row -->
         </div>
     </div>

@@ -17,7 +17,7 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                         <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Furniture</span>
+                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Funichar.</span>
                     </span>
                 </a>
                 <a href="{{route('user.dashboard')}}" class="logo logo-light">
@@ -25,7 +25,7 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                         <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Furniture</span>
+                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Funichar.</span>
                     </span>
                 </a>
             </div>

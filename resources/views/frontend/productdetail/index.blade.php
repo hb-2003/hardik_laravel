@@ -129,7 +129,7 @@
                                             </div>
                                             @if($product->products_quantity > 0 && $product->products_status=="1")
                                             <div class="mt-3">
-                                                <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2"><?php echo (round($product->products_price * 110 / 100))  ?></del> ₹{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
+                                                <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2">₹<?php echo (round($product->products_price * 110 / 100))  ?></del> ₹{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
                                             </div>
 
 
@@ -263,9 +263,7 @@
 
                                                 <div class="px-4">
                                                     <div class="text-end mt-3">
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                            Review
-                                                        </button>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -427,41 +425,7 @@
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" class="product_id" id="productId_{{$product->id}}" name="productid" value="{{ $product->id }}" readonly>
-                                @if($userproductcount == 1)
-                                <form action="{{route('user.review')}}" method="POST">
-                                    @csrf
-                                    <input id="" class="form-control" type="hidden" name="product_id" value="{{$product->id}}">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="formrow-firstname-input">Reting
-                                            number</label>
-
-                                        <input type="number" id="reting" value="{{$userproductreview->reting}}" class="form-control" name="reting" placeholder="Enter product reting" max="5">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="formrow-firstname-input">Reting
-                                            Detail</label>
-                                        <textarea placeholder="Enter a review " class="form-control" id="detail" name="detail">{{$userproductreview->detail}}</textarea>
-                                    </div>
-                                    <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">submit</button>
-                                </form>
-                                @else
-                                <form action="{{route('user.review')}}" method="POST">
-                                    @csrf
-                                    <input id="" class="form-control" type="hidden" name="product_id" value="{{$product->id}}">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="formrow-firstname-input">Reting
-                                            number</label>
-
-                                        <input type="number" id="reting" value="" class="form-control" name="reting" placeholder="Enter product reting" max="5">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="formrow-firstname-input">Reting
-                                            Detail</label>
-                                        <textarea placeholder="Enter a review " value="" class="form-control" id="detail" name="detail"></textarea>
-                                    </div>
-                                    <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">submit</button>
-                                </form>
-                                @endif
+                              
 
                                 <!-- <div class="modal-footer">
                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>

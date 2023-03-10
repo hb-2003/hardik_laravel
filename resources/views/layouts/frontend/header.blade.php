@@ -34,7 +34,7 @@
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('home')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-home-circle icon"></i>
-                                    <span data-key="t-dashboard">Dashboard</span>
+                                    <span data-key="t-dashboard">Home</span>
                                 </a>
                             </li>
                             <li class="nav-item">

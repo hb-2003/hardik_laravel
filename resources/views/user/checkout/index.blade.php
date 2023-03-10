@@ -205,7 +205,7 @@
                                                             <input type="radio" value="pay" name="payment_method" id="pay-methodoption2" class="card-radio-input">
                                                             <span class="card-radio py-3 text-center text-truncate">
                                                                 <i class="bx bxl-paypal d-block h2 mb-3"></i>
-                                                                Paypal
+                                                                Razolpay
                                                             </span>
                                                         </label>
                                                     </div>
