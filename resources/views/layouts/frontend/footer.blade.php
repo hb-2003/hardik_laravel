@@ -1,5 +1,21 @@
+<!-- <div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header justify-content-between d-flex align-items-center">
+                <h4 class="card-title">Markers</h4>
+                <a href="https://hpneo.dev/gmaps/examples/markers.html" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a>
+            </div>
+            <div class="card-body">
+                <div id="gmaps-markers" class="gmaps"></div>
+            </div>
+        </div>
+    </div>
+</div> -->
 <div class="footer">
+
     <div class="card-body">
+
+
 
         <footer class="p-5">
             <div class="row">
@@ -32,12 +48,12 @@
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Twitter</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">instagram</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                       
+
                     </ul>
                 </div>
 
                 <div class="col-md-5 offset-md-1 mb-3">
-                    <form action="{{route('subscribe')}}" method="POST">
+                    <form action="{{route('user.subscribe')}}" method="POST">
                         @csrf
                         <h5>Subscribe to our newsletter</h5>
                         <p>Monthly digest of what's new and exciting from us.</p>

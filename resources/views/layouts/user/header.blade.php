@@ -2,8 +2,9 @@
 
 use App\Models\Cart;
 use Illuminate\Support\Facades\auth;
-
+use App\Models\Categorie;
 $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('quantity');
+$categories  = Categorie::all();
 
 
 ?>
@@ -17,7 +18,7 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                         <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Funichar.</span>
+                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Funicha.</span>
                     </span>
                 </a>
                 <a href="{{route('user.dashboard')}}" class="logo logo-light">
@@ -25,7 +26,7 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                         <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Funichar.</span>
+                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Funichar</span>
                     </span>
                 </a>
             </div>
@@ -39,21 +40,39 @@ $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum(
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.dashboard')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-home-circle icon"></i>
-                                    <span data-key="t-dashboard">Dashboard</span>
+                                    <span data-key="t-dashboard">Home</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.product')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class=" bx bxl-product-hunt"></i>
                                     <span data-key="t-dashboard">Product</span>
                                 </a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button">
+                                    <i class="bx bx-customize icon"></i>
+                                    <span data-key="t-apps">Apps</span>
+                                    <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                    @foreach($categories  as $key => $categorie)
+                                    <a href="{{route('categorieproduct',$categorie->id)}}" class="dropdown-item" data-key="t-calendar">{{$categorie->categorie_name}}</a>
+
+                                    @endforeach
+
+
+
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.contectus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="  bx bxs-book-content"></i>
                                     <span data-key="t-dashboard">Contect Us</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.aboutus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class=" bx bx-detailt"></i>
                                     <span data-key="t-dashboard">About Us</span>
                                 </a>
                             </li>

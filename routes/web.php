@@ -15,7 +15,8 @@ use Alcaitiff\LaravelUrlEncode\Routing\Router;
  */
 
 Route::namespace('Frontend')->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::match(['get', 'post'], '/', 'HomeController@index')->name('home');
+   
     Route::get('file/{url}/{url1?}/{name?}', 'HomeController@file')->name('file');
     Route::match(['get', 'post'], 'productdetail/{id}', 'HomeController@productdetail')->name('productdetail');
     Route::match(['get', 'post'], 'cart', 'HomeController@Cart')->name('cart');
@@ -29,6 +30,7 @@ Route::namespace('Frontend')->group(function () {
     Route::match(['get', 'post'], 'aboutus', 'HomeController@aboutus')->name('aboutus');
     Route::match(['get', 'post'], 'faqs', 'HomeController@faqs')->name('faqs');
     Route::match(['get', 'post'], 'subscribe', 'HomeController@subscribe')->name('subscribe');
+    Route::match(['get', 'post'], 'categorieproduct/{id}', 'HomeController@categorieproduct')->name('categorieproduct');
 
 });
 
@@ -40,7 +42,7 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     Route::match(['get', 'post'], 'email', 'DashboardController@email')->name('email');
     Route::match(['get', 'post'], 'notification', 'DashboardController@notification')->name('notification');
     Route::match(['get', 'post'], 'change_pass', 'DashboardController@change_pass')->name('change_pass');
-
+    Route::match(['get', 'post'], 'subscribe', 'HomeController@subscribe')->name('subscribe');
     // serch 
     Route::match(['get', 'post'], 'search', 'DashboardController@search')->name('search');
     // order
@@ -87,6 +89,7 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     Route::match(['get', 'post'], 'checkout', 'CheckoutController@checkout')->name('checkout');
     Route::match(['get', 'post'], 'buycheckout', 'CheckoutController@buycheckout')->name('buycheckout');
     Route::match(['get', 'post'], 'rezolpay', 'CheckoutController@rezolpay')->name('rezolpay');
+    Route::match(['get', 'post'], 'success', 'CheckoutController@success')->name('success');
 
 
     Route::match(['get', 'post'], 'contectus', 'ContectUsController@contectus')->name('contectus');
@@ -142,6 +145,12 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::match(['get', 'post'], 'categorie', 'ProductController@categorie')->name('categorie');
     Route::match(['get', 'post'], 'productreview/{id}', 'ProductController@productreview')->name('productreview');
     Route::match(['get', 'post'], 'reviewdelete/{id}', 'ProductController@reviewdelete')->name('reviewdelete');
+
+    // slider
+    Route::match(['get', 'post'], 'slider', 'SliderController@slider')->name('slider');
+    Route::match(['get', 'post'], 'slideradd', 'SliderController@slideradd')->name('slideradd');
+    Route::match(['get', 'post'], 'slideredit/{id}', 'SliderController@slideredit')->name('slideredit');
+    Route::match(['get', 'post'], 'sliderdelete/{id}', 'SliderController@sliderdelete')->name('sliderdelete');
 
     // order
     Route::match(['get', 'post'], 'order', 'OrderController@order')->name('order');

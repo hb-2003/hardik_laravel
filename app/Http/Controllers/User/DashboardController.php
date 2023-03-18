@@ -8,9 +8,9 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Categorie;
-
+use App\Models\Subscribe;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Slider;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\auth;
 
@@ -19,7 +19,21 @@ use Str;
 class DashboardController extends Controller
 {
     public function index(Request $request)
+
     {
+        // $cookie_name = 'hardik';
+        // $cookie_value = 'Hello, hardik!';
+        // $cookie_expiry = time() + (60 * 60 * 24 * 30); // Expires in 30 days
+        // cookie($cookie_name, $cookie_value, $cookie_expiry);
+
+        // // Retrieve the cookie value
+        // $cookie_value = request()->cookie();
+
+        // // Print the cookie value
+        // Print_r($cookie_value);
+        // die;
+
+
 
 
         $productssliders = Product::with('productimage')->latest()->take(5)->get();
@@ -34,7 +48,40 @@ class DashboardController extends Controller
         $users = User::count();
         $user = auth()->user();
         $referralUrl = URL::to('/') . '/register?referralcode=' . $user->referralcode;
-        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl], compact('users', 'products', 'categories', 'productssliders',));
+        $sliders = Slider::where('status', 1)->get();
+        $sliderscount = Slider::where('status', 1)->count();
+
+        if ($request->isMethod('POST')) {
+            if ($request->id) {
+                $categorie = Categorie::where('id', $request->id)->first();
+                $productscount =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->count();
+                if ($productscount == 0) {
+                    return redirect()->route('user.dashboard');
+                }
+
+                $products =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->paginate(9);
+                $categoriestatus = $request->id;
+
+                return view('user.dashboard.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount'));
+            } else {
+
+                $search = $request->serch;
+                $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
+
+                if ($productscount == 0) {
+
+
+                    return redirect()->route('user.dashboard');
+                }
+
+                $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->paginate(9);
+                $categoriestatus = $request->id;
+
+                return view('user.dashboard.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount'));
+            }
+        }
+        $categoriestatus = null;
+        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl], compact('users', 'categoriestatus', 'products', 'categories', 'productssliders', 'sliders', 'sliderscount'));
     }
 
     public function profile(Request $request)
@@ -69,8 +116,6 @@ class DashboardController extends Controller
 
         return view('user.dashboard.social');
     }
-
-
 
     public function order(Request $request)
 
@@ -188,5 +233,27 @@ class DashboardController extends Controller
 
 
         return view('user.products.index', compact('products'));
+    }
+    public function subscribe(Request $request)
+    {
+
+        if ($request->isMethod('POST')) {
+
+
+            $request->validate([
+                'email' => 'required|email',
+            ]);
+            $email = $request->email;
+
+            $subscribecount =  Subscribe::where('email', $email)->count();
+            if ($subscribecount == 1) {
+                session()->put('error', 'Email is a already exits!');
+                return redirect()->back();
+            }
+            Subscribe::create(['email' => $email]);
+            session()->put('success', 'Thank for Subsciber');
+
+            return redirect()->route('User.dashboard');
+        }
     }
 }

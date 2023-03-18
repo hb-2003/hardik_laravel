@@ -102,6 +102,29 @@
                                 @enderror
 
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Product Status</label>
+                                    <select class="form-control" id="Productstatus" name="Productstatus" require>
+                                        <option value=""> Select please</option>
+
+                                        <option value=" 1">New</option>
+                                        <option value=" 2">Old</option>
+                                        <option value=" 3">Sale</option>
+                                    </select>
+                                </div>
+                                @error('Productstatus')
+                                <div class="alert alert-danger">The Price Is Required.</div>
+                                @enderror
+
+                                <div class="saleprice" id="saleprice">
+
+                                </div>
+                                @error('saleprice')
+                                <div class="alert alert-danger">The Weight Is Required.</div>
+                                @enderror
+
+
+
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Weight</label>
                                     <input type="number" name="products_weight" class="form-control" id="exampleInputEmail1" placeholder="Enter Wight" require>
                                 </div>
@@ -220,7 +243,7 @@
 
                     $('#categorie').html('<option value="">Select please</option>');
                     $.each(result, function(key, value) {
-                        $("#categorie").append('<option value="' + value.id + '">' + value.categorie_name + '</option>');
+                        $("#categorie").append('<option value="' + value.categorie_name + '">' + value.categorie_name + '</option>');
                     });
 
                 }
@@ -244,10 +267,22 @@
 
                     $('#attributevalue').html('<option value="">Select please</option>');
                     $.each(result, function(key, value) {
-                        $("#attributevalue").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        $("#attributevalue").append('<option value="' + value.name + '">' + value.name + '</option>');
                     });
                 }
             });
+        });
+        $('#Productstatus').on('change', function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var id = this.value;
+
+            alert(id);
+            if (id == 3) {
+
+                $('#saleprice').html('<label for="exampleInputEmail1">Sale Price</label><br> <input type="number" name="saleprice" class="form-control" id="saleprice" placeholder="Enter Sale Price" require>');
+            };
+
+
         });
     });
 </script>

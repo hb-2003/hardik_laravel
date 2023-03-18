@@ -36,7 +36,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Edit Detail</h3>
                         </div>
-                        <h1>{{$manufacture->id}} {{ $categorie->id}}</h1>
+
                         @if ($manufacture->status== '1' && $categorie->status == '1')
                         <form accept="{{route('admin.Productedit',$Product->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label>Categorie</label>
                                     <select class="form-control" name="products_type" id="categorie" require>
-                                        <option value=" $Product->products_type"> {{ $Product->products_type}}</option>FF
+                                        <option value=" {{$Product->products_type}}"> {{ $Product->products_type}}</option>FF
                                     </select>
                                 </div>
                                 @error('products_type')
@@ -99,6 +99,33 @@
                                 @error('products_price')
                                 <div class="alert alert-danger">The Price Is Required.</div>
                                 @enderror
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Product Categorie</label>
+                                    <select class="form-control" id="Productstatus" name="Products_categorie" require>
+                                        <option value=""> Select please</option>
+
+                                        <option value=" 1" <?php echo  $Product->Products_categorie == "1" ? "selected" : "" ?>>New</option>
+                                        <option value=" 2" <?php echo  $Product->Products_categorie == "2" ? "selected" : "" ?>>Old</option>
+                                        <option value=" 3" <?php echo  $Product->Products_categorie == "3" ? "selected" : "" ?>>Sale</option>
+                                    </select>
+                                </div>
+                                @error('Product_categorie')
+                                <div class="alert alert-danger">The Product Categorie Is Required.</div>
+                                @enderror
+                                @if($Product->Products_categorie == "3")
+                                <div class="saleprices" id="saleprice">
+                                    <label for="exampleInputEmail1">Sale Price</label>
+                                    <input type="number" name="saleprice" value="{{$Product->sale_price}}" class="form-control" id="saleprices" placeholder="Enter Sale Price" require>
+                                </div>
+                                @else
+                                <div class="saleprices" id="saleprice">
+
+                                </div>
+                                @error('saleprice')
+                                <div class="alert alert-danger">The Saleingprice Is Required.</div>
+                                @enderror
+                                @endif
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Weight</label>
@@ -172,8 +199,8 @@
                                     <select class="form-control" name="products_status" require>
                                         <option value=""> Select please</option>
 
-                                        <option value="1" <?php echo  $Product->products_status == "0" ? "selected" : "" ?>> Active</option>
-                                        <option value="0" <?php echo  $Product->products_status == "1" ? "selected" : "" ?>> Inactive</option>
+                                        <option value="1" <?php echo  $Product->products_status == "1" ? "selected" : "" ?>> Active</option>
+                                        <option value="0" <?php echo  $Product->products_status == "0" ? "selected" : "" ?>> Inactive</option>
                                     </select>
                                 </div>
                                 @error('status')
@@ -185,15 +212,15 @@
                                 <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> Back</a>
                             </div>
                         </form>
-                    
-                        <h1>hiiii</h1>
+
+
                         @else
                         <form accept="{{route('admin.Productedit',$Product->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Manufacturer</label>
-                      
+
                                     <input type="text" name="manufacturer_name" readonly value="{{$Product->manufacturers_id}}" class="form-control" id="" placeholder="" require>
                                 </div>
                                 @error('manufacturers_id')
@@ -331,7 +358,7 @@
                                 <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> Back</a>
                             </div>
                         </form>
-                        
+
                         @endif
                     </div>
 
@@ -361,7 +388,7 @@
                 success: function(result) {
                     $('#categorie').html('<option value="">Select please</option>');
                     $.each(result, function(key, value) {
-                        $("#categorie").append('<option value="' + value.id + '">' + value.categorie_name + '</option>');
+                        $("#categorie").append('<option value="' + value.categorie_name + '">' + value.categorie_name + '</option>');
                     });
                 }
             });
@@ -382,10 +409,37 @@
                 success: function(result) {
                     $('#attributevalue').html('<option value="">Select please</option>');
                     $.each(result, function(key, value) {
-                        $("#attributevalue").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        $("#attributevalue").append('<option value="' + value.name + '">' + value.name + '</option>');
                     });
                 }
             });
+        });
+        $('#Productstatus').on('change', function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var id = this.value;
+
+            alert(id);
+            if (id == 3) {
+
+                $('#saleprice').html('<label for="exampleInputEmail1">Sale Price</label><br> <input type="number" name="saleprice" class="form-control" id="saleprice" placeholder="Enter Sale Price" require>');
+            } else {
+                $('#saleprice').html('');
+            };
+
+
+        });
+
+        $('#Productstatus').on('change', function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var id = this.value;
+
+            alert(id);
+            if (id == 3) {
+
+                $('#saleprices').html('');
+            };
+
+
         });
     });
 </script>

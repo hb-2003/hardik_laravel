@@ -12,6 +12,7 @@
 <div class="main-content">
 
     <div class="page-content">
+        <!-- container-fluid -->
         <div class="container-fluid">
 
             @if($count == 0)
@@ -173,7 +174,7 @@
             @endif
             <!-- end row -->
 
-        </div> <!-- container-fluid -->
+        </div>
     </div>
     <!-- End Page-content -->
 

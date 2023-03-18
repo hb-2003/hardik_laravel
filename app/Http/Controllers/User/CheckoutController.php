@@ -49,7 +49,8 @@ class CheckoutController extends Controller
             $request->validate([
                 'billing_name' => 'required',
                 'email' => 'required',
-                'customers_telephone' => 'required',
+                'customers_telephone' => 'required|digits:10',
+              
                 'billing_address_format_id' => 'required',
                 'payment_method' => 'required',
 
@@ -149,7 +150,7 @@ class CheckoutController extends Controller
 
             session()->put('success', 'order complete.');
 
-            return redirect()->route('user.order');
+            return view('user.successorder.index');
         }
         return view('user.checkout.index', compact('address', 'cartdetails', 'conteries', 'carttotal'));
     }
@@ -180,7 +181,7 @@ class CheckoutController extends Controller
             $request->validate([
                 'billing_name' => 'required',
                 'email' => 'required',
-                'customers_telephone' => 'required',
+                'customers_telephone' => 'required|digits:10',
                 'billing_address_format_id' => 'required',
                 'payment_method' => 'required',
 
@@ -277,7 +278,7 @@ class CheckoutController extends Controller
 
             session()->put('success', 'order complete.');
 
-            return redirect()->route('user.dashboard');
+            return view('user.successorder.index');
         }
         return view('user.buycheckout.index', compact('address', 'cartdetails', 'conteries', 'carttotal', 'images'));
     }
@@ -324,5 +325,9 @@ class CheckoutController extends Controller
 
             return response()->json(['request' => $request]);
         }
+    }
+    public function success()
+    {
+        return view('user.successorder.index');
     }
 }

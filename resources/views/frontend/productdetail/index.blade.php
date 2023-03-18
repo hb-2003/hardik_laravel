@@ -157,21 +157,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="mt-3">
-
-                                                    <h5 class="font-size-14 mb-3"><i class="bx bx-map-pin font-size-20 text-primary align-middle me-2"></i> Delivery location</h5>
-
-                                                    <div class="d-inline-flex">
-
-                                                        <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" placeholder="Enter Delivery pincode ">
-
-                                                            <button class="btn btn-light" type="button">Check</button>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                                
 
                                                 <div class="row">
 
@@ -188,12 +174,12 @@
                                                                     <option value="">select</option>
                                                                     @for ($i = 1; $i <= $product->products_quantity; $i++)
                                                                         @if (10 >= $i)
-                                                                        <option  value="<?php echo $i ?> " <?php echo $i == '1' ? "selected" : "" ?>">{{$i}}</option>
+                                                                        <option value="<?php echo $i ?> " <?php echo $i == '1' ? "selected" : "" ?>">{{$i}}</option>
                                                                         @endif
                                                                         @endfor
                                                                 </select>
                                                             </div>
-                                                         
+
                                                         </div>
                                                     </div>
 
@@ -263,7 +249,7 @@
 
                                                 <div class="px-4">
                                                     <div class="text-end mt-3">
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -425,7 +411,7 @@
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" class="product_id" id="productId_{{$product->id}}" name="productid" value="{{ $product->id }}" readonly>
-                              
+
 
                                 <!-- <div class="modal-footer">
                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
@@ -450,6 +436,7 @@
 
 <script type="text/javascript">
     function yourFunction(product_id, quantity, price) {
+        console.log(product_id);
 
         if (quantity.length > 0) {
             $.ajax({
@@ -464,9 +451,10 @@
 
                 },
                 success: function(responseData) {
+                   
+                   
 
-
-                    window.location.href = "{{route('login')}}";
+                   window.location.href = `/login`;
 
                 }
 

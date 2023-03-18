@@ -1,3 +1,10 @@
+<?php
+
+use App\Models\Categorie;
+
+$categories  = Categorie::all();
+?>
+
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
@@ -39,18 +46,36 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('product')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+                               
+                                <i class=" bx bxl-product-hunt"></i>
                                     <span data-key="t-dashboard">Products</span>
                                 </a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button">
+                                    <i class="bx bx-customize icon"></i>
+                                    <span data-key="t-apps">Apps</span>
+                                    <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                    @foreach($categories  as $key => $categorie)
+                                    <a href="{{route('categorieproduct',$categorie->id)}}" class="dropdown-item" data-key="t-calendar">{{$categorie->categorie_name}}</a>
+
+                                    @endforeach
+
+
+
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('contectus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
+                              
+                                <i class="  bx bxs-book-content"></i>
                                     <span data-key="t-dashboard">Contect Us</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('aboutus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class=" bx bx-detail"></i>
                                     <span data-key="t-dashboard">About Us</span>
                                 </a>
                             </li>
@@ -108,6 +133,12 @@
                 </div>
             </div>
             @endauth
+            <div class="dropdown d-inline-block">
+                <a href="{{route('user.cartdetail')}}" class="btn header-item noti-icon  pt-4.5" style="padding-top: 2rem;">
+                    <iconify-icon icon="material-symbols:garden-cart-outline"></iconify-icon>
+                    <span id="cartcount" class="noti-dot bg-danger rounded-pill">2</span>
+                </a>
+            </div>
         </div>
     </div>
 </header>

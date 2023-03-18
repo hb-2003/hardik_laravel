@@ -99,6 +99,7 @@ class ProductController extends Controller
        
         $categories = Categorie::where('manufacturers_id', $manufacture->id)->where('status', 1)->get();
         $categorie = Categorie::where('categorie_name', $Product->products_type)->first();
+        
        
         $attributes = Attribute::where('status', 1)->get();
         $attribute = Attribute::where('name', $Product->attributes_id)->first();
@@ -162,6 +163,8 @@ class ProductController extends Controller
             session()->put('success', 'ediy product success complete.');
             return  redirect()->route('admin.Product');
         }
+        
+        
         return view('admin.product.edit', compact('Product', 'manufacturers', 'categories', 'attributes','categorie','manufacture', 'attributesvalues', 'units'));
     }
 

@@ -42,6 +42,8 @@ class HomeController extends Controller
          
         return view('admin.home',compact('totalusers','totalanverifyuser','last24users','lastweekusers','totalOrder','total24Order','totalweekOrder','totalpenddingOrder','totalorerOrder','totalproduct','Products','userorders','totalcalsalorder','totalmonthOrder','totaldelivaryorder','confirmorder'));
     }
+    
+
 
 
 }

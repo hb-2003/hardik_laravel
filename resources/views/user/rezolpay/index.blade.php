@@ -56,7 +56,7 @@
                 
                 xml.onload = () => {
                 
-                     window.location.href=`/user/order`;
+                     window.location.href=`/user/success`;
                 }
 
                 xml.send(formData);

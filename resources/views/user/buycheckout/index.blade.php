@@ -51,7 +51,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="billing-name">Name</label>
-                                                        <input type="text" class="form-control" id="billing-name" placeholder="Enter name" name="billing_name">
+                                                        <input type="text" class="form-control" id="billing-name" value="{{old('billing_name')}}" placeholder="Enter name" name="billing_name">
 
                                                     </div>
                                                     @error('billing_name')
@@ -61,7 +61,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="billing-email-address">Email Address</label>
-                                                        <input type="email" class="form-control" id="billing-email-address" placeholder="Enter email" name="email">
+                                                        <input type="email" class="form-control" id="billing-email-address" value="{{old('email')}}" placeholder="Enter email" name="email">
 
                                                     </div>
                                                     @error('email')
@@ -71,7 +71,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="billing-phone">Phone</label>
-                                                        <input type="text" class="form-control" id="billing-phone" placeholder="Enter Phone no." name="customers_telephone">
+                                                        <input type="number" class="form-control" id="billing-phone" value="{{old('customers_telephone')}}" placeholder="Enter Phone no." name="customers_telephone">
                                                     </div>
                                                     @error('customers_telephone')
                                                     <div class="alert alert-danger">The telephone is required.</div>
@@ -129,7 +129,7 @@
                                             <div class="col-lg-4 col-sm-6">
                                                 <div data-bs-toggle="collapse">
                                                     <label class="card-radio-label mb-0">
-                                                        <input type="radio" value="{{$addres->id}}" name="billing_address_format_id" id="info-address1" class="card-radio-input">
+                                                        <input type="radio" value="{{$addres->id}}" <?php echo  $addres->id == "{{old('billing_address_format_id')}}" ? "checked" : "" ?>  name="billing_address_format_id" id="info-address1" class="card-radio-input">
                                                         <span class="card-radio text-truncate p-3">
                                                             <span class="fs-14 mb-4 d-block">Address 1</span>
                                                             <span class="fs-14 mb-2 d-block"></span>
@@ -196,26 +196,15 @@
                                         <div>
                                             <h5 class="font-size-14 mb-3">Payment method :</h5>
                                             <div class="row">
-                                                <div class="col-lg-3 col-sm-6">
-                                                    <div data-bs-toggle="collapse">
-                                                        <label class="card-radio-label">
-                                                            <input type="radio" value="credit" name="payment_method" id="pay-methodoption1" class="card-radio-input">
-                                                            <span class="card-radio py-3 text-center text-truncate">
-                                                                <i class="bx bx-credit-card d-block h2 mb-3"></i>
-                                                                Credit / Debit Card
-                                                            </span>
-                                                        </label>
-                                                    </div>
-
-                                                </div>
+                                                
 
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div>
                                                         <label class="card-radio-label">
-                                                            <input type="radio" value="pay" name="payment_method" id="pay-methodoption2" class="card-radio-input">
+                                                            <input type="radio" value="pay"  <?php echo  "{{old('payment_method')}}" == "pay" ? "checked" : "" ?>name="payment_method" id="pay-methodoption2" class="card-radio-input">
                                                             <span class="card-radio py-3 text-center text-truncate">
                                                                 <i class="bx bxl-paypal d-block h2 mb-3"></i>
-                                                                Paypal
+                                                                Razolpay
                                                             </span>
                                                         </label>
                                                     </div>
@@ -224,7 +213,7 @@
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div>
                                                         <label class="card-radio-label">
-                                                            <input type="radio" value="cas" name="payment_method" id="pay-methodoption3" class="card-radio-input">
+                                                            <input type="radio" value="cas"  <?php echo  "{{old('payment_method')}}" == "cas" ? "checked" : "" ?>name="payment_method" id="pay-methodoption3" class="card-radio-input">
 
                                                             <span class="card-radio py-3 text-center text-truncate">
                                                                 <i class="bx bx-money d-block h2 mb-3"></i>
@@ -272,7 +261,7 @@
                     <div class="card checkout-order-summary">
                         <div class="card-body">
                             <div class="p-3 bg-light mb-2">
-                                <h5 class="font-size-16 mb-0">Order Summary <span class="float-end ms-2">#MN0124</span></h5>
+                                <h5 class="font-size-16 mb-0">Order Summary <span class="float-end ms-2"></span></h5>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0 table-nowrap">

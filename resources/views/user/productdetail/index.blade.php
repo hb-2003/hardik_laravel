@@ -136,21 +136,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="mt-3">
-
-                                                    <h5 class="font-size-14 mb-3"><i class="bx bx-map-pin font-size-20 text-primary align-middle me-2"></i> Delivery location</h5>
-
-                                                    <div class="d-inline-flex">
-
-                                                        <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" placeholder="Enter Delivery pincode ">
-
-                                                            <button class="btn btn-light" type="button">Check</button>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                                
 
                                                 <div class="row">
                                                     <!-- <div class="col-lg-7 col-sm-8">
