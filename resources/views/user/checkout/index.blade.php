@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div id="addproduct-accordion" class="custom-accordion">
-                        <form method="POST" action="{{route('user.checkout')}}" class="needs-validation" id="orderform" >
+                        <form method="POST" action="{{route('user.checkout')}}" class="needs-validation" id="orderform">
                             <div class="card">
                                 <a href="#addproduct-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="addproduct-billinginfo-collapse">
                                     <div class="p-4">
@@ -122,7 +122,7 @@
                                 </div>
                                 </a>
 
-                                <div id="addproduct-img-collapse" class="collapse"  data-bs-parent="#addproduct-accordion">
+                                <div id="addproduct-img-collapse" class="collapse" data-bs-parent="#addproduct-accordion">
                                     <div class="p-4 ">
                                         <div class="row">
                                             @foreach($address as $addres)
@@ -130,11 +130,11 @@
                                             <div class="col-lg-4 col-sm-6">
                                                 <div data-bs-toggle="collapse">
                                                     <label class="card-radio-label mb-0">
-                                                        <input type="radio" value="{{$addres->id}} "<?php echo  "{{old('billing_address_format_id')}}" == "$addres->id" ? "checked" : "" ?> name="billing_address_format_id" id="info-address1" class="card-radio-input">
+                                                        <input type="radio" value="{{$addres->id}} " <?php echo  "{{old('billing_address_format_id')}}" == "$addres->id" ? "checked" : "" ?> name="billing_address_format_id" id="info-address1" class="card-radio-input">
                                                         <span class="card-radio text-truncate p-3">
                                                             <span class="fs-14 mb-4 d-block">Address 1</span>
                                                             <span class="fs-14 mb-2 d-block"></span>
-                                                            <span class="text-muted fw-normal text-wrap mb-1 d-block" >{{$addres ->address}},{{$addres ->city}},{{$addres ->state}},{{$addres ->country}}</span>
+                                                            <span class="text-muted fw-normal text-wrap mb-1 d-block">{{$addres ->address}},{{$addres ->city}},{{$addres ->state}},{{$addres ->country}}</span>
 
                                                             <span class="text-muted fw-normal d-block">Mo. 012-345-6789</span>
                                                         </span>
@@ -197,12 +197,12 @@
                                         <div>
                                             <h5 class="font-size-14 mb-3">Payment method :</h5>
                                             <div class="row">
-                                               
+
 
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div>
                                                         <label class="card-radio-label">
-                                                            <input type="radio" value="pay " name="payment_method"  <?php echo  "{{old('payment_method')}}" == "pay" ? "checked" : "" ?>id="pay-methodoption2" class="card-radio-input">
+                                                            <input type="radio" value="pay " name="payment_method" <?php echo  "{{old('payment_method')}}" == "pay" ? "checked" : "" ?>id="pay-methodoption2" class="card-radio-input">
                                                             <span class="card-radio py-3 text-center text-truncate">
                                                                 <i class="bx bxl-paypal d-block h2 mb-3"></i>
                                                                 Razolpay
@@ -214,7 +214,7 @@
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div>
                                                         <label class="card-radio-label">
-                                                            <input type="radio" value="cas" name="payment_method"  <?php echo  "{{old('payment_method')}}" == "cas" ? "checked" : "" ?>id="pay-methodoption3" class="card-radio-input">
+                                                            <input type="radio" value="cas" name="payment_method" <?php echo  "{{old('payment_method')}}" == "cas" ? "checked" : "" ?>id="pay-methodoption3" class="card-radio-input">
 
                                                             <span class="card-radio py-3 text-center text-truncate">
                                                                 <i class="bx bx-money d-block h2 mb-3"></i>
@@ -266,7 +266,7 @@
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0 table-nowrap">
-                                    <thead>\
+                                    <thead>
 
                                         <tr>
                                             <th class="border-top-0" style="width: 110px;" scope="col">Product</th>
@@ -281,9 +281,9 @@
                                             <th scope="row"><img src="{{asset('images/product/'.$cartdetail->productimage[0]->name)}}" alt="product-img" title="product-img" class="avatar-md"></th>
                                             <td>
                                                 <h5 class="font-size-16 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">{{$cartdetail->product[0]->products_name}}</a></h5>
-                                                <p class="text-muted mb-0">$ {{$cartdetail->product_price}} x {{$cartdetail->quantity}}</p>
+                                                <p class="text-muted mb-0"> ₹{{$cartdetail->product_price}} x {{$cartdetail->quantity}}</p>
                                             </td>
-                                            <td>$ {{$cartdetail->total}}</td>
+                                            <td> ₹{{$cartdetail->total}}</td>
                                         </tr>
                                         @endforeach
                                         <tr>
@@ -291,7 +291,7 @@
                                                 <h5 class="font-size-14 m-0">Sub Total :</h5>
                                             </td>
                                             <td>
-                                                $ {{$carttotal}}
+                                                ₹{{$carttotal}}
                                             </td>
                                         </tr>
                                         <tr>
@@ -299,7 +299,7 @@
                                                 <h5 class="font-size-14 m-0">Discount :</h5>
                                             </td>
                                             <td>
-                                                $ 0
+                                                ₹0
                                             </td>
                                         </tr>
 
@@ -308,7 +308,7 @@
                                                 <h5 class="font-size-14 m-0">Shipping Charge :</h5>
                                             </td>
                                             <td>
-                                                $ 0
+                                                ₹0
                                             </td>
                                         </tr>
                                         <tr>
@@ -316,7 +316,7 @@
                                                 <h5 class="font-size-14 m-0">Estimated Tax :</h5>
                                             </td>
                                             <td>
-                                                $ 0
+                                                ₹0
                                             </td>
                                         </tr>
 
@@ -325,7 +325,7 @@
                                                 <h5 class="font-size-16 m-0">Total:</h5>
                                             </td>
                                             <td>
-                                                $ {{$carttotal}}
+                                                ₹{{$carttotal}}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -347,7 +347,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script type="text/javascript">
-//    alert("order placed");
+    //    alert("order placed");
     const MakeOrder = async (e) => {
         // e.preventDefault();
         // e.preventDefault();

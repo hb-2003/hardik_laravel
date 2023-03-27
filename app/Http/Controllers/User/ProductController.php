@@ -29,8 +29,8 @@ class ProductController extends Controller
     $productreviews =  Review::where('product_id', $id)->get();
     $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $id)->first();
     $userproductcount = Review::where('user_id', auth::user()->id)->where('product_id', $id)->count();
-    $products = Product::with('productimage')->where('products_type',$product->products_type)->paginate(12);
-    
+    $products = Product::with('productimage')->where('products_type', $product->products_type)->paginate(12);
+
     $userproductretingsum = Review::where('user_id', auth::user()->id)->where('product_id', $id)->sum('reting');
     if ($userproductcount == 0) {
       $avreagereview = "0";
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
 
 
-    return view('user.productdetail.index', compact('product', 'productreviews', 'userproductreview', 'userproductcount', 'avreagereview','products'));
+    return view('user.productdetail.index', compact('product', 'productreviews', 'userproductreview', 'userproductcount', 'avreagereview', 'products'));
   }
 
   public function buyproduct(Request $request, $id)
@@ -53,18 +53,26 @@ class ProductController extends Controller
 
     ]);
 
+    $product =  Product::where('id', $id)->first();
+    $price = "0";
+    if ($product->Products_categorie == 3) {
+      $price = $product->sale_price;
+    } else {
+      $price =  $product->products_price;
+    }
 
-
-    $total = $request->quantity * $request->price;
+    $total = $request->quantity * $price;
+  
     $cart = Cart::create([
       'user_id' => auth::user()->id,
       'product_id' => $id,
       'quantity' => $request->quantity,
-      'product_price' => $request->price,
+      'product_price' => $price,
       'status' => 0,
       'total' => $total
     ]);
-    return redirect()->route('user.buycheckout');
+   
+    return redirect()->route('user.buycheckout',$cart->id);
   }
 
   public function allproduct()

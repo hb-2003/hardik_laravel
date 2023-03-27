@@ -56,7 +56,7 @@ $ordercount = $paddingorders - $cansalorders;
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.User')}}" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                         Users
                            
@@ -168,7 +168,7 @@ $ordercount = $paddingorders - $cansalorders;
                 </li>
                 <li class="nav-item ">
                     <a href="{{route('admin.slider')}}" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <i class="nav-icon far fa-image"></i>
                         <p>
                             Slider
                           
@@ -176,12 +176,22 @@ $ordercount = $paddingorders - $cansalorders;
                     </a>
 
                 </li>
-
-
                 <li class="nav-item ">
+                    <a href="{{route('admin.subscribe')}}" class="nav-link ">
+                    <i class="nav-icon fas fa-th"></i>
+                        <p>
+                        subscribe
+                          
+                        </p>
+                    </a>
+
+                    
+         
+
+                <li class="nav-item  p-3" >
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>Logout</a>
+                        <a class="" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">   <i class="nav-icon fas fa-th"></i>Logout</a>
                     </form>
 
                 </li>
@@ -192,3 +202,4 @@ $ordercount = $paddingorders - $cansalorders;
     </div>
     <!-- /.sidebar -->
 </aside>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>

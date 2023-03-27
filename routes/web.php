@@ -87,7 +87,8 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
 
     // checkout
     Route::match(['get', 'post'], 'checkout', 'CheckoutController@checkout')->name('checkout');
-    Route::match(['get', 'post'], 'buycheckout', 'CheckoutController@buycheckout')->name('buycheckout');
+    Route::match(['get', 'post'], 'buyproductdelete/{id}', 'CheckoutController@buyproductdelete')->name('buyproductdelete');
+    Route::match(['get', 'post'], 'buycheckout/{id}', 'CheckoutController@buycheckout')->name('buycheckout');
     Route::match(['get', 'post'], 'rezolpay', 'CheckoutController@rezolpay')->name('rezolpay');
     Route::match(['get', 'post'], 'success', 'CheckoutController@success')->name('success');
 
@@ -101,6 +102,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware(['auth', 
     Route::get('home', 'HomeController@home')->name('home');
     //user
     Route::match(['get', 'post'], 'User', 'UserController@user')->name('User');
+    Route::match(['get', 'post'], 'subscribe', 'UserController@subscribe')->name('subscribe');
     Route::match(['get', 'post'], 'userinactive/{id}', 'UserController@userinactive')->name('userinactive');
 
 

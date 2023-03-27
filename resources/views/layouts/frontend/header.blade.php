@@ -59,7 +59,7 @@ $categories  = Categorie::all();
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
                                     @foreach($categories  as $key => $categorie)
-                                    <a href="{{route('categorieproduct',$categorie->id)}}" class="dropdown-item" data-key="t-calendar">{{$categorie->categorie_name}}</a>
+                                    <a href="{{route('categorieproduct',$categorie->categorie_name)}}" class="dropdown-item" data-key="t-calendar">{{$categorie->categorie_name}}</a>
 
                                     @endforeach
 
@@ -133,12 +133,12 @@ $categories  = Categorie::all();
                 </div>
             </div>
             @endauth
-            <div class="dropdown d-inline-block">
+            <!-- <div class="dropdown d-inline-block">
                 <a href="{{route('user.cartdetail')}}" class="btn header-item noti-icon  pt-4.5" style="padding-top: 2rem;">
                     <iconify-icon icon="material-symbols:garden-cart-outline"></iconify-icon>
                     <span id="cartcount" class="noti-dot bg-danger rounded-pill">2</span>
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </header>

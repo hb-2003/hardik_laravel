@@ -15,6 +15,8 @@ class Product extends Model
         'products_name',
         'products_quantity',
         'products_price',
+        'Products_categorie',
+        'sale_price',
         'products_weight',
         'products_weight_unit',
         'products_status',
@@ -29,5 +31,9 @@ class Product extends Model
     function productimage() {
         // return $this->hasOne(ProductImage::class);
         return $this->hasMany(Products_images::class);
+    }
+    function productreview() {
+        // return $this->hasOne(ProductImage::class);
+        return $this->hasMany(Review::class ,'product_id','id' );
     }
 }

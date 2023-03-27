@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div id="addproduct-accordion" class="custom-accordion">
-                        <form action="{{route('user.buycheckout')}}" method="POST" class="needs-validation">
+                        <form action="{{route('user.buycheckout',$cartdetails->product_id)}}" method="POST" class="needs-validation">
                             <div class="card">
                                 <a href="#addproduct-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="addproduct-billinginfo-collapse">
                                     <div class="p-4">
@@ -251,7 +251,7 @@
                         </div>
                         <div class="col">
                             <div class="text-end mt-2 mt-sm-0">
-                                <a href="{{route('user.dashboard')}}" class="btn btn-primary ">
+                                <a href="{{route('user.buyproductdelete',$cartdetails->id)}}" class="btn btn-primary ">
                                     <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
                             </div>
                         </div>
@@ -261,7 +261,7 @@
                     <div class="card checkout-order-summary">
                         <div class="card-body">
                             <div class="p-3 bg-light mb-2">
-                                <h5 class="font-size-16 mb-0">Order Summary <span class="float-end ms-2"></span></h5>
+                                <h5 class="font-size-16 mb-0">Product Detail <span class="float-end ms-2"></span></h5>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-centered mb-0 table-nowrap">
@@ -290,7 +290,7 @@
                                                 <h5 class="font-size-14 m-0">Sub Total :</h5>
                                             </td>
                                             <td>
-                                                $ {{$carttotal}}
+                                                $ {{$cartdetails->total}}
                                             </td>
                                         </tr>
                                         <tr>
@@ -324,7 +324,7 @@
                                                 <h5 class="font-size-16 m-0">Total:</h5>
                                             </td>
                                             <td>
-                                                $ {{$carttotal}}
+                                                $ {{$cartdetails->total}}
                                             </td>
                                         </tr>
                                     </tbody>

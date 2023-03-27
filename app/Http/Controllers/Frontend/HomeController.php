@@ -30,14 +30,26 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
+        if (!auth::user() == null) {
+            $request->session()->regenerate();
+
+            if ($request->user()->role == 1) {
+                return redirect(RouteServiceProvider::ADMIN_HOME);
+            } else {
+                return redirect(RouteServiceProvider::HOME);
+            }
+        }
+
 
         // return view('pages.maintenance');
         //return view('pages.comingsoon');
         $productssliders = Product::with('productimage')->latest()->take(5)->get();
 
+
         $categories = Categorie::all();
 
-        $products = Product::with('productimage')->paginate(9);
+        $products = Product::with('productimage', 'productreview')->paginate(9);
+
         $sliders = Slider::where('status', 1)->get();
         $sliderscount = Slider::where('status', 1)->count();
 
@@ -68,17 +80,11 @@ class HomeController extends Controller
                 $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->paginate(9);
                 $categoriestatus = $request->id;
 
-                return view('frontend.home.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount'));
+                return view('frontend.home.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount',));
             }
         }
 
-        // $request->session()->regenerate();
 
-        // if ($request->user()->role == 1) {
-        //     return redirect(RouteServiceProvider::ADMIN_HOME);
-        // } else {
-        //     return redirect(RouteServiceProvider::HOME);
-        // }
 
         $categoriestatus = null;
         // session()->put('success','success!');
@@ -198,9 +204,10 @@ class HomeController extends Controller
             return response()->json();
         }
     }
-    public function categorie(Request $request, $id)
+    public function categorieproduct(Request $request, $id)
     {
 
+       
 
 
         $count = Product::with('productimage')->where('products_type', $id)->count();
@@ -249,14 +256,16 @@ class HomeController extends Controller
         return  view('frontend.contectus.index');
     }
     public function product(Request $request)
-    { $attributes= Attribute::with('attributevalue')->where('status',1)->paginate(2);
+    {
+        $attributes = Attribute::with('attributevalue')->where('status', 1)->paginate(2);
         $products = Product::with('productimage')->paginate(9);
 
-        $manufatures= Manufacturer::with('categorie')->where('status',1)->get();
+        $categories  = Categorie::where('status', 1)->get();
+        $manufatures = Manufacturer::with('categorie')->where('status', 1)->get();
         if ($request->isMethod('POST')) {
             $search = $request->serch;
             $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
-
+            $categories  = Categorie::where('status', 1)->get();
             if ($productscount == 0) {
 
 
@@ -265,9 +274,9 @@ class HomeController extends Controller
 
             $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->paginate(9);
 
-            return view('frontend.products.index', compact('products'));
+            return view('frontend.products.index', compact('products', 'attributes', 'manufatures', 'categories'));
         }
-        return view('frontend.products.index', compact('products','attributes','manufatures'));
+        return view('frontend.products.index', compact('products', 'attributes', 'manufatures', 'categories'));
     }
     public function search(Request $request)
     {

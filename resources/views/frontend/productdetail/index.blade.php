@@ -129,7 +129,19 @@
                                             </div>
                                             @if($product->products_quantity > 0 && $product->products_status=="1")
                                             <div class="mt-3">
-                                                <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2">₹<?php echo (round($product->products_price * 110 / 100))  ?></del> ₹{{$product->products_price}} <span class="text-danger font-size-14 ms-2">- 10 % Off</span></h5>
+                                                <h5 class="font-size-20 mt-4 pt-2">
+                                                        @if($product->Products_categorie == 3)
+                                                        <del class="text-muted me-2"> ₹{{$product ->products_price}}</del> ₹{{$product->sale_price}} <span class="text-danger font-size-14 ms-2">
+                                                            <?php $parsantage  = (round($product->products_price * 100 / $product->sale_price));
+                                                            $staring =  $parsantage - 100;
+
+                                                            echo  "-", $staring,  " % Off"; ?></span>
+
+                                                        @else
+                                                        ₹{{$product ->products_price}}
+
+                                                        @endif
+                                                </h5>
                                             </div>
 
 
@@ -157,7 +169,7 @@
                                                     </div>
                                                 </div>
 
-                                                
+
 
                                                 <div class="row">
 
@@ -451,10 +463,10 @@
 
                 },
                 success: function(responseData) {
-                   
-                   
 
-                   window.location.href = `/login`;
+
+
+                    window.location.href = `/login`;
 
                 }
 

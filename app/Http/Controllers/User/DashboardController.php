@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Attribute;
 use App\Models\Product;
 use App\Models\Categorie;
 use App\Models\Subscribe;
@@ -228,11 +229,14 @@ class DashboardController extends Controller
         return view('user.search.index', compact('products', 'productscount', 'search'));
     }
     public function product()
+    
     {
+        $categories  = Categorie::where('status', 1)->get();
         $products = Product::with('productimage')->paginate(12);
+        $attributes = Attribute::with('attributevalue')->where('status', 1)->paginate(2);
 
 
-        return view('user.products.index', compact('products'));
+        return view('user.products.index', compact('products','categories','attributes'));
     }
     public function subscribe(Request $request)
     {

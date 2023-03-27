@@ -118,7 +118,7 @@
 
                     <div class="row my-6">
                         <div class="col-sm-6">
-                            <a href="javascript:history.back()" class="link">
+                            <a href="{{route('user.dashboard') }}" class="link">
                                 <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
                         </div> <!-- end col -->
                         <div class="col-sm-6">
