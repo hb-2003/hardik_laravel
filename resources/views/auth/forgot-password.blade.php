@@ -51,7 +51,7 @@
                                                 <input  class="form-control" id="input-newpassword" type="email" name="email" value="{{ old('email') }}" placeholder="Email" autofocus required>
                                                 <label for="input-newpassword">email</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-padlock"></i>
+                                                    <i class="bx bx-mail-send"></i>
                                                 </div>
                                             </div>
                                             

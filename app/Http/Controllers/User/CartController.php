@@ -28,16 +28,42 @@ class CartController extends Controller
             if (auth::user()->id == NUll) {
                 return redirect()->route('login');
             }
+         
             $countproduct = Cart::where('product_id', $request->product_id)->where('user_id', auth::user()->id)->where('status', 0)->count();
+          
             if ($countproduct == 1) {
 
-                $product =  Cart::where('product_id', $request->product_id)->where('user_id', auth::user()->id)->where('status', 0)->first();
-                $price = "0";
+                $carts =  Cart::where('product_id', $request->product_id)->where('user_id', auth::user()->id)->where('status', 0)->first();
+                $product =  Product::where('id', $carts->product_id)->first();
+               
                 if ($product->Products_categorie == 3) {
-                    $price = $product->sale_price;
+                    $totalquantity = $request->quantity + $carts->quantity;
+                    $totalprice  = $totalquantity *  $product->sale_price;
+                    $carts->update([
+                        'user_id' => auth::user()->id,
+                        'product_id' => $request->product_id,
+                        'quantity' => $totalquantity,
+                        'product_price' =>$product->sale_price,
+                        'status' => 0,
+                        'total' => $totalprice,
+    
+                    ]);
+                  
                 } else {
-                    $price =  $product->products_price;
+                    $totalquantity = $request->quantity + $carts->quantity;
+                    $totalprice  = $totalquantity *  $product->products_price;
+                    $carts->update([
+                        'user_id' => auth::user()->id,
+                        'product_id' => $request->product_id,
+                        'quantity' => $totalquantity,
+                        'product_price' =>  $product->products_price,
+                        'status' => 0,
+                        'total' => $totalprice,
+    
+                    ]);
                 }
+                   
+                
 
 
                 // if($product->quantity  <= $request->quantity )
@@ -46,18 +72,12 @@ class CartController extends Controller
                 //     $cartscount = Cart::where('user_id', auth::user()->id)->sum('quantity');
                 //     return response()->json(['cartscount' => $cartscount]);
                 // }
-                $totalquantity = $request->quantity + $product->quantity;
-                $totalprice  = $totalquantity * $request->price;
+                // $totalquantity = $request->quantity + $product->quantity;
+                // $totalprice  = $totalquantity * $request->price;
+                $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('quantity');
 
-                $product->update([
-                    'user_id' => auth::user()->id,
-                    'product_id' => $request->product_id,
-                    'quantity' => $totalquantity,
-                    'product_price' => $price,
-                    'status' => 0,
-                    'total' => $totalprice,
-
-                ]);
+                return response()->json(['cartscount' => $cartscount]);
+                
             } else {
                 $product =  Product::where('id', $request->product_id)->first();
                 $price = "0";
@@ -77,6 +97,7 @@ class CartController extends Controller
                 ]);
             }
 
+            return redirect()->route('user.cartdetail');
             $cartscount = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('quantity');
             return response()->json(['cartscount' => $cartscount]);
         }
@@ -94,20 +115,12 @@ class CartController extends Controller
     {
         $count =  Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->count();
 
-        // echo $count;
-        // die;
-        // if ($count  ==  0) {
-        //     session()->put('success', 'cart in not preo complete.');
-        //     return redirect()->route('user.dashboard');
-        // }
+        
 
         $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
 
         $total = Cart::where('user_id', auth::user()->id)->where('status', 0)->sum('total');
-        // foreach ($cartdetails as $key=> $cartdetail) {
-        //     echo $cartdetail->product[$key]->attributes_set;
-        // }
-        // die;
+      
         return    view('user.cart.index', compact('cartdetails', 'total', 'count'));
     }
 

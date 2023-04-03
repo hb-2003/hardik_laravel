@@ -29,9 +29,6 @@ class OrderController extends Controller
 
         ]);
 
-
-
-
         return redirect()->route('user.order');
     }
 
@@ -46,9 +43,6 @@ class OrderController extends Controller
 
         ]);
 
-
-
-
         return redirect()->route('user.order');
     }
     public function orderreturn(Request $request, $id)
@@ -61,28 +55,12 @@ class OrderController extends Controller
 
         ]);
 
-
-
-
         return redirect()->route('user.order');
     }
     public function orderreorder(Request $request, $id)
 
     {
         $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->where('id', $id)->first();
-
-        
-
-
-
-
-      
-
-
-
-
-
-
 
         return redirect()->route('user.order');
     }

@@ -78,10 +78,10 @@
                                                     @enderror
                                                 </div>
                                             </div>
-            
+
                                         </div>
 
-                                        
+
                                         <div class="row p-3">
                                             <div class="col">
                                                 <div class="text-end mt-2 mt-sm-0">
@@ -129,7 +129,7 @@
                                             <div class="col-lg-4 col-sm-6">
                                                 <div data-bs-toggle="collapse">
                                                     <label class="card-radio-label mb-0">
-                                                        <input type="radio" value="{{$addres->id}}" <?php echo  $addres->id == "{{old('billing_address_format_id')}}" ? "checked" : "" ?>  name="billing_address_format_id" id="info-address1" class="card-radio-input">
+                                                        <input type="radio" value="{{$addres->id}}" <?php echo  $addres->id == "{{old('billing_address_format_id')}}" ? "checked" : "" ?> name="billing_address_format_id" id="info-address1" class="card-radio-input">
                                                         <span class="card-radio text-truncate p-3">
                                                             <span class="fs-14 mb-4 d-block">Address 1</span>
                                                             <span class="fs-14 mb-2 d-block"></span>
@@ -196,12 +196,12 @@
                                         <div>
                                             <h5 class="font-size-14 mb-3">Payment method :</h5>
                                             <div class="row">
-                                                
+
 
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div>
                                                         <label class="card-radio-label">
-                                                            <input type="radio" value="pay"  <?php echo  "{{old('payment_method')}}" == "pay" ? "checked" : "" ?>name="payment_method" id="pay-methodoption2" class="card-radio-input">
+                                                            <input type="radio" value="pay" <?php echo  "{{old('payment_method')}}" == "pay" ? "checked" : "" ?>name="payment_method" id="pay-methodoption2" class="card-radio-input">
                                                             <span class="card-radio py-3 text-center text-truncate">
                                                                 <i class="bx bxl-paypal d-block h2 mb-3"></i>
                                                                 Razolpay
@@ -213,7 +213,7 @@
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div>
                                                         <label class="card-radio-label">
-                                                            <input type="radio" value="cas"  <?php echo  "{{old('payment_method')}}" == "cas" ? "checked" : "" ?>name="payment_method" id="pay-methodoption3" class="card-radio-input">
+                                                            <input type="radio" value="cas" <?php echo  "{{old('payment_method')}}" == "cas" ? "checked" : "" ?>name="payment_method" id="pay-methodoption3" class="card-radio-input">
 
                                                             <span class="card-radio py-3 text-center text-truncate">
                                                                 <i class="bx bx-money d-block h2 mb-3"></i>
@@ -274,7 +274,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+
 
                                         <tr>
                                             <th scope="row"><img src="{{asset('images/product/'.$images->name)}}" alt="product-img" title="product-img" class="avatar-md"></th>
@@ -284,7 +284,7 @@
                                             </td>
                                             <td>$ {{$cartdetails->total}}</td>
                                         </tr>
-                                     
+
                                         <tr>
                                             <td colspan="2">
                                                 <h5 class="font-size-14 m-0">Sub Total :</h5>
@@ -298,7 +298,7 @@
                                                 <h5 class="font-size-14 m-0">Discount :</h5>
                                             </td>
                                             <td>
-                                            $ 0
+                                                $ 0
                                             </td>
                                         </tr>
 

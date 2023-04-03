@@ -41,14 +41,14 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter email" >
+                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                                 </div>
                                 @error('name')
                                 <div class="alert alert-danger">The name is required.</div>
                                 @enderror
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select class="form-control" name="status" >
+                                    <select class="form-control" name="status">
                                         <option value=""> Select please</option>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
@@ -69,7 +69,6 @@
                 </div>
             </div>
     </section>
-
 </div>
 
 @endsection

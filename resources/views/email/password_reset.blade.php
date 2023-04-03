@@ -1,12 +1,14 @@
 @extends('email.layouts')
-@section('title', 'Password Reset')
+@section('title', '')
 @section('content')
-    <p>you forgot your password for Cuba Admin. If this is true, click below to reset your password.</p>
-    <p style="text-align: center">
-        <a href="{{ route('password.reset', ['token' => $token, 'email' => $user['email']]) }}" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">
-            Reset Password
-        </a>
-    </p>
-    <p>If you have remember your password you can safely ignore his email.</p>
-    <p>Good luck! Hope it works.</p>
+<h1>Reset password</h1>
+<p>
+
+    A password change has been requested for your account. If this was you, please use the link below to reset your password.</p>
+<p style="text-align: center">
+    <a href="{{ route('password.reset', ['token' => $token, 'email' => $user['email']]) }}" style="padding: 10px; background-color: #7366ff; color: #fff; display: inline-block; border-radius: 4px">
+        Reset Password
+    </a>
+</p>
+
 @endsection

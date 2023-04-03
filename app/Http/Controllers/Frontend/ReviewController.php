@@ -59,35 +59,4 @@ class ReviewController extends Controller
         }
         return redirect()->back();
     }
-    // public function productdetail($id)
-    // {
-
-    //     $product = Product::with('productimage')->where('id', $id)->first();
-
-
-    //     return view('user.productdetail.index', compact('product'));
-    // }
-
-    // public function buyproduct(Request $request,$id)
-    // {
-
-    //     $request->validate([
-    //         'quantity' => 'required|min:1',
-    //         'price' => 'required',
-
-    //     ]);
-
-
-    //     $total = $request->quantity * $request->price;
-    //     $cart = Cart::create([
-    //         'user_id' => auth::user()->id,
-    //         'product_id' => $id,
-    //         'quantity' => $request->quantity,
-    //         'product_price' => $request->price,
-    //         'status' => 0,
-    //         'total' => $total
-    //     ]);
-    //   return redirect()->route('user.buycheckout');
-
-    // }
 }

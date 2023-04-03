@@ -20,10 +20,7 @@ $notificationcount  = Notification::where('read_at', 0)->count();
     <li class="nav-item d-none d-sm-inline-block">
       <a href="{{route('admin.home')}}" class="nav-link">Home</a>
     </li>
-
   </ul>
-
-
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
 
@@ -34,7 +31,7 @@ $notificationcount  = Notification::where('read_at', 0)->count();
         <span class="badge badge-danger navbar-badge">{{$notificationcount}}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-      <h6  class="text-center p-3"> No order found!</h6>
+        <h6 class="text-center p-3"> No order found!</h6>
         <div class="dropdown-divider"></div>
 
         <a href="{{route('admin.order')}}" class="dropdown-item dropdown-footer">See All Messages</a>
@@ -79,13 +76,5 @@ $notificationcount  = Notification::where('read_at', 0)->count();
         <i class="fas fa-expand-arrows-alt"></i>
       </a>
     </li>
-
-
-
-    <!-- <li class="nav-item">
-      <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-        <i class="fas fa-th-large"></i>
-      </a>
-    </li> -->
   </ul>
 </nav>

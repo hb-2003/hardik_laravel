@@ -14,13 +14,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        // $notifications  = Notification::with('product')->where('read_at',0)->get();
-        // foreach($notifications  as $notification)
-        // {
-            
-            
-        // }
-        // die;
+        
         $totalusers = User::count();
         $totalanverifyuser  =User::where('email_verified_at',Null)->count();
         $last24users = User::where('created_at', '>', Carbon::now()->subMinutes(1440))->count();

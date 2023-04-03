@@ -19,6 +19,40 @@
 <!-- or -->
 <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<style>
+    fieldset {
+        border: none;
+    }
+
+    legend {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+    }
+
+    button {
+        border: none;
+        background-color: #ccc;
+        color: #fff;
+        font-size: 1.2em;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    input {
+        width: 50px;
+        text-align: center;
+        font-size: 1.2em;
+        margin: 0 10px;
+        border: none;
+        background-color: #f4f4f4;
+    }
+</style>
 @endsection
 @section('style')
 
@@ -84,7 +118,7 @@
 
                                                 <div class="col-sm-6">
                                                     <div class="d-grid">
-                                                        <button type="button" id="btnPost" onclick="yourFunction(document.getElementById('productId_{{$product->id}}').value,document.getElementById('quantitytId_{{$product->id}}').value ,document.getElementById('priceID_{{$product->products_price}}').value)" class="btn btn-primary waves-effect waves-light mt-2 me-1">
+                                                        <button type="button" id="btnPost" onclick="yourFunction(document.getElementById('productId_{{$product->id}}').value,document.getElementById('quantitytId-input}').value ,document.getElementById('priceID_{{$product->products_price}}').value)" class="btn btn-primary waves-effect waves-light mt-2 me-1">
                                                             <i class="bx bx-cart-alt me-2"></i> Add to cart
                                                         </button>
                                                     </div>
@@ -130,28 +164,38 @@
                                             @if($product->products_quantity > 0 && $product->products_status=="1")
                                             <div class="mt-3">
                                                 <h5 class="font-size-20 mt-4 pt-2">
-                                                        @if($product->Products_categorie == 3)
-                                                        <del class="text-muted me-2"> ₹{{$product ->products_price}}</del> ₹{{$product->sale_price}} <span class="text-danger font-size-14 ms-2">
-                                                            <?php $parsantage  = (round($product->products_price * 100 / $product->sale_price));
-                                                            $staring =  $parsantage - 100;
+                                                    @if($product->Products_categorie == 3)
+                                                    <del class="text-muted me-2"> ₹{{$product ->products_price}}</del> ₹{{$product->sale_price}} <span class="text-danger font-size-14 ms-2">
+                                                        <?php $parsantage  = (round($product->products_price * 100 / $product->sale_price));
+                                                        $staring =  $parsantage - 100;
 
-                                                            echo  "-", $staring,  " % Off"; ?></span>
+                                                        echo  "-", $staring,  " % Off"; ?></span>
 
-                                                        @else
-                                                        ₹{{$product ->products_price}}
+                                                    @else
+                                                    ₹{{$product ->products_price}}
 
-                                                        @endif
+                                                    @endif
                                                 </h5>
                                             </div>
+
+                                            This code creates a fieldset with an ID of "quantity" and a label for the input field. The fieldset contains a "minus" button, an input field with a starting value of 1 and limits of 1 and 10, and a "plus" button. The increment() and decrement() functions are called when the buttons are clicked and update the input field value accordingly.
+
+
+
+
+
 
 
                                             @else
                                             <h6 class="" style="color: red;">out of stock</h6>
                                             @endif
 
+                                            <div>
+
+                                                <p class="mt-4 text-muted"> <?php echo $small = substr($product->is_current, 0, 75); ?> </p>
+                                            </div>
 
 
-                                            <p class="mt-4 text-muted">{{$product->is_current}}</p>
 
                                             <input type="hidden" class="price" name="price" id="priceID_{{$product->products_price}}" value="{{ $product->products_price }}" readonly>
                                             <div>
@@ -165,6 +209,97 @@
                                                                 <li><i class="bx bx-log-in-circle text-primary me-1"></i> 10 Days Replacement</li>
                                                                 <li><i class="bx bx-dollar-circle text-primary me-1"></i> Cash on Delivery available</li>
                                                             </ul>
+
+                                                            @if($product->products_quantity > 0 && $product->products_status=="1")
+                                                            <div class="col-lg-5 col-sm-4">
+                                                                <div class="mt-3">
+                                                                    <h5 class="font-size-14 mb-3">Select Quantity :</h5>
+
+                                                                    <div class="d-inline-flex">
+                                                                        <fieldset id="quantity">
+                                                                            <button type="button" onclick="decrement()">-</button>
+                                                                            <input type="number" class="box" id="quantity-input" name="quantity" min="1" max="10" value="1">
+                                                                            <button type="button" onclick="increment()">+</button>
+                                                                        </fieldset>
+                                                                        <script>
+                                                                            function increment() {
+                                                                                var input = document.getElementById("quantity-input");
+                                                                                if (input.value < 10) {
+                                                                                    input.value++;
+                                                                                }
+                                                                            }
+
+                                                                            function decrement() {
+                                                                                var input = document.getElementById("quantity-input");
+                                                                                if (input.value > 1) {
+                                                                                    input.value--;
+                                                                                }
+                                                                            }
+                                                                        </script>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            @else
+
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6">
+                                                        <div class="mt-4 pt-3">
+                                                            <h5 class="font-size-14 mb-3">Product description: </h5>
+                                                            <div class="product-desc">
+                                                                <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" id="desc-tab" data-bs-toggle="tab" href="#desc" role="tab">Description</a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link active" id="specifi-tab" data-bs-toggle="tab" href="#specifi" role="tab">Specifications</a>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="tab-content border border-top-0 p-4">
+                                                                    <div class="tab-pane fade" id="desc" role="tabpanel">
+                                                                        <div class="row">
+                                                                            <div class="col-md-3">
+                                                                                <div>
+                                                                                    @foreach($product->productimage as $image)
+                                                                                    <div><img src="{{asset('images/product/'.$image->name) }}" alt="" class="img-fluid d-block" style="width: 500px ;" /></div>
+                                                                                    @break
+                                                                                    @endforeach
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-9">
+                                                                                <div class="text-muted">
+                                                                                    <p>{{$product->is_current}}</p>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade show active" id="specifi" role="tabpanel">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-nowrap mb-0">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th scope="row" style="width: 50%;"><b>Category :</b></th>
+                                                                                        <td>{{$product->products_type}}</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row"><b>Brand :</b></th>
+                                                                                        <td>Jalaram</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row"><b>Color :</b></th>
+                                                                                        <td>{{$product->attributes_set}}</td>
+                                                                                    </tr>
+                                                                                    <!--  -->
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,29 +310,7 @@
 
 
 
-                                                    @if($product->products_quantity > 0 && $product->products_status=="1")
 
-                                                    <div class="col-lg-5 col-sm-4">
-                                                        <div class="mt-3">
-                                                            <h5 class="font-size-14 mb-3">Select Quantity :</h5>
-
-                                                            <div class="d-inline-flex">
-                                                                <select class="form-select w-sm" name="quantity" id="quantitytId_{{$product->id}}" value="">
-                                                                    <option value="">select</option>
-                                                                    @for ($i = 1; $i <= $product->products_quantity; $i++)
-                                                                        @if (10 >= $i)
-                                                                        <option value="<?php echo $i ?> " <?php echo $i == '1' ? "selected" : "" ?>">{{$i}}</option>
-                                                                        @endif
-                                                                        @endfor
-                                                                </select>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-                                                    @else
-
-                                                    @endif
 
                                                 </div>
                                             </div>
@@ -268,62 +381,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-4">
-                                        <div class="mt-4 pt-3">
-                                            <h5 class="font-size-14 mb-3">Product description: </h5>
-                                            <div class="product-desc">
-                                                <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" id="desc-tab" data-bs-toggle="tab" href="#desc" role="tab">Description</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="specifi-tab" data-bs-toggle="tab" href="#specifi" role="tab">Specifications</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="tab-content border border-top-0 p-4">
-                                                    <div class="tab-pane fade" id="desc" role="tabpanel">
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <div>
-                                                                    @foreach($product->productimage as $image)
-                                                                    <div><img src="{{asset('images/product/'.$image->name) }}" alt="" class="img-fluid d-block" style="width: 500px ;" /></div>
-                                                                    @break
-                                                                    @endforeach
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-9">
-                                                                <div class="text-muted">
-                                                                    <p>{{$product->is_current}}</p>
 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade show active" id="specifi" role="tabpanel">
-                                                        <div class="table-responsive">
-                                                            <table class="table table-nowrap mb-0">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <th scope="row" style="width: 50%;"><b>Category :</b></th>
-                                                                        <td>{{$product->products_type}}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row"><b>Brand :</b></th>
-                                                                        <td>Jalaram</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row"><b>Color :</b></th>
-                                                                        <td>{{$product->attributes_set}}</td>
-                                                                    </tr>
-                                                                    <!--  -->
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

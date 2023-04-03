@@ -208,14 +208,14 @@
 
                     </div>
                 </div>
-                
+
 
 
 
 
             </div>
             <div class="row">
-            <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-" style="background-color: #343a40; color:white;">
                         <div class="inner">
@@ -340,7 +340,7 @@
                     </div>
                 </div>
             </div>
-          
+
         </div>
     </section>
 </div>

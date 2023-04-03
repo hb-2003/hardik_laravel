@@ -24,28 +24,20 @@
                         <h1 class="mb-1">Your Vusey Cart is empty.</h1>
                         <p class="card-text">Your shopping cart is waiting. Give it purpose – fill it with household supplies,.
                             Continue shopping on the <a href="{{route('user.dashboard')}}" class="link">Vusey.com.homepage</a> learn about today's deals, or visit your Wish List.</p>
-
-
                     </div>
                 </div>
                 <div class="row my-6">
                     <div class="col-sm-6">
-                        <a href="javascript:history.back()" class="link">
+                        <a href="{{route('user.dashboard') }}" class="link">
                             <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
                     </div> <!-- end col -->
                     <!-- end col -->
-                </div> <!-- end row-->
-
-
+                </div> 
             </div>
-
-
             @else
             <div class="row">
                 <div class="col-xl-9">
-
                     @foreach($cartdetails as $cartdetail)
-
                     <div class="card border shadow-none">
                         <div class="card-body">
                             <div class="d-flex align-items-start border-bottom pb-3">
@@ -68,11 +60,7 @@
                                                 </a>
                                             </h4>
                                         </li>
-                                        <!-- <li class="list-inline-item">
-                                            <a href="#" class="text-muted px-1">
-                                                <i class="bx bx-heart"></i>
-                                            </a>
-                                        </li> -->
+                                     
                                     </ul>
                                 </div>
                             </div>
@@ -99,22 +87,12 @@
                                             <h5 class="font-size-16 mb-0">₹{{$cartdetail->quantity *$cartdetail->product_price  }} </h5>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-3">
-                                        <div class="mt-3">
-                                            <a href="{{route('user.cartdelete',$cartdetail->id)}}" class="btn btn-danger">
-                                                <i class="bx bx-arrow-left me-1"></i> delete </a>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
 
                         </div>
                     </div>
                     @endforeach
-                    <!-- end card -->
-
-
-                    <!-- end card -->
 
                     <div class="row my-6">
                         <div class="col-sm-6">
@@ -122,8 +100,8 @@
                                 <i class="bx bx-arrow-left me-1"></i> Continue Shopping </a>
                         </div> <!-- end col -->
                         <div class="col-sm-6">
-                            <div class="text-sm-end mt-2 mt-sm-0">
-                                <a href="{{route('user.checkout')}}" class="btn btn-primary">
+                            <div class="text-sm-end mt-2  pb-5 mt-sm-0">
+                                <a href="{{route('user.checkout')}}" class="btn btn-primary ">
                                     <i class="bx bx-cart-outline me-1"></i> Checkout </a>
                             </div>
                         </div> <!-- end col -->
@@ -172,13 +150,8 @@
                 </div>
             </div>
             @endif
-            <!-- end row -->
-
         </div>
     </div>
-    <!-- End Page-content -->
-
-
 </div>
 @endsection
 

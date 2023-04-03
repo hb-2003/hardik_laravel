@@ -8,7 +8,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script> 
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     @include('layouts.user.css')
 </head>
 
@@ -24,11 +24,11 @@
         @include('layouts.user.footer')
         <!-- Footer End -->
     </div>
-   
+
     <!-- Scripts js Start -->
     @include('layouts.user.script')
     @include('layouts.user.notification')
-   
+
     <!-- Scripts js End -->
 
 </body>

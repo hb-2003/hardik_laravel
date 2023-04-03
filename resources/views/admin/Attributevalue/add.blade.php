@@ -61,34 +61,28 @@
                                 @error('name')
                                 <div class="alert alert-danger">The Name is required.</div>
                                 @enderror
-                                
+
                                 <div class="form-group">
-                                <label>status</label>
-                                <select class="form-control" name="status" require>
-                                    <option value=""> Select please</option>
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
+                                    <label>status</label>
+                                    <select class="form-control" name="status" require>
+                                        <option value=""> Select please</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
 
+                                </div>
+                                @error('status')
+                                <div class="alert alert-danger">The Status is required.</div>
+                                @enderror
                             </div>
-                            @error('status')
-                            <div class="alert alert-danger">The Status is required.</div>
-                            @enderror
-
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Attributevlaue')}}"> Back</a>
                             </div>
-
-                           
-
+                        </form>
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a class="btn btn-danger float-right" href="{{route('admin.Attributevlaue')}}"> Back</a>
-                    </div>
-
-                    </form>
                 </div>
             </div>
-        </div>
     </section>
 </div>
 

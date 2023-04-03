@@ -16,14 +16,14 @@ use App\Http\Requests\Auth\LoginRequest;
     <meta content="Themesdesign" name="author" />
     <title>vesuy admin</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-   
+
     <!-- Stylesheets -->
     @include('layouts.frontend.css')
 </head>
 
-<body data-layout="horizontal"   data-topbar="dark" >
+<body data-layout="horizontal" data-topbar="dark">
     <div id="layout-wrapper">
-<!-- /data-layout-mode="dark" -->
+        <!-- /data-layout-mode="dark" -->
 
         @include('layouts.frontend.header')
         @include('layouts.frontend.notification')

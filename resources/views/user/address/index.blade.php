@@ -14,7 +14,7 @@
     <div class="card">
         <div class="card-header justify-content-between d-flex align-items-center">
             <h4 class="card-title">Striped Rows </h4>
-            <a class="d-flex btn btn-primary" href="{{route('user.addressadd')}}">Add  New address</a>
+            <a class="d-flex btn btn-primary" href="{{route('user.addressadd')}}">Add New address</a>
         </div><!-- end card header -->
         <div class="card-body">
             <div class="table-responsive">
@@ -51,14 +51,14 @@
                                 <div class="d-flex justify-content-end">
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             action
+                                            action
                                         </a>
 
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             <li><a class="dropdown-item" href="{{route('user.addressedit',$addres->id)}}">edit </a></li>
                                             <li><a class="dropdown-item" href="{{route('user.addressdelete',$addres->id)}}">delete</a>
                                             </li>
-                                          
+
                                         </ul>
                                     </div>
                                 </div>

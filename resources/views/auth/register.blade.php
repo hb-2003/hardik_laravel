@@ -48,51 +48,51 @@
                                         <form class="mt-4 pt-2" action="{{ route('register') }}" method="POST">
                                             @csrf
 
-                                            <div class="form-floating form-floating-custom mb-3">
+                                            <div class="form-floating form-floating-custom mb-2">
                                                 <input type="text" class="form-control" id="input-username" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" autofocus required>
-                                                <label for="input-username">Full name</label>
+                                                <label for="input-username">First name</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-users-alt"></i>
+                                                    <i class="bx bxs-user"></i>
                                                 </div>
                                             </div>
-                                            <div class="form-floating form-floating-custom mb-3">
+                                            <div class="form-floating form-floating-custom mb-2">
                                                 <input type="text" class="form-control" id="input-username" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name" autofocus required>
-                                                <label for="input-username">Full name</label>
+                                                <label for="input-username">Last name</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-users-alt"></i>
+                                                    <i class="bx bxs-user"></i>
                                                 </div>
                                             </div>
-                                            <div class="form-floating form-floating-custom mb-3">
+                                            <div class="form-floating form-floating-custom mb-2">
                                                 <input type="email" class="form-control" id="input-email" placeholder="Enter Email" name="email" value="{{ old('email') }}" required="">
                                                 <div class="invalid-feedback">
                                                     Please Enter Email
                                                 </div>
                                                 <label for="input-email">Email</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-envelope-alt"></i>
+                                                    <i class="bx bx-mail-send"></i>
                                                 </div>
                                             </div>
 
-                                            <div class="form-floating form-floating-custom mb-3">
+                                            <div class="form-floating form-floating-custom mb-2">
                                                 <input type="password" class="form-control" onpaste="return false" placeholder="Enter password" id="password" name="password" required>
                                                 <label for="input-password">Password</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-padlock"></i>
+                                                    <i class="bx bxs-lock-alt"></i>
                                                 </div>
                                             </div>
-                                            <div class="form-floating form-floating-custom mb-3">
+                                            <div class="form-floating form-floating-custom mb-2">
                                                 <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
                                                 <label for="input-password"> Confirm Password</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-padlock"></i>
+                                                    <i class="bx bxs-lock-alt"></i>
                                                 </div>
                                             </div>
                                             
-                                            <div class="mt-3">
+                                            <div class="mt-2">
                                                 <button class="btn btn-primary w-100" type="submit">Register</button>
                                             </div>
 
-                                            <div class="mt-4 pt-3 text-center">
+                                            <div class="mt-2  text-center">
                                                 <p class="text-muted mb-0">Already have an account ? <a href="{{ route('login') }}" class="fw-semibold text-decoration-underline"> Login </a> </p>
                                             </div>
 

@@ -46,7 +46,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">All user</h3>
-                          
+
                         </div>
 
 
@@ -82,7 +82,7 @@
                                                 @endif
                                             </td>
                                             <td>
-<a href="{{ route('admin.userinactive',$user ->id) }}">edit</a>
+                                                <a href="{{ route('admin.userinactive',$user ->id) }}">edit</a>
                                             </td>
 
                                         </tr>

@@ -42,7 +42,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Slider </label>
-                                    <input type="file" name="name" class="form-control"  placeholder="select slider image" require>
+                                    <input type="file" name="name" class="form-control" placeholder="select slider image" require>
                                 </div>
                                 @error('name')
                                 <div class="alert alert-danger">The select image.</div>

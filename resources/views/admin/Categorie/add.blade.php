@@ -44,7 +44,6 @@
                         <form accept="{{route('admin.Manufactureradd')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-
                                 <div class="form-group">
                                     <label>Manufacture</label>
                                     <select class="form-control" name="manufacturers_id" required>
@@ -56,7 +55,7 @@
                                     </select>
                                 </div>
                                 @error('manufacturers_id')
-                                <div class="alert alert-danger">The Manufacturers  is required.</div>
+                                <div class="alert alert-danger">The Manufacturers is required.</div>
                                 @enderror
 
                                 <div class="form-group">
@@ -87,15 +86,11 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
-
                                 </div>
                                 @error('status')
                                 <div class="alert alert-danger">The Status Is Required.</div>
                                 @enderror
-
-
                             </div>
-                            <!-- /.card-body -->
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -103,12 +98,7 @@
                             </div>
                         </form>
                     </div>
-                    <!-- /.card -->
-
-
-                    <!--/.col (right) -->
                 </div>
-                <!-- /.row -->
             </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

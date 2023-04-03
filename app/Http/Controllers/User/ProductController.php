@@ -24,12 +24,12 @@ class ProductController extends Controller
   public function productdetail($id)
   {
 
-    $product = Product::with('productimage')->where('id', $id)->first();
+    $product = Product::with('productimage')->where('id', $id)->where('products_status', 1)->first();
 
     $productreviews =  Review::where('product_id', $id)->get();
     $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $id)->first();
     $userproductcount = Review::where('user_id', auth::user()->id)->where('product_id', $id)->count();
-    $products = Product::with('productimage')->where('products_type', $product->products_type)->paginate(12);
+    $products = Product::with('productimage')->where('products_type', $product->products_type)->where('products_status', 1)->get();
 
     $userproductretingsum = Review::where('user_id', auth::user()->id)->where('product_id', $id)->sum('reting');
     if ($userproductcount == 0) {
@@ -37,9 +37,6 @@ class ProductController extends Controller
     } else {
       $avreagereview =  $userproductretingsum / $userproductcount;
     }
-
-
-
 
     return view('user.productdetail.index', compact('product', 'productreviews', 'userproductreview', 'userproductcount', 'avreagereview', 'products'));
   }
@@ -53,7 +50,7 @@ class ProductController extends Controller
 
     ]);
 
-    $product =  Product::where('id', $id)->first();
+    $product =  Product::where('id', $id)->where('products_status', 1)->first();
     $price = "0";
     if ($product->Products_categorie == 3) {
       $price = $product->sale_price;
@@ -62,7 +59,7 @@ class ProductController extends Controller
     }
 
     $total = $request->quantity * $price;
-  
+
     $cart = Cart::create([
       'user_id' => auth::user()->id,
       'product_id' => $id,
@@ -71,13 +68,13 @@ class ProductController extends Controller
       'status' => 0,
       'total' => $total
     ]);
-   
-    return redirect()->route('user.buycheckout',$cart->id);
+
+    return redirect()->route('user.buycheckout', $cart->id);
   }
 
   public function allproduct()
   {
-    $products = Product::paginate(12);
+    $products = Product::where('products_status', 1)->get();
     return view('user.products.newproduct', compact('products'));
   }
 }

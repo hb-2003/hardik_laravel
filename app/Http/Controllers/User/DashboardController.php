@@ -20,7 +20,6 @@ use Str;
 class DashboardController extends Controller
 {
     public function index(Request $request)
-
     {
         // $cookie_name = 'hardik';
         // $cookie_value = 'Hello, hardik!';
@@ -37,10 +36,10 @@ class DashboardController extends Controller
 
 
 
-        $productssliders = Product::with('productimage')->latest()->take(5)->get();
+        //$productssliders = Product::with('productimage')->latest()->take(5)->get();
 
 
-        $products = Product::with('productimage')->paginate(12);
+        $products = Product::with('productimage')->where('products_status', 1)->get();
 
 
 
@@ -55,19 +54,19 @@ class DashboardController extends Controller
         if ($request->isMethod('POST')) {
             if ($request->id) {
                 $categorie = Categorie::where('id', $request->id)->first();
-                $productscount =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->count();
+                $productscount =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->where('products_status', 1)->count();
                 if ($productscount == 0) {
                     return redirect()->route('user.dashboard');
                 }
 
-                $products =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->paginate(9);
+                $products =  Product::with('productimage')->where('products_status', 1)->where('products_type', $categorie->categorie_name)->get();
                 $categoriestatus = $request->id;
 
                 return view('user.dashboard.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount'));
             } else {
 
                 $search = $request->serch;
-                $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
+                $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->where('products_status', 1)->count();
 
                 if ($productscount == 0) {
 
@@ -75,14 +74,14 @@ class DashboardController extends Controller
                     return redirect()->route('user.dashboard');
                 }
 
-                $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->paginate(9);
+                $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->where('products_status', 1)->get();
                 $categoriestatus = $request->id;
 
-                return view('user.dashboard.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount'));
+                return view('user.dashboard.index', compact('products',  'categoriestatus', 'categories', 'sliders', 'sliderscount'));
             }
         }
         $categoriestatus = null;
-        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl], compact('users', 'categoriestatus', 'products', 'categories', 'productssliders', 'sliders', 'sliderscount'));
+        return view('user.dashboard.index', ['user' => $user, 'referralUrl' => $referralUrl], compact('users', 'categoriestatus', 'products', 'categories', 'sliders', 'sliderscount'));
     }
 
     public function profile(Request $request)
@@ -122,18 +121,7 @@ class DashboardController extends Controller
 
     {
         $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->orderBy('id', 'ASC')->get();
-        // foreach($userorders as $userorder)
-        // {
-        //     foreach($userorder->order_product as $product)
-        //     {
-        //         echo $product->products_image;
-        //     }
-        //     echo "hiii";
 
-        // }
-        //  echo "<pre>";
-
-        // die;
 
         return view('user.order.index', compact('userorders'));
     }
@@ -205,7 +193,7 @@ class DashboardController extends Controller
             session()->put('success', 'This categorie is not avalebale.');
             return redirect()->back();
         }
-        $products = Product::with('productimage')->where('products_type', $id)->paginate(12);
+        $products = Product::with('productimage')->where('products_type', $id)->get(12);
 
         //  echo "<pre>";
         // print_r('request');
@@ -223,20 +211,20 @@ class DashboardController extends Controller
             session()->put('success', 'This categorie is not avalebale.');
             return redirect()->back();
         }
-        $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->latest()->paginate();
+        $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->latest()->get();
 
 
         return view('user.search.index', compact('products', 'productscount', 'search'));
     }
     public function product()
-    
+
     {
         $categories  = Categorie::where('status', 1)->get();
-        $products = Product::with('productimage')->paginate(12);
-        $attributes = Attribute::with('attributevalue')->where('status', 1)->paginate(2);
+        $products = Product::with('productimage')->where('products_status', 1)->get();
+        $attributes = Attribute::with('attributevalue')->where('status', 1)->get();
 
 
-        return view('user.products.index', compact('products','categories','attributes'));
+        return view('user.products.index', compact('products', 'categories', 'attributes'));
     }
     public function subscribe(Request $request)
     {

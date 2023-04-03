@@ -58,7 +58,6 @@
                                             <th>Name</th>
                                             <th>Status</th>
                                             <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,14 +65,12 @@
                                         <tr>
                                             <td>{{$key + 1}}</td>
                                             <td> @foreach($attributes as $attribute)
-                                                    @if($attributesvalue ->attribute_id == $attribute->id )
-                                                    {{$attribute->name}}
-                                                    @endif
+                                                @if($attributesvalue ->attribute_id == $attribute->id )
+                                                {{$attribute->name}}
+                                                @endif
                                                 @endforeach
                                             </td>
                                             <td>{{$attributesvalue ->name}}</td>
-
-
                                             <td> @if ($attributesvalue ->status == 1 )
                                                 <span class="right badge badge-success">Active</span>
                                                 @else
@@ -86,14 +83,11 @@
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a class="dropdown-item" href="{{ route('admin.Attributevlaueedit',$attributesvalue->id) }}">Edit</a></li>
                                                         <li><a class="dropdown-item" href="{{route('admin.Attributevlauedelete',$attributesvalue->id)}}">Delete</a></li>
-
                                                     </ul>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>

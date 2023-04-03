@@ -10,7 +10,6 @@
 
 @section('content')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
             <h2>All Product</h2>
@@ -23,14 +22,9 @@
                                     <div class="col-md-6">
                                         <div>
                                             <h5>Showing result for </h5>
-                                         
                                         </div>
                                     </div>
-
-                                    
                                 </div>
-
-
                                 <div class="tab-content p-3 text-muted">
                                     <div class="tab-pane active" id="produt" role="tabpanel">
                                         <div class="row">
@@ -45,7 +39,6 @@
                                                             <div class="dash-product-img">
                                                                 <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
                                                             </div>
-
                                                             <h5 class="font-size-17 mt-1">
                                                                 <a href="#" class="text-dark lh-base">{{$product->products_name}}</a>
                                                             </h5>     
@@ -53,9 +46,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-
                                             @elseif($product['products_status']=="1")
-
                                             <div class="col-xl-4 col-sm-6">
                                                 <div class="card dash-product-box shadow-none border text-center">
                                                     <a href="{{route('user.productdetail',$product->id)}}">
@@ -72,8 +63,6 @@
                                                             <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">₹{{$product->products_price*110/100}}</del> ₹{{$product->products_price}}</h5>
 
                                                             <h6 class="p-3">FREE Delivery by Vuesy Furniture</h6>
-
-                                                           
                                                         </div>
                                                     </a>
                                                 </div>
@@ -82,7 +71,6 @@
 
                                             @endforeach
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="row">
@@ -99,7 +87,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

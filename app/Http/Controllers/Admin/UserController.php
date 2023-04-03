@@ -15,27 +15,21 @@ class UserController extends Controller
     public function user()
     {
         $users  =  User::all();
-
         return view('admin.user.index', compact('users'));
     }
 
     public function subscribe()
     {
         $subscribes  =  Subscribe::all();
-
         return view('admin.subscribe.index', compact('subscribes'));
     }
     public function userinactive($id)
     {
-        
-      
-$userinactive =  user::where('id',$id)->first();
-$userinactive->update([
-    'status' => 0,
 
-]);
-
+        $userinactive =  user::where('id', $id)->first();
+        $userinactive->update([
+            'status' => 0,
+        ]);
         return redirect()->back();
     }
-   
 }

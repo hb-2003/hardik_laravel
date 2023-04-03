@@ -16,7 +16,7 @@ use Alcaitiff\LaravelUrlEncode\Routing\Router;
 
 Route::namespace('Frontend')->group(function () {
     Route::match(['get', 'post'], '/', 'HomeController@index')->name('home');
-   
+
     Route::get('file/{url}/{url1?}/{name?}', 'HomeController@file')->name('file');
     Route::match(['get', 'post'], 'productdetail/{id}', 'HomeController@productdetail')->name('productdetail');
     Route::match(['get', 'post'], 'cart', 'HomeController@Cart')->name('cart');
@@ -31,7 +31,6 @@ Route::namespace('Frontend')->group(function () {
     Route::match(['get', 'post'], 'faqs', 'HomeController@faqs')->name('faqs');
     Route::match(['get', 'post'], 'subscribe', 'HomeController@subscribe')->name('subscribe');
     Route::match(['get', 'post'], 'categorieproduct/{id}', 'HomeController@categorieproduct')->name('categorieproduct');
-
 });
 
 Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 'verified', 'is_user'])->group(function () {
@@ -46,7 +45,7 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     // serch 
     Route::match(['get', 'post'], 'search', 'DashboardController@search')->name('search');
     // order
-    Route::match(['get', 'post'], 'order', 'DashboardController@order')->name('order');
+    Route::match(['get', 'post'], 'order', 'DashboardControlsler@order')->name('order');
     Route::match(['get', 'post'], 'cansal/{id}', 'OrderController@cansal')->name('cansal');
     Route::match(['get', 'post'], 'cansalorderreorder/{id}', 'OrderController@cansalorderreorder')->name('cansalorderreorder');
     Route::match(['get', 'post'], 'orderreturn/{id}', 'OrderController@orderreturn')->name('orderreturn');

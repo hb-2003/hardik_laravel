@@ -7,7 +7,7 @@
         <div class="container-fluid">
 
             <div class="row">
-          
+
                 @yield('dashboard')
 
             </div><!-- end row -->

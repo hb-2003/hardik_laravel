@@ -1,30 +1,29 @@
-
 @yield('js')
 
- <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
-    <script src="{{asset('admin/plugins/jquery/jquery.min.js  ') }} "></script>
-    <!-- Bootstrap -->
-   
-    <!-- overlayScrollbars -->
-    <script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js  ') }} "></script>
-    <!-- AdminLTE App -->
-    <script src="{{asset('admin/dist/js/adminlte.js  ') }} "></script>
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="{{asset('admin/plugins/jquery/jquery.min.js  ') }} "></script>
+<!-- Bootstrap -->
 
-    <!-- PAGE PLUGINS -->
-    <!-- jQuery Mapael -->
-    <script src="{{asset('admin/plugins/jquery-mousewheel/jquery.mousewheel.js  ') }} "></script>
-    <script src="{{asset('admin/plugins/raphael/raphael.min.js  ') }} "></script>
-    <script src="{{asset('admin/plugins/jquery-mapael/jquery.mapael.min.js  ') }} "></script>
-    <script src="{{asset('admin/plugins/jquery-mapael/maps/usa_states.min.js  ') }} "></script>
-    <!-- ChartJS -->
-    <script src="{{asset('admin/plugins/chart.js/Chart.min.js  ') }} "></script>
-   
-   
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{asset('admin/dist/js/pages/dashboard2.js  ') }} "></script>
-    <script src="{{asset('admin/dist/js/demo.js  ') }} "></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!-- overlayScrollbars -->
+<script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js  ') }} "></script>
+<!-- AdminLTE App -->
+<script src="{{asset('admin/dist/js/adminlte.js  ') }} "></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="{{asset('admin/plugins/jquery-mousewheel/jquery.mousewheel.js  ') }} "></script>
+<script src="{{asset('admin/plugins/raphael/raphael.min.js  ') }} "></script>
+<script src="{{asset('admin/plugins/jquery-mapael/jquery.mapael.min.js  ') }} "></script>
+<script src="{{asset('admin/plugins/jquery-mapael/maps/usa_states.min.js  ') }} "></script>
+<!-- ChartJS -->
+<script src="{{asset('admin/plugins/chart.js/Chart.min.js  ') }} "></script>
+
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{asset('admin/dist/js/pages/dashboard2.js  ') }} "></script>
+<script src="{{asset('admin/dist/js/demo.js  ') }} "></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!-- jQuery -->
 <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
@@ -49,7 +48,7 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-         
+
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
@@ -62,6 +61,3 @@
         });
     });
 </script>
-
-
-

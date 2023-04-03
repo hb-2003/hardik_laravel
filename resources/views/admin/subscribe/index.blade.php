@@ -45,7 +45,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">subscribe</h3>
-                          
+
                         </div>
 
                         <div class="card m-3">
@@ -63,8 +63,8 @@
                                             <td>{{$key + 1}}</td>
                                             <td>{{$subscribe ->email}}</td>
 
-                                            
-                                            
+
+
                                         </tr>
                                         @endforeach
                                     </tbody>

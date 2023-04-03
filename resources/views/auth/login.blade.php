@@ -1,7 +1,9 @@
 @extends('layouts.auth')
 
 
+
 @section('content')
+
 
 <div class="auth-page d-flex align-items-center min-vh-100">
     <div class="container-fluid p-0">
@@ -49,19 +51,17 @@
                                             @csrf
                                             <div class="form-floating form-floating-custom mb-3">
                                                 <input type="email" name="email"  placeholder="name@example.com" class="form-control" id="input-username" placeholder="Enter User Name">
-                                                <label for="input-username">Username</label>
+                                                <label for="input-username">email</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-users-alt"></i>
+                                                    <i class="bx bxs-user"></i>
                                                 </div>
                                             </div>
                                             <div class="form-floating form-floating-custom mb-3 auth-pass-inputgroup">
                                                 <input type="password" class="form-control" name="password"  placeholder="***************">
-                                                <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
-                                                    <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
-                                                </button>
+                                                
                                                 <label for="password-input">Password</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-padlock"></i>
+                                                    <i class="bx bxs-lock-alt"></i>
                                                 </div>
                                             </div>
                                             <div class="form-check form-check-primary font-size-16 py-1">

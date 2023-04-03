@@ -39,7 +39,6 @@
                         <form accept="{{route('admin.Attributevlaueedit',$attributesvalue->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-
                                 <div class="form-group">
                                     <label>Attribute</label>
                                     <select class="form-control" name="manufacturers_id" require>
@@ -72,14 +71,11 @@
                                 @error('status')
                                 <div class="alert alert-danger">The Status Is Required.</div>
                                 @enderror
-
                             </div>
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a class="btn btn-danger float-right" href="{{route('admin.Attributevlaue')}}"> Back</a>
                             </div>
-
                         </form>
                     </div>
                 </div>

@@ -50,7 +50,7 @@ class CheckoutController extends Controller
                 'billing_name' => 'required',
                 'email' => 'required',
                 'customers_telephone' => 'required|digits:10',
-              
+
                 'billing_address_format_id' => 'required',
                 'payment_method' => 'required',
 
@@ -100,10 +100,14 @@ class CheckoutController extends Controller
                 'status' => 0,
 
             ]);
-           
+
             //    echo $order->id;
             //    die;
 
+            if ($request->payment_method == "pay") {
+                $orderid = $order->id;
+                return view('user.rezolpay.index', compact('carttotal', 'orderid', 'request', 'order', 'countery'));
+            }
 
             foreach ($cartdetails as $cartdetail) {
 
@@ -126,7 +130,7 @@ class CheckoutController extends Controller
                     'order_id' =>  $order->id,
                     'product_name' => $cartdetail->product[0]->products_name,
                     'quantity' => $cartdetail->quantity,
-                    'price'=>$cartdetail->product_price,
+                    'price' => $cartdetail->product_price,
 
                 ]);
 
@@ -144,10 +148,7 @@ class CheckoutController extends Controller
                 Cart::where('id', $cartdetail->id)->update(['status' => 1]);
             }
 
-            if ($request->payment_method == "pay") {
-                $orderid = $order->id;
-                return view('user.rezolpay.index', compact('carttotal', 'orderid', 'request', 'order', 'countery'));
-            }
+
             session()->put('success', 'order complete.');
 
             return view('user.successorder.index');
@@ -155,19 +156,19 @@ class CheckoutController extends Controller
         return view('user.checkout.index', compact('address', 'cartdetails', 'conteries', 'carttotal'));
     }
 
-    public function buycheckout(Request $request ,$id)
-    
+    public function buycheckout(Request $request, $id)
+
     {
-      
+
         $cartdetails = Cart::with('product')->where('user_id', auth::user()->id)->where('status', 0)->first();
-      
-       
+
+
         $images =   Products_images::where('product_id', $cartdetails->product_id)->first();
 
 
 
         $address = Addresse::where('user_id', auth::user()->id)->get();
-        $carttotal =  $cartdetails ->total;
+        $carttotal =  $cartdetails->total;
         $conteries = Countrie::all();
 
 
@@ -175,7 +176,7 @@ class CheckoutController extends Controller
         if ($request->isMethod('POST')) {
 
             $ip = '$_SERVER["HTTP_CF_CONNECTING_IP"]';
-                
+
 
             // Use JSON encoded string and converts
             // it into a PHP variable
@@ -242,8 +243,8 @@ class CheckoutController extends Controller
             //    die;
 
             $countery = $ipdat->geoplugin_countryName;
-         
-           
+
+
             Order_product::create([
                 'orders_id' => $order->id,
                 'products_id' => $cartdetails->product[0]->id,
@@ -262,7 +263,7 @@ class CheckoutController extends Controller
                 'order_id' =>  $order->id,
                 'product_name' =>  $cartdetails->product[0]->products_name,
                 'quantity' => $cartdetails->quantity,
-                'price'=>$cartdetails->product_price,
+                'price' => $cartdetails->product_price,
             ]);
 
 
@@ -277,13 +278,13 @@ class CheckoutController extends Controller
             ]);
 
             Cart::where('id', $cartdetails->id)->update(['status' => 1]);
-         
+
             if ($request->payment_method == "pay") {
                 $orderid = $order->id;
                 return view('user.rezolpay.index', compact('carttotal', 'orderid', 'request', 'order', 'countery'));
             }
 
-           
+
             session()->put('success', 'order complete.');
 
             return view('user.successorder.index');
@@ -297,7 +298,38 @@ class CheckoutController extends Controller
 
 
             Order::where('id', $request->orderid)->update(['transaction_id' => $request->id], ['status' => 1]);
-           
+            $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
+            foreach ($cartdetails as $cartdetail) {
+                Order_product::create([
+                    'orders_id' => $request->orderid,
+                    'products_id' => $cartdetail->product[0]->id,
+                    'products_name' => $cartdetail->product[0]->products_name,
+                    'products_price' => $cartdetail->product_price,
+                    'products_image' => $cartdetail->productimage[0]->name,
+                    'final_price' => $cartdetail->product_price,
+                    'products_tax' => 0,
+                    'products_quantity' => $cartdetail->quantity,
+                ]);
+
+                Notification::create([
+                    'user_id' => auth::user()->id,
+                    'product_id' => $cartdetail->product[0]->id,
+                    'order_id' =>  $request->orderid,
+                    'product_name' => $cartdetail->product[0]->products_name,
+                    'quantity' => $cartdetails->quantity,
+                    'price' => $cartdetails->product_price,
+
+                ]);
+
+                $Product  = Product::where('id', $cartdetail->product[0]->id)->first();
+                $quantity = $Product->products_quantity - $cartdetail->quantity;
+                $Product->update([
+                    'products_quantity' => $quantity,
+                    'products_max_stock' => $quantity,
+                ]);
+
+                Cart::where('id', $cartdetail->id)->update(['status' => 1]);
+            }
             session()->put('success', 'order complete.');
 
             return response()->json(['request' => $request]);
@@ -305,12 +337,14 @@ class CheckoutController extends Controller
     }
     public function success()
     {
+        Cart::where('user_id', auth::user()->id)->update(['status' => 1]);
+
         return view('user.successorder.index');
     }
 
-    public function buyproductdelete( $id)
+    public function buyproductdelete($id)
     {
-        Cart::where('id',$id)->delete();
+        Cart::where('id', $id)->delete();
 
 
         return redirect()->route('user.dashboard');

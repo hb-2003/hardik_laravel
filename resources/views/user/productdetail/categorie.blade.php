@@ -22,7 +22,6 @@
                                     <div class="col-md-6">
                                         <div>
                                             <h5>All categories</h5>
-                                           
                                         </div>
                                     </div>
                                 </div>

@@ -53,14 +53,14 @@
                                                 <input type="email" class="form-control" type="email" name="email" value="{{ old('email', $request->email) }}">
                                                 <label for="input-newpassword">email</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-padlock"></i>
+                                                    <i class="bx bx-mail-send"></i>
                                                 </div>
                                             </div>
                                             <div class="form-floating form-floating-custom mb-3">
                                                 <input type="password" class="form-control" id="input-newpassword" type="password" name="password" placeholder="Password" required>
                                                 <label for="input-newpassword">New Password</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-padlock"></i>
+                                                    <i class="bx bxs-lock-alt"></i>
                                                 </div>
                                             </div>
 
@@ -68,7 +68,7 @@
                                                 <input  class="form-control" id="input-confirmpassword" placeholder="Password" type="password" name="password_confirmation" placeholder="Confirm Password" required>
                                                 <label for="input-confirmpassword">Confirm Password</label>
                                                 <div class="form-floating-icon">
-                                                    <i class="uil uil-check-circle"></i>
+                                                    <i class="bx bxs-lock-alt"></i>
                                                 </div>
                                             </div>
 

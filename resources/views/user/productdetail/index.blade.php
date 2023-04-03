@@ -31,15 +31,12 @@
                                                     @foreach($product->productimage as $image)
                                                     <div class="swiper-slide"><img src="{{asset('images/product/'.$image->name) }}" alt="" class="img-fluid d-block" style="width: 500px ;" /></div>
                                                     @endforeach
-
                                                 </div>
-
                                                 <div class="d-none d-md-block">
                                                     <div class="swiper-button-next"><i class='fas fa-arrow-right'></i></div>
                                                     <div class="swiper-button-prev"><i class='fas fa-arrow-left '></i></div>
                                                 </div>
                                             </div>
-
                                             <div class="mt-4">
                                                 <div class="swiper product-nav-slider mt-2 overflow-hidden">
                                                     <div class="swiper-wrapper">
@@ -56,8 +53,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             @if($product->products_quantity > 0 && $product->products_status=="1")
                                             <div class="row text-center mt-3">
 
@@ -68,26 +63,16 @@
                                                         </button>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-sm-6">
                                                     <div class="d-grid">
-                                                        <!-- <a href="{{route('user.buyproduct',$product->id)}}" class="btn btn-light waves-effect  mt-2 waves-light"><i class="bx bx-shopping-bag me-2"></i>Buy now </a> -->
-
                                                         <button type="submit" class="btn btn-primary waves-effect waves-light mt-2 me-1">
                                                             Buy
                                                         </button>
-                                                        <!-- <button type="button" id="buyproduct" onclick="butproduct(document.getElementById('productId_{{$product->id}}').value,document.getElementById('quantitytId_{{$product->id}}').value ,document.getElementById('priceID_{{$product->products_price}}').value)" class="btn btn-primary waves-effect waves-light mt-2 me-1">
-                                                        <i class="bx bx-cart-alt me-2"></i> Add to cart
-                                                    </button> -->
-
                                                     </div>
                                                 </div>
 
-                                            </div>
-
-
+                                            </div
                                             @else
-
                                             @endif
                                         </div>
 
@@ -101,43 +86,31 @@
                                             <h5 class="mt-1">
                                                 <a href="#" class="text-dark lh-base">{{$product->products_name}}</a>
                                             </h5>
-
                                             <div class="text-muted">
-
                                                 <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> {{ $avreagereview }}</span> {{$userproductcount}} Reviews
                                             </div>
                                             @if($product->products_quantity > 0 && $product->products_status=="1")
                                             <div class="mt-3">
-                                                <h5 class="font-size-20 mt-4 pt-2">
-                                                    @if($product->Products_categorie == 3)
-                                                    <del class="text-muted me-2"> ₹{{$product ->products_price}}</del> ₹{{$product->sale_price}} <span class="text-danger font-size-14 ms-2">
+                                                <h5 class="font-size-20 mt-4 pt-2"><del class="text-muted me-2">
+                                                        @if($product->Products_categorie == 3)
+                                                        ₹{{$product ->sale_price}}
+                                                        @endif
+                                                    </del> ₹{{$product->products_price}} <span class="text-danger font-size-14 ms-2"> @if($product->Products_categorie == 3)
                                                         <?php $parsantage  = (round($product->products_price * 100 / $product->sale_price));
                                                         $staring =  $parsantage - 100;
 
                                                         echo  "-", $staring,  " % Off"; ?></span>
-
-                                                    @else
-                                                    ₹{{$product ->products_price}}
-
                                                     @endif
                                                 </h5>
                                             </div>
-
-
                                             @else
                                             <h6 class="" style="color: red;">out of stock</h6>
                                             @endif
-
-
-
                                             <p class="mt-4 text-muted">{{$product->is_current}}</p>
-
 
                                             <input type="hidden" class="price" name="price" id="priceID_{{$product->products_price}}" value="{{ $product->products_price }}" readonly>
                                             <div>
                                                 <div class="row">
-
-
                                                     <div class="col-md-6">
                                                         <div class="mt-3">
                                                             <h5 class="font-size-14">Services :</h5>
@@ -148,9 +121,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-
                                                 <div class="row">
                                                     <!-- <div class="col-lg-7 col-sm-8">
                                                         <div class="product-desc-color mt-3">
@@ -199,7 +169,7 @@
                                                                     <option value="">select</option>
                                                                     @for ($i = 1; $i <= $product->products_quantity; $i++)
                                                                         @if (10 >= $i)
-                                                                        <option value="<?php echo $i ?> " <?php echo $i == "1" ? "selected" : "" ?>">{{$i}}</option>
+                                                                        <option value="<?php echo $i ?> " <?php echo $i == 1 ? "selected" : "" ?>>{{$i}}</option>
                                                                         @endif
                                                                         @endfor
                                                                 </select>
@@ -207,11 +177,8 @@
 
                                                         </div>
                                                     </div>
-
                                                     @else
-
                                                     @endif
-
                                                 </div>
                                             </div>
                                         </div>
@@ -227,7 +194,6 @@
                                                 <span class="badge bg-success font-size-14 me-1"><i class="bx bx-star"></i> {{ $avreagereview }}</span> {{$userproductcount}} Reviews
                                             </div>
                                             <div class="border py-4 rounded">
-
                                                 <div class="px-4" id="review" data-simplebar style="max-height: 260px;">
                                                     @foreach($productreviews as $productreview)
                                                     <div class="border-bottom pb-3">
@@ -269,9 +235,7 @@
 
                                                     </div>
                                                     @endforeach
-
                                                 </div>
-
                                                 <div class="px-4">
                                                     <div class="text-end mt-3">
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -309,7 +273,6 @@
                                                             <div class="col-md-9">
                                                                 <div class="text-muted">
                                                                     <p>{{$product->is_current}}</p>
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -423,10 +386,7 @@
                                 <div class="row">
 
                                     <div class="col-sm-7">
-                                        <div class="float-sm-end">
-                                            {{ $products->onEachSide(5)->links() }}
-                                            <p></p>
-                                        </div>
+                                        s
                                     </div>
                                 </div>
                             </div>

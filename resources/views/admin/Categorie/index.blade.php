@@ -48,9 +48,6 @@
                             <h3 class="card-title">Categories All</h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Categorieadd') }}">add </a>
                         </div>
-
-
-
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -63,7 +60,6 @@
                                             <th>Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,9 +68,9 @@
                                             <td>{{$key + 1}}</td>
                                             <td>
                                                 @foreach($Manufacturers as $Manufacturer)
-                                                    @if($categorie ->manufacturers_id ==$Manufacturer->id )
-                                                    {{$Manufacturer->manufacturer_name}}
-                                                    @endif
+                                                @if($categorie ->manufacturers_id ==$Manufacturer->id )
+                                                {{$Manufacturer->manufacturer_name}}
+                                                @endif
                                                 @endforeach
                                             </td>
                                             <td>{{$categorie ->categorie_name}}</td>
@@ -100,9 +96,7 @@
                                             </td>
                                         </tr>
                                         @endforeach
-
                                     </tbody>
-
                                 </table>
                             </div>
                             <!-- /.card-body -->

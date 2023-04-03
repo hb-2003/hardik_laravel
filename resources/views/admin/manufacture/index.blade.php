@@ -48,9 +48,6 @@
                             <h3 class="card-title">Manufacturer Detail</h3>
                             <a class=" float-right btn btn-primary" href="{{ route('admin.Manufactureradd') }}">add </a>
                         </div>
-
-
-
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -62,7 +59,6 @@
                                             <th>Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,16 +81,12 @@
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                         <li><a class="dropdown-item" href="{{ route('admin.Manufactureredit',$manufacturer->id) }}">Edit</a></li>
                                                         <li><a class="dropdown-item" href="{{route('admin.Manufacturerdelete',$manufacturer->id)}}">Delete</a></li>
-
                                                     </ul>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         @endforeach
-
                                     </tbody>
-
                                 </table>
                             </div>
                             <!-- /.card-body -->

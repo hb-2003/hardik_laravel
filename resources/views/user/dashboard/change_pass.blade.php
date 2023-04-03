@@ -8,7 +8,7 @@
 @section('style')
 @endsection
 
-@section('content') 
+@section('content')
 <div class="main-content">
 
     <div class="page-content">

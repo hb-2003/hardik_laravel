@@ -103,7 +103,7 @@
                                 </table>
                             </div>
                             <div class="card-footer">
-                             
+
                                 <a href="{{route('admin.Product')}}" class="btn btn-danger float-right"> Back</a>
                             </div>
                             <!-- /.card-body -->

@@ -49,7 +49,6 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-
                                         <th>Order ID</th>
                                         <th>User Id</th>
                                         <th>Billing Name</th>
@@ -64,7 +63,6 @@
                                 <tbody>
                                     @foreach($refundorders as $key => $refundorder)
                                     <tr>
-
                                         <td><a href="javascript: void(0);" class="text-body fw-bold">{{$refundorder->id}}</a> </td>
                                         <td>{{$refundorder->customers_id}}</td>
                                         <td>{{$refundorder->customers_name}}</td>
@@ -94,101 +92,16 @@
                                             @endif
 
                                         </td>
-                                        
+
                                         <td><a href="{{route('admin.orderdetail',$userorder->id)}}">view detail</a></td>
-                                            <!-- Button trigger modal -->
-                                            <!-- <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#order_{{$key +1}}">
-                                                View Details
-                                            </button>
-                                            <div class="modal fade orderdetailsModal" id="order_{{$key +1}}" tabindex="-1" role="dialog" aria-labelledby="orderdetailsModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="orderdetailsModalLabel">Order Details</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p class="mb-2">Product id: <span class="text-primary">{{$refundorder->id}}</span></p>
-                                                            <p class="mb-4">Billing Name: <span class="text-primary">Marie N.</span></p>
 
-                                                            <div class="table-responsive">
-                                                                <table class="table align-middle table-nowrap">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col">Product</th>
-                                                                            <th scope="col">Product Name</th>
-                                                                            <th scope="col">Price</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        @foreach($refundorder->order_product as $product)
-                                                                        <tr>
-                                                                            <th scope="row">
-                                                                                <div>
-                                                                                    <img src="{{asset('images/product/'.$product->products_image)}}" alt="" class="" width="100">
-                                                                                </div>
-                                                                            </th>
-                                                                            <td>
-                                                                                <div>
-                                                                                    <h5 class="text-truncate font-size-16">{{$product->products_name}}</h5>
-                                                                                    <p class="text-muted mb-0">₹ {{$product->products_price}} * {{$product ->products_quantity}}</p>
-                                                                                </div>
-                                                                            </td>
-                                                                            <td>₹ {{$product->products_price}}</td>
-                                                                        </tr>
-                                                                        @endforeach
-                                                                        <tr>
-                                                                            <td colspan="2">
-                                                                                <h6 class="m-0 text-right">Sub Total:</h6>
-                                                                            </td>
-                                                                            <td>
-                                                                            ₹ {{$refundorder->order_price}}
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td colspan="2">
-                                                                                <h6 class="m-0 text-right">Shipping:</h6>
-                                                                            </td>
-                                                                            <td>@if($refundorder->shipping_method == 0)
-                                                                                Free
-                                                                                @else
-                                                                                ₹50
-                                                                                @endif
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td colspan="2">
-                                                                                <h6 class="m-0 text-right">Total:</h6>
-                                                                            </td>
-                                                                            <td>
-                                                                            ₹{{$refundorder->order_price}}
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                         </td>
                                         <td>hii</td>
-                                        
-                                           
-
                                     </tr>
                                     @endforeach
-
-
                                 </tbody>
-
                             </table>
                         </div>
-
                         <!-- /.col -->
                     </div>
                 </div>

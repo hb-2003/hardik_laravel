@@ -110,7 +110,6 @@ use App\Models\Review;
 
                     </div>
                 </div> -->
-
                 <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-body">
@@ -120,11 +119,10 @@ use App\Models\Review;
                                         <div>
                                             <h5>Showing result for "Furniture"</h5>
                                             <ol class="breadcrumb p-0 bg-transparent mb-2">
-                                                
+
                                             </ol>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-inline float-md-end">
                                             <div class="search-box ms-2">
@@ -136,7 +134,6 @@ use App\Models\Review;
                                         </div>
                                     </div>
                                 </div>
-
                                 <ul class="nav nav-tabs nav-tabs-custom mt-3 mb-2 ecommerce-sortby-list">
                                     <li class="nav-item">
                                         <a class="nav-link disabled fw-medium" href="#" tabindex="-1">Sort by:</a>
@@ -145,15 +142,12 @@ use App\Models\Review;
 
                                         <a class="nav-link active" data-bs-toggle="tab" href="#all">All</a>
                                     </li>
-
                                     @foreach($categories as $categorie)
                                     <li class="nav-item">
 
-                                        <a class="nav-link " data-bs-toggle="tab" href="#pro{{$categorie->id}}"> <?php echo ucwords($categorie->categorie_name);?></a>
+                                        <a class="nav-link " data-bs-toggle="tab" href="#pro{{$categorie->id}}"> <?php echo ucwords($categorie->categorie_name); ?></a>
                                     </li>
                                     @endforeach
-
-                                    
                                 </ul>
 
                                 <!-- Tab panes -->
@@ -185,23 +179,16 @@ use App\Models\Review;
                                                         <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1"> @if($product->Products_categorie == 3)
                                                                 ₹{{$product ->sale_price}}
                                                                 @endif</del> ₹{{$product ->products_price}}</h5>
-
-
-
                                                         <div class="mt-4">
                                                             <a href="{{route('productdetail',$product->id)}}" class="btn btn-primary btn-sm w-lg"><i class="bi bi-ticket-detailed"></i> See Detail
-                                                                </a>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             @endforeach
-
                                         </div>
-
-
-
                                     </div>
                                     @foreach($categories as $categorie)
 
@@ -246,28 +233,21 @@ use App\Models\Review;
                                             @endif
 
                                             @endforeach
-
                                         </div>
-
-
-
                                     </div>
                                     @endforeach
                                     <!-- end row -->
                                 </div>
-
                             </div>
-
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div>
-
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="float-sm-end">
                                         <!-- <ul class="pagination pagination-rounded mb-sm-0">
-                                        {{ $products->onEachSide(5)->links()  }}
+                                        
                                         </ul> -->
                                     </div>
                                 </div>
@@ -276,8 +256,6 @@ use App\Models\Review;
                     </div>
                 </div>
             </div>
-
-
             <!-- <h2>All Product</h2>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
@@ -301,14 +279,9 @@ use App\Models\Review;
                                                     </form>
                                                 </div>
                                             </div>
-
-
-
                                         </div>
 
                                     </div>
-
-
                                 </div>
                                 <hr>
 

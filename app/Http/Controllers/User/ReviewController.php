@@ -31,9 +31,9 @@ class ReviewController extends Controller
 
             ]);
             $count =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->count();
-        
+
             if ($count == 1) {
-                $productreview =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->first(); 
+                $productreview =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->first();
                 $productreview->update([
 
                     'product_id' => $request->product_id,
@@ -52,7 +52,7 @@ class ReviewController extends Controller
                     'date' => Carbon::now(),
                 ]);
             }
-           return redirect()->back();
+            return redirect()->back();
         }
         return redirect()->back();
     }

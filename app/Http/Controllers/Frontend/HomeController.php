@@ -40,7 +40,6 @@ class HomeController extends Controller
             }
         }
 
-
         // return view('pages.maintenance');
         //return view('pages.comingsoon');
         $productssliders = Product::with('productimage')->latest()->take(5)->get();
@@ -48,7 +47,7 @@ class HomeController extends Controller
 
         $categories = Categorie::all();
 
-        $products = Product::with('productimage', 'productreview')->paginate(9);
+        $products = Product::with('productimage', 'productreview')->where('products_status', 1)->get();
 
         $sliders = Slider::where('status', 1)->get();
         $sliderscount = Slider::where('status', 1)->count();
@@ -57,19 +56,19 @@ class HomeController extends Controller
         if ($request->isMethod('POST')) {
             if ($request->id) {
                 $categorie = Categorie::where('id', $request->id)->first();
-                $productscount =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->count();
+                $productscount =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->where('products_status', 1)->count();
                 if ($productscount == 0) {
                     return redirect()->route('home');
                 }
 
-                $products =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->paginate(9);
+                $products =  Product::with('productimage')->where('products_type', $categorie->categorie_name)->where('products_status', 1)->get();
                 $categoriestatus = $request->id;
 
                 return view('frontend.home.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount'));
             } else {
 
                 $search = $request->serch;
-                $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
+                $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->where('products_status', 1)->count();
 
                 if ($productscount == 0) {
 
@@ -77,7 +76,7 @@ class HomeController extends Controller
                     return redirect()->route('home');
                 }
 
-                $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->paginate(9);
+                $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->where('products_status', 1)->get();
                 $categoriestatus = $request->id;
 
                 return view('frontend.home.index', compact('products',  'productssliders', 'categoriestatus', 'categories', 'sliders', 'sliderscount',));
@@ -96,26 +95,7 @@ class HomeController extends Controller
         $productssliders = Product::with('productimage')->latest()->take(5)->get();
 
 
-        $products = Product::with('productimage')->paginate(12);
-
-        // $request->authenticate();
-
-
-
-
-        // if ($request->session()->regenerate() == Null) {
-        //     echo "hiiii";
-        // } else {
-        //     echo "hardik";
-        // }
-        // die;
-        // $request->session()->regenerate();
-
-        // if ($request->user()->role == 1) {
-        //     return redirect(RouteServiceProvider::ADMIN_HOME);
-        // } else {
-        //     return redirect(RouteServiceProvider::HOME);
-        // }
+        $products = Product::with('productimage')->where('products_status', 1)->get();
 
         $categories = Categorie::all();
         // session()->put('success','success!');
@@ -207,15 +187,15 @@ class HomeController extends Controller
     public function categorieproduct(Request $request, $id)
     {
 
-       
 
 
-        $count = Product::with('productimage')->where('products_type', $id)->count();
+
+        $count = Product::with('productimage')->where('products_type', $id)->where('products_status', 1)->count();
         if ($count == 0) {
             session()->put('success', 'Your email address has been changed successfully.');
             return redirect()->back();
         }
-        $products = Product::with('productimage')->where('products_type', $id)->paginate(12);
+        $products = Product::with('productimage')->where('products_type', $id)->where('products_status', 1)->get();
 
         //  echo "<pre>";
         // print_r($products);
@@ -257,22 +237,22 @@ class HomeController extends Controller
     }
     public function product(Request $request)
     {
-        $attributes = Attribute::with('attributevalue')->where('status', 1)->paginate(2);
-        $products = Product::with('productimage')->paginate(9);
+        $attributes = Attribute::with('attributevalue')->where('status', 1)->get(2);
+        $products = Product::with('productimage')->where('products_status', 1)->get();
 
         $categories  = Categorie::where('status', 1)->get();
         $manufatures = Manufacturer::with('categorie')->where('status', 1)->get();
         if ($request->isMethod('POST')) {
             $search = $request->serch;
             $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
-            $categories  = Categorie::where('status', 1)->get();
+            $categories  = Categorie::where('status', 1)->where('products_status', 1)->get();
             if ($productscount == 0) {
 
 
                 return redirect()->route('home');
             }
 
-            $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->paginate(9);
+            $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->where('products_status', 1)->get();
 
             return view('frontend.products.index', compact('products', 'attributes', 'manufatures', 'categories'));
         }
@@ -284,17 +264,16 @@ class HomeController extends Controller
 
 
         $search = $request->input('search');
-        $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->count();
+        $productscount = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->where('products_status', 1)->count();
         if ($productscount == 0) {
             session()->put('success', 'This categorie is not avalebale.');
             return redirect()->back();
         }
-        $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->latest()->paginate();
+        $products = Product::query()->where('products_name', 'LIKE', "%{$search}%")->orwhere('attributes_set', 'LIKE', "%{$search}%")->orwhere('is_current', 'LIKE', "%{$search}%")->orwhere('products_price', 'LIKE', "%{$search}%")->orwhere('products_type', 'LIKE', "%{$search}%")->where('products_status', 1)->latest()->get();
 
 
         return view('Frontend.search.index', compact('products', 'productscount', 'search'));
     }
-
     public function aboutus(Request $request)
     {
 

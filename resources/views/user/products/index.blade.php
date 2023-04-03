@@ -11,11 +11,10 @@
 
 @section('content')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-3 col-lg-4">
+                <!-- <div class="col-xl-3 col-lg-4">
                     <div class="card">
                         <div class="card-header bg-transparent border-bottom">
                             <h5 class="mb-0">Filters</h5>
@@ -96,30 +95,25 @@
                                 </div>
                             </div>
                             @endforeach
-
-
-
-
-
                         </div>
 
                     </div>
-                </div>
+                </div> -->
 
-                <div class="col-xl-9 col-lg-8">
+                <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div>
-                                            <h5>Showing result for "Shoes"</h5>
+                                            <h5>Showing result for "manufacture"</h5>
                                             <ol class="breadcrumb p-0 bg-transparent mb-2">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Footwear</a></li>
-                                                <li class="breadcrumb-item active">Shoes</li>
+                                                <li class="breadcrumb-item"><a href="javascript: void(0);">manufacture</a></li>
+                                                <li class="breadcrumb-item active">furniture</li>
                                             </ol>
                                         </div>
-                                    </div>
+                                    </div>s
 
                                     <div class="col-md-6">
                                         <div class="form-inline float-md-end">
@@ -142,17 +136,13 @@
 
                                         <a class="nav-link active" data-bs-toggle="tab" href="#all">All</a>
                                     </li>
-
                                     @foreach($categories as $categorie)
                                     <li class="nav-item">
 
                                         <a class="nav-link " data-bs-toggle="tab" href="#pro{{$categorie->id}}">
-                                            <?php echo ucwords($categorie->categorie_name);?></a>
+                                            <?php echo ucwords($categorie->categorie_name); ?></a>
                                     </li>
                                     @endforeach
-
-                                  
-
                                 </ul>
 
                                 <!-- Tab panes -->
@@ -184,9 +174,6 @@
                                                         <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1"> @if($product->Products_categorie == 3)
                                                                 ₹{{$product ->sale_price}}
                                                                 @endif</del> ₹{{$product ->products_price}}</h5>
-
-
-
                                                         <div class="mt-4">
                                                             <a href="{{route('user.productdetail',$product->id)}}" class="btn btn-primary btn-sm w-lg"><i class="bi bi-ticket-detailed"></i> See Detail
                                                             </a>
@@ -198,9 +185,6 @@
                                             @endforeach
 
                                         </div>
-
-
-
                                     </div>
                                     @foreach($categories as $categorie)
 
@@ -232,9 +216,6 @@
                                                         <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1"> @if($product->Products_categorie == 3)
                                                                 ₹{{$product ->sale_price}}
                                                                 @endif</del> ₹{{$product ->products_price}}</h5>
-
-
-
                                                         <div class="mt-4">
                                                             <a href="#" class="btn btn-primary btn-sm w-lg"><i class="mdi mdi-cart me-1 align-middle"></i> Buy
                                                                 Now</a>
@@ -243,20 +224,13 @@
                                                 </div>
                                             </div>
                                             @endif
-
                                             @endforeach
-
                                         </div>
-
-
-
                                     </div>
                                     @endforeach
                                     <!-- end row -->
                                 </div>
-
                             </div>
-
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div>
@@ -266,7 +240,7 @@
                                 <div class="col-sm-6">
                                     <div class="float-sm-end">
                                         <!-- <ul class="pagination pagination-rounded mb-sm-0">
-                                        {{ $products->onEachSide(5)->links()  }}
+                                        
                                         </ul> -->
                                     </div>
                                 </div>
@@ -275,8 +249,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- <h2>All Product</h2>
             <div class="row">
                 <div class="col-xl-12 col-lg-12">

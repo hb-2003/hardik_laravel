@@ -62,7 +62,7 @@
                                 <div class="alert alert-danger">The status is required.</div>
                                 @enderror
 
-                                
+
 
                             </div>
 

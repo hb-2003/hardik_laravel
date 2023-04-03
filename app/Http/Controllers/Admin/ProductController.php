@@ -129,7 +129,9 @@ class ProductController extends Controller
 
             ]);
             if (!empty($request->products_image)) {
-                Products_images::where('product_id', $Product->id)->delete();
+
+              $productimages =   Products_images::where('product_id', $Product->id)->get();
+              
                 $images = $request->products_image;
 
                 foreach ($images as $image) {
@@ -174,6 +176,8 @@ class ProductController extends Controller
 
 
         Product::with('productimages')->where('id', $id)->delete();
+
+
         return  redirect()->route('admin.Product');
     }
     public function attributegetdata(Request $request)

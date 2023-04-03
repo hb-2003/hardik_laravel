@@ -44,7 +44,7 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-email-input">address</label>
-                            <textarea name="address" class="form-control" id="" cols="" value="{{ old('email') }}"  rows="" placeholder="Enter addres " require></textarea>
+                            <textarea name="address" class="form-control" id="" cols="" value="{{ old('email') }}" rows="" placeholder="Enter addres " require></textarea>
 
                         </div>
                         @error('address')
@@ -71,7 +71,7 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-postcode-input">postcode</label>
-                            <input type="number" name="postcode"  value="{{ old('postcode') }}" class="form-control" id="formrow-postcode-input" placeholder="Enter Password" require>
+                            <input type="number" name="postcode" value="{{ old('postcode') }}" class="form-control" id="formrow-postcode-input" placeholder="Enter Password" require>
                         </div>
                         @error('postcode')
                         <div class="alert alert-danger">The postcode method is required.</div>
@@ -85,12 +85,12 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label class="form-label" for="formrow-password-input">city</label>
-                            
+
                             <select class="form-select" name="city" require>
                                 <option>Select</option>
                                 @foreach($cities AS $citie )
                                 <option value="{{$citie ->name}}">{{$citie->name}}</option>
-                                
+
                                 @endforeach
                             </select>
                         </div>

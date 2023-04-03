@@ -49,7 +49,7 @@
                                     <input type="text" name="manufacturer_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Manufacuturer Name">
                                 </div>
                                 @error('manufacturer_name')
-                                <div class="alert alert-danger">The Name  is required.</div>
+                                <div class="alert alert-danger">The Name is required.</div>
                                 @enderror
 
                                 <div class="form-group">
@@ -71,29 +71,18 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
-
                                 </div>
                                 @error('status')
                                 <div class="alert alert-danger">The Status Is Required.</div>
                                 @enderror
-
-
-
                             </div>
-                            <!-- /.card-body -->
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary form-groupS">Submit</button>
                                 <a class="btn btn-danger float-right" href="{{route('admin.Manufacturer')}}"> Bsack</a>
                             </div>
                         </form>
                     </div>
-                    <!-- /.card -->
-
-
-                    <!--/.col (right) -->
                 </div>
-                <!-- /.row -->
             </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

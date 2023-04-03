@@ -67,9 +67,9 @@
                                     <tbody>
                                         @foreach($attributes as $key =>$attribute)
                                         <tr>
-                                             <td>{{$key + 1}}</td>
+                                            <td>{{$key + 1}}</td>
                                             <td>{{$attribute ->name}}</td>
-                                          
+
                                             <td>
                                                 @if ($attribute ->status == 1 )
                                                 <span class="right badge badge-success">Active</span>
@@ -88,13 +88,10 @@
 
                                                     </ul>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         @endforeach
-
                                     </tbody>
-                                
                                 </table>
                             </div>
                             <!-- /.card-body -->

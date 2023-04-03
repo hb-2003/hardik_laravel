@@ -21,9 +21,6 @@
 
             <div class="row">
                 <div class="col-12">
-
-                    <!-- /.card -->
-
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">DataTable with default features</h3>
@@ -33,12 +30,6 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <!-- <th style="width: 20px;" class="align-middle">
-                                            <div class="form-check font-size-16">
-                                                <input class="form-check-input" type="checkbox" id="checkAll">
-                                                <label class="form-check-label" for="checkAll"></label>
-                                            </div>
-                                        </th> -->
                                         <th>Order ID</th>
                                         <th>Billing Name</th>
                                         <th>Date</th>
@@ -52,12 +43,6 @@
                                 <tbody>
                                     @foreach($userorders as $key => $userorder)
                                     <tr>
-                                        <!-- <td>
-                                            <div class="form-check font-size-16">
-                                                <input class="form-check-input" type="checkbox" id="orderidcheck01">
-                                                <label class="form-check-label" for="orderidcheck01"></label>
-                                            </div>
-                                        </td> -->
                                         <td><a href="javascript: void(0);" class="text-body fw-bold">{{$userorder->id}}</a> </td>
                                         <td>{{$userorder->customers_name}}</td>
                                         <td>
@@ -67,14 +52,14 @@
                                             {{$userorder->order_price}}
                                         </td>
                                         <td>
-                                        @if($userorder->status == "0")
-                                        <span class="badge badge-pill badge-soft-success font-size-12">padding</span>
-                                            @elseif($userorder->status   == "1")
+                                            @if($userorder->status == "0")
+                                            <span class="badge badge-pill badge-soft-success font-size-12">padding</span>
+                                            @elseif($userorder->status == "1")
                                             <span class="badge badge-pill badge-soft-primary font-size-12">success</span>
                                             @else
                                             <span class="badge badge-pill badge-soft-danger font-size-12">refund</span>
                                             @endif
-                                           
+
                                         </td>
                                         <td>
                                             @if($userorder->pyment_type == "pay")
@@ -84,7 +69,6 @@
                                             @else
                                             <i class="fab fa-cc-visa me-1"></i> Visa
                                             @endif
-
                                         </td>
                                         <td>
                                             <!-- Button trigger modal -->
@@ -133,7 +117,7 @@
                                                                                 <h6 class="m-0 text-right">Sub Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                            ₹ {{$userorder->order_price}}
+                                                                                ₹ {{$userorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -152,7 +136,7 @@
                                                                                 <h6 class="m-0 text-right">Total:</h6>
                                                                             </td>
                                                                             <td>
-                                                                            ₹{{$userorder->order_price}}
+                                                                                ₹{{$userorder->order_price}}
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -170,18 +154,18 @@
                                         <td>
                                             @if($userorder->order_status == 0)
                                             <div class="d-flex gap-3">
-                                          
+
                                                 <a href="{{ route('user.cansal',$userorder->id)}}" class="text-danger"><i class="bx bxs-trash   font-size-18"></i></a>
                                             </div>
                                             @elseif($userorder->order_status == 1)
                                             <div class="d-flex gap-3">
 
-                                              `  <!-- <a href="{{ route('user.orderreorder',$userorder->id)}}" class="btn btn-primary">Reorder</a>` -->
+                                                ` <!-- <a href="{{ route('user.orderreorder',$userorder->id)}}" class="btn btn-primary">Reorder</a>` -->
                                                 <a href="{{ route('user.orderreturn',$userorder->id)}}" class="btn btn-danger">return</a>
                                             </div>
                                             @elseif($userorder->order_status == 2)
                                             <div class="d-flex gap-3">
-                                            <h6>Censal Order</h6>
+                                                <h6>Censal Order</h6>
                                                 <!-- <a href="{{ route('user.cansalorderreorder',$userorder->id)}}" class="btn btn-success">Reorder</a> -->
                                             </div>
                                             @elseif($userorder->order_status == 3)
@@ -205,9 +189,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
-
-
                                 </tbody>
                                 <!-- <tfoot>
                                     <tr>
@@ -259,10 +240,6 @@
     </div>
     <!-- End Page-content -->
 </div>
-
-
-
-
 
 @endsection
 

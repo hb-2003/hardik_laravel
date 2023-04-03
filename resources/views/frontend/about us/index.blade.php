@@ -32,7 +32,7 @@
                     </div><!-- end card -->
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -40,5 +40,4 @@
 @endsection
 
 @section('js')
-
 @endsection

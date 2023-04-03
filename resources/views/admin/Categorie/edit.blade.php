@@ -40,13 +40,9 @@
                         <div class="card-header">
                             <h3 class="card-title">Edit Detail</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
                         <form accept="{{route('admin.Categorieedit',$categorie->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-
-
                                 <div class="form-group">
                                     <label>Manufacture</label>
                                     <select class="form-control" name="manufacturers_id" required>
@@ -55,10 +51,9 @@
                                         <option value=" <?php echo $Manufacturer->id ?> " <?php echo  $Manufacturer->id == $categorie->manufacturers_id ? "selected" : "" ?>> {{$Manufacturer->manufacturer_name}}</option>
                                         @endforeach
                                     </select>
-
                                 </div>
                                 @error('manufacturers_id')
-                                <div class="alert alert-danger">The Manufacturers  is required.</div>
+                                <div class="alert alert-danger">The Manufacturers is required.</div>
                                 @enderror
 
                                 <div class="form-group">
@@ -77,14 +72,11 @@
 
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
-
-
                                     </div>
                                     <div>
                                         <img style="margin-top:1rem;" src="{{ asset('images/categorie/'.$categorie->categorie_image ) }}" width="7%" alt="...">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label>Status</label>
                                     <select class="form-control" name="status" required>
@@ -96,29 +88,16 @@
                                 @error('status')
                                 <div class="alert alert-danger">The Status Is Required.</div>
                                 @enderror
-
-                                
-
                             </div>
-                            <!-- /.card-body -->
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a  class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> Back</a>
+                                <a class="btn btn-danger float-right" href="{{route('admin.Categorie')}}"> Back</a>
                             </div>
                         </form>
                     </div>
-                    <!-- /.card -->
-
-
-                    <!--/.col (right) -->
                 </div>
-                <!-- /.row -->
             </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
 </div>
 
 @endsection
-
-

@@ -31,15 +31,15 @@
                                 <div class="p-4 rounded shadow-md">
                                     <div>
                                         <label for="name" class="form-label">Your Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Your Name" >
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name">
                                     </div>
                                     <div class="mt-3">
                                         <label for="email" class="form-label">Your Email</label>
-                                        <input type="text" name="email" class="form-control" placeholder="Your Email" >
+                                        <input type="text" name="email" class="form-control" placeholder="Your Email">
                                     </div class="mt-3">
                                     <div class="mt-3">
                                         <label for="subject" class="form-label">Subject</label>
-                                        <input type="text" name="subject" class="form-control" placeholder="Subject" >
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject">
                                     </div>
                                     <div class="mt-3 mb-3">
                                         <label for="message" class="form-label">Message</label>
@@ -54,17 +54,10 @@
                     </form>
                 </div>
             </div>
-
-
-
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
 </div>
-
-
-
-
 
 @endsection
 

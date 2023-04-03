@@ -15,7 +15,6 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
-            
                 <main>
                     <section class="about-us">
                         <h1>About Us</h1>
@@ -26,13 +25,6 @@
             </div>
         </div>
     </div>
-
-    
-
-    
-
-
-
 @endsection
 
 @section('js')

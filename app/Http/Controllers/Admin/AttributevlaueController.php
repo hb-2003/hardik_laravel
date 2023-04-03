@@ -15,8 +15,6 @@ class AttributevlaueController extends Controller
         $attributesvalues  =  attributesvalue::all();
         $attributes  =  Attribute::all();
 
-
-
         return view('admin.Attributevalue.index', compact('attributesvalues','attributes'));
     }
 
@@ -31,14 +29,12 @@ class AttributevlaueController extends Controller
                 'status' => 'required',
             ]);
 
-
             $attributesvalues = Attributesvalue::create([
 
                 'attribute_id' => $request['attribute_id'],
                 'name' => $request['name'],
                 'status' => $request['status'],
             ]);
-
 
             return  redirect()->route('admin.Attributevlaue');
         }
@@ -56,7 +52,6 @@ class AttributevlaueController extends Controller
                 'name' => 'required ',
                 'status' => 'required',
             ]);
-
 
             $attributesvalue->update([
                 'attribute_id' => $request->attribute_id,

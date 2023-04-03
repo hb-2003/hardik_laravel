@@ -19,12 +19,12 @@ $categories  = Categorie::all();
                     </span>
                 </a>
 
-                <a href="{{route('user.dashboard')}}" class="logo logo-light">
+                <a href="{{route('home')}}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="26"> <span class="logo-txt">Vuesy Furniture</span>
+                        <img src="{{asset('assets/images/logo-sm.svg')}}" alt="" height="45"> <span class="logo-txt">Vuesy Furniture</span>
                     </span>
                 </a>
             </div>
@@ -46,8 +46,8 @@ $categories  = Categorie::all();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('product')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               
-                                <i class=" bx bxl-product-hunt"></i>
+
+                                    <i class=" bx bxl-product-hunt"></i>
                                     <span data-key="t-dashboard">Products</span>
                                 </a>
                             </li>
@@ -58,7 +58,7 @@ $categories  = Categorie::all();
                                     <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                    @foreach($categories  as $key => $categorie)
+                                    @foreach($categories as $key => $categorie)
                                     <a href="{{route('categorieproduct',$categorie->categorie_name)}}" class="dropdown-item" data-key="t-calendar">{{$categorie->categorie_name}}</a>
 
                                     @endforeach
@@ -68,14 +68,14 @@ $categories  = Categorie::all();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('contectus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              
-                                <i class="  bx bxs-book-content"></i>
+
+                                    <i class="  bx bxs-book-content"></i>
                                     <span data-key="t-dashboard">Contect Us</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('aboutus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class=" bx bx-detail"></i>
+                                    <i class=" bx bx-detail"></i>
                                     <span data-key="t-dashboard">About Us</span>
                                 </a>
                             </li>

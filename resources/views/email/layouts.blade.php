@@ -89,7 +89,7 @@
                         <tbody>
                             <tr style="text-align: center">
                                 <td>
-                                    <p style="color: #999; margin-bottom: 0">333 Woodland Rd. Baldwinsville, NY 13027</p>
+                                    <p style="color: #999; margin-bottom: 0"></p>
                                     <p style="color: #999; margin-bottom: 0">Powered By <a href="{{ route('home') }}">{{ config('app.name', 'Vuesy Furniture') }}</a>.</p>
                                 </td>
                             </tr>
