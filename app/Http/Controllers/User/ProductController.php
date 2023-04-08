@@ -29,7 +29,7 @@ class ProductController extends Controller
     $productreviews =  Review::where('product_id', $id)->get();
     $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $id)->first();
     $userproductcount = Review::where('user_id', auth::user()->id)->where('product_id', $id)->count();
-    $products = Product::with('productimage')->where('products_type', $product->products_type)->where('products_status', 1)->get();
+    $products = Product::with('productimage')->where('products_type', $product->products_type)->where('products_status', 1)->paginate(9);
 
     $userproductretingsum = Review::where('user_id', auth::user()->id)->where('product_id', $id)->sum('reting');
     if ($userproductcount == 0) {
@@ -74,7 +74,7 @@ class ProductController extends Controller
 
   public function allproduct()
   {
-    $products = Product::where('products_status', 1)->get();
+    $products = Product::where('products_status', 1)->paginate(9);
     return view('user.products.newproduct', compact('products'));
   }
 }

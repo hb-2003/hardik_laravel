@@ -7,6 +7,11 @@ use App\Models\Review;
 
 @section('css')
 <link href="{{asset('assets/libs/swiper/swiper-bundle.min.css')}}" rel="stylesheet" type="text/css" />
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 @endsection
 
 @section('style')
@@ -78,8 +83,8 @@ use App\Models\Review;
                                     @endforeach <!-- end swiper-slide -->
                                 </div><!-- end swiper wrapper -->
                                 <div class="swiper-arrow">
-                                    <div class="swiper-button-next"><i class="mdi mdi-arrow-right"></i></div>
-                                    <div class="swiper-button-prev"><i class="mdi mdi-arrow-left"></i></div>
+                                    <div class="swiper-button-next"><i class="bx bx-right-arrow"></i></div>
+                                    <div class="swiper-button-prev"><i class="bx bx-left-arrow"></i></div>
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div><!-- end swiper container -->
@@ -97,9 +102,7 @@ use App\Models\Review;
                 <div>
                     <h5 class="" style="text-align: center;">Happy Words of our Happy Customers</h5>
                 </div>
-
                 <div class="tab-content">
-
                     <div class="tab-pane active" id="" role="tabpanel">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
@@ -116,19 +119,21 @@ use App\Models\Review;
                                                         </ol>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6">
                                                     <div class="form-inline float-md-end">
+
                                                         <div class="search-box ms-2">
                                                             <div class="position-relative">
-                                                                <input type="text" class="form-control bg-light border-light rounded" placeholder="Search...">
-                                                                <i class="bx bx-search search-icon"></i>
+                                                                <form class="" method="POST" action="{{ route('user.dashboard') }}" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="text" name="serch" class="form-control bg-light border-light rounded" placeholder="Search...">
+                                                                    <i class="uil uil-search search-icon"></i>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <ul class="nav nav-tabs nav-tabs-custom mt-3 mb-2 ecommerce-sortby-list">
                                                 <li class="nav-item">
                                                     <a class="nav-link disabled fw-medium" href="#" tabindex="-1">Sort by:</a>
@@ -261,9 +266,9 @@ use App\Models\Review;
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="float-sm-end">
-                                                    <!-- <ul class="pagination pagination-rounded mb-sm-0">
-                                        
-                                        </ul> -->
+                                                    <ul class="pagination pagination-rounded mb-sm-0">
+                                                        {{ $products->onEachSide(5)->links() }}
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>

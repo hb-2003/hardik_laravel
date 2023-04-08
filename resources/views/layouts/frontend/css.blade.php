@@ -2,6 +2,11 @@
 @yield('style')
 
 
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 
 <!-- Bootstrap Css -->
 <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />

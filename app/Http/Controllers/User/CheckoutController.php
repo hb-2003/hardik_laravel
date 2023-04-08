@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\auth;
 use phpDocumentor\Reflection\Types\Null_;
 use Reflector;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -104,10 +105,7 @@ class CheckoutController extends Controller
             //    echo $order->id;
             //    die;
 
-            if ($request->payment_method == "pay") {
-                $orderid = $order->id;
-                return view('user.rezolpay.index', compact('carttotal', 'orderid', 'request', 'order', 'countery'));
-            }
+
 
             foreach ($cartdetails as $cartdetail) {
 
@@ -147,9 +145,24 @@ class CheckoutController extends Controller
 
                 Cart::where('id', $cartdetail->id)->update(['status' => 1]);
             }
+            if ($request->payment_method == "pay") {
+                $orderid = $order->id;
+                return view('user.rezolpay.index', compact('carttotal', 'orderid', 'request', 'order', 'countery'));
+            }
 
 
             session()->put('success', 'order complete.');
+            $orders = Order::with('order_product')->where('id', $order->id)->latest()->first();
+            $order_products = Order_product::where('orders_id', $order->id)->get();
+
+
+            $data = ['name' => $orders->customers_name, 'data' => "", 'orders' => $orders, 'order_products' => $order_products];
+            $user['to'] = $orders->email;
+            $user['subject'] = 'Confirm order';
+            Mail::send('email.order', $data, function ($messages) use ($user) {
+                $messages->to($user['to']);
+                $messages->subject($user['subject']);
+            });
 
             return view('user.successorder.index');
         }
@@ -286,6 +299,7 @@ class CheckoutController extends Controller
 
 
             session()->put('success', 'order complete.');
+        
 
             return view('user.successorder.index');
         }
@@ -296,47 +310,22 @@ class CheckoutController extends Controller
     {
         if ($request->isMethod('POST')) {
 
-
             Order::where('id', $request->orderid)->update(['transaction_id' => $request->id], ['status' => 1]);
-            $cartdetails = Cart::with('product', 'productimage')->where('user_id', auth::user()->id)->where('status', 0)->get();
-            foreach ($cartdetails as $cartdetail) {
-                Order_product::create([
-                    'orders_id' => $request->orderid,
-                    'products_id' => $cartdetail->product[0]->id,
-                    'products_name' => $cartdetail->product[0]->products_name,
-                    'products_price' => $cartdetail->product_price,
-                    'products_image' => $cartdetail->productimage[0]->name,
-                    'final_price' => $cartdetail->product_price,
-                    'products_tax' => 0,
-                    'products_quantity' => $cartdetail->quantity,
-                ]);
-
-                Notification::create([
-                    'user_id' => auth::user()->id,
-                    'product_id' => $cartdetail->product[0]->id,
-                    'order_id' =>  $request->orderid,
-                    'product_name' => $cartdetail->product[0]->products_name,
-                    'quantity' => $cartdetails->quantity,
-                    'price' => $cartdetails->product_price,
-
-                ]);
-
-                $Product  = Product::where('id', $cartdetail->product[0]->id)->first();
-                $quantity = $Product->products_quantity - $cartdetail->quantity;
-                $Product->update([
-                    'products_quantity' => $quantity,
-                    'products_max_stock' => $quantity,
-                ]);
-
-                Cart::where('id', $cartdetail->id)->update(['status' => 1]);
-            }
-            session()->put('success', 'order complete.');
+            
 
             return response()->json(['request' => $request]);
         }
     }
     public function success()
     {
+
+
+
+
+
+
+        session()->put('success', 'order complete.');
+
         Cart::where('user_id', auth::user()->id)->update(['status' => 1]);
 
         return view('user.successorder.index');

@@ -18,6 +18,7 @@
                 <div class="col-lg-8">
                     <div id="addproduct-accordion" class="custom-accordion">
                         <form method="POST" action="{{route('user.checkout')}}" class="needs-validation" id="orderform">
+                        @csrf
                             <div class="card">
                                 <a href="#addproduct-billinginfo-collapse" class="text-dark" data-bs-toggle="collapse" aria-expanded="true" aria-controls="addproduct-billinginfo-collapse">
                                     <div class="p-4">
@@ -46,7 +47,7 @@
                                 <div id="addproduct-billinginfo-collapse" class="collapse show" data-bs-parent="#addproduct-accordion">
                                     <div class="p-4 border-top">
 
-                                        @csrf
+                                     
                                         <div>
                                             <div class="row">
                                                 <div class="col-lg-4">
@@ -280,7 +281,8 @@
                                         <tr>
                                             <th scope="row"><img src="{{asset('images/product/'.$cartdetail->productimage[0]->name)}}" alt="product-img" title="product-img" class="avatar-md"></th>
                                             <td>
-                                                <h5 class="font-size-16 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">{{$cartdetail->product[0]->products_name}}</a></h5>
+                                                <h5 class="font-size-16 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">
+                                                <?php echo substr($cartdetail->product[0]->products_name, 0, 20); ?></a></h5>
                                                 <p class="text-muted mb-0"> ₹{{$cartdetail->product_price}} x {{$cartdetail->quantity}}</p>
                                             </td>
                                             <td> ₹{{$cartdetail->total}}</td>

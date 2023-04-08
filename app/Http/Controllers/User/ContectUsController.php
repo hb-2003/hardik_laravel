@@ -38,7 +38,7 @@ class ContectUsController extends Controller
 
             ]);
             $data = ['name' => $request['name'], 'data' => $request['message']];
-            $user['to'] = 'hardikbhanderi9898@gmail.com';
+            $user['to'] = auth::user()->email;
             $user['subject'] = $request['subject'];
             Mail::send('mail', $data, function ($messages) use ($user) {
                 $messages->to($user['to']);
@@ -50,12 +50,12 @@ class ContectUsController extends Controller
     }
     public function aboutus(Request $request)
     {
-        
+
         return  view('user.about us.index');
     }
     public function faqs(Request $request)
     {
-        
+
         return  view('user.faqs.index');
     }
 }

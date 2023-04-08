@@ -1,18 +1,5 @@
-<!-- <div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header justify-content-between d-flex align-items-center">
-                <h4 class="card-title">Markers</h4>
-                <a href="https://hpneo.dev/gmaps/examples/markers.html" target="_blank" class="btn btn-sm btn-soft-secondary">Docs <i class="mdi mdi-arrow-right align-middle"></i></a>
-            </div>
-            <div class="card-body">
-                <div id="gmaps-markers" class="gmaps"></div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<div class="footer ">
 
+<div class="footer mt-3">
     <div class="card-body">
         <footer class="p-5">
             <div class="row">
@@ -31,17 +18,17 @@
                             <p class="text-muted">Best exprience for using product and it is become best product</p>
                         </li>
                         <li>
-                            <div style="display: inline-flex;">
-                                <a href="">
+                        <div style="display: inline-flex;">
+                                <a href="https://www.instagram.com/vuesy_furniture/">
                                     <h3 class="p-2 "> <i class="bx bxl-instagram-alt" style="width: auto;"></i></h3>
                                 </a>
-                                <a href="">
+                                <a href="https://twitter.com/VuesyFurniture">
                                     <h3 class="p-2"> <i class="bx bxl-twitter" style="width: auto;"></i></h3>
                                 </a>
-                                <a href="">
+                                <a href="https://www.facebook.com/profile.php?id=100091582352409">
                                     <h3 class="p-2"> <i class="bx bxl-facebook" style="width: auto;"></i></h3>
                                 </a>
-                                <a href="">
+                                <a href="https://www.youtube.com/channel/UCY9NyuAAkoJZzj_P22XGscg">
                                     <h3 class="p-2"> <i class="bx bxl-youtube" style="width: auto;"></i></h3>
                                 </a>
                             </div>
@@ -53,9 +40,8 @@
 
                     <h5>Contect Us:</h5>
                     <p class="mb-0">Mail Us at -</p>
-                    <p class="mb-0">vuesyfurnitureservic@gamil.</p>
-                    <p class="mb-0">com</p>
-
+                    <p class="mb-0">VuesyFurnitures123@gamil</p>
+                    <p class="mb-0">.com</p>
                     </ul>
                 </div>
 

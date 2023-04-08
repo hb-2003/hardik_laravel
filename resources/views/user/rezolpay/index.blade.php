@@ -1,3 +1,14 @@
+<?php
+
+use App\Models\Cart;
+use Illuminate\Support\Facades\auth;
+
+
+Cart:: where('user_id', auth::user()->id)->where('status', 0)->update(['status' => 1]);
+
+?>
+
+
 @extends('layouts.user.app')
 
 @section('title', 'Change Password')
@@ -55,7 +66,7 @@
             xml.open("POST", "{{route('user.rezolpay')}}");
 
             xml.onload = () => {
-             
+
 
                 window.location.href = `/user/success`;
             }

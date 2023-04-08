@@ -76,13 +76,21 @@
 
                                             <td>
                                                 @if ($user ->status ==1 )
-                                                <span class="right badge badge-success">Verify</span>
+                                                <span class="right badge badge-success">Active</span>
                                                 @else
-                                                <span class="right badge badge-danger">unverify</span>
+                                                <span class="right badge badge-danger">InActive</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.userinactive',$user ->id) }}">edit</a>
+                                                @if($user->status == 1)
+                                                
+                                                <a href="{{ route('admin.userinactive',$user ->id) }}">InActive</a>
+                                                
+                                                @else
+                                                <a href="{{ route('admin.userinactive',$user ->id) }}">Active</a>
+                                                
+                                                @endif
+
                                             </td>
 
                                         </tr>

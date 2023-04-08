@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Attribute;
 use App\Models\Order;
+use App\Models\User;
 use App\Models\Notification;
+use App\Models\Order_product;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 
@@ -70,6 +73,17 @@ class OrderController extends Controller
                 'order_status' => 4,
 
             ]);
+            $orders = Order::with('order_product')->where('id', $userorders->id)->latest()->first();
+            $order_products = Order_product::where('orders_id', $userorders->id)->get();
+
+
+            $data = ['name' => $orders->customers_name, 'data' => "", 'orders' => $orders, 'order_products' => $order_products];
+            $user['to'] = $orders->email;
+            $user['subject'] = 'Confirm order';
+            Mail::send('email.order', $data, function ($messages) use ($user) {
+                $messages->to($user['to']);
+                $messages->subject($user['subject']);
+            });
             return redirect()->back();
         }
     }
@@ -95,9 +109,19 @@ class OrderController extends Controller
         $delivereds =  Order::with('order_product')->where('id', $id)->first();
         $delivereds->update([
             'order_status' => 1,
-            'status'=>1
+            'status' => 1
 
         ]);
+        $orders = Order::with('order_product')->where('id', $delivereds->id)->latest()->first();
+        $order_products = Order_product::where('orders_id', $delivereds->id)->get();
+
+        $data = ['name' => $orders->customers_name, 'data' => "", 'orders' => $orders, 'order_products' => $order_products];
+        $user['to'] = $orders->email;
+        $user['subject'] = 'Confirm order';
+        Mail::send('email.order', $data, function ($messages) use ($user) {
+            $messages->to($user['to']);
+            $messages->subject($user['subject']);
+        });
         return redirect()->route('admin.delivered');
     }
 
@@ -111,11 +135,21 @@ class OrderController extends Controller
     public function confirmreturn(Request $request, $id)
     {
         $delivereds =  Order::with('order_product')->where('id', $id)->first();
+
+        $users = User::where('id', $delivereds->customers_id)->first();
         $delivereds->update([
             'status' => 3,
             'order_status' => 5,
 
         ]);
+
+        $data = ['name' => $users->first_name, 'data' => $request['message'], 'delivereds' => $delivereds];
+        $user['to'] = $users->email;
+        $user['subject'] = 'Confirm Rerurn';
+        Mail::send('email.return_order', $data, function ($messages) use ($user) {
+            $messages->to($user['to']);
+            $messages->subject($user['subject']);
+        });
         return redirect()->route('admin.return_pending');
     }
 
@@ -126,12 +160,12 @@ class OrderController extends Controller
     }
     public function notificationorder(Request $request, $id)
     {
-        $notificationorder = Notification ::where('id', $id)->first();
+        $notificationorder = Notification::where('id', $id)->first();
         $notificationorder->update([
             'read_at' => 1,
-        
+
         ]);
-      
-        return redirect()->route('admin.orderdetail',$notificationorder->order_id);
+
+        return redirect()->route('admin.orderdetail', $notificationorder->order_id);
     }
 }

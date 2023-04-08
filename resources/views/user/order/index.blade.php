@@ -3,9 +3,11 @@
 
 @section('css')
 <!-- DataTables -->
-<link rel="stylesheet" href="{{asset('user/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('user/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('user/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+<!-- Theme style -->
+
 @endsection
 
 @section('style')
@@ -18,12 +20,11 @@
 
     <div class="page-content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">All Orders</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -43,7 +44,7 @@
                                 <tbody>
                                     @foreach($userorders as $key => $userorder)
                                     <tr>
-                                        <td><a href="javascript: void(0);" class="text-body fw-bold">{{$userorder->id}}</a> </td>
+                                        <td>{{$userorder->id}} </td>
                                         <td>{{$userorder->customers_name}}</td>
                                         <td>
                                             {{$userorder->created_at}}
@@ -56,8 +57,11 @@
                                             <span class="badge badge-pill badge-soft-success font-size-12">padding</span>
                                             @elseif($userorder->status == "1")
                                             <span class="badge badge-pill badge-soft-primary font-size-12">success</span>
+                                            @elseif($userorder->status == "2")
+                                            <span class="badge badge-pill badge-soft-danger font-size-12">Failed </span>
                                             @else
                                             <span class="badge badge-pill badge-soft-danger font-size-12">refund</span>
+
                                             @endif
 
                                         </td>
@@ -159,9 +163,48 @@
                                             </div>
                                             @elseif($userorder->order_status == 1)
                                             <div class="d-flex gap-3">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                    Return
+                                                </button>
 
                                                 ` <!-- <a href="{{ route('user.orderreorder',$userorder->id)}}" class="btn btn-primary">Reorder</a>` -->
-                                                <a href="{{ route('user.orderreturn',$userorder->id)}}" class="btn btn-danger">return</a>
+
+                                            </div>
+                                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Return Reason</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <form method="POST" action="{{ route('user.orderreturn',$userorder->id)}}   " class="needs-validation" id="orderform">
+                                                            @csrf
+                                                            <!-- end modalheader -->
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <!-- end modalheader -->
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="billing-name">Reason</label>
+                                                                            <input type="text" class="form-control" id="billing-name" value="" placeholder="Enter name" name="reason">
+
+                                                                        </div>
+                                                                        @error('billing_name')
+                                                                        <div class="alert alert-danger">The return reason is required.</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end modalbody -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                            </div>
+                                                        </form>
+                                                        <!-- end modalfooter -->
+                                                    </div>
+                                                </div>
                                             </div>
                                             @elseif($userorder->order_status == 2)
                                             <div class="d-flex gap-3">
@@ -173,6 +216,11 @@
 
                                                 <h6> Return Pendding</h6>
                                             </div>
+                                            @elseif($userorder->order_status == 4)
+                                            <div class="d-flex gap-3">
+
+                                                <h6>The Product is in the Packaging</h6>
+                                            </div>
 
                                             @elseif($userorder->order_status == 5)
                                             <div class="d-flex gap-3">
@@ -180,10 +228,10 @@
                                                 <h6>Return Complite </h6>
                                             </div>
 
-                                            @else
+                                            @elseif($userorder->order_status == 6 )
                                             <div class="d-flex gap-3">
 
-                                                <h6>Confirm your order</h6>
+                                                <h6>Paymant Failed</h6>
                                             </div>
                                             @endif
                                         </td>
@@ -246,19 +294,18 @@
 @section('js')
 
 
-<script src="{{asset('user/plugins/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{asset('user/plugins/jszip/jszip.min.js')}}"></script>
-<script src="{{asset('user/plugins/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{asset('user/plugins/pdfmake/vfs_fonts.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('user/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('admin/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('admin/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script>
     $(function() {
         $("#example1").DataTable({

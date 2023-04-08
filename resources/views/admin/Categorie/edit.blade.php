@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Manufacture</label>
-                                    <select class="form-control" name="manufacturers_id" required>
+                                    <select class="form-control" name="manufacturers_id" >
                                         <option value=""> Select please</option>
                                         @foreach($Manufacturers as $Manufacturer)
                                         <option value=" <?php echo $Manufacturer->id ?> " <?php echo  $Manufacturer->id == $categorie->manufacturers_id ? "selected" : "" ?>> {{$Manufacturer->manufacturer_name}}</option>
@@ -53,22 +53,22 @@
                                     </select>
                                 </div>
                                 @error('manufacturers_id')
-                                <div class="alert alert-danger">The Manufacturers is required.</div>
+                                <div class="alert alert-danger">The Manufacturers is .</div>
                                 @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" name="categorie_name" value="{{$categorie->categorie_name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
+                                    <input type="text" name="categorie_name" value="{{$categorie->categorie_name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" >
                                 </div>
                                 @error('name')
-                                <div class="alert alert-danger">The Name is required.</div>
+                                <div class="alert alert-danger">The Name is .</div>
                                 @enderror
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="categorie_image" id="exampleInputFile" class="custom-file-input" value="{{$categorie->categorie_image}}" required>
+                                            <input type="file" name="categorie_image" id="exampleInputFile" class="custom-file-input" value="{{$categorie->categorie_image}}" >
 
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select class="form-control" name="status" required>
+                                    <select class="form-control" name="status" >
                                         <option value=""> select please</option>
                                         <option value="1" <?php echo  $categorie->status == "1" ? "selected" : "" ?>>Active</option>
                                         <option value="0" <?php echo  $categorie->status == "0" ? "selected" : "" ?>>Inactive</option>

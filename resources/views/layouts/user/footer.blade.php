@@ -32,16 +32,16 @@
                         </li>
                         <li>
                             <div style="display: inline-flex;">
-                                <a href="">
+                                <a href="https://www.instagram.com/vuesy_furniture/">
                                     <h3 class="p-2 "> <i class="bx bxl-instagram-alt" style="width: auto;"></i></h3>
                                 </a>
-                                <a href="">
+                                <a href="https://twitter.com/VuesyFurniture">
                                     <h3 class="p-2"> <i class="bx bxl-twitter" style="width: auto;"></i></h3>
                                 </a>
-                                <a href="">
+                                <a href="https://www.facebook.com/profile.php?id=100091582352409">
                                     <h3 class="p-2"> <i class="bx bxl-facebook" style="width: auto;"></i></h3>
                                 </a>
-                                <a href="">
+                                <a href="https://www.youtube.com/channel/UCY9NyuAAkoJZzj_P22XGscg">
                                     <h3 class="p-2"> <i class="bx bxl-youtube" style="width: auto;"></i></h3>
                                 </a>
                             </div>
@@ -53,8 +53,8 @@
 
                     <h5>Contect Us:</h5>
                     <p class="mb-0">Mail Us at -</p>
-                    <p class="mb-0">vuesyfurnitureservic@gamil.</p>
-                    <p class="mb-0">com</p>
+                    <p class="mb-0">vuesyfurnitures123@gamil</p>
+                    <p class="mb-0">.com</p>
                     </ul>
                 </div>
 

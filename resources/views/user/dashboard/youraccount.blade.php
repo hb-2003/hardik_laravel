@@ -22,7 +22,7 @@
                                 <div class="card card-body">
                                     <div class="row">
                                         <div class="col-4">
-                                            <img src="{{asset('user/your_account/Box._CB485927553_.png')}}" width="75" alt="" class=".avatar-lg">
+                                            <img src="{{asset('user/your_account/order.jpg')}}" width="75" alt="" class=".avatar-lg">
                                         </div>
                                         <div class="col-8">
                                             <div class="col">
@@ -69,7 +69,7 @@
                                                 <h4>Your Addresses</h4>
                                             </div>
                                             <div class="col">
-                                                <p style="color: black;">Edit addresses for orders and gifts</p>
+                                                <p style="color: black;">Manage your address</p>
                                             </div>
                                         </div>
                                     </div>

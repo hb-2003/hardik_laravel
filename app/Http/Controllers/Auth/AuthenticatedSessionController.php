@@ -36,9 +36,14 @@ class AuthenticatedSessionController extends Controller
         
 
         $user = User::where('email', $request->email)->count();
+        $users = User::where('email', $request->email)->first();
 
         if ($user == '0') {
             session()->put('error', 'Your email is not valid');
+            return redirect()->back();
+        }
+        if ($users->status == '0') {
+            session()->put('error', 'Your are block');
             return redirect()->back();
         }
 

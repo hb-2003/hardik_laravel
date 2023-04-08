@@ -63,7 +63,7 @@ class AddressController extends Controller
                 'address' => 'required',
                 'suburb' => 'required',
                 'postcode' => 'required',
-                'city' => 'required',
+                'city' => 'required|unique:Citie',
                 'type' => 'required',
             ]);
 

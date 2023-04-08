@@ -6,6 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- plugin css -->
+    <link href="{{asset('assets/libs/jsvectormap/css/jsvectormap.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap Css -->
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
     <link rel="icon" href="{{ asset('assets/images/logo-sm.svg') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('assets/images/logo-sm.svg') }}" type="image/x-icon">
     <title>{{ config('app.name', 'Tournament') }} - @yield('title')</title>
@@ -99,6 +109,13 @@
             </tr>
         </tbody>
     </table>
+    <!-- JAVASCRIPT -->
+    <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js ') }} "></script>
+    <script src="{{asset('assets/libs/metismenujs/metismenujs.min.js ') }} "></script>
+    <script src="{{asset('assets/libs/simplebar/simplebar.min.js ') }} "></script>
+    <script src="{{asset('assets/libs/feather-icons/feather.min.js ') }} "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="{{asset('assets/js/app.js') }} "></script> 
 </body>
 
 </html>

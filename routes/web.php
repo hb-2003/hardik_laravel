@@ -45,13 +45,13 @@ Route::prefix('user')->namespace('User')->name('user.')->middleware(['auth', 've
     // serch 
     Route::match(['get', 'post'], 'search', 'DashboardController@search')->name('search');
     // order
-    Route::match(['get', 'post'], 'order', 'DashboardControlsler@order')->name('order');
+    Route::match(['get', 'post'], 'order', 'DashboardController@order')->name('order');
     Route::match(['get', 'post'], 'cansal/{id}', 'OrderController@cansal')->name('cansal');
     Route::match(['get', 'post'], 'cansalorderreorder/{id}', 'OrderController@cansalorderreorder')->name('cansalorderreorder');
     Route::match(['get', 'post'], 'orderreturn/{id}', 'OrderController@orderreturn')->name('orderreturn');
     Route::match(['get', 'post'], 'orderreorder/{id}', 'OrderController@orderreorder')->name('orderreorder');
     Route::match(['get', 'post'], 'account', 'DashboardController@account')->name('account');
-    Route::match(['get', 'post'], 'product/categorie/{id}', 'DashboardController@categorie')->name('categorie');
+    Route::match(['get', 'post'], 'product/categorie/{id}', 'DashboardController@categorie')->name('categorieproduct');
     Route::match(['get', 'post'], 'allproduct', 'ProductController@allproduct')->name('allproduct');
 
 

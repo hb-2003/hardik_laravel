@@ -21,6 +21,11 @@
 <!-- App favicon -->
 
 
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 
 <style>
     .mdi::before {

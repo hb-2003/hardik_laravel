@@ -27,9 +27,18 @@ class UserController extends Controller
     {
 
         $userinactive =  user::where('id', $id)->first();
-        $userinactive->update([
-            'status' => 0,
-        ]);
+        if($userinactive->status == 1)
+        {
+            $userinactive->update([
+                'status' => 0,
+            ]);
+        }
+        else{
+            $userinactive->update([
+                'status' => 1,
+            ]);
+        }
+      
         return redirect()->back();
     }
 }

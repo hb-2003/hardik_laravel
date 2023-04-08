@@ -9,6 +9,11 @@ use App\Models\Review;
 
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/libs/nouisliderribute/nouislider.min.css')}}">
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 @endsection
 
 @section('style')
@@ -246,9 +251,9 @@ use App\Models\Review;
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="float-sm-end">
-                                        <!-- <ul class="pagination pagination-rounded mb-sm-0">
-                                        
-                                        </ul> -->
+                                        <ul class="pagination pagination-rounded mb-sm-0">
+                                        {{ $products->onEachSide(5)->links() }}
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

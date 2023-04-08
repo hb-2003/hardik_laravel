@@ -39,8 +39,16 @@ class ConfirmablePasswordController extends Controller
                 'password' => __('auth.password'),
             ]);
         }
+//         $user = User::where('email',$request->email)->first();
+// if($user->status == 0 )
+// {
+//     session()->put('error', 'you are block.');
+//     return view('auth.login');
+// }
 
         $request->session()->put('auth.password_confirmed_at', time());
+         echo $request;
+         die;
 
         if ($request->user()->role == 1) {
             return redirect()->intended(RouteServiceProvider::ADMIN_HOME);

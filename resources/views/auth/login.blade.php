@@ -39,7 +39,7 @@
                     <div class="bg-overlay-gradient"></div>
                     <!-- end bubble effect -->
                     <div class="row justify-content-center g-0 align-items-center w-100">
-                        <div class="col-xl-4 col-lg-8">
+                        <div class="col-xl-5 col-lg-8">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="px-3 py-3">
@@ -50,14 +50,14 @@
                                         <form class="mt-4 pt-2" method="POST" id="login" action="{{ route('login') }}">
                                             @csrf
                                             <div class="form-floating form-floating-custom mb-3">
-                                                <input type="email" name="email"  placeholder="name@example.com" class="form-control" id="input-username" placeholder="Enter User Name">
+                                                <input type="email" name="email"  placeholder="name@example.com" class="form-control" id="input-username" placeholder="Enter email " autofocus>
                                                 <label for="input-username">email</label>
                                                 <div class="form-floating-icon">
                                                     <i class="bx bxs-user"></i>
                                                 </div>
                                             </div>
                                             <div class="form-floating form-floating-custom mb-3 auth-pass-inputgroup">
-                                                <input type="password" class="form-control" name="password"  placeholder="***************">
+                                                <input type="password" class="form-control" name="password"  placeholder="***************" autofocus >
                                                 
                                                 <label for="password-input">Password</label>
                                                 <div class="form-floating-icon">

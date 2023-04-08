@@ -71,6 +71,7 @@ class Order extends Model
         'transaction_id',
         'status',
         'order_status',
+        'return_reason'
     
 
     ];

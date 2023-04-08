@@ -53,7 +53,7 @@ $categories  = Categorie::all();
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button">
                                     <i class="bx bx-customize icon"></i>
-                                    <span data-key="t-apps">Apps</span>
+                                    <span data-key="t-apps">Category</span>
                                     <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
@@ -73,7 +73,7 @@ $categories  = Categorie::all();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle arrow-none" href="{{route('user.aboutus')}}" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class=" bx bx-detailt"></i>
+                                <i class=" bx bx-detail"></i>
                                     <span data-key="t-dashboard">About Us</span>
                                 </a>
                             </li>
