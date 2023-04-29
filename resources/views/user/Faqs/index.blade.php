@@ -98,6 +98,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row -content-end">
+                        <div class="col-sm-9">
+                            <div>
+                            
+                                <a href="{{route('user.account')}}" class="btn btn-danger"> Back</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -105,23 +113,6 @@
     </div>
     <!-- End Page-content -->
 
-
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script> &copy; Vuesy.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="https://1.envato.market/themesdesign" target="_blank">Themesdesign</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
 
 

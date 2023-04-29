@@ -34,6 +34,8 @@ class ReviewController extends Controller
 
             if ($count == 1) {
                 $productreview =  Review::where('user_id', auth::user()->id)->where('product_id', $request->product_id)->first();
+             
+                 
                 $productreview->update([
 
                     'product_id' => $request->product_id,
@@ -42,6 +44,7 @@ class ReviewController extends Controller
                     'detail' => $request->detail,
                     'date' => Carbon::now(),
                 ]);
+               
             } else {
                 Review::create([
                     'user_id' => auth::user()->id,

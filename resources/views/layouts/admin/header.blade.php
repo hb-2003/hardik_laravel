@@ -5,9 +5,6 @@ use App\Models\Notification;
 $notifications  = Notification::with('product')->where('read_at', 0)->get();
 
 $notificationcount  = Notification::where('read_at', 0)->count();
-
-
-
 ?>
 
 
@@ -48,9 +45,9 @@ $notificationcount  = Notification::where('read_at', 0)->count();
         <a href="{{route('admin.notificationorder',$notification->id)}}" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            @foreach($notification->productimage as $image)
-            <img src="{{asset('images/product/'.$image->name) }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-            @endforeach
+            
+            <img src="{{asset('images/product/'.$notification->productimage[0]->name) }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+           
 
             <div class="media-body">
               <h3 class="dropdown-item-title">

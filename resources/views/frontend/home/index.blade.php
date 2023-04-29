@@ -102,11 +102,9 @@ use App\Models\Review;
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div>
-                                                                <h5>Showing result for "Shoes"</h5>
+                                                                <h5>Showing result for "Furniture"</h5>
                                                                 <ol class="breadcrumb p-0 bg-transparent mb-2">
-                                                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Footwear</a></li>
-                                                                    <li class="breadcrumb-item active">Shoes</li>
-                                                                </ol>
+                                                        
                                                             </div>
                                                         </div>
 

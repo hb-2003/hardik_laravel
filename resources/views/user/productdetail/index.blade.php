@@ -221,16 +221,7 @@
                                                                 <h5 class="font-size-15 mb-0">{{$productreview->user_name}}</h5>
                                                             </div>
 
-                                                            <div class="flex-shrink-0">
-                                                                <ul class="list-inline product-review-link mb-0">
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Like"><i class="bx bx-like"></i></a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Comment"><i class="bx bx-comment-dots"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+
                                                         </div>
 
                                                     </div>
@@ -309,165 +300,7 @@
                 </div>
             </form>
 
-
             <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div>
-                                            <h5>Showing result for </h5>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-
-                                <div class="tab-content p-3 text-muted">
-                                    <div class="tab-pane active" id="produt" role="tabpanel">
-                                        <div class="row">
-                                            @foreach($products as $product)
-                                            @if($product['products_status']=="0")
-
-                                            <div class="col-xl-4 col-sm-6">
-                                                <div class="card dash-product-box shadow-none border text-center">
-                                                    <a href="{{route('user.productdetail',$product->id)}}">
-                                                        <div class="card-body">
-
-                                                            <div class="dash-product-img">
-                                                                <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
-                                                            </div>
-
-                                                            <h5 class="font-size-17 mt-1">
-                                                                <a href="#" class="text-dark lh-base">{{$product->products_name}}</a>
-                                                            </h5>
-
-                                                            <!-- <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">$280</del> $140.00</h5> -->
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            @elseif($product['products_status']=="1")
-
-                                            <div class="col-xl-3 col-sm-4">
-                                                <div class="card dash-product-box shadow-none border text-center">
-                                                    <a href="{{route('user.productdetail',$product->id)}}">
-                                                        <div class="card-body">
-
-                                                            <div class="dash-product-img">
-                                                                <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" width="75%" alt="">
-                                                            </div>
-
-                                                            <h5 class="font-size-17 mt-1">
-                                                                <a href="#" class="text-dark lh-base">{{$product->products_name}}</a>
-                                                            </h5>
-
-                                                            <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1">₹{{$product->products_price*110/100}}</del> ₹{{$product->products_price}}</h5>
-
-                                                            <h6 class="p-3">FREE Delivery by Vuesy Furniture</h6>
-
-
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            @endif
-
-                                            @endforeach
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-sm-7">
-                                        s
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end row -->
-
-        </div> <!-- container-fluid -->
-    </div>
-    <!-- End Page-content -->
-
-    <!-- sample modal content -->
-    <div id="color-img" class="modal fade" tabindex="-1" aria-labelledby="color-imgLabel" aria-hidden="true" data-bs-scroll="true">
-        <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="color-imgLabel">Product Images</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="product-desc-color">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <a href="#" class="active" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Gray">
-                                    <div class="product-color-item">
-                                        <img src="{{asset('assets/images/product/img-1.png')}}" alt="" class="avatar-md">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Dark">
-                                    <div class="product-color-item">
-                                        <img src="{{asset('assets/images/product/img-2.png')}}" alt="" class="avatar-md">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Purple">
-                                    <div class="product-color-item">
-                                        <img src="{{asset('assets/images/product/img-3.png')}}" alt="" class="avatar-md">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Sky">
-                                    <div class="product-color-item">
-                                        <img src="{{asset('assets/images/product/img-4.png')}}" alt="" class="avatar-md">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Green">
-                                    <div class="product-color-item">
-                                        <img src="{{asset('assets/images/product/img-5.png')}}" alt="" class="avatar-md">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="White">
-                                    <div class="product-color-item">
-                                        <img src="{{asset('assets/images/product/img-6.png')}}" alt="" class="avatar-md">
-                                    </div>
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
-    <div class="row">
         <div class="col-xl-4 col-sm-6">
 
 
@@ -491,11 +324,12 @@
                                 <form action="{{route('user.review')}}" method="POST">
                                     @csrf
                                     <input id="" class="form-control" type="hidden" name="product_id" value="{{$product->id}}">
+                                    
                                     <div class="mb-3">
                                         <label class="form-label" for="formrow-firstname-input">Reting
                                             number</label>
 
-                                        <input type="number" id="reting" value="{{$userproductreview->reting}}" class="form-control" name="reting" placeholder="Enter product reting" max="5">
+                                        <input type="number" id="reting" max=5 min=0 value="{{$userproductreview->reting}}" class="form-control" name="reting" placeholder="Enter product reting" max="5">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="formrow-firstname-input">Reting
@@ -508,11 +342,12 @@
                                         <form action="{{route('user.review')}}" method="POST">
                                             @csrf
                                             <input id="" class="form-control" type="hidden" name="product_id" value="{{$product->id}}">
+                                            
                                             <div class="mb-3">
                                                 <label class="form-label" for="formrow-firstname-input">Reting
                                                     number</label>
 
-                                                <input type="number" id="reting" value="" class="form-control" name="reting" placeholder="Enter product reting" max="5">
+                                                <input type="number" id="reting" max=5 min=0 value="" class="form-control" name="reting" placeholder="Enter product reting" max="5">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="formrow-firstname-input">Reting
@@ -523,10 +358,7 @@
                                         </form>
                                         @endif
 
-                                        <!-- <div class="modal-footer">
-                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" onclick="review(document.getElementById('productId_{{$product->id}}').value,document.getElementById('reting').value,document.getElementById('detail').value)" data-bs-dismiss="modal" class="btn btn-primary">submit</button>
-                                        </div> -->
+
                             </div>
                         </div>
                     </div>
@@ -537,7 +369,85 @@
                 </div>
             </div>
         </div><!-- end modal -->
-    </div> <!-- end cardbody -->
+    </div>
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div>
+                                            <h5>Showing result for </h5>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="tab-content p-3 text-muted">
+                                    <div class="tab-pane active" id="produt" role="tabpanel">
+                                        <div class="row">
+                                            @foreach($products as $product)
+                                            <div class="col-xl-4 col-sm-6">
+                                                <div class="card dash-product-box shadow-none border text-center" width="150px">
+                                                    <div class="card-body">
+                                                        <div class="pricing-badge">
+                                                            @if($product->Products_categorie == 1)
+                                                            <span class="badge bg-success">New</span>
+                                                            @elseif($product->Products_categorie == 2)
+                                                            <span class="badge bg-Primary"> Old</span>
+                                                            @else($product->Products_categorie == 3)
+                                                            <span class="badge " style="background-color: rgb(243, 78, 78);"> Sale</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="dash-product-img">
+                                                            <img src="{{asset('images/product/'.$product->productimage[0]->name) }}" class="img-fluid" alt="" width="100%">
+                                                        </div>
+
+                                                        <h5 class="font-size-17 mt-1">
+                                                            <a href="#" class="text-dark lh-base"><?php echo $small = substr($product->products_name, 0, 20); ?></a>
+                                                        </h5>
+
+                                                        <h5 class="font-size-20 text-primary mt-3 mb-0"><del class="font-size-17 text-muted fw-normal me-1"> @if($product->Products_categorie == 3)
+                                                                ₹{{$product ->sale_price}}
+                                                                @endif</del> ₹{{$product ->products_price}}</h5>
+                                                        <div class="mt-4">
+                                                            <a href="{{route('user.productdetail',$product->id)}}" class="btn btn-primary btn-sm w-lg"><i class="bi bi-ticket-detailed"></i> See Detail
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @endforeach
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-7">
+                                        s
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+
+   <!-- end cardbody -->
     <!-- end card -->
 </div>
 

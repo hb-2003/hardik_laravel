@@ -26,7 +26,7 @@ class CategorieController extends Controller
         if ($request->isMethod('POST')) {
             $request->validate([
                 'manufacturers_id' => 'required ',
-                'categorie_name' => 'required',
+                'categorie_name' => 'required|string',
                 'categorie_image' => 'required',
                 'status' => 'required',
 
@@ -67,7 +67,7 @@ class CategorieController extends Controller
         if ($request->isMethod('POST')) {
             $request->validate([
                 'manufacturers_id' => 'required ',
-                'categorie_name' => 'required',
+                'categorie_name' => 'required|string',
                 'status' => 'required',
 
             ]);

@@ -88,7 +88,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <p class="mb-2">Product id: <span class="text-primary">{{$userorder->id}}</span></p>
-                                                            <p class="mb-4">Billing Name: <span class="text-primary">Marie N.</span></p>
+                                                            <p class="mb-4">Billing Name: <span class="text-primary">{{$userorder->customers_name}}</span></p>
 
                                                             <div class="table-responsive">
                                                                 <table class="table align-middle table-nowrap">

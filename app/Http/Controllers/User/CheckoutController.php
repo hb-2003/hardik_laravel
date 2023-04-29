@@ -48,8 +48,8 @@ class CheckoutController extends Controller
                 "http://www.geoplugin.net/json.gp?ip=" . $ip
             ));
             $request->validate([
-                'billing_name' => 'required',
-                'email' => 'required',
+                'billing_name' => 'required|string',
+                'email' => 'required|email',
                 'customers_telephone' => 'required|digits:10',
 
                 'billing_address_format_id' => 'required',

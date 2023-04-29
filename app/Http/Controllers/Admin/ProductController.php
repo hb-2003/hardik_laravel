@@ -37,17 +37,20 @@ class ProductController extends Controller
 
                 'attributes_id' => 'required',
                 'attributes_set' => 'required',
-                'products_name' => 'required',
+                'products_name' => 'required|string',
                 'products_quantity' => 'required',
-                'products_price' => 'required',
+                'products_price' => 'required|integer|not_in:0|regex:^[1-9][0-9]+^',
+                'Products_categorie' => 'required',
                 'products_weight' => 'required',
                 'products_weight_unit' => 'required',
-                'products_status' => 'required',
-                'is_current' => 'required',
+                'Productstatus' => 'required',
+                'is_current' => 'required|string',
                 'manufacturers_id' => 'required',
                 'products_type' => 'required',
                 'products_min_order' => 'required',
                 'products_max_stock' => 'required',
+                'products_status' => 'required',
+
 
             ]);
 
@@ -96,11 +99,11 @@ class ProductController extends Controller
         $Product  = Product::where('id', $id)->first();
         $manufacturers = Manufacturer::where('status', 1)->get();
         $manufacture = Manufacturer::where('manufacturer_name', $Product->manufacturers_id)->first();
-       
+
         $categories = Categorie::where('manufacturers_id', $manufacture->id)->where('status', 1)->get();
         $categorie = Categorie::where('categorie_name', $Product->products_type)->first();
-        
-       
+
+
         $attributes = Attribute::where('status', 1)->get();
         $attribute = Attribute::where('name', $Product->attributes_id)->first();
         $attributesvalues = Attributesvalue::where('attribute_id', $attribute->id)->where('status', 1)->get();
@@ -130,8 +133,8 @@ class ProductController extends Controller
             ]);
             if (!empty($request->products_image)) {
 
-              $productimages =   Products_images::where('product_id', $Product->id)->get();
-              
+                $productimages =   Products_images::where('product_id', $Product->id)->get();
+
                 $images = $request->products_image;
 
                 foreach ($images as $image) {
@@ -165,9 +168,9 @@ class ProductController extends Controller
             session()->put('success', 'ediy product success complete.');
             return  redirect()->route('admin.Product');
         }
-        
-        
-        return view('admin.product.edit', compact('Product', 'manufacturers', 'categories', 'attributes','categorie','manufacture', 'attributesvalues', 'units'));
+
+
+        return view('admin.product.edit', compact('Product', 'manufacturers', 'categories', 'attributes', 'categorie', 'manufacture', 'attributesvalues', 'units'));
     }
 
     public function Productdelete(Request $request, $id)

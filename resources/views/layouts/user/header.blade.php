@@ -58,7 +58,7 @@ $categories  = Categorie::all();
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
                                     @foreach($categories as $key => $categorie)
-                                    <a href="{{route('categorieproduct',$categorie->id)}}" class="dropdown-item" data-key="t-calendar">{{$categorie->categorie_name}}</a>
+                                    <a href="{{route('user.categorieproduct',$categorie->categorie_name)}}" class="dropdown-item" data-key="t-calendar">{{$categorie->categorie_name}}</a>
 
                                     @endforeach
 

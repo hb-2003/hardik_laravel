@@ -21,7 +21,7 @@ class AttributeController extends Controller
         if ($request->isMethod('POST')) {
 
             $request->validate([
-                'name' => 'required ',
+                'name' => 'required|string ',
                 'status' => 'required',
 
             ]);
@@ -44,7 +44,7 @@ class AttributeController extends Controller
 
         if ($request->isMethod('POST')) {
             $request->validate([
-                'name' => 'required ',
+                'name' => 'required|string ',
                 'status' => 'required',
             ]);
             $attributesvalues  =  Attributesvalue::where('attribute_id',$id)->get();

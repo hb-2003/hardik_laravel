@@ -320,7 +320,7 @@
                                         <img src="{{asset('images/product/'.$Product->productimage[0]->name)}}" alt="Product Image" class="img-size-50">
                                     </div>
                                     <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">{{$userorder ->customers_name }}{{$userorder ->customers_name }}
+                                        <a href="javascript:void(0)" class="product-title">{{$userorder ->customers_name }}
                                             <span class="badge badge-warning float-right">{{$userorder ->order_price }}</span></a>
                                         <span class="product-description">
                                             {{$Product ->pyment_type }}

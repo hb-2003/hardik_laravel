@@ -25,7 +25,7 @@ class AttributevlaueController extends Controller
 
             $request->validate([
                 'attribute_id' => 'required ',
-                'name' => 'required ',
+                'name' => 'required|string ',
                 'status' => 'required',
             ]);
 
@@ -49,7 +49,7 @@ class AttributevlaueController extends Controller
         if ($request->isMethod('POST')) {
             $request->validate([
                 'attribute_id' => 'required ',
-                'name' => 'required ',
+                'name' => 'required|string ',
                 'status' => 'required',
             ]);
 

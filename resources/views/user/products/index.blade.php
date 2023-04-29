@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-xl-3 col-lg-4">
+                <!-- <div class="col-xl-3 col-lg-4">
                     <div class="card">
                         <div class="card-header bg-transparent border-bottom">
                             <h5 class="mb-0">Filters</h5>
@@ -36,7 +36,7 @@
                                             <ul class="list-unstyled categories-list mb-0">
                                                 @foreach($categories as $categorie)
                                                 <li>
-                                                    <input class="form-check-input" name="category[]" multiple  value="'{{$categorie->categorie_name}}'" type="checkbox" id="formCheck1">
+                                                    <input class="form-check-input" name="category[]" multiple value="'{{$categorie->categorie_name}}'" type="checkbox" id="formCheck1">
                                                     <label class="form-check-label" for="formCheck1">
                                                         {{$categorie->categorie_name}}
                                                     </label>
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 @endforeach
-                                <div class="m-3 mb-5"> 
+                                <div class="m-3 mb-5">
                                     <button type="submit" class="btn btn-primary float-md-end">Apply</button>
                                 </div>
 
@@ -91,30 +91,27 @@
 
                         </form>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="col-xl-9 col-lg-9">
+                <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div>
-                                            <h5>Showing Result For "Manufacture"</h5>
-                                            <ol class="breadcrumb p-0 bg-transparent mb-2">
+                                            <h5>Showing Result For "Furniture"</h5>
+                                            <!-- <ol class="breadcrumb p-0 bg-transparent mb-2">
                                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Manufacture</a></li>
                                                 <li class="breadcrumb-item active">Furniture</li>
-                                            </ol>
+                                            </ol> -->
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-inline float-md-end">
                                             <div class="search-box ms-2">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control bg-light border-light rounded" placeholder="Search...">
-                                                    <i class="bx bx-search search-icon"></i>
-                                                </div>
+                                             
                                             </div>
                                         </div>
                                     </div>

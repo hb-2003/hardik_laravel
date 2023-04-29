@@ -22,7 +22,7 @@ class SliderController extends Controller
     {
         if ($request->isMethod('POST')) {
             $request->validate([
-                'name' => 'required ',
+                'name' => 'required| string ',
                 'status' => 'required',
 
             ]);
@@ -57,7 +57,7 @@ class SliderController extends Controller
 
         if ($request->isMethod('POST')) {
             $request->validate([
-                'name' => 'required ',
+                'name' => 'required| string ',
                 'status' => 'required',
 
             ]);

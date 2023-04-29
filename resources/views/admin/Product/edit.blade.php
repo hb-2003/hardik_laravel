@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Quantity</label>
-                                    <input type="number" value="{{$Product->products_quantity}}" name="products_quantity" class="form-control" id="exampleInputEmail1" placeholder="Enter email" require>
+                                    <input type="number" value="{{$Product->products_quantity}}" min="0" name="products_quantity" class="form-control" id="exampleInputEmail1" placeholder="Enter email" require>
                                 </div>
                                 @error('products_quantity')
                                 <div class="alert alert-danger">The quantity Is Required.</div>
@@ -111,7 +111,7 @@
                                     </select>
                                 </div>
                                 @error('Product_categorie')
-                                <div class="alert alert-danger">The Product Categorie Is Required.</div>
+                                <div class="alert alert-danger">The Select Product Categorie Is Required.</div>
                                 @enderror
                                 @if($Product->Products_categorie == "3")
                                 <div class="saleprices" id="saleprice">

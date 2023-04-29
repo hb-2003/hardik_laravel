@@ -28,6 +28,7 @@ class ProductController extends Controller
 
     $productreviews =  Review::where('product_id', $id)->get();
     $userproductreview = Review::where('user_id', auth::user()->id)->where('product_id', $id)->first();
+    
     $userproductcount = Review::where('user_id', auth::user()->id)->where('product_id', $id)->count();
     $products = Product::with('productimage')->where('products_type', $product->products_type)->where('products_status', 1)->paginate(9);
 

@@ -21,7 +21,7 @@ class UnitController extends Controller
     {
         if ($request->isMethod('POST')) {
             $request->validate([
-                'units_name' => 'required ',
+                'units_name' => 'required| string ',
                 'status' => 'required',
 
             ]);
@@ -42,7 +42,7 @@ class UnitController extends Controller
 
         if ($request->isMethod('POST')) {
             $request->validate([
-                'units_name' => 'required ',
+                'units_name' => 'required| string ',
                 'status' => 'required',
 
             ]);

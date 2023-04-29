@@ -54,7 +54,7 @@ $categories  = Categorie::all();
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button">
                                     <i class="bx bx-customize icon"></i>
-                                    <span data-key="t-apps">Apps</span>
+                                    <span data-key="t-apps">Category</span>
                                     <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">

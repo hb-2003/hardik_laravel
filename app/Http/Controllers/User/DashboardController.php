@@ -34,43 +34,10 @@ class DashboardController extends Controller
         // Print_r($cookie_value);
         // die;
 
-
-
-
         //$productssliders = Product::with('productimage')->latest()->take(5)->get();
 
-        $orders = Order::with('order_product')->where('pyment_type', 'pay')->where('transaction_id', Null)->get();
-
-        foreach ($orders as $order) {
-            $order->update([
-                'status' => 2,
-                'order_status' => 6,
-            ]);
-            $order_products = Order_product::where('orders_id', $order->id)->get();
-
-            foreach ($order_products as $order_product) {
-
-                $count = Product::where('id', $order_product->products_id)->count();
-
-                if ($count == 1) {
-
-                    $product = Product::where('id', $order_product->products_id)->first();
-                    $quantity = $product->products_quantity + $order_product->products_quantity;
-                    $product->update([
-                        'products_quantity' => $quantity,
-                    ]);
-                }
-            }
-        }
-
-
-
         $products = Product::with('productimage')->where('products_status', 1)->paginate(9);
-
-
-
-        $categories = Categorie::all();
-
+        $categories = Categorie::where('status',1)->get();
         $users = User::count();
         $user = auth()->user();
         $referralUrl = URL::to('/') . '/register?referralcode=' . $user->referralcode;
@@ -115,6 +82,16 @@ class DashboardController extends Controller
         if ($request->isMethod('POST')) {
 
 
+            $request->validate([
+                'first_name' => 'required|string ',
+                'last_name' => 'required|string',
+                'gender' => 'required',
+                'dob' => 'required',
+                'telephone' => 'required|digits:10',
+                'email' => 'required|email',
+
+            ]);
+
             $user = auth()->user();
             $user = user::find(auth::user()->id);
             $user->first_name = $request['first_name'];
@@ -126,7 +103,7 @@ class DashboardController extends Controller
             $user->email     = $request['email'];
             $user->update();
 
-            session()->put('success', 'Your profile image data has been updated.');
+            session()->put('success', 'Your profile has been updated.');
             return redirect()->route('user.profile');
         }
         if ($request->isMethod('GET')) {
@@ -144,10 +121,8 @@ class DashboardController extends Controller
     }
 
     public function order(Request $request)
-
     {
         $orders = Order::with('order_product')->where('pyment_type', 'pay')->where('transaction_id', Null)->get();
-
         foreach ($orders as $order) {
             $order->update([
                 'status' => 2,
@@ -171,7 +146,6 @@ class DashboardController extends Controller
         }
         $userorders =  Order::with('order_product')->where('customers_id', auth::user()->id)->orderBy('id', 'ASC')->get();
 
-
         return view('user.order.index', compact('userorders'));
     }
     public function account(Request $request)
@@ -181,20 +155,23 @@ class DashboardController extends Controller
     }
 
     public function categorieproduct(Request $request, $id)
-    {
 
+    {
+     
         $count = Product::with('productimage')->where('products_type', $id)->where('products_status', 1)->count();
         if ($count == 0) {
           
             return redirect()->back();
         }
+
+        $name = $request->id;
         $products = Product::with('productimage')->where('products_type', $id)->where('products_status', 1)->paginate(9);
 
         //  echo "<pre>";
         // print_r($products);
         // die;
 
-        return view('user.productdetail.categorie', compact('products'));
+        return view('user.productdetail.categorie', compact('products','name'));
     }
     public function email(Request $request)
     {
